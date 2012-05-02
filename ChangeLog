@@ -1,0 +1,45 @@
+2012-04-15 vs. 1.2-0 - Jose Claudio Faria  <joseclaudio.faria@gmail.com>
+	* New options of plot
+	* New options of center
+	* Parts of sources was a bit enhanced
+
+2012-02-20 vs. 1.0-10 - Jose Claudio Faria  <joseclaudio.faria@gmail.com>
+	* It was made cosmetic changes in the plot.bpca.3d
+
+2011-08-22 vs. 1.0-9 - Jose Claudio Faria  <joseclaudio.faria@gmail.com>
+	* It was made cosmetic changes in the summary
+
+2011-04-21 vs. 1.0-8 - Jose Claudio Faria  <joseclaudio.faria@gmail.com>
+	* It was made cosmetic changes in the documentation
+
+2011-04-20 vs. 1.0-7 - Jose Claudio Faria  <joseclaudio.faria@gmail.com>
+	* The method summary was improved
+	* The demo comparison was removed
+
+2011-04-19 vs. 1.0-6 - Jose Claudio Faria  <joseclaudio.faria@gmail.com>
+	* The alias of the methods summary and plot in the documentation was a bit
+	enhaced
+
+2011-04-09 vs. 1.0-5 - Jose Claudio Faria  <joseclaudio.faria@gmail.com>
+	* It was fixed the NOTE STATUS for some platforms
+		(plot.bpca.3d: warning in matrix(0, nc = 3): partial argument match of
+		'nc' to 'ncol')
+
+2011-03-22 vs. 1.0-4 - Jose Claudio Faria  <joseclaudio.faria@gmail.com>
+	* The methods plot.bpca.2d and plot.bpca.3d now, by default, plots the
+	  variation retained by each principal component in the axis
+	* The method summary was a bit enhanced		
+
+2009-06-10 vs. 1.0-3 - Jose Claudio Faria  <joseclaudio.faria@gmail.com>
+	* The methods plot.bpca.2d and plot.bpca.3d now allows to send the parameters:
+	  xlim, ylim, zlim, xlab, ylab and zlab
+	* The demos were a bit reworked
+	* The documentation in PDF was included in the package
+
+2008-07-15 vs. 1.0-2 - Jose Claudio Faria  <joseclaudio.faria@gmail.com>
+	* Released to CRAN
+	* English corrections by Clarice
+	* Scripts with obj.identify=TRUE were removed from 'demo' folder
+	  
+2008-07-01  vs. 1.0-1 - Jose Claudio Faria  <joseclaudio.faria@gmail.com>
+	* Fisrt version restricted released (to testers only)

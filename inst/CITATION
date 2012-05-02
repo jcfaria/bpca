@@ -1,0 +1,24 @@
+citHeader("To cite bpca in publications use:")
+
+citEntry(entry  = "Manual",
+         title  = "bpca: Biplot of Multivariate Data Based on Principal
+                   Components Analysis.",
+         author = "Jose Claudio Faria and
+                   Clarice Garcia Borges Demetrio",
+         organization = "UESC and ESALQ",
+         address      = "Ilheus, Bahia, Brasil and
+                         Piracicaba, Sao Paulo, Brasil",
+         year         = version$year,
+
+         textVersion = 
+         paste("Faria, J.C & Demetrio, C. G. B (", version$year, ").",
+               "bpca: Biplot of multivariate data based on Principal
+                Components Analysis.",
+               "ESALQ, USP, Brasil.",
+               sep="")
+         )
+
+citFooter("Lots of time and effort were invested in creating bpca.",
+          "Please, cite it when using it together with R.",
+          "See also", sQuote("citation()"),
+          "for citing R.")

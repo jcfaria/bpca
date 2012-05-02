@@ -1,0 +1,29 @@
+Functions:
+=========
+bpca.default    Biplot for `data.frame' or `matrix' objects.
+bpca.prcomp     Biplot for `prcomp' objects.
+bpca            Main function (S3 based).
+plot.bpca.2d    Plots `bpca.2d' objects with the package `graphics'.
+plot.bpca.3d    Plots `bpca.3d' objects with the packages `scatterplot3d'
+                (`graphics' based) and `rgl' (OpenGL based).
+plot.qbpca      Plots `qbpca' objects with the package `graphics'.
+qbpca           Evaluates the quality of the biplot representation for
+                `bpca.2d' and `bpca.3d' objects.
+summary.bpca    Summarizes `bpca' (`bpca.2d' and `bpca.3d') objects.
+var.rbf         Calculates the matrix of graphical correlations projected by
+                the biplot for `bpca.2d' and `bpca.3d' objects.
+var.rdf         Calculates the matrix of `poor' graphical correlations,
+                represented by the biplot, for `bpca.2d' and `bpca_3d'
+                objects.
+dt.tools        Calculates vector variable lengths, angles between vector
+                variables and variable correlations from `data.frame' or
+                `matrix' objects.
+
+Datasets:
+========
+gabriel1971     Percentages of households having various facilities and
+                appliances in East Jerusalem Arab areas, by quarters of
+                the town.
+gge2003         A didatic matrix of genotypes (rows) and environments
+                (columns).
+ontario         Ontario winter wheat (1993).                
