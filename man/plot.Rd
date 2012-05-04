@@ -95,7 +95,7 @@
               \code{ms}: mean vs. stability; \cr
               \code{ro}: rank objects with ref. to an "ideal" variable; \cr
               \code{rv}: rank variables with ref. to an "ideal" object.}
-  \item{circles.number}{\dots .}
+  \item{circles.number}{The number of circles.}
   \item{circles.color}{\dots .}
   \item{circles.lwd}{\dots .}
   \item{radio}{\dots .}
