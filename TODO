@@ -1,0 +1,16 @@
+Prioridades do pacote bpca
+
+1. Documentação do pacote:
+1.1- Corrigir e melhorar a documentação do pacote com respeito ao Inglês.
+
+
+2. Função 'plot.bpca.2d':
+2.1- Verificar a exatidão dos novos métodos de visualização:
+     type=c('eo', 'ev', 'co', 'cv', 'ww', 'dv', 'ms', 'ro', 'rv');
+2.2- Otimizar os algoritmos dos novos métodos de visualização onde possível:
+     type=c('eo', 'ev', 'co', 'cv', 'ww', 'dv', 'ms', 'ro', 'rv');
+2.3- Verificar a exatidão dos novos métodos de centralização: 1 e 3.
+
+
+3. Função 'bpca.default' e 'bpca.prcomp':
+3.1- Implementar novos métodos de diagnóstico da qualidade da redução proporcionada pelo biplot.
