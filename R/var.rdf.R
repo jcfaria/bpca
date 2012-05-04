@@ -1,5 +1,7 @@
 var.rdf <-
-  function(x, var.rb, limit)
+  function(x,
+           var.rb,
+           limit)
   {
     var.rob <- cor(x)
     n       <- ncol(x)

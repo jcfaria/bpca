@@ -1,16 +1,32 @@
 ## Plot objects of the class 'bpca.3d' with the packages 'scatterplot3d'
 ## ('graphics' based) and 'rgl'
 plot.bpca.3d <-
-  function(x, rgl.use=FALSE, ref.lines=TRUE, ref.color='navy', ref.lty=ifelse(rgl.use, NA, 'dotted'),
-           clear3d=ifelse(rgl.use, TRUE, NULL), simple.axes=ifelse(rgl.use, TRUE, NULL),
+  function(x,
+           rgl.use=FALSE,
+           ref.lines=TRUE,
+           ref.color='navy',
+           ref.lty=ifelse(rgl.use, NA, 'dotted'),
+           clear3d=ifelse(rgl.use, TRUE, NULL),
+           simple.axes=ifelse(rgl.use, TRUE, NULL),
            aspect=ifelse(rgl.use, c(1, 1, 1), NULL),
-           var.factor=1, var.color='red3', var.lty=ifelse(rgl.use, NA, 'solid'), 
-           var.pch=ifelse(rgl.use, NULL, 20), var.pos=ifelse(rgl.use, 0, 4),
-           var.cex=ifelse(rgl.use, .8, .6), var.offset=ifelse(rgl.use, NULL, .2),
-           obj.color='black', obj.pch=ifelse(rgl.use, NULL, 20), obj.pos=ifelse(rgl.use, 0, 4),
-           obj.cex=ifelse(rgl.use, .8, .6), obj.offset=ifelse(rgl.use, NULL, .2),
-           obj.names=TRUE, obj.labels=rownames(x$coord$objects), obj.identify=FALSE,
-           box=FALSE, angle=ifelse(rgl.use, NULL, 40), xlim, ylim, zlim, xlab, ylab, zlab, ...)
+           var.factor=1,
+           var.color='red3',
+           var.lty=ifelse(rgl.use, NA, 'solid'), 
+           var.pch=ifelse(rgl.use, NULL, 20),
+           var.pos=ifelse(rgl.use, 0, 4),
+           var.cex=ifelse(rgl.use, .8, .6),
+           var.offset=ifelse(rgl.use, NULL, .2),
+           obj.color='black',
+           obj.pch=ifelse(rgl.use, NULL, 20),
+           obj.pos=ifelse(rgl.use, 0, 4),
+           obj.cex=ifelse(rgl.use, .8, .6),
+           obj.offset=ifelse(rgl.use, NULL, .2),
+           obj.names=TRUE,
+           obj.labels=rownames(x$coord$objects),
+           obj.identify=FALSE,
+           box=FALSE,
+           angle=ifelse(rgl.use, NULL, 40),
+           xlim, ylim, zlim, xlab, ylab, zlab, ...)
   {
     if (!inherits(x, 'bpca.3d'))
       stop("Use this function only with 'bpca.3d' class!")

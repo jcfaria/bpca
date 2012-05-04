@@ -1,5 +1,6 @@
 bpca.prcomp <-
-  function(x, d=1:2, ...)
+  function(x,
+           d=1:2, ...)
   {
     stopifnot(class(x) == 'prcomp')
 

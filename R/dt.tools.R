@@ -1,5 +1,8 @@
 dt.tools <-
-  function(x, var.position=2, center=2, scale=1)
+  function(x,
+           var.position=2, 
+           center=2,
+           scale=1)
   {
     stopifnot(is.matrix(x) || is.data.frame(x))
 

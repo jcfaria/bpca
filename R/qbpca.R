@@ -1,5 +1,6 @@
 qbpca <-
-  function(x, bpca)
+  function(x,
+           bpca)
   {
     if (missing(x) || missing(bpca))
       stop('Please, check the parameters x and bpca!')

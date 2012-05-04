@@ -1,8 +1,13 @@
 bpca.default <-
-  function(x, d=1:2,
-           var.position=2, center=2, scale=1,
+  function(x,
+           d=1:2,
+           var.position=2,
+           center=2,
+           scale=1,
            method=c('hj', 'sqrt', 'jk', 'gh'),
-           var.rb=FALSE, var.rd=FALSE, limit=10, ...)
+           var.rb=FALSE,
+           var.rd=FALSE,
+           limit=10, ...)
   {
     stopifnot(is.matrix(x) || is.data.frame(x))
 
@@ -104,7 +109,7 @@ bpca.default <-
 
     # variables
     if(var.rb)
-      var.rb.res <- var.rbf(hl.scal)
+      var.rb.res <- var.rbf(hl.scal[,d[1]:d[length(d)]])
     else
       var.rb.res <- NA
 

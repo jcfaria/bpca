@@ -1,5 +1,9 @@
 plot.qbpca <-
-  function(x, xlab='Index', ylab='r', pch=c(1,8), col=c(4,2), ...)
+  function(x,
+           xlab='Index',
+           ylab='r',
+           pch=c(1,8),
+           col=c(4,2), ...)
   {
     if (!inherits(x, 'qbpca'))
       stop("Use this function only with 'qbpca' class!")
