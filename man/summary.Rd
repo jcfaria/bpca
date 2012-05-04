@@ -27,25 +27,24 @@
 \seealso{\code{\link{bpca}}}
 
 \examples{
-  ##
-  ## Example 1
-  ## bpca - 2d
-  ##
+##
+## Example 1
+## bpca - 2d
+##
 
-  bp <- bpca(gabriel1971)
-  bp
+(bp <- bpca(gabriel1971))
 
-  summary(bp)
+summary(bp)
 
-  ##
-  ## Example 2
-  ## bpca - 3d
-  ##
+##
+## Example 2
+## bpca - 3d
+##
 
-  bp <- bpca(gabriel1971, d=1:3)
-  bp
+(bp <- bpca(gabriel1971,
+            d=1:3))
 
-  summary(bp)
+summary(bp)
 }
 
 \keyword{multivariate}

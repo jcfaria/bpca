@@ -34,25 +34,23 @@
 \seealso{\code{\link{bpca}}}
 
 \examples{
-  ##
-  ## Particular use
-  ##
+##
+## Particular use
+##
 
-  bp1 <- bpca(gabriel1971)
-  bp1$var.rb # NA
+bp1 <- bpca(gabriel1971)
+bp1$var.rb # NA
 
-  res <- var.rbf(bp1$coord$var) # Computes the correlations of all variables under
-  # the biplot projection
-  res
+(res <- var.rbf(bp1$coord$var)) # Computes the correlations of all variables under the biplot projection
 
-  ##
-  ## Common use
-  ##
+##
+## Common use
+##
 
-  bp2 <- bpca(gabriel1971,
-  var.rb=TRUE)
+bp2 <- bpca(gabriel1971,
+            var.rb=TRUE)
 
-  bp2$var.rb
+bp2$var.rb
 }
 
 \keyword{multivariate}

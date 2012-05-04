@@ -47,61 +47,119 @@
 \seealso{\code{\link{bpca}}}
 
 \examples{
-  ##
-  ## Example 1
-  ## Example of 'var.rb=TRUE' parameter as a measure of the quality of the biplot - 2d
-  ##
+##
+## Example 1
+## Example of 'var.rb=TRUE' parameter as a measure of the quality of the biplot - 2d
+##
 
-  oask <- devAskNewPage(dev.interactive(orNone = TRUE))
+oask <- devAskNewPage(dev.interactive(orNone=TRUE))
 
-  ## Differences between methods of factorization
-  # SQRT
-  bp1 <- bpca(gabriel1971, meth='sqrt', var.rb=TRUE)
-  qbp1 <- qbpca(gabriel1971, bp1)
-  plot(qbp1, main='sqrt - 2d \n (poor)')
+## Differences between methods of factorization
+# SQRT
+bp1 <- bpca(gabriel1971,
+            meth='sqrt',
+            var.rb=TRUE)
 
-  # JK
-  bp2 <- bpca(gabriel1971, meth='jk', var.rb=TRUE)
-  qbp2 <- qbpca(gabriel1971, bp2)
-  plot(qbp2, main='jk - 2d \n (very poor)')
+qbp1 <- qbpca(gabriel1971,
+              bp1)
 
-  # GH
-  bp3 <- bpca(gabriel1971, meth='gh', var.rb=TRUE)
-  qbp3 <- qbpca(gabriel1971, bp3)
-  plot(qbp3, main='gh - 2d \n (good)')
+plot(qbp1,
+     main='sqrt - 2d \n (poor)')
 
-  # HJ
-  bp4 <- bpca(gabriel1971, meth='hj', var.rb=TRUE)
-  qbp4 <- qbpca(gabriel1971,  bp4)
-  plot(qbp4, main='hj - 2d \n (good)')
 
-  ##
-  ## Example 2
-  ## Example of 'var.rb=TRUE' parameter as a measure of the quality of the biplot - 3d
-  ##
+# JK
+bp2 <- bpca(gabriel1971,
+            meth='jk',
+            var.rb=TRUE)
 
-  ## Differences between methods of factorization
-  # SQRT
-  bp1 <- bpca(gabriel1971, meth='sqrt', d=1:3, var.rb=TRUE)
-  qbp1 <- qbpca(gabriel1971, bp1)
-  plot(qbp1, main='sqrt - 3d \n (poor)')
+qbp2 <- qbpca(gabriel1971,
+              bp2)
 
-  # JK
-  bp2 <- bpca(gabriel1971, meth='jk', d=1:3, var.rb=TRUE)
-  qbp2 <- qbpca(gabriel1971, bp2)
-  plot(qbp2, main='jk - 3d \n (very poor)')
+plot(qbp2,
+     main='jk - 2d \n (very poor)')
 
-  # GH
-  bp3 <- bpca(gabriel1971, meth='gh', d=1:3, var.rb=TRUE)
-  qbp3 <- qbpca(gabriel1971, bp3)
-  plot(qbp3, main='gh - 3d \n (whow!)')
 
-  # HJ
-  bp4 <- bpca(gabriel1971, meth='hj', d=1:3, var.rb=TRUE)
-  qbp4 <- qbpca(gabriel1971, bp4)
-  plot(qbp4, main='hj - 3d \n (whow!)')
+# GH
+bp3 <- bpca(gabriel1971,
+            meth='gh',
+            var.rb=TRUE)
 
-  devAskNewPage(oask)  
+qbp3 <- qbpca(gabriel1971,
+              bp3)
+
+plot(qbp3,
+     main='gh - 2d \n (good)')
+
+
+# HJ
+bp4 <- bpca(gabriel1971,
+            meth='hj',
+            var.rb=TRUE)
+
+qbp4 <- qbpca(gabriel1971,
+             bp4)
+
+plot(qbp4,
+     main='hj - 2d \n (good)')
+
+##
+## Example 2
+## Example of 'var.rb=TRUE' parameter as a measure of the quality of the biplot - 3d
+##
+
+## Differences between methods of factorization
+# SQRT
+bp1 <- bpca(gabriel1971,
+            meth='sqrt',
+            d=1:3,
+            var.rb=TRUE)
+
+qbp1 <- qbpca(gabriel1971,
+              bp1)
+
+plot(qbp1,
+     main='sqrt - 3d \n (poor)')
+
+
+# JK
+bp2 <- bpca(gabriel1971,
+            meth='jk',
+            d=1:3,
+            var.rb=TRUE)
+
+qbp2 <- qbpca(gabriel1971,
+             bp2)
+
+plot(qbp2,
+     main='jk - 3d \n (very poor)')
+
+
+# GH
+bp3 <- bpca(gabriel1971,
+            meth='gh',
+            d=1:3,
+            var.rb=TRUE)
+
+qbp3 <- qbpca(gabriel1971,
+              bp3)
+
+plot(qbp3,
+     main='gh - 3d \n (whow!)')
+
+
+# HJ
+bp4 <- bpca(gabriel1971,
+            meth='hj',
+            d=1:3,
+            var.rb=TRUE)
+
+qbp4 <- qbpca(gabriel1971,
+              bp4)
+
+plot(qbp4,
+     main='hj - 3d \n (whow!)')
+
+devAskNewPage(oask)  
 }
 
 \keyword{multivariate}

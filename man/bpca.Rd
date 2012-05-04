@@ -190,100 +190,118 @@
 \seealso{\code{\link{biplot.prcomp}}}
 
 \examples{
-  ##
-  ## Example 1
-  ## Computing and ploting a bpca object with 'graphics' package - 2d
-  ##
+##
+## Example 1
+## Computing and ploting a bpca object with 'graphics' package - 2d
+##
 
-  bp <- bpca(gabriel1971)
+bp <- bpca(gabriel1971)
 
-  x11(w=6, h=6)
-  oask <- devAskNewPage(dev.interactive(orNone = TRUE))
-  plot(bp, var.factor=2)
+x11(w=6, h=6)
+oask <- devAskNewPage(dev.interactive(orNone=TRUE))
+plot(bp,
+     var.factor=2)
 
-  # Exploring the object 'bp' created by the function 'bpca'
-  class(bp)
-  names(bp)
-  str(bp)
+# Exploring the object 'bp' created by the function 'bpca'
+class(bp)
+names(bp)
+str(bp)
 
-  summary(bp)
-  bp$call
-  bp$eigenval
-  bp$eigenvec
-  bp$numb
-  bp$import
-  bp$coord
-  bp$coord$obj
-  bp$coord$var
-  bp$var.rb
-  bp$var.rd
+summary(bp)
+bp$call
+bp$eigenval
+bp$eigenvec
+bp$numb
+bp$import
+bp$coord
+bp$coord$obj
+bp$coord$var
+bp$var.rb
+bp$var.rd
 
-  ##
-  ## Example 2
-  ## Computing and ploting a bpca object with 'scatterplot3d' package - 3d
-  ##
+##
+## Example 2
+## Computing and ploting a bpca object with 'scatterplot3d' package - 3d
+##
 
-  bp <- bpca(gabriel1971, d=2:4)
+bp <- bpca(gabriel1971,
+           d=2:4)
 
-  plot(bp, var.factor=3)
+plot(bp,
+     var.factor=3)
 
-  # Exploring the object 'bp' created by the function 'bpca'
-  class(bp)
-  names(bp)
-  str(bp)
+# Exploring the object 'bp' created by the function 'bpca'
+class(bp)
+names(bp)
+str(bp)
 
-  summary(bp)
-  bp$call
-  bp$eigenval
-  bp$eigenvec
-  bp$numb
-  bp$import
-  bp$coord
-  bp$coord$obj
-  bp$coord$var
-  bp$var.rb
-  bp$var.rd
+summary(bp)
+bp$call
+bp$eigenval
+bp$eigenvec
+bp$numb
+bp$import
+bp$coord
+bp$coord$obj
+bp$coord$var
+bp$var.rb
+bp$var.rd
 
-  ##
-  ## Example 3
-  ## Computing and ploting a bpca object with 'rgl' package - 3d
-  ##
+##
+## Example 3
+## Computing and ploting a bpca object with 'rgl' package - 3d
+##
 
-  plot(bpca(gabriel1971, d=1:3),
-       rgl.use=TRUE, var.factor=2)
+plot(bpca(gabriel1971,
+          d=1:3),
+     rgl.use=TRUE,
+     var.factor=2)
 
-  # Suggestion: Interact with the graphic with the mouse
-  # left button: press, maintain and movement it to interactive rotation;
-  # right button: press, maintain and movement it to interactive zoom.
-  # Enjoy it!
+# Suggestion: Interact with the graphic with the mouse
+# left button: press, maintain and movement it to interactive rotation;
+# right button: press, maintain and movement it to interactive zoom.
+# Enjoy it!
 
-  ##
-  ## Example 4
-  ## Grouping objects with different symbols and colors - 2d and 3d
-  ##
+##
+## Example 4
+## Grouping objects with different symbols and colors - 2d and 3d
+##
 
-  # 2d
-  plot(bpca(iris[-5]),
-       var.factor=.3, var.cex=.7,
-       obj.names=FALSE, obj.cex=1.5,
-       obj.col=c('red', 'green3', 'blue')[unclass(iris$Species)],
-       obj.pch=c('+', '*', '-')[unclass(iris$Species)])
+# 2d
+plot(bpca(iris[-5]),
+     var.factor=.3,
+     var.cex=.7,
+     obj.names=FALSE,
+     obj.cex=1.5,
+     obj.col=c('red', 'green3', 'blue')[unclass(iris$Species)],
+     obj.pch=c('+', '*', '-')[unclass(iris$Species)])
 
-  # 3d static
-  plot(bpca(iris[-5], d=1:3),
-       var.factor=.2, var.color=c('blue', 'red'), var.cex=1,
-       obj.names=FALSE, obj.cex=1,
-       obj.col=c('red', 'green3', 'blue')[unclass(iris$Species)],
-       obj.pch=c('+', '*', '-')[unclass(iris$Species)])
+# 3d static
+plot(bpca(iris[-5],
+          d=1:3),
+     var.factor=.2,
+     var.color=c('blue', 'red'),
+     var.cex=1,
+     obj.names=FALSE,
+     obj.cex=1,
+     obj.col=c('red', 'green3', 'blue')[unclass(iris$Species)],
+     obj.pch=c('+', '*', '-')[unclass(iris$Species)])
 
-  # 3d dinamic
-  plot(bpca(iris[-5], method='hj', d=1:3), rgl.use=TRUE,
-       var.col='brown', var.factor=.3, var.cex=1.2,
-       obj.names=FALSE, obj.cex=.8,
-       obj.col=c('red', 'green3', 'orange')[unclass(iris$Species)],
-       simple.axes=FALSE, box=TRUE)
+# 3d dinamic
+plot(bpca(iris[-5],
+          method='hj',
+          d=1:3),
+     rgl.use=TRUE,
+     var.col='brown',
+     var.factor=.3,
+     var.cex=1.2,
+     obj.names=FALSE,
+     obj.cex=.8,
+     obj.col=c('red', 'green3', 'orange')[unclass(iris$Species)],
+     simple.axes=FALSE,
+     box=TRUE)
 
-  devAskNewPage(oask)       
+devAskNewPage(oask)       
 }
 
 \keyword{multivariate}
