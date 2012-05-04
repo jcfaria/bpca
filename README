@@ -10,5 +10,5 @@ R CMD check bpca
 R CMD build bpca
 R CMD INSTALL bpca_x.x-x.tar.gz
 
-The stable version of this package is avilable at
+The stable version of this package is available at
 http://cran.r-project.org/web/packages/bpca/index.html
