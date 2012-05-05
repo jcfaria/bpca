@@ -10,7 +10,6 @@ var.rdf <-
 
     dif[big] <- '*'
     dif[leq] <- ''
-
     diag(dif) <- '-'
 
     var.rd <- dif
