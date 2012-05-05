@@ -7,7 +7,7 @@ Prioridades do pacote bpca
 2. Função 'plot.bpca.2d':
 2.1- Verificar a exatidão dos novos métodos de visualização:
      type=c('eo', 'ev', 'co', 'cv', 'ww', 'dv', 'ms', 'ro', 'rv');
-2.2- Otimizar os algoritmos dos novos métodos de visualização onde possível:
+2.2- Otimizar os algoritmos dos novos métodos de visualização, onde possível:
      type=c('eo', 'ev', 'co', 'cv', 'ww', 'dv', 'ms', 'ro', 'rv');
 2.3- Verificar a exatidão dos novos métodos de centralização: 1 e 3.
 
