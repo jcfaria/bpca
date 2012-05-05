@@ -3,12 +3,14 @@ var.rdf <-
            var.rb,
            limit)
   {
-    dif <- abs(var.rb - cor(x)) * 100
-    g <- dif > limit
-    l <- dif <= limit
+    dif <- 100 * abs(var.rb - cor(x))
 
-    dif[g] <- '*'
-    dif[l] <- ''
+    big <- dif > limit
+    leq <- dif <= limit
+
+    dif[big] <- '*'
+    dif[leq] <- ''
+
     diag(dif) <- '-'
 
     var.rd <- dif
