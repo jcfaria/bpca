@@ -50,7 +50,8 @@ bp4 <- bpca(gabriel1971,
 qbp4 <- qbpca(gabriel1971,
               bp4)
 
-plot(qbp4, main='hj - 3d \n (whow!)')
+plot(qbp4,
+     main='hj - 3d \n (whow!)')
 
 devAskNewPage(oask)
 
