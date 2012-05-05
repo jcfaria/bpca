@@ -8,7 +8,10 @@ bp <- bpca(gabriel1971,
            d=2:4)
 
 plot(bp,
-     var.factor=2)
+     var.factor=2,
+     xlim=c(-2,2),
+     ylim=c(-2,2),
+     zlim=c(-2,2))
 
 # Exploring the object 'bp' created by the function 'bpca'
 class(bp)
@@ -28,7 +31,10 @@ bp$var.rd
 # Changing the angle between x (PC2) and y (PC3) axis
 plot(bp,
      var.factor=2,
-     angle=65)
+     angle=65,
+     xlim=c(-2,2),
+     ylim=c(-2,2),
+     zlim=c(-2,2))
 
 devAskNewPage(oask)
 

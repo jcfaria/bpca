@@ -305,7 +305,10 @@ bp$var.rd
 plot(bpca(gabriel1971,
           meth='hj',
           d=3:4),
-     main='hj')
+     main='hj',
+     xlim=c(-1,1),
+     ylim=c(-1,1),
+     zlim=c(-1,1))
 
 devAskNewPage(oask)
 
