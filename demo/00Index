@@ -1,5 +1,5 @@
 bpca.dinamic.3d            Computes and plots a bpca object with `rgl' package - 3d
-bpca.lambda2_4.static.3d   Computes and plots a bpca object with arbitrary choice of the first eigenvalue - 3d
+bpca.d2_4.static.3d        Computes and plots a bpca object with arbitrary choice of the first eigenvalue - 3d
 bpca                       Some main demos of the package `bpca'
 bpca.static.2d             Computes and plots a bpca object with `graphics' package - 2d
 bpca.static.3d             Computes and plots a bpca object with `scatterplot3d' package - 3d
