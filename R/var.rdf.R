@@ -6,10 +6,10 @@ var.rdf <-
     dif <- abs(var.rb - cor(x)) * 100
     g <- dif > limit
     l <- dif <= limit
-    diag(dif) <- '-'
 
     dif[g] <- '*'
     dif[l] <- ''
+    diag(dif) <- '-'
 
     var.rd <- dif
     dimnames(var.rd) <- list(dimnames(x)[[2]],

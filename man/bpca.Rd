@@ -228,7 +228,10 @@ bp <- bpca(gabriel1971,
            d=2:4)
 
 plot(bp,
-     var.factor=3)
+     var.factor=3,
+     xlim=c(-2,2),
+     ylim=c(-2,2),
+     zlim=c(-2,2))
 
 # Exploring the object 'bp' created by the function 'bpca'
 class(bp)

@@ -38,7 +38,8 @@
   bp <- bpca(gabriel1971)
 
   x11(w=6, h=6)
-  plot(bp, var.factor=2)
+  plot(bp,
+       var.factor=2)
 
   # Exploring the object 'bp' created by the function 'bpca'
   class(bp)

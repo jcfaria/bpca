@@ -23,6 +23,16 @@ and Agronomists. CRC Press, Boca Raton, FL, USA.
 
 \examples{
 data(ontario)
+
+# 2d
+plot(bpca(ontario,
+          d=1:2))
+
+# 3d
+plot(bpca(ontario,
+          d=1:3),
+     rgl.use=TRUE)
+
 }
 
 \keyword{datasets}

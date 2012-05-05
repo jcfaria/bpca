@@ -79,7 +79,9 @@ bp2$eigenvectors
 plot(bpca(gabriel1971,
           meth='hj',
           d=3:4),
-     main='hj')
+     main='hj',
+     xlim=c(-1,1),
+     ylim=c(-1,1))
 
 # Interpretation:
 # RUR followed by CRISTIAN contains information dimensions that
@@ -108,7 +110,10 @@ bp3$eigenvectors
 plot(bpca(iris[-5],
           d=3:4),
      obj.col=c('red', 'green3', 'blue')[unclass(iris$Species)],
-     var.factor=.6)
+     obj.names=FALSE,
+     var.factor=.6,
+     xlim=c(-2,3),
+     ylim=c(-1,1))
 
 # Interpretation:
 # Sepal.length followed by Petal.Width contains information in dimensions
@@ -127,7 +132,11 @@ plot(bp4,
      obj.names=FALSE,
      obj.pch=c('+', '-', '*')[unclass(iris$Species)],
      obj.col=c('red', 'green3', 'blue')[unclass(iris$Species)],
-     obj.cex=1)
+     obj.cex=1,
+     xlim=c(-5,5),
+     ylim=c(-5,5),
+     zlim=c(-5,5),
+     var.factor=.5)
 
 bp4$var.rd
 bp4$eigenvectors
