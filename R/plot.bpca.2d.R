@@ -162,9 +162,7 @@ plot.bpca.2d <-
            col=ref.color,
            lty=ref.lty, ...)
 
-  switch(match.arg(type), bp = {
-    
-    # basic biplot 2d
+  switch(match.arg(type), bp = { # basic biplot 2d
     draw.obj()
     draw.var()
     draw.var.seg()

@@ -89,7 +89,7 @@
               \code{eo}: evaluate an object; \cr
               \code{ev}: evaluate a variable; \cr
               \code{co}: compare two objects; \cr
-              \code{cv}: compare two variables; \cr
+              \code{cv}: compare (relationship among) variables; \cr
               \code{ww}: which won where/what; \cr
               \code{dv}: discrimitivenss vs. representativeness; \cr
               \code{ms}: mean vs. stability; \cr
