@@ -5,6 +5,9 @@ writing code, etc).
 To download, check and build it do the following in a terminal emulator:
 
 git clone  git://github.comr/jcfaria/bpca.git
+  or
+git clone https://jcfaria@github.com/jcfaria/bpca.git
+
 R CMD check bpca
 R CMD build bpca
 R CMD INSTALL bpca_x.x-x.tar.gz
