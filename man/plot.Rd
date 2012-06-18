@@ -44,7 +44,7 @@
      obj.cex=.6,
      obj.offset=.2,
      obj.names=TRUE,
-     obj.labels=rownames(x$coord$objects),
+     obj.labels,
      obj.identify=FALSE,
      xlim, ylim, xlab, ylab, \dots)
 
@@ -69,7 +69,7 @@
      obj.cex=ifelse(rgl.use, .8, .6),
      obj.offset=ifelse(rgl.use, NULL, .2),
      obj.names=TRUE,
-     obj.labels=rownames(x$coord$objects),
+     obj.labels,
      obj.identify=FALSE,
      box=FALSE,
      angle=ifelse(rgl.use, NULL, 40),

@@ -32,7 +32,7 @@ plot.bpca.2d <-
            obj.cex=.6,
            obj.offset=.2,
            obj.names=TRUE,
-           obj.labels=rownames(x$coord$objects),
+           obj.labels,
            obj.identify=FALSE,
            xlim, ylim, xlab, ylab, ...)
 {
@@ -49,7 +49,7 @@ plot.bpca.2d <-
 
       text(x=coobj[,d1],
            y=coobj[,d2],
-           labels=rownames(coobj),
+           labels=obj.labels,
            pos=obj.pos,
            offset=obj.offset,
            col=obj.color,
@@ -112,7 +112,6 @@ plot.bpca.2d <-
               lwd=circles.lwd, ...)
   }
 
-
   if (!inherits(x, 'bpca.2d'))
     stop("Use this function only with 'bpca.2d' class!")
 
@@ -124,6 +123,9 @@ plot.bpca.2d <-
                   covar * var.factor,
                   rep(0, ncol(coobj)))
                   
+  if (missing(obj.labels))
+    obj.labels <- rownames(coobj)
+
   if (missing(xlim) || missing(ylim)) {
     ms <- max(abs(scores)) * 1.2
     msp <- c(-ms, ms)

@@ -22,7 +22,7 @@ plot.bpca.3d <-
            obj.cex=ifelse(rgl.use, .8, .6),
            obj.offset=ifelse(rgl.use, NULL, .2),
            obj.names=TRUE,
-           obj.labels=rownames(x$coord$objects),
+           obj.labels,
            obj.identify=FALSE,
            box=FALSE,
            angle=ifelse(rgl.use, NULL, 40),
@@ -44,6 +44,9 @@ plot.bpca.3d <-
       ms  <- max(abs(scores)) * 1.2
       msp <- c(-ms, ms)
     }  
+
+    if (missing(obj.labels))
+      obj.labels <- rownames(coobj)
 
     if (missing(xlim))
       xlim <- msp
@@ -99,7 +102,7 @@ plot.bpca.3d <-
 
         # labels of objects
         text(graph$xyz.convert(coobj),
-             labels=rownames(coobj),
+             labels=obj.labels,
              pos=obj.pos,
              offset=obj.offset,
              col=obj.color,
@@ -211,7 +214,7 @@ plot.bpca.3d <-
 
         # labels of objects
         text3d(coobj,
-               texts=rownames(coobj),
+               texts=obj.labels,
                col=obj.color,
                alpha=.5,
                adj=obj.pos,
