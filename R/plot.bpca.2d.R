@@ -175,6 +175,19 @@ plot.bpca.2d <-
                labels=obj.labels,
                cex=obj.cex)
   }, eo = { # evaluate an object
+
+    if (class(obj.id) == 'numeric' ||
+        class(obj.id) == 'integer')
+      obj.label <- obj.labels[obj.id[1]]
+    else {
+      if (obj.id %in% obj.labels){
+        obj.label <- obj.labels[match(obj.id, obj.labels)] 
+        obj.id <- match(obj.id, obj.labels)
+      }
+      else
+        stop("'obj.id' do not match with 'obj.labels'!")
+    }
+
     draw.var()
 
     abline(a=0,
@@ -202,9 +215,10 @@ plot.bpca.2d <-
            col=obj.color,
            cex=obj.cex, ...)
 
+
     text(x=coobj[obj.id[1],d1] * obj.factor, 
          y=coobj[obj.id[1],d2] * obj.factor,
-         labels=ifelse(mode(obj.id) == 'numeric', rownames(coobj)[obj.id], obj.id),
+         labels=obj.label,
          pos=obj.pos,
          offset=obj.offset,
          col=obj.color,

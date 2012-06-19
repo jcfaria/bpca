@@ -110,6 +110,14 @@ plot(bpca(ontario),
      type='co')
 
 plot(bpca(ontario),
+     type='co',
+     obj.id=13:14)
+
+plot(bpca(ontario),
+     type='co',
+     obj.id=c('G13', 'G7'))
+
+plot(bpca(ontario),
      type='cv')
 
 plot(bpca(ontario),
