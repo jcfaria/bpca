@@ -370,15 +370,40 @@ plot(bp,
 # New options ploting
 plot(bpca(ontario))
 
+# Labels for all objects
+(obj.lab <- paste('g',
+                  1:18,
+                  sep=''))
+
+# Giving obj.labels
+plot(bpca(ontario),
+    obj.labels=obj.lab) 
+
+# Evaluate an object (1 is the default)
 plot(bpca(ontario),
      type='eo',
      obj.cex=1)
 
 plot(bpca(ontario),
      type='eo',
-     obj.id='G7',
+     obj.id=7,
      obj.cex=1)
 
+# Giving obj.labels
+plot(bpca(ontario),
+     type='eo',
+     obj.labels=obj.lab,
+     obj.id=7,
+     obj.cex=1)
+
+# The same as above
+plot(bpca(ontario),
+     type='eo',
+     obj.labels=obj.lab,
+     obj.id='g7',
+     obj.cex=1)
+
+# Evaluate a variable (1 is the default)
 plot(bpca(ontario),
      type='ev',
      var.pos=2,
@@ -387,27 +412,49 @@ plot(bpca(ontario),
 plot(bpca(ontario),
      type='ev',
      var.id='E7',
+     obj.labels=obj.lab,
      var.pos=1,
      var.cex=1)
 
+# Compare two objects (1 and 2 are the default)
 plot(bpca(ontario),
      type='co')
 
 plot(bpca(ontario),
+     type='co',
+     obj.labels=obj.lab)
+
+plot(bpca(ontario),
+     type='co',
+     obj.labels=obj.lab,
+     obj.id=13:14)
+
+plot(bpca(ontario),
+     type='co',
+     obj.labels=obj.lab,
+     obj.id=c('g7', 'g13'))
+
+# Compare two variables
+plot(bpca(ontario),
      type='cv')
 
+# Which won where/what
 plot(bpca(ontario),
      type='ww')
 
+# Discrimitiveness vs. representativeness
 plot(bpca(ontario),
      type='dv')
 
+# Means vs. stability
 plot(bpca(ontario),
      type='ms')
 
+# Rank objects with ref. to the ideal variable 
 plot(bpca(ontario),
      type='ro')
 
+# Rank variables with ref. to the ideal object
 plot(bpca(ontario),
      type='rv')
 

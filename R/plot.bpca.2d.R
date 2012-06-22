@@ -175,13 +175,11 @@ plot.bpca.2d <-
                labels=obj.labels,
                cex=obj.cex)
   }, eo = { # evaluate an object
-
-    if (class(obj.id) == 'numeric' ||
-        class(obj.id) == 'integer')
-      obj.label <- obj.labels[obj.id[1]]
+    if (any(class(obj.id) == c('numeric', 'integer'))) 
+      obj.lab <- obj.labels[obj.id[1]]
     else {
       if (obj.id %in% obj.labels){
-        obj.label <- obj.labels[match(obj.id, obj.labels)] 
+        obj.lab <- obj.labels[match(obj.id, obj.labels)] 
         obj.id <- match(obj.id, obj.labels)
       }
       else
@@ -218,7 +216,7 @@ plot.bpca.2d <-
 
     text(x=coobj[obj.id[1],d1] * obj.factor, 
          y=coobj[obj.id[1],d2] * obj.factor,
-         labels=obj.label,
+         labels=obj.lab,
          pos=obj.pos,
          offset=obj.offset,
          col=obj.color,
@@ -288,6 +286,14 @@ plot.bpca.2d <-
              lty=proj.lty,
              col=proj.color, ...)
   }, co = { # compare two objects
+    if (any(class(obj.id) == c('character', 'factor'))) 
+      if (obj.id[1] %in% obj.labels &
+          obj.id[2] %in% obj.labels) {
+        obj.id[1] <- match(obj.id[1], obj.labels)
+        obj.id[2] <- match(obj.id[2], obj.labels)
+      } else 
+        stop("At last one 'obj.id' do not match with 'obj.labels'!")
+
     draw.obj()
     draw.var()
 
