@@ -416,6 +416,22 @@ plot(bpca(ontario),
      var.pos=1,
      var.cex=1)
 
+# A complete plot
+cl <- 1:3
+plot(bpca(iris[-5]),
+     type='ev',
+     var.id=1,
+     var.fac=.3,
+     obj.names=FALSE,
+     obj.col=cl[unclass(iris$Species)])
+legend('topleft',
+       legend=levels(iris$Species),
+       text.col=cl,
+       pch=19,
+       col=cl,
+       cex=.9,
+       box.lty=0)   
+
 # Compare two objects (1 and 2 are the default)
 plot(bpca(ontario),
      type='co')
