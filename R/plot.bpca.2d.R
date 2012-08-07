@@ -228,7 +228,7 @@ plot.bpca.2d <-
                        coobj[obj.id[1],d2])),
                rbind(0,
                      as.numeric(covar[,c(d1, d2)] %*%
-                                   coobj[obj.id[1],c(d1, d2)])))
+                                coobj[obj.id[1],c(d1, d2)])))
     segments(x0=covar[,d1],
              y0=covar[,d2],
              x1=x[1,],
@@ -277,7 +277,7 @@ plot.bpca.2d <-
                        covar[var.id,d2])),
                rbind(0,
                      as.numeric(coobj[,c(d1, d2)] %*%
-                                   covar[var.id,c(d1, d2)])))
+                                covar[var.id,c(d1, d2)])))
 
     segments(x0=coobj[,d1],
              y0=coobj[,d2],

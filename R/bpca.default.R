@@ -1,7 +1,6 @@
 bpca.default <-
   function(x,
            d=1:2,
-           var.position=2,
            center=2,
            scale=1,
            method=c('hj', 'sqrt', 'jk', 'gh'),
@@ -19,13 +18,7 @@ bpca.default <-
       stop('Please, check the parameter d:\n',
            'The (d[1] - d[length(d)] + 1) must equal to 2 (for bpca.2d) or 3 (for bpca.3d).\n\n')
 
-    if(!any(var.position == 1:2))
-      stop('Please, check the parameters: var.position:\n',
-           'It must be 1 (rows) or 2 (columns).\n\n')
-
     x <- as.matrix(x)
-    if(var.position == 1)
-      x <- as.matrix(t(x))
 
     x.cent <- x                                             # 0: no centering
     switch(center,                                          # of course, if center=1:3

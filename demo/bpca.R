@@ -310,8 +310,9 @@ plot(bpca(gabriel1971,
      ylim=c(-1,1),
      zlim=c(-1,1))
 
-
+##
 ## New options ploting
+##
 data(ontario)
 
 plot(bpca(ontario))

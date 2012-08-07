@@ -83,7 +83,9 @@ plot(bpca(iris[-5],
      simple.axes=FALSE,
      box=TRUE)
 
-# New options ploting
+##
+## New options ploting
+##
 plot(bpca(ontario))
 
 # Labels for all objects

@@ -2,6 +2,8 @@
 	* New options of plot
 	* New options of center
 	* Parts of sources was a bit enhanced
+	* The option var.position was removed from the package. When necessary,
+	  it is easy to do: bpca(t(dad)) to change the position of objects and variables.
 
 2012-02-20 vs. 1.0-10 - Jose Claudio Faria  <joseclaudio.faria@gmail.com>
 	* It was made cosmetic changes in the plot.bpca.3d

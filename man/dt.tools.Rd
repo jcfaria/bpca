@@ -10,18 +10,12 @@
 
 \usage{
   dt.tools(x,
-           var.position=2,
            center=2,
            scale=1)
 }
 
 \arguments{
   \item{x}{A \code{data.frame} or \code{matrix} object.}
-  \item{var.position}{A vector of length 1 giving the position of the elements
-    to be considered as variables on the given object. They will be represented
-    as vectors in the graphical representation:i \cr
-    \code{1}: indicates \emph{rows} \cr
-    \code{2}: indicates \emph{columns}.}
   \item{center}{Numeric. The type of centering to be performed: \cr
     \code{0}: no centering; \cr
     \code{1}: global-centered: sweep(x, 1, mean(x)); \cr

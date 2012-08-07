@@ -14,7 +14,6 @@
   bpca(x, \dots)
   \method{bpca}{default}(x,
      d=1:2,
-     var.position=2,
      center=2,
      scale=1,
      method=c('hj', 'sqrt', 'jk', 'gh'),
@@ -30,11 +29,6 @@
   \item{d}{A vector giving the first and last eigenvalue to be
     considered by the biplot reduction. It can be d=1:3 or d=c(1,3) for 3d biplot.
     The default is d=1:2.}
-  \item{var.position}{A vector of length 1 giving the position of the elements
-    to be considered as variables on the given object. They will be represented
-    as vectors in the graphical representation: \cr
-    \code{1}: indicates \emph{rows} \cr
-    \code{2}: indicates \emph{columns}.}
   \item{center}{Numeric. The type of centering to be performed: \cr
     \code{0}: no centering; \cr
     \code{1}: global-centered: sweep(x, 1, mean(x)); \cr

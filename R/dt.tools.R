@@ -1,6 +1,5 @@
 dt.tools <-
   function(x,
-           var.position=2, 
            center=2,
            scale=1)
   {
@@ -9,10 +8,7 @@ dt.tools <-
     bCol = sapply(x,
                   is.numeric)
 
-    if(var.position == 1)
-      x <- as.matrix(t(x[,bCol]))
-    else
-      x <- as.matrix(x[,bCol])
+    x <- as.matrix(x[,bCol])
 
     n <- ncol(x)
     if (n < 2 )
@@ -38,8 +34,8 @@ dt.tools <-
     for (i in 1:(n - 1)) {
       for (j in (i + 1):n) {
         cost <- (t(x[,i]) %*%
-                x[,j]) /
-                (l[i] * l[j])
+                 x[,j]) /
+        (l[i] * l[j])
 
         r[j,i] <- cost    # fill lower.tri
         r[i,j] <- r[j,i]  # fill upper.tri

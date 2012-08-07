@@ -367,7 +367,9 @@ plot(bp,
      obj.labels=c('toi', 'kit', 'bat', 'ele', 'wat', 'rad', 'tv', 'ref'),
      obj.identify=TRUE)
 
-# New options ploting
+##
+## New options ploting
+##
 plot(bpca(ontario))
 
 # Labels for all objects
