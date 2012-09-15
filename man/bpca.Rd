@@ -17,6 +17,7 @@
      center=2,
      scale=1,
      method=c('hj', 'sqrt', 'jk', 'gh'),
+     iec=FALSE,
      var.rb=FALSE,
      var.rd=FALSE,
      limit=10, \dots)
@@ -46,6 +47,8 @@
     \code{sqrt}: SQRT (\emph{squared root - simetric}, Gabriel (1971)); \cr
     \code{jk}: JK (\emph{row metric preserving}, Gabriel (1971)); \cr
     \code{gh}: GH (\emph{column metric preserving}, Gabriel (1971)).}
+  \item{iec}{A logical value. If TRUE the matrix of eigenvalues, coordinates od objects and
+    variables will be inverted. The default is FALSE.}.
   \item{var.rb}{A logical value. If TRUE, all correlation coefficients for all
     variables (\emph{under the biplot projection}) will be computed.}
   \item{var.rd}{A logical value. If TRUE, the diagnostic of the representation

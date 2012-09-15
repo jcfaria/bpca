@@ -4,6 +4,7 @@ bpca.default <-
            center=2,
            scale=1,
            method=c('hj', 'sqrt', 'jk', 'gh'),
+           iec=FALSE,
            var.rb=FALSE,
            var.rd=FALSE,
            limit=10, ...)
@@ -110,6 +111,12 @@ bpca.default <-
       var.rd.res <- var.rdf(x.scal, var.rb.res, limit)
     else
       var.rd.res <- NA
+
+    if(iec){
+      svdx.scal$v <-  (-1) * svdx.scal$v
+      g.scal      <-  (-1) * g.scal     
+      hl.scal     <-  (-1) * hl.scal    
+    }   
 
     res <- list(call=match.call(),
                 eigenvalues=svdx.scal$d,
