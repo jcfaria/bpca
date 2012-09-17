@@ -15,7 +15,7 @@
   \method{bpca}{default}(x,
      d=1:2,
      center=2,
-     scale=1,
+     scale=TRUE,
      method=c('hj', 'sqrt', 'jk', 'gh'),
      iec=FALSE,
      var.rb=FALSE,
@@ -37,17 +37,17 @@
     \code{3}: double-centered: sweep(sweep(x, 1, apply(x, 1, mean)),
                               2, apply(x, 2, mean)) + mean(x)). \cr
     The default is \code{2}.}
-  \item{scale}{Numeric. A value indicating whether the variables should be
+  \item{scale}{Logical. A value indicating whether the variables should be
     scaled to have unit variance before the analysis takes place: \cr
-    \code{0}: no scale; \cr
-    \code{1}: scale.}
+    \code{FALSE}: no scale; \cr
+    \code{TRUE}: scale.}
   \item{method}{A vector of character strings that indicates the method of
     factorization: \cr
     \code{hj}: HJ (\emph{simetric}, Galindo (1986)); \cr
     \code{sqrt}: SQRT (\emph{squared root - simetric}, Gabriel (1971)); \cr
     \code{jk}: JK (\emph{row metric preserving}, Gabriel (1971)); \cr
     \code{gh}: GH (\emph{column metric preserving}, Gabriel (1971)).}
-  \item{iec}{A logical value. If TRUE the matrix of eigenvalues, coordinates od objects and
+  \item{iec}{Logical. If TRUE the matrix of eigenvalues, coordinates od objects and
     variables will be inverted. The default is FALSE.}.
   \item{var.rb}{A logical value. If TRUE, all correlation coefficients for all
     variables (\emph{under the biplot projection}) will be computed.}

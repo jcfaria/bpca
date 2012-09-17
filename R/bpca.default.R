@@ -2,7 +2,7 @@ bpca.default <-
   function(x,
            d=1:2,
            center=2,
-           scale=1,
+           scale=TRUE,
            method=c('hj', 'sqrt', 'jk', 'gh'),
            iec=FALSE,
            var.rb=FALSE,

@@ -11,7 +11,7 @@
 \usage{
   dt.tools(x,
            center=2,
-           scale=1)
+           scale=TRUE)
 }
 
 \arguments{
@@ -23,10 +23,10 @@
     \code{3}: double-centered: sweep(sweep(x, 1, apply(x, 1, mean)),
                               2, apply(x, 2, mean)) + mean(x)). \cr
     The default is \code{2}.}
-  \item{scale}{Numeric. A value indicating whether the variables should be
+  \item{scale}{Logical. A value indicating whether the variables should be
     scaled to have unit variance before the analysis takes place: \cr
-    \code{0}: no scale; \cr
-    \code{2}: scale.}
+    \code{FALSE}: no scale; \cr
+    \code{TRUE}: scale.}
 }
 
 \details{
