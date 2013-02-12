@@ -33,8 +33,9 @@
 
 \author{
   Jose Claudio Faria (\email{joseclaudio.faria@gmail.com})\cr
+  Clarice Garcia Borges Demetrio (\email{clarice@esalq.usp.br})\cr
   and\cr
-  Clarice Garcia Borges Demetrio (\email{clarice@esalq.usp.br})
+  Ivan Bezerra Allaman (\email{ivanalaman@gmail.com})
 }
 
 \seealso{\code{\link{bpca}}.}

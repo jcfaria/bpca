@@ -1,9 +1,13 @@
-2012-04-15 vs. 1.2-0 - Jose Claudio Faria  <joseclaudio.faria@gmail.com>
+2013-02-12 vs. 1.2-1 - Jose Claudio Faria  <joseclaudio.faria@gmail.com>
+	* Ivan Bezerra Allaman has began to work in the project as co-author
 	* New options of plot
 	* New options of center
-	* Parts of sources was a bit enhanced
+	* New options os scale
+	* New options of summary
+	* Export LaTeX table about the reduction (table.bpca.latex)
+	* Parts of sources were a bit enhanced
 	* The option var.position was removed from the package. When necessary,
-	  it is easy to do: bpca(t(dad)) to change the position of objects and variables.
+	  it is easy to do: bpca(t(dad)) to change the position of objects and variables
 
 2012-02-20 vs. 1.0-10 - Jose Claudio Faria  <joseclaudio.faria@gmail.com>
 	* It was made cosmetic changes in the plot.bpca.3d

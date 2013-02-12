@@ -9,19 +9,23 @@
 }
 
 \usage{
-  \method{summary}{bpca}(object, \dots)
+  \method{summary}{bpca}(object,
+                         presentation=FALSE, \dots)
 }
 
 \arguments{
   \item{object}{A given object of the class \code{bpca} (\code{bpca.2d} or
     \code{bpca.3d}).}
+  \item{presentation}{Logic. If \code{TRUE} the summary is showed well formated in the screen, else,
+    return a list. The default is \code{FALSE}.}
   \item{\dots}{Potential further arguments (require by generic).}
 }
 
 \author{
   Jose Claudio Faria (\email{joseclaudio.faria@gmail.com})\cr
+  Clarice Garcia Borges Demetrio (\email{clarice@esalq.usp.br})\cr
   and\cr
-  Clarice Garcia Borges Demetrio (\email{clarice@esalq.usp.br})
+  Ivan Bezerra Allaman (\email{ivanalaman@gmail.com})
 }
 
 \seealso{\code{\link{bpca}}}
@@ -41,10 +45,14 @@ summary(bp)
 ## bpca - 3d
 ##
 
-(bp <- bpca(gabriel1971,
-            d=1:3))
+bp <- bpca(gabriel1971,
+            d=1:3)
 
-summary(bp)
+sm <- summary(bp)
+str(sm)
+sm
+
+summary(bp, presentation=TRUE)
 }
 
 \keyword{multivariate}
