@@ -39,57 +39,57 @@ latex.bpca(x,
   \item{round}{The numbers of decimal places to be used.
     The default is 4.}
   \item{where}{Specifies the location to which the floating body can move.
-    The default is '!tbp'.
-    Possible values are the tabular environment same, e.g., 'h', 'b' and 'p'.}
-  \item{caption}{Is a legend of table. The defaul is NULL.}
+    The default is \code{'!tbp'}.
+    Possible values are the tabular environment same, e.g., \code{'h'}, \code{'b'} and \code{'p'}.}
+  \item{caption}{Is a legend of table. The defaul is \code{NULL}.}
   \item{label}{A text string representing a symbolic label for the table for referencing in the LaTeX
    \code{\\label} and \code{\\ref} commands. \code{label} is useful in a Rnoweb document only if
    caption is also provided.}
   \item{size}{Specifies the font size of the table.
     The default is empty.
     The possible values are the same size used for letters in latex, e.g.,
-    '\\scriptsize', '\\large' and '\\LARGE'.}
+    \code{'\\\\scriptsize'}, \code{'\\\\large'} and \code{'\\\\LARGE'}.}
   \item{v.retained}{The name of the variance retained to be labeled in the table.
-    The default is 'Variance retained'.}
+    The default is \code{'Variance retained'}.}
   \item{v.partial}{The name of the variace partial to be labeled in the table. 
-    The default is 'Partial'.}
+    The default is \code{'Partial'}.}
   \item{v.accumulated}{The name of the variance accumulated to be labeled in the table.
-    The default is 'Accumalated'.}
+    The default is \code{'Accumalated'}.}
   \item{eigenvalues}{The name of eigenvalues to be labeled in the table.
-    The default is 'Eigenvalues'.}
+    The default is \code{'Eigenvalues'}.}
   \item{eigenvectors}{The name of eigenvectors to be labeled in the table.
-    The default is 'Eigenvectors'.}
+    The default is \code{'Eigenvectors'}.}
   \item{algtable}{Specifies the alignment of the table on page.
-    The default is ('\\flushleft'). 
-    Possible values are: \\flushleft', '\\centering' and '\\flushright'.} 
+    The default is \code{'\\\\flushleft'}. 
+    Possible values are: \code{'\\\\flushleft'}, \code{'\\\\centering'} and \code{'\\\\flushright'}.} 
   \item{alg1}{Specifies the alignment of the first column.
-    The default is 'l'.
-    Possible values are the tabular environment same, e.g., 'l', 'r' and 'c'.}
+    The default is \code{'l'}.
+    Possible values are the tabular environment same, e.g., \code{'l'}, \code{'r'} and \code{'c'}.}
   \item{alg2}{Specifies the alignment of the second column.
-    The default is 'l'.
-    Possible values are the tabular environment same, e.g., 'l', 'r' and 'c'.} 
+    The default is \code{'l'}.
+    Possible values are the tabular environment same, e.g., \code{'l'}, \code{'r'} and \code{'c'}.} 
   \item{algnumbers}{Specifies the alignment of the numbers column.
-    The default is 'r'.
-    Possible values are the tabular environment same, e.g., 'l', 'r' and 'c'.}
+    The default is \code{'r'}.
+    Possible values are the tabular environment same, e.g., \code{'l'}, \code{'r'} and \code{'c'}.}
   \item{algheader}{Specifies the alignment of the name main column header.
-    The default is 'c'.
-    Possible values are the tabular environment same, e.g., 'l', 'r' and 'c'.}
+    The default is \code{'c'}.
+    Possible values are the tabular environment same, e.g., \code{'l'}, \code{'r'} and \code{'c'}.}
   \item{algsubheader}{Specifies the alignment of the name of the bpca objects. 
     It only works where there is a list of the \code{\link{bpca}} objetcs. 
-    The default is 'c'.
-    Possible values are the tabular environment same, e.g., 'l', 'r' and 'c'.}
+    The default is \code{'c'}.
+    Possible values are the tabular environment same, e.g., \code{'l'}, \code{'r'} and \code{'c'}.}
   \item{pc.label}{The name of principal components to be labeled in the table.
-    The default is 'PC'.}
+    The default is \code{'PC'}.}
   \item{bpca.label}{The labels of the \code{\link{bpca}} objects.
     Must be used only with a list of the \code{\link{bpca}} objects}. 
-  \item{ft.variable}{'bold' or 'italic' variable names?
+  \item{ft.variable}{\code{'bold'} or \code{'italic'} variable names?
     The default is empty.}
-  \item{ft.components}{'bold' or 'italic' components names?
+  \item{ft.components}{\code{'bold'} or \code{'italic'} components names?
     The default is empty.}
   \item{hline1}{The line type of the table top.
-    The default is '\\hline'.} 
+    The default is \code{'\\\\hline'}.} 
   \item{hline2}{The line type of the lower table header.
-    The default is '\\hline'.}
+    The default is \code{'\\\\hline'}.}
   \item{footnote}{To insert footer in the table.
     The default is empty.}
 }
@@ -191,7 +191,7 @@ latex.bpca(bp3,
 # Example 8: Changing the table alignment 
 latex.bpca(bp3,
            caption='Biplot gge2003. Changing the table alignment',    
-           algtable='\\flushright')
+           algtable='\\\\flushright')
  
 # Example 9: I want only two places decimal
 latex.bpca(bp3,
