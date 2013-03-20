@@ -81,7 +81,7 @@ latex.bpca(x,
   \item{pc.label}{The name of principal components to be labeled in the table.
     The default is \code{'PC'}.}
   \item{bpca.label}{The labels of the \code{\link{bpca}} objects.
-    Must be used only with a list of the \code{\link{bpca}} objects}. 
+    Must be used only with a list of the \code{\link{bpca}} objects.} 
   \item{ft.variable}{\code{'bold'} or \code{'italic'} variable names?
     The default is empty.}
   \item{ft.components}{\code{'bold'} or \code{'italic'} components names?
