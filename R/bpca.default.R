@@ -60,9 +60,9 @@ bpca.default <-
 
              ## The below is the GGEBiplot aproach
              #d1 <- (max(hl.scal[,li]) - min(hl.scal[,li])) /
-                   #(max(g.scal[,li]) - min(g.scal[,li]))
+             #(max(g.scal[,li]) - min(g.scal[,li]))
              #d2 <- (max(hl.scal[,le]) - min(hl.scal[,le])) /
-                   #(max(g.scal[,le]) - min(g.scal[,le]))
+             #(max(g.scal[,le]) - min(g.scal[,le]))
              #d <- max(d1,d2)
 
              #hl.scal / d
@@ -77,9 +77,9 @@ bpca.default <-
              #hl.scal  <- svdx.scal$v %*% s2.scal
 
              #d1 <- (max(g.scal[,li]) - min(g.scal[,li])) / 
-                   #(max(hl.scal[,li]) - min(hl.scal[,li]))
+             #(max(hl.scal[,li]) - min(hl.scal[,li]))
              #d2 <- (max(g.scal[,le]) - min(g.scal[,le])) / 
-                   #(max(hl.scal[,le]) - min(hl.scal[,le]))
+             #(max(hl.scal[,le]) - min(hl.scal[,le]))
              #d <- max(d1,d2)
              #g.scal <- g.scal / d
            })
@@ -113,9 +113,9 @@ bpca.default <-
       var.rd.res <- NA
 
     if(iec){
-      svdx.scal$v <-  (-1) * svdx.scal$v
-      g.scal      <-  (-1) * g.scal     
-      hl.scal     <-  (-1) * hl.scal    
+      svdx.scal$v <- (-1) * svdx.scal$v
+      g.scal      <- (-1) * g.scal     
+      hl.scal     <- (-1) * hl.scal    
     }   
 
     res <- list(call=match.call(),

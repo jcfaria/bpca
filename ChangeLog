@@ -1,10 +1,16 @@
-2013-02-12 vs. 1.2-1 - Jose Claudio Faria  <joseclaudio.faria@gmail.com>
+2013-03-15 vs. 1.2-2 - Jose Claudio Faria  <joseclaudio.faria@gmail.com>
 	* Ivan Bezerra Allaman has began to work in the project as co-author
+	* Export LaTeX table about the reduction (latex.bpca)
+	* Parts of sources were a bit enhanced
+	* New data marina.rda
+
+2012-12-12 vs. 1.2-1 - Jose Claudio Faria  <joseclaudio.faria@gmail.com>
 	* New options of plot
 	* New options of center
 	* New options os scale
 	* New options of summary
-	* Export LaTeX table about the reduction (table.bpca.latex)
+
+2012-10-06 vs. 1.2-0 - Jose Claudio Faria  <joseclaudio.faria@gmail.com>
 	* Parts of sources were a bit enhanced
 	* The option var.position was removed from the package. When necessary,
 	  it is easy to do: bpca(t(dad)) to change the position of objects and variables
