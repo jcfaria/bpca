@@ -3,8 +3,9 @@ citHeader("To cite bpca in publications use:")
 citEntry(entry  = "Manual",
          title  = "bpca: Biplot of Multivariate Data Based on Principal
                    Components Analysis.",
-         author = "Jose Claudio Faria and
-                   Clarice Garcia Borges Demetrio",
+         author = "José Cláudio Faria,
+                   Clarice Garcia Borges Demétrioi and
+                   Ivan Bezerra Allaman",
          organization = "UESC and ESALQ",
          address      = "Ilheus, Bahia, Brasil and
                          Piracicaba, Sao Paulo, Brasil",

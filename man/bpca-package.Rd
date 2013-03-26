@@ -11,8 +11,8 @@
 }
 
 \author{
-  Jose Claudio Faria (\email{joseclaudio.faria@gmail.com})\cr
-  Clarice Garcia Borges Demetrio (\email{clarice@esalq.usp.br})\cr
+  José Cláudio Faria (\email{joseclaudio.faria@gmail.com})\cr
+  Clarice Garcia Borges Demétrio (\email{clarice@esalq.usp.br})\cr
   and\cr
   Ivan Bezerra Allaman (\email{ivanalaman@gmail.com})
 }
@@ -23,20 +23,20 @@
   component analysis.
   \emph{Biometrika} \bold{58}, 453-467.
 
-  Gower, J.C. and Hand, D. J.  (1996)
-  \emph{Biplots}. Chapman & Hall.
-
-  Galindo, M. P. (1986)
-  Una alternativa de representacion simultanea: HJ-Biplot.
-  \emph{Questiio}, 10(1):13-23, 1986.
+  Galindo Vilardón, M. P. (1986)
+  Una alternativa de representación simultánea: HJ-Biplot.
+  \emph{Qüestiió}, 10(1):13-23, 1986.
 
   Johnson, R. A. and Wichern, D. W. (1988)
   \emph{Applied multivariate statistical analysis}.
   Prentice-Hall, Inc., Upper Saddle River, NJ, USA, 6 ed.
 
+  Gower, J.C. and Hand, D. J.  (1996)
+  \emph{Biplots}. Chapman & Hall.
+
   Yan, B. W. and Kang, M. S. (2003)
-  \emph{GGE biplot analysis : a graphical tool for breeders,
-    geneticists, and agronomists}. CRC Press, New York, 288p.
+  \emph{GGE biplot analysis: a graphical tool for breeders,
+  geneticists, and agronomists}. CRC Press, New York, 288p.
 }
 
 \keyword{package}
@@ -143,6 +143,7 @@ plot(bpca(iris[-5]),
      var.fac=.3,
      obj.names=FALSE,
      obj.col=cl[unclass(iris$Species)])
+
 legend('topleft',
        legend=levels(iris$Species),
        text.col=cl,

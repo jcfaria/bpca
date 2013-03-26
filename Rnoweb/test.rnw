@@ -52,7 +52,7 @@
     \begin{minipage}{0.4\textwidth}
       \begin{flushright} \large
         \emph{Customization in \LaTeX:} \\
-        J. C. \textsc{Faria}
+        José C. \textsc{Faria}
       \end{flushright}
     \end{minipage}
 

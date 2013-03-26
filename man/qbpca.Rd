@@ -1,7 +1,9 @@
 \name{qbpca}
 \alias{qbpca}
 
-\title{Quality of the Representation of Variables by Biplot}
+\title{
+  Quality of the Representation of Variables by Biplot
+}
 
 \description{
   This function returns an object of the class \code{qbpca}. It is a simple
@@ -26,15 +28,15 @@
 }
 
 \value{
-  An object of class \emph{qbpca and data.frame} with two columns:
+  An object of class \code{qbpca} and \code{data.frame} with two columns:
   \item{obs}{A vector of the observed correlations for all variables.}
   \item{var.rb}{A vector of the projected correlations for all variables
     determined under biplot reduction).}
 }
 
 \author{
-  Jose Claudio Faria (\email{joseclaudio.faria@gmail.com})\cr
-  Clarice Garcia Borges Demetrio (\email{clarice@esalq.usp.br})\cr
+  José Cláudio Faria (\email{joseclaudio.faria@gmail.com})\cr
+  Clarice Garcia Borges Demétrio (\email{clarice@esalq.usp.br})\cr
   and\cr
   Ivan Bezerra Allaman (\email{ivanalaman@gmail.com})
 }

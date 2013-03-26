@@ -1,7 +1,9 @@
 \name{latex.bpca}
 \alias{latex.bpca}
 
-\title{LaTeX table of the Biplot}
+\title{
+  LaTeX table of the Biplot
+}
 
 \description{
   This function returns a LaTeX table of the bpca objects.
@@ -37,84 +39,84 @@ latex.bpca(x,
 \arguments{
   \item{x}{A object of the class \code{\link{bpca}} or a list of the \code{\link{bpca}} objetcs.}
   \item{round}{The numbers of decimal places to be used.
-    The default is 4.}
+    The default is \samp{4}.}
   \item{where}{Specifies the location to which the floating body can move.
-    The default is \code{'!tbp'}.
-    Possible values are the tabular environment same, e.g., \code{'h'}, \code{'b'} and \code{'p'}.}
-  \item{caption}{Is a legend of table. The defaul is \code{NULL}.}
-  \item{label}{A text string representing a symbolic label for the table for referencing in the LaTeX
-   \code{\\label} and \code{\\ref} commands. \code{label} is useful in a Rnoweb document only if
-   caption is also provided.}
+    The default is \samp{'!tbp'}.
+    Possible values are the tabular environment same, e.g., \samp{'h'}, \samp{'b'} and \samp{'p'}.}
+  \item{caption}{Is a legend of table.
+    The defaul is \code{NULL}.}
+  \item{label}{A text string representing a symbolic label for the table for referencing in the LaTeX \samp{\\label} and \samp{\\ref} commands.
+    \samp{label} is useful in a Rnoweb document only if caption is also provided.}
   \item{size}{Specifies the font size of the table.
     The default is empty.
     The possible values are the same size used for letters in latex, e.g.,
-    \code{'\\\\scriptsize'}, \code{'\\\\large'} and \code{'\\\\LARGE'}.}
+    \samp{'\\\\scriptsize'}, \samp{'\\\\large'} and \samp{'\\\\LARGE'}.}
   \item{v.retained}{The name of the variance retained to be labeled in the table.
-    The default is \code{'Variance retained'}.}
+    The default is \samp{'Variance retained'}.}
   \item{v.partial}{The name of the variace partial to be labeled in the table. 
-    The default is \code{'Partial'}.}
+    The default is \samp{'Partial'}.}
   \item{v.accumulated}{The name of the variance accumulated to be labeled in the table.
-    The default is \code{'Accumalated'}.}
+    The default is \samp{'Accumalated'}.}
   \item{eigenvalues}{The name of eigenvalues to be labeled in the table.
-    The default is \code{'Eigenvalues'}.}
+    The default is \samp{'Eigenvalues'}.}
   \item{eigenvectors}{The name of eigenvectors to be labeled in the table.
-    The default is \code{'Eigenvectors'}.}
+    The default is \samp{'Eigenvectors'}.}
   \item{algtable}{Specifies the alignment of the table on page.
-    The default is \code{'\\\\flushleft'}. 
-    Possible values are: \code{'\\\\flushleft'}, \code{'\\\\centering'} and \code{'\\\\flushright'}.} 
+    The default is \samp{'\\\\flushleft'}. 
+    Possible values are: \samp{'\\\\flushleft'}, \samp{'\\\\centering'} and \samp{'\\\\flushright'}.} 
   \item{alg1}{Specifies the alignment of the first column.
-    The default is \code{'l'}.
-    Possible values are the tabular environment same, e.g., \code{'l'}, \code{'r'} and \code{'c'}.}
+    The default is \samp{'l'}.
+    Possible values are the tabular environment same, e.g., \samp{'l'}, \samp{'r'} and \samp{'c'}.}
   \item{alg2}{Specifies the alignment of the second column.
-    The default is \code{'l'}.
-    Possible values are the tabular environment same, e.g., \code{'l'}, \code{'r'} and \code{'c'}.} 
+    The default is \samp{'l'}.
+    Possible values are the tabular environment same, e.g., \samp{'l'}, \samp{'r'} and \samp{'c'}.} 
   \item{algnumbers}{Specifies the alignment of the numbers column.
-    The default is \code{'r'}.
-    Possible values are the tabular environment same, e.g., \code{'l'}, \code{'r'} and \code{'c'}.}
+    The default is \samp{'r'}.
+    Possible values are the tabular environment same, e.g., \samp{'l'}, \samp{'r'} and \samp{'c'}.}
   \item{algheader}{Specifies the alignment of the name main column header.
-    The default is \code{'c'}.
-    Possible values are the tabular environment same, e.g., \code{'l'}, \code{'r'} and \code{'c'}.}
+    The default is \samp{'c'}.
+    Possible values are the tabular environment same, e.g., \samp{'l'}, \samp{'r'} and \samp{'c'}.}
   \item{algsubheader}{Specifies the alignment of the name of the bpca objects. 
     It only works where there is a list of the \code{\link{bpca}} objetcs. 
-    The default is \code{'c'}.
-    Possible values are the tabular environment same, e.g., \code{'l'}, \code{'r'} and \code{'c'}.}
+    The default is \samp{'c'}.
+    Possible values are the tabular environment same, e.g., \samp{'l'}, \samp{'r'} and \samp{'c'}.}
   \item{pc.label}{The name of principal components to be labeled in the table.
-    The default is \code{'PC'}.}
+    The default is \samp{'PC'}.}
   \item{bpca.label}{The labels of the \code{\link{bpca}} objects.
     Must be used only with a list of the \code{\link{bpca}} objects.} 
-  \item{ft.variable}{\code{'bold'} or \code{'italic'} variable names?
+  \item{ft.variable}{\samp{'bold'} or \samp{'italic'} variable names?
     The default is empty.}
-  \item{ft.components}{\code{'bold'} or \code{'italic'} components names?
+  \item{ft.components}{\samp{'bold'} or \samp{'italic'} components names?
     The default is empty.}
   \item{hline1}{The line type of the table top.
-    The default is \code{'\\\\hline'}.} 
+    The default is \samp{'\\\\hline'}.} 
   \item{hline2}{The line type of the lower table header.
-    The default is \code{'\\\\hline'}.}
+    The default is \samp{'\\\\hline'}.}
   \item{footnote}{To insert footer in the table.
     The default is empty.}
 }
 
-\details{ 
-  It is necessary to declare the latex packages: \code{threeparttable}, \code{multirow},
-  \code{array} and \code{colortbl} in the preable of the Rnoweb file to make available all the 
+\details{
+  It is necessary to declare the latex packages: \samp{threeparttable}, \samp{multirow},
+  \samp{array} and \samp{colortbl} in the preable of the Rnoweb file to make available all the 
   resources of the function \code{latex.bpca}.
   
   The function \code{latex.bpca} was developed to make the life easier for those
   who make latex tables with the results of the bpca function.
 
-  Some people could ask: why do not use the \code{\link[Hmisc]{latex}} or \code{\link[xtable]{xtable}} function?
-  The \code{\link[Hmisc]{latex}} or \code{\link[xtable]{xtable}} function is a bit complex with many parameters
-  for constructing tables.
+  Some people could ask: why do not use the function \code{\link[Hmisc]{latex}} of the the package \pkg{Hmisc} or
+  \code{\link[xtable]{xtable}} of the \pkg{xtable}?
+  Both \code{\link[Hmisc]{latex}} and \code{\link[xtable]{xtable}} functions are a bit complex and with many parameters
+  for construct an adequated bpca table.
   It is not always intuitive to all users, discouraging some people to use the \code{\link[Hmisc]{latex}} or
-  \code{\link[xtable]{xtable}} function for constructing tables, making the preparation of the bpca analysis
+  \code{\link[xtable]{xtable}} function for constructing bpca tables, making the preparation of the bpca analysis
   reports data laborious. 
 
-  The function \code{latex.bpca} is extremely easy to use, requiring only that users provide the names they want
-  to print the table. Obviously, the function provides a formatting pre-set according to what the authors think ideal
+  The function \code{latex.bpca} is extremely easy to use.
+  Obviously, the function provides a formatting pre-set according to what the authors think ideal
   for presentation in articles, reports, among others.
-
-  If the user is not satisfied with the formatting provided by function, the functions \code{\link[Hmisc]{latex}} and
-  \code{\link[xtable]{xtable}} provides arguments that allow formatting of tables according to user need.
+  If the user is not satisfied with the formatting provided by this function, the functions \code{\link[Hmisc]{latex}}
+  and \code{\link[xtable]{xtable}} provides arguments that allow formatting of tables according to user need.
 }
 
 \value{
@@ -122,8 +124,8 @@ latex.bpca(x,
 }
 
 \author{
-  Jose Claudio Faria (\email{joseclaudio.faria@gmail.com})\cr
-  Clarice Garcia Borges Demetrio (\email{clarice@esalq.usp.br})\cr
+  José Cláudio Faria (\email{joseclaudio.faria@gmail.com})\cr
+  Clarice Garcia Borges Demétrio (\email{clarice@esalq.usp.br})\cr
   and\cr
   Ivan Bezerra Allaman (\email{ivanalaman@gmail.com})
 }

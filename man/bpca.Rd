@@ -3,7 +3,9 @@
 \alias{bpca.default}
 \alias{bpca.prcomp}
 
-\title{Biplot of Multivariate Data Based on Principal Components Analysis}
+\title{
+  Biplot of Multivariate Data Based on Principal Components Analysis
+}
 
 \description{
   Computes biplot reduction on \code{data.frame}, \code{matrix} or
@@ -27,36 +29,38 @@
 
 \arguments{
   \item{x}{A \code{data.frame}, \code{matrix} or \code{prcomp} object.}
-  \item{d}{A vector giving the first and last eigenvalue to be
-    considered by the biplot reduction. It can be d=1:3 or d=c(1,3) for 3d biplot.
-    The default is d=1:2.}
-  \item{center}{Numeric. The type of centering to be performed: \cr
-    \code{0}: no centering; \cr
-    \code{1}: global-centered: sweep(x, 1, mean(x)); \cr
-    \code{2}: column-centered: sweep(x, 2, apply(x, 2, mean)); \cr
-    \code{3}: double-centered: sweep(sweep(x, 1, apply(x, 1, mean)),
-                              2, apply(x, 2, mean)) + mean(x)). \cr
-    The default is \code{2}.}
-  \item{scale}{Logical. A value indicating whether the variables should be
+  \item{d}{A vector giving the first and last eigenvalue to be considered by the biplot reduction.
+    It can be \code{d=1:3} or \code{d=c(1,3)} for 3d biplot.
+    The default is \code{d=1:2}.}
+  \item{center}{Numeric.
+    The type of centering to be performed: \cr
+    \samp{0} - no centering \cr
+    \samp{1} - global-centered = \code{sweep(x, 1, mean(x))} \cr
+    \samp{2} - column-centered = \code{sweep(x, 2, apply(x, 2, mean))} \cr
+    \samp{3} - double-centered = \code{sweep(sweep(x, 1, apply(x, 1, mean)),
+                                             2, apply(x, 2, mean)) + mean(x)} \cr
+    The default is samp{2}.}
+  \item{scale}{Logical.
+    A value indicating whether the variables should be
     scaled to have unit variance before the analysis takes place: \cr
-    \code{FALSE}: no scale; \cr
-    \code{TRUE}: scale.}
-  \item{method}{A vector of character strings that indicates the method of
-    factorization: \cr
-    \code{hj}: HJ (\emph{simetric}, Galindo (1986)); \cr
-    \code{sqrt}: SQRT (\emph{squared root - simetric}, Gabriel (1971)); \cr
-    \code{jk}: JK (\emph{row metric preserving}, Gabriel (1971)); \cr
-    \code{gh}: GH (\emph{column metric preserving}, Gabriel (1971)).}
-  \item{iec}{Logical. If TRUE the matrix of eigenvalues, coordinates od objects and
-    variables will be inverted. The default is FALSE.}.
-  \item{var.rb}{A logical value. If TRUE, all correlation coefficients for all
-    variables (\emph{under the biplot projection}) will be computed.}
-  \item{var.rd}{A logical value. If TRUE, the diagnostic of the representation
-    of variables projected by the biplot will be computed.
-    If \code{var.rd} is TRUE the \code{var.rb} parameter must be also TRUE.}
-  \item{limit}{A vector giving the percentual limit to define poor
-    representation of variables.}
-  \item{\dots}{Aditional parameters. It is necessary to be S3 method.}
+    \code{FALSE} - no scale; \cr
+    \code{TRUE} - scale.}
+  \item{method}{A vector of character strings that indicates the method of factorization: \cr
+    \samp{'hj'} - \samp{HJ} (\samp{simetric}, Galindo Villardón (1986)); \cr
+    \samp{'sqrt'} - \samp{SQRT} (\samp{squared root - simetric}, Gabriel (1971)); \cr
+    \samp{'jk'} - \samp{JK} (\samp{row metric preserving}, Gabriel (1971)); \cr
+    \samp{'gh'} - \samp{GH} (\samp{column metric preserving}, Gabriel (1971)).}
+  \item{iec}{Logical.
+    If \code{TRUE} the matrix of eigenvalues, coordinates od objects and variables will be inverted.
+    The default is \code{FALSE}.}
+  \item{var.rb}{A logical value.
+    If \code{TRUE}, all correlation coefficients for all variables (\emph{under the biplot projection}) will be computed.}
+  \item{var.rd}{A logical value.
+    If \code{TRUE}, the diagnostic of the representation of variables projected by the biplot will be computed.
+    If \code{var.rd} is \code{TRUE} the \code{var.rb} parameter must be also \code{TRUE}.}
+  \item{limit}{A vector giving the percentual limit to define poor representation of variables.}
+  \item{\dots}{Aditional parameters.
+    It is necessary to be S3 method.}
 }
 
 \details{
@@ -86,9 +90,9 @@
     \item \emph{d}: A vector containing the singular values of Y, of length
     \code{min(n, p)};
     \item \emph{u}: A matrix whose columns contain the left singular vectors of
-    Y, present if \code{nu > 0}. Dimension \code{c(n, nu)};
+    Y, present if \samp{nu > 0}. Dimension \samp{c(n, nu)};
     \item \emph{v}: A matrix whose columns contain the right singular vectors of
-    Y, present if \code{nv > 0}. Dimension \code{c(p, nv)}.
+    Y, present if \samp{nv > 0}. Dimension \code{c(p, nv)}.
   }  
 
   and also,
@@ -101,7 +105,7 @@
   in various ways. The methods of factorization computed by the \code{bpca}
   function are:
   \itemize{
-    \item \emph{HJ - simetric}, Galindo (1986):
+    \item \emph{HJ - simetric}, Galindo Villardón (1986):
     \deqn{g = u*s^2}
     \deqn{h = s^2*v'}
     \item \emph{SQRT - squared root simetric}, Gabriel (1971):
@@ -124,9 +128,9 @@
   representation of Y will be an approximation, and accurate only in the case
   of $r=m$.
 
-  Due to the need of different methods of factorization, if \code{x} is a
+  Due to the need of different methods of factorization, if \samp{x} is a
   \code{prcomp} object, the method \code{bpca.prcomp} will go back from the
-  \code{prcom} function. In other words, it will regenerates, or computes, the
+  \code{prcomp} function. In other words, it will regenerates, or computes, the
   inverse of the \code{svd} decomposition of the given data
   \deqn{_{n}Y_{p}}
   After this, it will make a call to the method \code{bpca.default} with the
@@ -157,8 +161,8 @@
 }
 
 \author{
-  Jose Claudio Faria (\email{joseclaudio.faria@gmail.com})\cr
-  Clarice Garcia Borges Demetrio (\email{clarice@esalq.usp.br})\cr
+  José Cláudio Faria (\email{joseclaudio.faria@gmail.com})\cr
+  Clarice Garcia Borges Demétrio (\email{clarice@esalq.usp.br})\cr
   and\cr
   Ivan Bezerra Allaman (\email{ivanalaman@gmail.com})
 }
@@ -169,20 +173,20 @@
   component analysis.
   \emph{Biometrika} \bold{58}, 453-467.
 
-  Gower, J.C. and Hand, D. J.  (1996)
-  \emph{Biplots}. Chapman & Hall.
-
-  Galindo, M. P. (1986)
-  Una alternativa de representacion simultanea: HJ-Biplot.
-  \emph{Questiio}, 10(1):13-23, 1986.
+  Galindo Vilardón, M. P. (1986)
+  Una alternativa de representación simultánea: HJ-Biplot.
+  \emph{Qüestiió}, 10(1):13-23, 1986.
 
   Johnson, R. A. and Wichern, D. W. (1988)
   \emph{Applied multivariate statistical analysis}.
   Prentice-Hall, Inc., Upper Saddle River, NJ, USA, 6 ed.
 
+  Gower, J.C. and Hand, D. J.  (1996)
+  \emph{Biplots}. Chapman & Hall.
+
   Yan, B. W. and Kang, M. S. (2003)
-  \emph{GGE biplot analysis : a graphical tool for breeders,
-    geneticists, and agronomists}. CRC Press, New York, 288p.
+  \emph{GGE biplot analysis: a graphical tool for breeders,
+  geneticists, and agronomists}. CRC Press, New York, 288p.
 }
 
 \seealso{\code{\link{biplot.prcomp}}}

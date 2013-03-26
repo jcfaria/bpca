@@ -49,12 +49,12 @@ bp2 <- bpca(rock,
 
 summary(bp2)
 
-plot(bp2)                # Static
+plot(bp2)           # Static
 
 plot(bp2,
-     rgl.use=TRUE)       # Dinamic
+     rgl.use=TRUE)  # Dinamic
 
-bp2$var.rd               # Nice!
+bp2$var.rd          # Nice!
 
 # Aditional diagnostic
 plot(qbpca(rock,

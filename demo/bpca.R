@@ -365,12 +365,14 @@ plot(bpca(ontario),
 
 # A complete plot
 cl <- 1:3
+
 plot(bpca(iris[-5]),
      type='ev',
      var.id=1,
      var.fac=.3,
      obj.names=FALSE,
      obj.col=cl[unclass(iris$Species)])
+
 legend('topleft',
        legend=levels(iris$Species),
        text.col=cl,

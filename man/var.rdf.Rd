@@ -1,7 +1,9 @@
 \name{var.rdf}
 \alias{var.rdf}
 
-\title{Diagnostic of Projected Correlations}
+\title{
+  Diagnostic of Projected Correlations
+}
 
 \description{
   Computes the diagnostic of poor graphical correlations projected by biplot
@@ -16,10 +18,8 @@
 
 \arguments{
   \item{x}{A given object of the classe \code{data.frame} or \code{matrix}.}
-  \item{var.rb}{A given object of the class \code{matrix} with the projected
-    correlations by biplot.}
-  \item{limit}{A vector giving the percentual limit to define poor
-    representation of variables.}
+  \item{var.rb}{A given object of the class \code{matrix} with the projected correlations by biplot.}
+  \item{limit}{A vector giving the percentual limit to define poor representation of variables.}
 }
 
 \value{
@@ -32,8 +32,8 @@
 }
 
 \author{
-  Jose Claudio Faria (\email{joseclaudio.faria@gmail.com})\cr
-  Clarice Garcia Borges Demetrio (\email{clarice@esalq.usp.br})\cr
+  José Cláudio Faria (\email{joseclaudio.faria@gmail.com})\cr
+  Clarice Garcia Borges Demétrio (\email{clarice@esalq.usp.br})\cr
   and\cr
   Ivan Bezerra Allaman (\email{ivanalaman@gmail.com})
 }

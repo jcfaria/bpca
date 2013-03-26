@@ -1,7 +1,9 @@
 \name{var.rbf}
 \alias{var.rbf}
 
-\title{Projected Correlations by bpca}
+\title{
+  Projected Correlations by bpca
+}
 
 \description{
   Computes the matrix of graphical correlations represented by biplot
@@ -13,7 +15,7 @@
 }
 
 \arguments{
-  \item{x}{A given object of the classes \emph{bpca.2d} and \emph{bpca.3d}.}
+  \item{x}{A given object of the classes \samp{bpca.2d} and \samp{bpca.3d}.}
 }
 
 \value{
@@ -26,8 +28,8 @@
 }
 
 \author{
-  Jose Claudio Faria (\email{joseclaudio.faria@gmail.com})\cr
-  Clarice Garcia Borges Demetrio (\email{clarice@esalq.usp.br})\cr
+  José Cláudio Faria (\email{joseclaudio.faria@gmail.com})\cr
+  Clarice Garcia Borges Demétrio (\email{clarice@esalq.usp.br})\cr
   and\cr
   Ivan Bezerra Allaman (\email{ivanalaman@gmail.com})
 }

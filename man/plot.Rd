@@ -3,7 +3,9 @@
 \alias{plot.bpca.3d}
 \alias{plot.qbpca}
 
-\title{Biplot of Multivariate Data Based on Principal Components Analysis}
+\title{
+  Biplot of Multivariate Data Based on Principal Components Analysis
+}
 
 \description{
   These are methods for objects of class \code{bpca.2d}, \code{bpca.3d} and
@@ -46,7 +48,10 @@
      obj.names=TRUE,
      obj.labels,
      obj.identify=FALSE,
-     xlim, ylim, xlab, ylab, \dots)
+     xlim,
+     ylim,
+     xlab,
+     ylab, \dots)
 
   \method{plot}{bpca.3d}(x,
      rgl.use=FALSE,
@@ -73,7 +78,12 @@
      obj.identify=FALSE,
      box=FALSE,
      angle=ifelse(rgl.use, NULL, 40),
-     xlim, ylim, zlim, xlab, ylab, zlab, \dots)
+     xlim,
+     ylim,
+     zlim,
+     xlab,
+     ylab,
+     zlab, \dots)
 
   \method{plot}{qbpca}(x,
      xlab='Index',
@@ -85,99 +95,112 @@
 \arguments{
   \item{x}{A \code{bpca.2d}, \code{bpca.3d} or \code{qbpca} object.}
   \item{type}{Type of biplot: \cr
-              \code{bp}: conventional biplot; \cr
-              \code{eo}: evaluate an object; \cr
-              \code{ev}: evaluate a variable; \cr
-              \code{co}: compare two objects; \cr
-              \code{cv}: compare (relationship among) variables; \cr
-              \code{ww}: which won where/what; \cr
-              \code{dv}: discrimitivenss vs. representativeness; \cr
-              \code{ms}: mean vs. stability; \cr
-              \code{ro}: rank objects with ref. to an "ideal" variable; \cr
-              \code{rv}: rank variables with ref. to an "ideal" object.}
+              \samp{'bp'} - conventional biplot; \cr
+              \samp{'eo'} - evaluate an object; \cr
+              \samp{'ev'} - evaluate a variable; \cr
+              \samp{'co'} - compare two objects; \cr
+              \samp{'cv'} - compare (relationship among) variables; \cr
+              \samp{'ww'} - which won where/what; \cr
+              \samp{'dv'} - discrimitivenss vs. representativeness; \cr
+              \samp{'ms'} - mean vs. stability; \cr
+              \samp{'ro'} - rank objects with ref. to an \dQuote{ideal} variable; \cr
+              \samp{'rv'} - rank variables with ref. to an \dQuote{ideal} object.}
   \item{circles.number}{The number of circles.}
-  \item{circles.color}{\dots .}
-  \item{circles.lwd}{\dots .}
-  \item{radio}{\dots .}
-  \item{obj.id}{An object(s) number(s) or name(s). It is used to identify the object(s) when the \code{type} option is
-    \code{'eo'} or \code{'co'}. The default is \code{1} for \code{'eo'} and \code{1:2} for \code{'co'}.}
-  \item{var.id}{A variable number or name. It is used to identify the variable when the \code{type} option is \code{'ev'}.}
-  \item{base.color}{\dots .}
-  \item{base.lty}{\dots .}
-  \item{proj.color}{\dots .}
-  \item{proj.lty}{\dots .}
-  \item{arrow.color}{\dots .}
-  \item{arrow.lty}{\dots .}
-  \item{arrow.lwd}{\dots .}
-  \item{arrow.length}{\dots .}
-  \item{rgl.use}{A logical value. If TRUE the 3d scatter will be done with the
-    \code{rgl} environment, in another way the \code{scatterplot3d}
-    will be used.}
-  \item{ref.lines}{A logical value. If TRUE, the reference lines will be added
-    to the biplot.}
+  \item{circles.color}{The color of circles.}
+  \item{circles.lwd}{The \code{lwd} of circles.}
+  \item{radio}{The radio of circles.}
+  \item{obj.id}{An object(s) number(s) or name(s).
+    It is used with reprojctions to identify the object(s) when the \code{type} option is \samp{'eo'} or \samp{'co'}.
+    The default is \samp{1} for \samp{'eo'} and \code{1:2} for \samp{'co'}.}
+  \item{var.id}{A variable number or name.
+    It is used with reprojections to identify the variable when the \samp{type} option is \code{'ev'}.}
+  \item{base.color}{The color for the base lines.
+    It is used only with reprojections.}
+  \item{base.lty}{The \samp{lty} for the base lines.
+    It is used only with reprojections.}
+  \item{proj.color}{The color for the projections lines.
+    It is used only with reprojections.}
+  \item{proj.lty}{The \samp{lty} for the projections lines.
+    It is used only with reprojections.}
+  \item{arrow.color}{The color for the arrow.
+    It is used only with reprojections.}
+  \item{arrow.lty}{The \samp{lty} for the arrow.
+    It is used only with reprojections.}
+  \item{arrow.lwd}{The \samp{lwd} for the arrow.
+    It is used only with reprojections.}
+  \item{arrow.length}{The \samp{length} for the arrow.
+    It is used only with reprojections.}
+  \item{rgl.use}{A logical value.
+    If \code{TRUE} the 3d scatter will be done with the \code{rgl} environment,
+    in another way the \code{scatterplot3d} will be used.}
+  \item{ref.lines}{A logical value.
+    If \code{TRUE}, the reference lines will be added to the biplot.}
   \item{ref.color}{Line color for reference lines.}
   \item{ref.lty}{Line type of the reference lines.}
-  \item{clear3d}{A logical value. It clears (or not) a 3d biplot before making
-    a new one. Used only if \code{rgl.use=TRUE}.}
+  \item{clear3d}{A logical value.
+    It clears (or not) a 3d biplot before making a new one.
+    Used only if \code{rgl.use=TRUE}.}
   \item{simple.axes}{A logical value to draw simple axes.
     Used only if \code{rgl.use=TRUE}.}
-  \item{aspect}{A vector of the apparent ratios of the x, y, and z axes of the
-    bounding box. Used only if \code{rgl.use=TRUE}.}
-  \item{var.factor}{Factor of expansion/reduction of length lines of the
-    variables.}
+  \item{aspect}{A vector of the apparent ratios of the \samp{x}, \samp{y}, and \samp{z} axes of the bounding box.
+    Used only if \code{rgl.use=TRUE}.}
+  \item{var.factor}{Factor of expansion/reduction of length lines of the variables.}
   \item{var.color}{A vector of colors for the variables representation.}
-  \item{var.lty}{Line type for the variables. Used only if \code{rgl.use=FALSE}.}
+  \item{var.lty}{Line type for the variables.
+    Used only if \code{rgl.use=FALSE}.}
   \item{var.pch}{A vector of plotting symbols or characters for the variables.
-    If too short, the values are recycled. Used only if \code{rgl.use=FALSE}.}
+    If too short, the values are recycled.
+    Used only if \code{rgl.use=FALSE}.}
   \item{var.pos}{Position of labels for the variables.}
   \item{var.cex}{Character expansion for the variables.}
   \item{var.offset}{The distance (in character widths) which separates the
-    label from identified points of variables. Negative values are allowed.
+    label from identified points of variables.
+    Negative values are allowed.
     Used only if \code{rgl.use=FALSE}.}
-  \item{obj.factor}{\dots .}
+  \item{obj.factor}{Factor of expansion/reduction of length lines of the objects.}
   \item{obj.color}{A vector of colors for the objects representation.}
   \item{obj.pch}{A vector of plotting symbols or characters for objects.
-    If too short, the values are recycled. Used only if \code{rgl.use=FALSE}.}
+    If too short, the values are recycled.
+    Used only if \code{rgl.use=FALSE}.}
   \item{obj.pos}{Position of labels for objects.}
   \item{obj.cex}{Character expansion for objects.}
-  \item{obj.offset}{The distance (in character widths) which separates the label
-    from identified points of objects. Negative values are allowed.
+  \item{obj.offset}{The distance (in character widths) which separates the label from identified points of objects.
+    Negative values are allowed.
     Used only if \code{rgl.use=FALSE}.}
   \item{obj.names}{A logical value to represent objects as spheres or points.}
-  \item{obj.identify}{A logical value. If TRUE, it is possible, in interative way,
-    to identify the objects with the mouse.}
+  \item{obj.identify}{A logical value.
+    If \code{TRUE}, it is possible, in interative way, to identify the objects with the mouse.}
   \item{obj.labels}{A vector of labels for objects.}
-  \item{box}{A logical value to whether to draw a box. Used only if
-    \code{rgl.use=TRUE}.}
-  \item{angle}{Angle between x and y axis (Attention: result depends on scaling).
-    For 180 < angle < 360 the returned functions xyz.convert and points3d will
-    not work properly. Used only if \code{rgl.use=FALSE}.}
+  \item{box}{A logical value to whether to draw a box.
+    Used only if \samp{rgl.use=TRUE}.}
+  \item{angle}{Angle between \samp{x} and \samp{y} axis (Attention: result depends on scaling).
+    For \eqn{180 < angle < 360} the returned functions xyz.convert and points3d will not work properly.
+    Used only if \code{rgl.use=FALSE}.}
   \item{pch}{A vector of plotting symbols or characters.}
   \item{col}{A vector of colors.}
-  \item{xlab}{A label for the x axis.}
-  \item{ylab}{A label for the y axis.}
-  \item{zlab}{A label for the z axis (bpca.3d only).}
-  \item{xlim}{The x limits of the plot.}
-  \item{ylim}{The y limits of the plot.} 
-  \item{zlim}{The z limits of the plot (bpca.3d only).} 
-  \item{\dots}{Other graphical parameters may also be passed as arguments to
-    these functions.}
+  \item{xlab}{A label for the \samp{x} axis.}
+  \item{ylab}{A label for the \samp{y} axis.}
+  \item{zlab}{A label for the \samp{z} axis (bpca.3d only).}
+  \item{xlim}{The \samp{x} limits of the plot.}
+  \item{ylim}{The \samp{y} limits of the plot.} 
+  \item{zlim}{The \samp{z} limits of the plot (bpca.3d only).} 
+  \item{\dots}{Other graphical parameters may also be passed as arguments to these functions.}
 }
 
 \details{
   A biplot aims to represent both the observations and variables
   of a matrix of multivariate data on the same plot.
 
-  The methods \code{plot.bpca.2d} draw a 2d biplot (PC1 and PC2 on axis x
-  and y, respectively). It uses the traditional graphics system.
+  The methods \code{plot.bpca.2d} draw a 2d biplot (PC1 and PC2 on axis \samp{x}
+  and \samp{y}, respectively). It uses the traditional graphics system.
 
   The methods \code{plot.bpca.3d} draw a 3d biplot (PC1, PC2 and PC3 on axis
-  x, y and z, respectively) in two ways:
+  \samp{x}, \samp{y} and \samp{z}, respectively) in two ways:
   \itemize{
-    \item{\emph{static}:}{It uses the package \code{scatterplot3d} based on
-      traditional graphic system. Use the parameter \emph{rgl.use=FALSE} for it.}
-    \item{\emph{dinamic}:}{It uses the package \code{rgl}: a 3D real-time rendering
-      device driver system for R. Use the parameter \emph{rgl.use=TRUE} for it.}
+    \item{\samp{static} -} {It uses the package \code{scatterplot3d} based on
+      traditional graphic system. Use the parameter \samp{rgl.use=FALSE} for it.}
+    \item{\samp{dinamic} -} {It uses the package \code{rgl} a 3D real-time rendering
+      device driver system for R. Use the parameter \samp{rgl.use=TRUE} for it.}
   }  
 
   The method \code{qb.pca} draws a scatterplot of the correlations observed
@@ -188,32 +211,32 @@
 }
 
 \author{
-  Jose Claudio Faria (\email{joseclaudio.faria@gmail.com})\cr
-  Clarice Garcia Borges Demetrio (\email{clarice@esalq.usp.br})\cr
+  José Cláudio Faria (\email{joseclaudio.faria@gmail.com})\cr
+  Clarice Garcia Borges Demétrio (\email{clarice@esalq.usp.br})\cr
   and\cr
   Ivan Bezerra Allaman (\email{ivanalaman@gmail.com})
 }
 
 \references{
-  Gabriel, K. R.  (1971)
+  Gabriel, K. R. (1971)
   The biplot graphical display of matrices with application to principal
   component analysis.
   \emph{Biometrika} \bold{58}, 453-467.
 
-  Gower, J.C. and Hand, D. J.  (1996)
-  \emph{Biplots}. Chapman & Hall.
-
-  Galindo, M. P. (1986)
-  Una alternativa de representacion simultanea: HJ-Biplot.
-  \emph{Questiio}, 10(1):13-23, 1986.
+  Galindo Vilardón, M. P. (1986)
+  Una alternativa de representación simultánea: HJ-Biplot.
+  \emph{Qüestiió}, 10(1):13-23, 1986.
 
   Johnson, R. A. and Wichern, D. W. (1988)
   \emph{Applied multivariate statistical analysis}.
   Prentice-Hall, Inc., Upper Saddle River, NJ, USA, 6 ed.
 
+  Gower, J.C. and Hand, D. J. (1996)
+  \emph{Biplots}. Chapman & Hall.
+
   Yan, B. W. and Kang, M. S. (2003)
-  \emph{GGE biplot analysis : a graphical tool for breeders,
-    geneticists, and agronomists}. CRC Press, New York, 288p.
+  \emph{GGE biplot analysis: a graphical tool for breeders,
+  geneticists, and agronomists}. CRC Press, New York, 288p.
 }
 
 \seealso{\code{\link{biplot.prcomp}}}
@@ -491,7 +514,7 @@ plot(bpca(iris[-5]),
      var.id='Sepal.Width',
      var.factor=.3)
 
-  devAskNewPage(oask)
+devAskNewPage(oask)
 }
 
 \keyword{multivariate}

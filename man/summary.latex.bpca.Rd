@@ -1,7 +1,9 @@
 \name{summary.latex.bpca}
 \alias{summary.latex.bpca}
 
-\title{Summary Method for latex.bpca Objects}
+\title{
+  Summary Method for latex.bpca Objects
+}
 
 \description{
   Returns (and prints) a summary list for code{latex.bpca} objects.
@@ -17,8 +19,8 @@
 }
 
 \author{
-  Jose Claudio Faria (\email{joseclaudio.faria@gmail.com})\cr
-  Clarice Garcia Borges Demetrio (\email{clarice@esalq.usp.br})\cr
+  José Cláudio Faria (\email{joseclaudio.faria@gmail.com})\cr
+  Clarice Garcia Borges Demétrio (\email{clarice@esalq.usp.br})\cr
   and\cr
   Ivan Bezerra Allaman (\email{ivanalaman@gmail.com})
 }
