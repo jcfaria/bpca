@@ -12,7 +12,7 @@
 
 \usage{
   \method{summary}{bpca}(object,
-                         presentation=FALSE, \dots)
+       presentation=FALSE, \dots)
 }
 
 \arguments{

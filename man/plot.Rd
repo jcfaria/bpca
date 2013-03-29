@@ -95,16 +95,16 @@
 \arguments{
   \item{x}{A \code{bpca.2d}, \code{bpca.3d} or \code{qbpca} object.}
   \item{type}{Type of biplot: \cr
-              \samp{'bp'} - conventional biplot; \cr
-              \samp{'eo'} - evaluate an object; \cr
-              \samp{'ev'} - evaluate a variable; \cr
-              \samp{'co'} - compare two objects; \cr
-              \samp{'cv'} - compare (relationship among) variables; \cr
-              \samp{'ww'} - which won where/what; \cr
-              \samp{'dv'} - discrimitivenss vs. representativeness; \cr
-              \samp{'ms'} - mean vs. stability; \cr
-              \samp{'ro'} - rank objects with ref. to an \dQuote{ideal} variable; \cr
-              \samp{'rv'} - rank variables with ref. to an \dQuote{ideal} object.}
+              \samp{bp} - conventional biplot; \cr
+              \samp{eo} - evaluate an object; \cr
+              \samp{ev} - evaluate a variable; \cr
+              \samp{co} - compare two objects; \cr
+              \samp{cv} - compare (relationship among) variables; \cr
+              \samp{ww} - which won where/what; \cr
+              \samp{dv} - discrimitivenss vs. representativeness; \cr
+              \samp{ms} - mean vs. stability; \cr
+              \samp{ro} - rank objects with ref. to an \dQuote{ideal} variable; \cr
+              \samp{rv} - rank variables with ref. to an \dQuote{ideal} object.}
   \item{circles.number}{The number of circles.}
   \item{circles.color}{The color of circles.}
   \item{circles.lwd}{The \code{lwd} of circles.}

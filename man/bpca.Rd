@@ -46,10 +46,10 @@
     \code{FALSE} - no scale; \cr
     \code{TRUE} - scale.}
   \item{method}{A vector of character strings that indicates the method of factorization: \cr
-    \samp{'hj'} - \samp{HJ} (\samp{simetric}, Galindo Villardón (1986)); \cr
-    \samp{'sqrt'} - \samp{SQRT} (\samp{squared root - simetric}, Gabriel (1971)); \cr
-    \samp{'jk'} - \samp{JK} (\samp{row metric preserving}, Gabriel (1971)); \cr
-    \samp{'gh'} - \samp{GH} (\samp{column metric preserving}, Gabriel (1971)).}
+    \samp{hj} - \samp{HJ} (\samp{simetric}, Galindo Villardón (1986)); \cr
+    \samp{sqrt} - \samp{SQRT} (\samp{squared root - simetric}, Gabriel (1971)); \cr
+    \samp{jk} - \samp{JK} (\samp{row metric preserving}, Gabriel (1971)); \cr
+    \samp{gh} - \samp{GH} (\samp{column metric preserving}, Gabriel (1971)).}
   \item{iec}{Logical.
     If \code{TRUE} the matrix of eigenvalues, coordinates od objects and variables will be inverted.
     The default is \code{FALSE}.}
