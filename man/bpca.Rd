@@ -39,7 +39,7 @@
     \samp{2} - column-centered = \code{sweep(x, 2, apply(x, 2, mean))} \cr
     \samp{3} - double-centered = \code{sweep(sweep(x, 1, apply(x, 1, mean)),
                                              2, apply(x, 2, mean)) + mean(x)} \cr
-    The default is samp{2}.}
+    The default is 2.}
   \item{scale}{Logical.
     A value indicating whether the variables should be
     scaled to have unit variance before the analysis takes place: \cr
@@ -148,16 +148,11 @@
   \item{call}{The call used.}
   \item{eigenvalues}{A vector of the eigenvalues.}
   \item{eigenvectors}{A vector of the eigenvectors.}
-  \item{numer}{A vector of the number of eigenvalues considered in the
-    reduction.}
-  \item{importance}{A matrix with the \emph{general} and \emph{partial}
-    variation explained by the reduction.}
-  \item{coord}{A list with the coordenates of the two components: objects and
-    variables.}
-  \item{var.rb}{A matrix of all correlation coefficients for all variables
-    under the biplot projection.}
-  \item{var.rd}{A matrix of the diagnostic of the poor projection of
-    variable correlations by the biplot reduction.}
+  \item{numer}{A vector of the number of eigenvalues considered in the reduction.}
+  \item{importance}{A matrix with the \emph{general} and \emph{partial} variation explained by the reduction.}
+  \item{coord}{A list with the coordenates of the two components: objects and variables.}
+  \item{var.rb}{A matrix of all correlation coefficients for all variables under the biplot projection.}
+  \item{var.rd}{A matrix of the diagnostic of the poor projection of variable correlations by the biplot reduction.}
 }
 
 \author{

@@ -18,8 +18,8 @@
 \arguments{
   \item{object}{A given object of the class \code{bpca}, (\code{bpca.2d} or \code{bpca.3d}).}
   \item{presentation}{Logic.
-    If \code{TRUE} the summary of the class \code{bpca}, (\code{bpca.2d}, \code{bpca.3d} is showed well formated in the screen,
-    else, return a list. The default is \code{FALSE}.}
+    If \code{TRUE} the summary of the class \code{bpca}, (\code{bpca.2d}, \code{bpca.3d} is showed well formated in the screen, else, return a list.
+    The default is \code{FALSE}.}
   \item{\dots}{Potential further arguments (require by generic).}
 }
 

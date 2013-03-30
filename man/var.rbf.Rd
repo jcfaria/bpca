@@ -19,11 +19,11 @@
 }
 
 \value{
-  A matrix of graphical correlations represented by biplot.
+  A \code{matrix} of graphical correlations represented by biplot.
 }
 
 \note{
-  This function is mainly for internal use in the bpca package,
+  This function is mainly for internal use in the \pkg{bpca} package,
   and may not remain available (unless we see a good reason).
 }
 

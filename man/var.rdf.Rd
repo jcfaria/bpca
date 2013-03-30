@@ -7,7 +7,7 @@
 
 \description{
   Computes the diagnostic of poor graphical correlations projected by biplot
-  according to an arbitrary \code{limit}.
+  according to an arbitrary \samp{limit}.
 }
 
 \usage{
@@ -27,7 +27,7 @@
 }
 
 \note{
-  This function is mainly for internal use in the bpca package,
+  This function is mainly for internal use in the \pkg{bpca} package,
   and may not remain available (unless we see a good reason).
 }
 

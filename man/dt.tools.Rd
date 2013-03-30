@@ -25,7 +25,7 @@
     \samp{2} - column-centered = \code{sweep(x, 2, apply(x, 2, mean))}; \cr
     \samp{3} - double-centered = \code{sweep(sweep(x, 1, apply(x, 1, mean)),
                                              2, apply(x, 2, mean)) + mean(x)}. \cr
-    The default is \samp{2}.}
+    The default is 2.}
   \item{scale}{Logical.
     A value indicating whether the variables should be scaled to have unit variance before the analysis takes place: \cr
     \code{FALSE} - no scale; \cr
