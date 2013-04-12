@@ -15,7 +15,7 @@ print.latex.bpca     Prints `latex.bpca' objects.
 qbpca                Evaluates the quality of the biplot representation for
                      `bpca.2d' and `bpca.3d' objects.
 summary.bpca         Summarizes `bpca' (`bpca.2d' and `bpca.3d') objects.
-summary.latex.bpca   Summarizes latex.bpca objects.
+summary.latex.bpca   Summarizes `latex.bpca' objects.
 var.rbf              Calculates the matrix of graphical correlations projected by
                      the biplot for `bpca.2d' and `bpca.3d' objects.
 var.rdf              Calculates the matrix of `poor' graphical correlations,

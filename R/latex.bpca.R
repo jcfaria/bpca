@@ -1,5 +1,5 @@
 latex.bpca <- function(x,
-                       round=4, 
+                       round=4,
                        where='!tbp',
                        caption=NULL,
                        label=NULL,
@@ -220,6 +220,7 @@ latex.bpca <- function(x,
                    collapse=''),
              '\\tabularnewline',
              sep='')                               
+
   smallheader <- paste(comp,
                        lambdas,
                        sep='\\quad')  
