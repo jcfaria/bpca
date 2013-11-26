@@ -1,6 +1,6 @@
 ### bpca
 
-This is the development code of the R package __bpca__.
+This is the development code of the R package **bpca**.
 You should use it if you want to contribute to its development:
 testing unreleased versions, fixing bugs, writing code, etc.
 
