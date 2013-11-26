@@ -15,20 +15,20 @@
 \usage{
   \method{plot}{bpca.2d}(x,
      type=c('bp', 'eo', 'ev', 'co', 'cv', 'ww', 'dv', 'ms', 'ro', 'rv'),
-     circles.number=5,
-     circles.color='darkgray',
-     circles.lwd=1,
-     radio=.2,
+     c.color='darkgray',
+     c.lwd=1,
+     c.number=5,
+     c.radio=1,
      obj.id=1:2,
      var.id=1,
      base.color='red3',
      base.lty='dotted',
      proj.color='gray',
      proj.lty='dotted',
-     arrow.color='black',
-     arrow.lty='solid',
-     arrow.lwd=1,
-     arrow.length=.2,
+     a.color='blue',
+     a.lty='solid',
+     a.lwd=2,
+     a.length=.1,
      ref.lines=TRUE,
      ref.color='navy',
      ref.lty='dotted',
@@ -105,10 +105,10 @@
               \samp{ms} - mean vs. stability; \cr
               \samp{ro} - rank objects with ref. to an \dQuote{ideal} variable; \cr
               \samp{rv} - rank variables with ref. to an \dQuote{ideal} object.}
-  \item{circles.number}{The number of circles.}
-  \item{circles.color}{The color of circles.}
-  \item{circles.lwd}{The \code{lwd} of circles.}
-  \item{radio}{The radio of circles.}
+  \item{c.color}{The color of circles.}
+  \item{c.lwd}{The \code{lwd} of circles.}
+  \item{c.number}{The number of circles.}
+  \item{c.radio}{The radio of circles.}
   \item{obj.id}{An object(s) number(s) or name(s).
     It is used with reprojctions to identify the object(s) when the \code{type} option is \samp{'eo'} or \samp{'co'}.
     The default is \samp{1} for \samp{'eo'} and \code{1:2} for \samp{'co'}.}
@@ -122,13 +122,13 @@
     It is used only with reprojections.}
   \item{proj.lty}{The \samp{lty} for the projections lines.
     It is used only with reprojections.}
-  \item{arrow.color}{The color for the arrow.
+  \item{a.color}{The color for the arrow.
     It is used only with reprojections.}
-  \item{arrow.lty}{The \samp{lty} for the arrow.
+  \item{a.lty}{The \samp{lty} for the arrow.
     It is used only with reprojections.}
-  \item{arrow.lwd}{The \samp{lwd} for the arrow.
+  \item{a.lwd}{The \samp{lwd} for the arrow.
     It is used only with reprojections.}
-  \item{arrow.length}{The \samp{length} for the arrow.
+  \item{a.length}{The \samp{length} for the arrow.
     It is used only with reprojections.}
   \item{rgl.use}{A logical value.
     If \code{TRUE} the 3d scatter will be done with the \code{rgl} environment,
@@ -249,7 +249,7 @@
 
 bp <- bpca(gabriel1971)
 
-x11(w=6, h=6)
+dev.new(w=6, h=6)
 oask <- devAskNewPage(dev.interactive(orNone=TRUE))
 plot(bp,
      var.factor=2)
@@ -312,6 +312,7 @@ plot(bpca(gabriel1971,
 # right button: press, maintain and movement it to interactive zoom.
 # Enjoy it!
 
+\dontrun{
 ##
 ## Example 4
 ## Grouping objects with different symbols and colors - 2d and 3d
@@ -459,12 +460,18 @@ legend('topleft',
        box.lty=0)   
 
 # Compare two objects (1 and 2 are the default)
-plot(bpca(ontario),
-     type='co')
+plot(bpca(ontario), 
+     type='co',
+     c.radio=.4,
+     c.color='blue',
+     c.lwd=2)
 
 plot(bpca(ontario),
      type='co',
-     obj.labels=obj.lab)
+     obj.labels=obj.lab,
+     c.radio=.5,
+     c.color='blue',
+     c.lwd=2)
 
 plot(bpca(ontario),
      type='co',
@@ -474,11 +481,14 @@ plot(bpca(ontario),
 plot(bpca(ontario),
      type='co',
      obj.labels=obj.lab,
-     obj.id=c('g7', 'g13'))
+     obj.id=c('g7', 
+              'g13'))
 
 # Compare two variables
 plot(bpca(ontario),
-     type='cv')
+     type='cv',
+     c.number=3,
+     c.radio=1.5)
 
 # Which won where/what
 plot(bpca(ontario),
@@ -488,17 +498,36 @@ plot(bpca(ontario),
 plot(bpca(ontario),
      type='dv')
 
+plot(bpca(ontario),
+     type='dv',
+     c.number=4,
+     c.radio=1)
+
 # Means vs. stability
 plot(bpca(ontario),
      type='ms')
+
+plot(bpca(ontario),
+     type='ms',
+     c.number=3)
 
 # Rank objects with ref. to the ideal variable 
 plot(bpca(ontario),
      type='ro')
 
+plot(bpca(ontario),
+     type='ro',
+     c.number=6,
+     c.radio=.5)
+
 # Rank variables with ref. to the ideal object
 plot(bpca(ontario),
      type='rv')
+
+plot(bpca(ontario),
+     type='rv',
+     c.number=6,
+     c.radio=.5)
 
 plot(bpca(iris[-5]),
      type='eo',
@@ -513,6 +542,7 @@ plot(bpca(iris[-5]),
      type='ev',
      var.id='Sepal.Width',
      var.factor=.3)
+}
 
 devAskNewPage(oask)
 }

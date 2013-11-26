@@ -149,6 +149,7 @@ bp <- bpca(iris[-5],
 
 latex.bpca(bp)
 
+\dontrun{
 #Example 2: with caption 
 bp2 <- bpca(gabriel1971) 
 
@@ -289,7 +290,8 @@ latex.bpca(list(bp_2007,
            hline1='\\\\hline \\\\hline',
            hline2='\\\\hline \\\\hline',
            algnumbers='>{\\\\raggedleft}p{1.3cm}',
-           footnote='Note: F - Movie; D - Documentary; DH - Documentary directed by men; DF - Documentary directed by women.')  
+           footnote='Note: F - Movie; D - Doc.; DH - Doc. dir. by men; DF - Doc. dir. by women.') 
+}           
 }
 
 \keyword{multivariate, table, latex, bpca}

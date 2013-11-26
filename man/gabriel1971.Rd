@@ -40,7 +40,7 @@
 data(gabriel1971)
 bp <- bpca(gabriel1971)
 
-x11(w=6, h=6)
+dev.new(w=6, h=6)
 plot(bp,
      var.factor=2)
 

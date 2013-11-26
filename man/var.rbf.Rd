@@ -44,7 +44,8 @@
 bp1 <- bpca(gabriel1971)
 bp1$var.rb # NA
 
-(res <- var.rbf(bp1$coord$var)) # Computes the correlations of all variables under the biplot projection
+# Computes the correlations of all variables under the biplot projection
+(res <- var.rbf(bp1$coord$var)) 
 
 ##
 ## Common use

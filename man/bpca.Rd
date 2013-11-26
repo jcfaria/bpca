@@ -194,7 +194,7 @@
 
 bp <- bpca(gabriel1971)
 
-x11(w=6, h=6)
+dev.new(w=6, h=6)
 oask <- devAskNewPage(dev.interactive(orNone=TRUE))
 plot(bp,
      var.factor=2)
@@ -216,6 +216,7 @@ bp$coord$var
 bp$var.rb
 bp$var.rd
 
+\dontrun{
 ##
 ## Example 2
 ## Computing and ploting a bpca object with 'scatterplot3d' package - 3d
@@ -300,6 +301,7 @@ plot(bpca(iris[-5],
      obj.col=c('red', 'green3', 'orange')[unclass(iris$Species)],
      simple.axes=FALSE,
      box=TRUE)
+}
 
 devAskNewPage(oask)       
 }

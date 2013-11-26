@@ -47,9 +47,10 @@
 ## Grouping objects with different symbols and colors - 2d and 3d
 ##
 
-x11(w=6, h=6)
+dev.new(w=6, h=6)
 oask <- devAskNewPage(dev.interactive(orNone=TRUE))
 
+\dontrun{
 # 2d
 plot(bpca(iris[-5]),
      var.factor=.3,
@@ -83,6 +84,7 @@ plot(bpca(iris[-5],
      obj.col=c('red', 'green3', 'orange')[unclass(iris$Species)],
      simple.axes=FALSE,
      box=TRUE)
+}
 
 ##
 ## New options ploting
@@ -194,6 +196,7 @@ plot(bpca(ontario),
 plot(bpca(ontario),
      type='rv')
 
+\dontrun{
 plot(bpca(iris[-5]),
      type='eo',
      obj.id=42,
@@ -207,6 +210,7 @@ plot(bpca(iris[-5]),
      type='ev',
      var.id='Sepal.Width',
      var.factor=.3)
+}
 
 devAskNewPage(oask)
 }

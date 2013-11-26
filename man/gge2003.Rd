@@ -42,7 +42,7 @@ bp <- bpca(t(gge2003), var.rb=TRUE)
 
 as.dist(bp$var.rb)
 
-x11(w=8, h=4)
+dev.new(w=8, h=4)
 op = par(no.readonly=TRUE)
 par(mfrow=c(1,2))
 

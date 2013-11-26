@@ -90,6 +90,7 @@ plot(bpca(gabriel1971,
 # Between all, RUR followed by CRISTIAN, variables are the most poor represented
 # by a 2d biplot.
 
+\dontrun{
 ##
 ## Example 3
 ## Diagnostic of iris dataset representation with var.rd parameter
@@ -147,6 +148,7 @@ round(bp3$var.rb, 2)
 round(cor(iris[-5]), 2)
 
 # Good representation of all variables with a 3d biplot!
+}
 
 devAskNewPage(oask)
 }
