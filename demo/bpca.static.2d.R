@@ -1,5 +1,5 @@
 ##
-## Computing and ploting a bpca object with 'graphics' package - 2d
+## Computing and plotting a bpca object with 'graphics' package - 2d
 ##
 
 oask <- devAskNewPage(dev.interactive(orNone=TRUE))

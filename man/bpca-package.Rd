@@ -71,7 +71,7 @@ plot(bpca(iris[-5],
      obj.col=c('red', 'green3', 'blue')[unclass(iris$Species)],
      obj.pch=c('+', '*', '-')[unclass(iris$Species)])
 
-# 3d dinamic
+# 3d dynamic
 plot(bpca(iris[-5],
           method='hj',
           d=1:3),
@@ -87,7 +87,7 @@ plot(bpca(iris[-5],
 }
 
 ##
-## New options ploting
+## New options plotting
 ##
 plot(bpca(ontario))
 

@@ -1,5 +1,5 @@
 ##
-## Computing and ploting a bpca object with 'graphics' package - 2d
+## Computing and plotting a bpca object with 'graphics' package - 2d
 ##
 
 oask <- devAskNewPage(dev.interactive(orNone=TRUE))
@@ -42,7 +42,7 @@ plot(bpca(gabriel1971,
      obj.offset=.5)
 
 ##
-## Computing and ploting a bpca object with 'scatterplot3d' package - 3d
+## Computing and plotting a bpca object with 'scatterplot3d' package - 3d
 ##
 
 bp <- bpca(gabriel1971,
@@ -86,7 +86,7 @@ plot(bpca(gabriel1971,
      angle=70)
 
 ##
-## Computing and ploting a bpca object with 'obj.identify=TRUE' parameter - 2d
+## Computing and plotting a bpca object with 'obj.identify=TRUE' parameter - 2d
 ##
 
 bp <- bpca(gabriel1971)
@@ -107,7 +107,7 @@ if(dev.interactive()) {
 }       
 
 ##
-## Computing and ploting a bpca object with 'obj.identify=TRUE' parameter - 3d
+## Computing and plotting a bpca object with 'obj.identify=TRUE' parameter - 3d
 ##
 
 bp <- bpca(gabriel1971,
@@ -130,7 +130,7 @@ if(dev.interactive()) {
 
 ##
 ## Computes: vector variable lengths, angles between vector variables and
-## variable correlations from dataframe or matrix objects (n x p)
+## variable correlations from data.frame or matrix objects (n x p)
 ## n = rows (objects)
 ## p = columns (variables)
 ##
@@ -311,7 +311,7 @@ plot(bpca(gabriel1971,
      zlim=c(-1,1))
 
 ##
-## New options ploting
+## New options plotting
 ##
 data(ontario)
 

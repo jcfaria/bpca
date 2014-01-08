@@ -1,5 +1,5 @@
 ##
-## Computing and ploting a bpca object with 'scatterplot3d' package - 3d
+## Computing and plotting a bpca object with 'scatterplot3d' package - 3d
 ##
 
 oask <- devAskNewPage(dev.interactive(orNone=TRUE))

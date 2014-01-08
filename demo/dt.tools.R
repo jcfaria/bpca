@@ -1,11 +1,11 @@
 ##
 ## Computes: vector variable lengths, angles between vector variables and
-## variable correlations from dataframe or matrix objects (n x p)
+## variable correlations from data.frame or matrix objects (n x p)
 ## n = rows (objects)
 ## p = columns (variables)
 ##
 
-dt <- dt.tools(iris, 2) # No mumeric columns are removed in dt.tools
+dt <- dt.tools(iris, 2) # No numeric columns are removed in dt.tools
 
 # Exploring the object 'bp' created by the function 'var.tools'
 class(dt)

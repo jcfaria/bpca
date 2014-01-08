@@ -59,7 +59,7 @@
     If \code{TRUE}, the diagnostic of the representation of variables projected by the biplot will be computed.
     If \code{var.rd} is \code{TRUE} the \code{var.rb} parameter must be also \code{TRUE}.}
   \item{limit}{A vector giving the percentual limit to define poor representation of variables.}
-  \item{\dots}{Aditional parameters.
+  \item{\dots}{Additional parameters.
     It is necessary to be S3 method.}
 }
 
@@ -99,7 +99,7 @@
   \deqn{s^2 = diag(d)}
   \deqn{n = n\_objects(Y)}
 
-  it is possible an aproximation of Y:
+  it is possible an approximation of Y:
   \deqn{_{n}Y_{p} \approx Y_{m} = g.h'}
 
   in various ways. The methods of factorization computed by the \code{bpca}
@@ -134,7 +134,7 @@
   inverse of the \code{svd} decomposition of the given data
   \deqn{_{n}Y_{p}}
   After this, it will make a call to the method \code{bpca.default} with the
-  adequated parameters.
+  adequate parameters.
 
   The biplot is used with many multivariate methods to display
   relationships between objects, variables and the interrelationship
@@ -150,7 +150,7 @@
   \item{eigenvectors}{A vector of the eigenvectors.}
   \item{numer}{A vector of the number of eigenvalues considered in the reduction.}
   \item{importance}{A matrix with the \emph{general} and \emph{partial} variation explained by the reduction.}
-  \item{coord}{A list with the coordenates of the two components: objects and variables.}
+  \item{coord}{A list with the coordinates of the two components: objects and variables.}
   \item{var.rb}{A matrix of all correlation coefficients for all variables under the biplot projection.}
   \item{var.rd}{A matrix of the diagnostic of the poor projection of variable correlations by the biplot reduction.}
 }
@@ -219,7 +219,7 @@ bp$var.rd
 \dontrun{
 ##
 ## Example 2
-## Computing and ploting a bpca object with 'scatterplot3d' package - 3d
+## Computing and plotting a bpca object with 'scatterplot3d' package - 3d
 ##
 
 bp <- bpca(gabriel1971,
@@ -250,7 +250,7 @@ bp$var.rd
 
 ##
 ## Example 3
-## Computing and ploting a bpca object with 'rgl' package - 3d
+## Computing and plotting a bpca object with 'rgl' package - 3d
 ##
 
 plot(bpca(gabriel1971,
@@ -288,7 +288,7 @@ plot(bpca(iris[-5],
      obj.col=c('red', 'green3', 'blue')[unclass(iris$Species)],
      obj.pch=c('+', '*', '-')[unclass(iris$Species)])
 
-# 3d dinamic
+# 3d dynamic
 plot(bpca(iris[-5],
           method='hj',
           d=1:3),

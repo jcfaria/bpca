@@ -21,11 +21,11 @@ cor(rock)
 # Projected correlations:
 bp$var.rb
 
-# Aditional diagnostic
+# Additional diagnostic
 plot(qbpca(rock,
            bp))
 
-# This variable reamains as important in a dimension not contemplated
+# This variable remains as important in a dimension not contemplated
 # by the biplot reduction (PC3):
 
 bp$eigenvectors
@@ -38,8 +38,8 @@ summary(bp1)
 plot(bp1)
 
 # The recommendation, knowing that this variable has a poor
-# representaion is:
-# 1- Avoid to discut it;
+# representation is:
+# 1- Avoid to discute it;
 # 2- Consider to incorporate the information with a bpca.3d
 
 bp2 <- bpca(rock,
@@ -52,11 +52,11 @@ summary(bp2)
 plot(bp2)           # Static
 
 plot(bp2,
-     rgl.use=TRUE)  # Dinamic
+     rgl.use=TRUE)  # Dynamic
 
 bp2$var.rd          # Nice!
 
-# Aditional diagnostic
+# Additional diagnostic
 plot(qbpca(rock,
            bp2))
 

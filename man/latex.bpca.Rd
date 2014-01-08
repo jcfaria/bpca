@@ -37,7 +37,7 @@ latex.bpca(x,
 }
 
 \arguments{
-  \item{x}{A object of the class \code{\link{bpca}} or a list of the \code{\link{bpca}} objetcs.}
+  \item{x}{A object of the class \code{\link{bpca}} or a list of the \code{\link{bpca}} objects.}
   \item{round}{The numbers of decimal places to be used.
     The default is \samp{4}.}
   \item{where}{Specifies the location to which the floating body can move.
@@ -53,7 +53,7 @@ latex.bpca(x,
     \samp{'\\\\scriptsize'}, \samp{'\\\\large'} and \samp{'\\\\LARGE'}.}
   \item{v.retained}{The name of the variance retained to be labeled in the table.
     The default is \samp{'Variance retained'}.}
-  \item{v.partial}{The name of the variace partial to be labeled in the table. 
+  \item{v.partial}{The name of the variance partial to be labeled in the table. 
     The default is \samp{'Partial'}.}
   \item{v.accumulated}{The name of the variance accumulated to be labeled in the table.
     The default is \samp{'Accumalated'}.}
@@ -77,7 +77,7 @@ latex.bpca(x,
     The default is \samp{'c'}.
     Possible values are the tabular environment same, e.g., \samp{'l'}, \samp{'r'} and \samp{'c'}.}
   \item{algsubheader}{Specifies the alignment of the name of the bpca objects. 
-    It only works where there is a list of the \code{\link{bpca}} objetcs. 
+    It only works where there is a list of the \code{\link{bpca}} objects. 
     The default is \samp{'c'}.
     Possible values are the tabular environment same, e.g., \samp{'l'}, \samp{'r'} and \samp{'c'}.}
   \item{pc.label}{The name of principal components to be labeled in the table.
@@ -98,16 +98,16 @@ latex.bpca(x,
 
 \details{
   It is necessary to declare the latex packages: \samp{threeparttable}, \samp{multirow},
-  \samp{array} and \samp{colortbl} in the preable of the Rnoweb file to make available all the 
+  \samp{array} and \samp{colortbl} in the preamble of the Rnoweb file to make available all the 
   resources of the function \code{latex.bpca}.
   
   The function \code{latex.bpca} was developed to make the life easier for those
   who make latex tables with the results of the bpca function.
 
-  Some people could ask: why do not use the function \code{\link[Hmisc]{latex}} of the the package \pkg{Hmisc} or
+  Some people could ask: why do not use the function \code{\link[Hmisc]{latex}} of the package \pkg{Hmisc} or
   \code{\link[xtable]{xtable}} of the \pkg{xtable}?
   Both \code{\link[Hmisc]{latex}} and \code{\link[xtable]{xtable}} functions are a bit complex and with many parameters
-  for construct an adequated bpca table.
+  for construct an adequate bpca table.
   It is not always intuitive to all users, discouraging some people to use the \code{\link[Hmisc]{latex}} or
   \code{\link[xtable]{xtable}} function for constructing bpca tables, making the preparation of the bpca analysis
   reports data laborious. 

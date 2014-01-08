@@ -2,11 +2,11 @@
 \alias{gge2003}
 
 \title{
-  A didatic matrix of genotypes (rows) and environments (colums)
+  A didactic matrix of genotypes (rows) and environments (columns)
 }
 
 \description{
-  A didatic matrix of genotypes (rows) and environments (colums) proposed by
+  A didatic matrix of genotypes (rows) and environments (columns) proposed by
   Weikai Yan and Manjit S. Kang in GGE biplot analysis: a graphical tool for
   breeders, geneticists, and agronomists.
 }

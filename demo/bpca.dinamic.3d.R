@@ -1,5 +1,5 @@
 ##
-## Computing and ploting a bpca object with 'rgl' package - 3d
+## Computing and plotting a bpca object with 'rgl' package - 3d
 ##
 
 open3d()

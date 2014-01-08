@@ -101,7 +101,7 @@
               \samp{co} - compare two objects; \cr
               \samp{cv} - compare (relationship among) variables; \cr
               \samp{ww} - which won where/what; \cr
-              \samp{dv} - discrimitivenss vs. representativeness; \cr
+              \samp{dv} - discrimitiveness vs. representativeness; \cr
               \samp{ms} - mean vs. stability; \cr
               \samp{ro} - rank objects with ref. to an \dQuote{ideal} variable; \cr
               \samp{rv} - rank variables with ref. to an \dQuote{ideal} object.}
@@ -271,7 +271,7 @@ plot(bpca(gabriel1971,
 
 ##
 ## Example 2
-## Computing and ploting a bpca object with 'scatterplot3d' package - 3d
+## Computing and plotting a bpca object with 'scatterplot3d' package - 3d
 ##
 
 bp <- bpca(gabriel1971,
@@ -299,7 +299,7 @@ plot(bpca(gabriel1971,
 
 ##
 ## Example 3
-## Computing and ploting a bpca object with 'rgl' package - 3d
+## Computing and plotting a bpca object with 'rgl' package - 3d
 ##
 
 plot(bpca(gabriel1971,
@@ -338,7 +338,7 @@ plot(bpca(iris[-5],
      obj.col=c('red', 'green3', 'blue')[unclass(iris$Species)],
      obj.pch=c('+', '*', '-')[unclass(iris$Species)])
 
-# 3d dinamic
+# 3d dynamic
 plot(bpca(iris[-5],
           method='hj',
           d=1:3),
@@ -353,7 +353,7 @@ plot(bpca(iris[-5],
 
 ##
 ## Example 5
-## Computing and ploting a bpca object with 'obj.identify=TRUE' parameter - 2d
+## Computing and plotting a bpca object with 'obj.identify=TRUE' parameter - 2d
 ##
 
 bp <- bpca(gabriel1971)
@@ -373,7 +373,7 @@ plot(bp,
 
 ##
 ## Example 6
-## Computing and ploting a bpca object with 'obj.identify=TRUE' parameter - 3d
+## Computing and plotting a bpca object with 'obj.identify=TRUE' parameter - 3d
 ##
 
 bp <- bpca(gabriel1971,
@@ -393,7 +393,7 @@ plot(bp,
      obj.identify=TRUE)
 
 ##
-## New options ploting
+## New options plotting
 ##
 plot(bpca(ontario))
 
