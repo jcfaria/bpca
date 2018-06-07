@@ -1,8 +1,8 @@
 Package: bpca
 Type: Package
 Title: Biplot of Multivariate Data Based on Principal Components Analysis
-Version: 1.2-2
-Date: 2013-11-23
+Version: 1.3-0
+Date: 2018-06-07
 Author: José Cláudio Faria, Clarice Garcia Borges Demétrio and Ivan Bezerra Allaman
 Maintainer: Jose Claudio Faria <joseclaudio.faria@gmail.com>
 Depends: R (>= 2.6.0), scatterplot3d, rgl
