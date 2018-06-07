@@ -7,5 +7,18 @@ exportPattern(".")
 # Import all packages listed as Imports or Depends
 import(
   scatterplot3d,
-  rgl
+  rgl,
+  stats, 
+  graphics,
+  grDevices
 )
+
+# S3 methods
+S3method(bpca,default)
+S3method(bpca,prcomp)
+S3method(plot,bpca.2d)
+S3method(plot,bpca.3d)
+S3method(plot,qbpca)
+S3method(print,latex.bpca)
+S3method(summary,bpca)
+S3method(summary,latex.bpca)
