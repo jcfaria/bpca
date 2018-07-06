@@ -4,8 +4,8 @@ dt.tools <- function(x,
 {
   stopifnot(is.matrix(x) || is.data.frame(x))
 
-  bCol = sapply(x,
-                is.numeric)
+  bCol <- sapply(x,
+                 is.numeric)
 
   x <- as.matrix(x[,bCol])
 
@@ -36,8 +36,8 @@ dt.tools <- function(x,
                x[,j]) /
       (l[i] * l[j])
 
-      r[j,i] <- cost    # fill lower.tri
-      r[i,j] <- r[j,i]  # fill upper.tri
+    r[j,i] <- cost    # fill lower.tri
+    r[i,j] <- r[j,i]  # fill upper.tri
     }
   }
 

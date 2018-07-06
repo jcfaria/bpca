@@ -32,7 +32,7 @@
 
 \seealso{
   \code{\link{bpca}},
-  \code{\link{latex.bpca}}
+  \code{\link{xtable.bpca}}
 }
 
 \examples{

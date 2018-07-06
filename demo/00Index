@@ -1,13 +1,12 @@
-bpca.dinamic.3d            Computes and plots a bpca object with `rgl' package - 3d
-bpca.d2_4.static.3d        Computes and plots a bpca object with arbitrary choice of the first eigenvalue - 3d
-bpca                       Some main demos of the package `bpca'
-bpca.static.2d             Computes and plots a bpca object with `graphics' package - 2d
-bpca.static.3d             Computes and plots a bpca object with `scatterplot3d' package - 3d
-dt.tools                   Computes length, angle and correlation from dataframe or matrix objects (n x p)
-gge.check                  Comparative example from YAN, W & KANG, M.S. GGE biplot analysis
-iris                       Grouping objects with different symbols and colors - 2d and 3d
-iris.var.rd                Diagnostic of iris representation with `var.rd' parameter - 2d and 3d
-rock.var.rd                Diagnostic of rock representation with `var.rd' parameter - 2d and 3d
-var.rb.2d                  Example of `var.rb=TRUE' parameter as a measure of the quality of the biplot - 2d
-var.rb.3d                  Example of `var.rb=TRUE' parameter as a measure of the quality of the biplot - 3d
-var.rd.2d                  Example of `var.rd=TRUE' parameter as a measure of the quality of the biplot - 2d
+bpca-dinamic-3d         Computes and plots a bpca object with `rgl' package - 3d
+bpca-static-2d          Computes and plots a bpca object with `graphics' package - 2d
+bpca-static-3d          Computes and plots a bpca object with `scatterplot3d' package - 3d
+bpca                    Some main demos of the package `bpca'
+dt-tools                Computes length, angle and correlation from dataframe or matrix objects (n x p)
+gge-check               Comparative example from YAN, W & KANG, M.S. GGE biplot analysis
+iris-var-rd             Diagnostic of iris representation with `var.rd' parameter - 2d and 3d
+iris                    Grouping objects with different symbols and colors - 2d and 3d
+rock-var-rd             Diagnostic of rock representation with `var.rd' parameter - 2d and 3d
+var-rb-2d               Example of `var.rb=TRUE' parameter as a measure of the quality of the biplot - 2d 
+var-rb-3d               Example of `var.rb=TRUE' parameter as a measure of the quality of the biplot - 3d 
+var-rd-2d               Example of `var.rd=TRUE' parameter as a measure of the quality of the biplot - 2d 

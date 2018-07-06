@@ -189,7 +189,7 @@ plot.bpca.3d <- function(x,
   # Plot bpca.3d under package 'rgl'
   if(rgl.use) {
     size <- max(coobj) /
-    20*obj.cex
+      20*obj.cex
 
     if (clear3d)
       clear3d()

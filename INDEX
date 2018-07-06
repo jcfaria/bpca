@@ -6,21 +6,23 @@ bpca                 Main function (S3 based).
 dt.tools             Calculates vector variable lengths, angles between vector
                      variables and variable correlations from `data.frame' or
                      `matrix' objects.
-latex.bpca           LaTeX table of the `bpca' objects.                 
 plot.bpca.2d         Plots `bpca.2d' objects with the package `graphics'.
 plot.bpca.3d         Plots `bpca.3d' objects with the packages `scatterplot3d'
                      (`graphics' based) and `rgl' (OpenGL based).
 plot.qbpca           Plots `qbpca' objects with the package `graphics'.
-print.latex.bpca     Prints `latex.bpca' objects.
+
+print.xtable         Creates generic print.xtable
+print.xtable.bpca    Prints `xtable.bpca' objects.
+print.xtable.default Prints `xtable' objects.
 qbpca                Evaluates the quality of the biplot representation for
                      `bpca.2d' and `bpca.3d' objects.
 summary.bpca         Summarizes `bpca' (`bpca.2d' and `bpca.3d') objects.
-summary.latex.bpca   Summarizes `latex.bpca' objects.
 var.rbf              Calculates the matrix of graphical correlations projected by
                      the biplot for `bpca.2d' and `bpca.3d' objects.
 var.rdf              Calculates the matrix of `poor' graphical correlations,
                      represented by the biplot, for `bpca.2d' and `bpca_3d'
                      objects.
+xtable.bpca          Creates xtable method to bpca objects.           
 
 Datasets:
 ========

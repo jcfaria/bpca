@@ -43,17 +43,17 @@ bpca.default <- function(x,
   s2.scal <- diag(svdx.scal$d)
 
   switch(match.arg(method),
-         hj = {
+         hj={
            g.scal  <- svdx.scal$u %*% s2.scal
            h.scal  <- s2.scal %*% t(svdx.scal$v)
            hl.scal <- t(h.scal)
          },
-         sqrt = {
+         sqrt={
            g.scal  <- svdx.scal$u %*% sqrt(s2.scal)
            h.scal  <- sqrt(s2.scal) %*% t(svdx.scal$v)
            hl.scal <- t(h.scal)
          },
-         jk = {
+         jk={
            g.scal  <- svdx.scal$u %*% s2.scal
            hl.scal <- svdx.scal$v
 
@@ -66,7 +66,7 @@ bpca.default <- function(x,
 
            #hl.scal / d
          },
-         gh = {
+         gh={
            g.scal  <- sqrt(nrow(x)-1) * svdx.scal$u
            h.scal  <- 1/sqrt(nrow(x)-1) * s2.scal %*% t(svdx.scal$v)
            hl.scal <- t(h.scal)
@@ -107,7 +107,9 @@ bpca.default <- function(x,
     var.rb.res <- NA
 
   if(var.rb & var.rd)
-    var.rd.res <- var.rdf(x.scal, var.rb.res, limit)
+    var.rd.res <- var.rdf(x.scal, 
+                          var.rb.res, 
+                          limit)
   else
     var.rd.res <- NA
 
@@ -133,9 +135,13 @@ bpca.default <- function(x,
   colnames(res$importance) <- 'explained'
 
   if(n.lambda == 2)
-    class(res) <- c('bpca.2d', 'bpca', 'list')
+    class(res) <- c('bpca.2d', 
+                    'bpca', 
+                    'list')
   else if(n.lambda == 3)
-    class(res) <- c('bpca.3d', 'bpca', 'list')
+    class(res) <- c('bpca.3d', 
+                    'bpca', 
+                    'list')
 
   invisible(res)
 }
