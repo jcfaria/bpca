@@ -1,5 +1,5 @@
 summary.bpca <- function(object,
-                         presentation=FALSE,...)
+                         presentation=FALSE, ...)
 {
   if (!inherits(object, 'bpca'))
     stop("Use this function only with 'bpca' class!")

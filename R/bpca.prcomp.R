@@ -21,8 +21,8 @@ bpca.prcomp <- function(x,
   # Due to necessity of different type of factorization it will go back
   # from prcom, i.e, it will regenerate the data x already scaled!
   xreg <- x$x %*%
-  (solve(t(x$rotation) %*%
-         x$rotation) %*%
+    (solve(t(x$rotation) %*%
+           x$rotation) %*%
   t(x$rotation))
   # xreg <- x$x %*%
   # ginv(x$rotation) # another option (require MASS)
