@@ -58,7 +58,6 @@ xtable.bpca(x,
 
 \seealso{
   \code{\link{bpca}},
-  \code{\link[Hmisc]{latex}},
   \code{\link[xtable]{xtable}}
 }  
 
@@ -79,5 +78,8 @@ xtable(bp2,
        label='example_2')
 }
 
-\keyword{multivariate, table, latex, bpca}
+\keyword{multivariate}
+\keyword{table}
+\keyword{latex}
+\keyword{bpca}
 

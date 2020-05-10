@@ -12,7 +12,6 @@
 }
 
 \usage{
-\method{print}{xtable}(x,\dots)
 \method{print}{xtable.bpca}(x, 
       hline.after = getOption("xtable.hline.after", NULL), 
       include.colnames = getOption("xtable.include.colnames", FALSE), 
@@ -22,7 +21,6 @@
                                              sanitize.text.function), 
       sanitize.colnames.function = getOption("xtable.sanitize.rownames.function", 
                                              sanitize.text.function),\dots)
-\method{print}{xtable.default}(x,\dots)
 }
 
 \arguments{

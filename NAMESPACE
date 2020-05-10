@@ -10,7 +10,8 @@ import(
   rgl,
   stats, 
   graphics,
-  grDevices
+  grDevices,
+  xtable
 )
 
 # S3 methods
@@ -19,11 +20,6 @@ S3method(bpca,prcomp)
 S3method(plot,bpca.2d)
 S3method(plot,bpca.3d)
 S3method(plot,qbpca)
-S3method(print,xtable)
-S3method(print,xtable.default)
 S3method(print,xtable.bpca)
 S3method(summary,bpca)
 S3method(xtable,bpca)
-
-importFrom("xtable","xtable")
-importFrom("xtable","print.xtable")

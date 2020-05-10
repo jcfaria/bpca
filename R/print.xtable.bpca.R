@@ -133,11 +133,11 @@ print.xtable.bpca <- function(x,
 
   }
 
-  xtable::print.xtable(x[-c(1,nvariables+1),],
-                       hline.after=hline.after,
-                       include.colnames=FALSE,
-                       sanitize.rownames.function=sanitize.rownames.function,
-                       add.to.row=add.to.row,
-                       ...)
+  print.xtable(x[-c(1,nvariables+1),],
+               hline.after=hline.after,
+               include.colnames=FALSE,
+               sanitize.rownames.function=sanitize.rownames.function,
+               add.to.row=add.to.row,
+               ...)
 
 }
