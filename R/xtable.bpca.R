@@ -23,11 +23,13 @@ xtable.bpca <- function(x,
                     "Variance retained", 
                     "Variance accumulated")
 
-  return(xtable(x, 
+  res <- xtable(x, 
                 caption=caption, 
                 label=label, 
                 align=align, 
                 digits=digits, 
                 display=display, 
-                auto=auto, ...))
+                auto=auto, ...)
+  class(res) <- c("xtable.bpca","xtable","data.frame")
+  return(res)
 }

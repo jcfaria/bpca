@@ -1,3 +1,6 @@
+2021-03-15 vs. 1.3-3 - Ivan Bezerra Allaman <ivanalaman@gmail.com>
+	* Bug corrected in xtable.bpca function. Add class "xtable.bpca" in "res" object.
+
 2020-04-01 vs. 1.3-2 - Ivan Bezerra Allaman  <ivanalaman@gmail.com>
 	* Created the methods xtable.bpca and the function print.xtable.bpca.
   	* The functions latex.bpca, print.latex.bpca and summary.latex.bpca were deprecated and removed this package. Consequently the .Rd file were removed.
