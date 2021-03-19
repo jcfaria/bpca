@@ -13,7 +13,12 @@ print.xtable.bpca <- function(x,
     morerow <- function(x) paste("&",
                                  x,
                                  collpase='')
-    sanitize.rownames.function <- morerow
+    sanitizerownamesfunction <- morerow
+  }else{
+    morerow <- function(x) paste("&",
+                                 sanitize.rownames.function(x),
+                                 collpase='')
+    sanitizerownamesfunction <- morerow
   }
 
   if(is.null(sanitize.colnames.function)){
@@ -71,15 +76,30 @@ print.xtable.bpca <- function(x,
                    "\\\\ \n ",
                    collapse="")
 
+    # A função sanitize.rownames.function deve ser aplicada ao objeto newvariables também!
+    #     aux_com1 <- paste(paste("\\hline \n \\multirow{",
+    #                             nvariables,
+    #                             "}{*}{",
+    #                             sanitize.rownames.function(label_eigenvec),
+    #                             "}",
+    #                             sep=''),
+    #                       newvariables[1],
+    #                       sep='&')
+    label_eigenvec <- ifelse(is.null(sanitize.rownames.function),
+                             label_eigenvec,
+                             label_eigenvec <- sanitize.rownames.function(label_eigenvec))
+    firstvariablerow <-ifelse(is.null(sanitize.rownames.function),
+                              newvariables[1],
+                              firstvariablerow <- sanitize.rownames.function(newvariables[1]))  
     aux_com1 <- paste(paste("\\hline \n \\multirow{",
                             nvariables,
                             "}{*}{",
-                            sanitize.rownames.function(label_eigenvec),
+                            label_eigenvec,
                             "}",
                             sep=''),
-                      newvariables[1],
-                      sep='&')
-
+                      firstvariablerow,
+                      sep='&') 
+    
     aux_com11 <- gsub("(&\\s)",
                       "",
                       aux_com1,
@@ -136,7 +156,7 @@ print.xtable.bpca <- function(x,
   print.xtable(x[-c(1,nvariables+1),],
                hline.after=hline.after,
                include.colnames=FALSE,
-               sanitize.rownames.function=sanitize.rownames.function,
+               sanitize.rownames.function=sanitizerownamesfunction,
                add.to.row=add.to.row,
                ...)
 

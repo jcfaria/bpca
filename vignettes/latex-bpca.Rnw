@@ -148,7 +148,7 @@ italic <- function(x)
   paste('\\textit{',
         x, 
         '}')
-} # It is necessary the character "&" to adapt the number of column of the table!
+} 
 
 print(tbl2,
       sanitize.rownames.function = italic)
@@ -156,7 +156,8 @@ print(tbl2,
 
 \section{Call directly the print.xtable function}
 <<results=tex>>= 
-##Example: I don't want this formatations (print.xtable.bpca)! Then you can to call directaly the print.xtable function.
+##Example: Se você não quer utilizar o padrão de formatação do bpca, você pode chamar diretamente
+#a função print.xtable e formatar a tabela como quiser.
 italic1 <- function(x)
 {
   paste('\\textit{',
