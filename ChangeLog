@@ -1,24 +1,34 @@
+2021-03-23 vs. 1.3-4 - José Cláudio Faria  <joseclaudio.faria@gmail.com>
+ * The vignette has been completely redone. We believe it is more simple, direct
+   and instructive.
+
 2021-03-19 vs. 1.3-3 - Ivan Bezerra Allaman <ivanalaman@gmail.com>
-	* Bug corrected in xtable.bpca function. Add class "xtable.bpca" in "res" object.
-	* Fixed bug in print.xtable.bpca function. Add news commands in the lines 17 to 22 and new modifications in the aux_com1 object. The sanitize.rownames.function works propriely now!
+	* Bug corrected (related to the class) in xtable.bpca function.
+	* Fixed bug in print.xtable.bpca function. Add news commands in the lines
+   17 to 22 and new modifications in the aux_com1 object.
+   The sanitize.rownames.function works propriely now!
 
 2020-04-01 vs. 1.3-2 - Ivan Bezerra Allaman  <ivanalaman@gmail.com>
 	* Created the methods xtable.bpca and the function print.xtable.bpca.
-  	* The functions latex.bpca, print.latex.bpca and summary.latex.bpca were deprecated and removed this package. Consequently the .Rd file were removed.
+ * The functions latex.bpca, print.latex.bpca and summary.latex.bpca were
+   deprecated and removed this package. Consequently the .Rd file were removed.
 	* The due modifications were make the NAMESPACE and DESCRIPTION files.
 
 2018-06-16 vs. 1.3-1 - Ivan Bezerra Allaman  <ivanalaman@gmail.com>
-	* A little bit changes in the latex.bpca function. Change footenotes argument from "" to NULL.
+	* A little bit changes in the latex.bpca function. Change footenotes argument
+   from "" to NULL.
 
 2018-06-07 vs. 1.3-0 - Ivan Bezerra Allaman  <ivanalaman@gmail.com>
-	* Add stats, graphics and grDevices in NAMESPACE file within import function in accordance with new premisses of the CRAN
+	* Add stats, graphics and grDevices in NAMESPACE file within import function
+   in accordance with new premisses of the CRAN
 
 2013-11-23 vs. 1.2-2 - José Cláudio Faria  <joseclaudio.faria@gmail.com>
 	* Export LaTeX table about the reduction (latex.bpca)
 	* Parts of sources were a bit enhanced
 	* New data marina.rda
 	* The documentation has been improved
-        * require calls to packages already attached (rgl and scatterplot3d) by depends was removed
+ * require calls to packages already attached (rgl and scatterplot3d) by depends
+   was removed
 	* Released to CRAN
 
 2012-12-12 vs. 1.2-1 - José Cláudio Faria  <joseclaudio.faria@gmail.com>

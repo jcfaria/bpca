@@ -17,8 +17,8 @@ print.xtable.default Prints `xtable' objects.
 qbpca                Evaluates the quality of the biplot representation for
                      `bpca.2d' and `bpca.3d' objects.
 summary.bpca         Summarizes `bpca' (`bpca.2d' and `bpca.3d') objects.
-var.rbf              Calculates the matrix of graphical correlations projected by
-                     the biplot for `bpca.2d' and `bpca.3d' objects.
+var.rbf              Calculates the matrix of graphical correlations projected
+                     by the biplot for `bpca.2d' and `bpca.3d' objects.
 var.rdf              Calculates the matrix of `poor' graphical correlations,
                      represented by the biplot, for `bpca.2d' and `bpca_3d'
                      objects.
