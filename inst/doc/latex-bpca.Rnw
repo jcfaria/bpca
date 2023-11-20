@@ -1,0 +1,203 @@
+%\VignetteIndexEntry{latex table for bpca objects}
+\documentclass[10pt, a4paper]{article}
+%\usepackage[brazil]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[sc]{mathpazo}
+\usepackage[T1]{fontenc}
+
+\usepackage{geometry}
+\geometry{verbose,
+  tmargin=2.0cm,
+  bmargin=2.0cm,
+  lmargin=2.0cm,
+  rmargin=2.0cm}
+
+\usepackage[urlcolor=blue,
+  citecolor=red,
+  colorlinks=true]{hyperref}
+
+\usepackage{url}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{float}
+\usepackage{parskip}
+\usepackage[round]{natbib}
+
+% The four packages below are required by latex.bpca function
+\usepackage{multirow}
+\usepackage{colortbl}
+\usepackage{array}
+\usepackage{Sweave}
+
+\setlength\parindent{0pt}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+\begin{document}
+
+\begin{titlepage}
+  \begin{center}
+
+    % Title
+    \HRule \\
+    [0.4cm]
+    
+    {\huge \bfseries \LaTeX~ for bpca objects} \\
+    [0.4cm]
+
+    \HRule \\
+    [2.5cm]
+
+    % Author and user
+    \begin{minipage}{0.8\textwidth}
+      \begin{flushright} \large
+        \emph{Authors} \\
+        José C. \textsc{Faria}, \\
+        Ivan B. \textsc{Allaman}
+      \end{flushright}
+    \end{minipage}
+
+    \vfill
+
+    % Bottom of the page
+    {\large \today}
+
+  \end{center}
+\end{titlepage}
+
+\pagebreak
+\tableofcontents
+
+\newpage
+\section{The simplest}
+<<results=tex>>= 
+library(bpca)
+library(xtable)
+
+bp <- bpca(iris[-5])
+
+## The simplest possible
+xtable(bp)
+
+print(xtable(bp))
+@
+
+\newpage
+\section{Cross-referencing I}
+Using label to cross-referencing: biplot of iris data (packages:datasets) (Table \ref{tbl_iris}),
+biplot of gabriel1971 data (package:bpca) (Table \ref{tbl_gabriel}).
+
+<<results=tex>>=
+## With caption and label
+## It will use the methods print.xtable.bpca provided by the bpca package
+xtable(bpca(iris[-5]),
+       caption='Biplot of iris data (packages:datasets).',
+       label='tbl_iris')
+@
+
+\section{Cross-referencing II}
+<<results=tex>>=
+## With caption and label
+xtable(bpca(gabriel1971),
+       caption='Biplot of gabriel1971 data (package:datasets).',
+       label='tbl_gabriel')
+@
+
+\newpage
+\section{Beautify}
+\subsection{Bold in columns}
+Bold in the column (Table \ref{tbl_rock}).
+
+<<results=tex>>=
+## With bold in the columns
+bp_rock_x <- xtable(bpca(rock),
+                    caption='Biplot of rock data (package:dtasets).',
+                    label='tbl_rock')
+
+bold <- function(x){
+  paste('\\textbf{',
+        x,
+        '}')
+}
+
+print(bp_rock_x,
+      sanitize.colnames.function = bold)
+@
+
+\subsection{Italic in rows}
+Italic in the rows (Table \ref{tbl_USArrests}).
+
+<<results=tex>>=
+## With italic in the rows
+bp_USA_x <- xtable(bpca(USArrests),
+                   caption='Biplot of USArrests data (package:datasets).',
+                   label='tbl_USArrests')
+
+italic <- function(x){
+  paste('\\textit{',
+        x,
+        '}',
+        sep='')
+}
+
+print(bp_USA_x,
+      sanitize.rownames.function = italic)
+@
+
+\newpage
+\section{Latin characters}
+Latin characters in the rows (Table \ref{tbl_rock_2}).
+
+<<results=tex>>=
+## Principal labels in portuguese
+tbl_rock_x <- xtable(bpca(rock),
+                     caption='Biplot of rock data (package:datasets).',
+                     label='tbl_rock_2')
+
+rownames(tbl_rock_x) <- gsub('Eigenvalues',
+                             'Autovalores',
+                             rownames(tbl_rock_x))
+
+rownames(tbl_rock_x) <- gsub('Eigenvectors',
+                             'Autovetores',
+                             rownames(tbl_rock_x))
+
+rownames(tbl_rock_x) <- gsub('Variance retained',
+                             'Variância retida',
+                             rownames(tbl_rock_x))
+
+rownames(tbl_rock_x) <- gsub('Variance accumulated',
+                             'Variância acumulada',
+                             rownames(tbl_rock_x))
+
+colnames(tbl_rock_x) <- c('CP1',
+                          'CP2')
+
+print(tbl_rock_x)
+@
+
+\newpage
+\section{Call print.xtable function}
+Call directly the print.xtable function to customize (Table \ref{tbl_directly}).
+
+<<results=tex>>=
+## If you don't want to use the bpca formatting standard (method print.xtable.bpca),
+## you can directly call the print.xtable function and format the table as you wish.
+italic <- function(x){
+  paste('\\textit{',
+        x,
+        '}',
+        sep='')
+}
+
+print.xtable(xtable(bpca(rock),
+             caption='Call directly the print.xtable function',
+             label='tbl_directly'),
+             sanitize.colnames.function=bold,
+             sanitize.rownames.function=italic)
+
+## To others formatations see:
+## - ?xtable
+## - ?print.xtable
+@
+
+\end{document}
