@@ -82,7 +82,7 @@
   package).
 
   The basic idea behind the biplot method was to add the information about the
-  variables to the principal component graph (Johnson \& Wichern, 1988).
+  variables to the principal component graph (Johnson & Wichern, 1988).
 
   Considering the results of
   \deqn{svd(_{n}Y_{p})}
