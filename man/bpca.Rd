@@ -126,7 +126,7 @@
   \deqn{_{n}Y_{p}}
   is bigger than `m', the biplot
   representation of Y will be an approximation, and accurate only in the case
-  of $r=m$.
+  of \deqn{r = m}.
 
   Due to the need of different methods of factorization, if \samp{x} is a
   \code{prcomp} object, the method \code{bpca.prcomp} will go back from the
