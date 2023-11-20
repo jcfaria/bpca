@@ -1,18 +1,18 @@
 citHeader("To cite bpca in publications use:")
 
-citEntry(entry  = "Manual",
+bibentry(bibtype  = "Manual",
          title  = "bpca: Biplot of Multivariate Data Based on Principal
                    Components Analysis.",
-         author = "José Cláudio Faria,
-                   Clarice Garcia Borges Demétrio and
-                   Ivan Bezerra Allaman",
+         author = c(person("Faria, J. C."),
+                    person("Allaman, I. B."),
+                    person("DemÃ©trio, C. G. B.")),
          organization = "UESC and ESALQ",
          address      = "Ilheus, Bahia, Brasil and
                          Piracicaba, Sao Paulo, Brasil",
          year         = version$year,
 
          textVersion = 
-         paste("Faria, J.C & Demétrio, C. G. B (", version$year, ").",
+         paste("Faria, J.C; Allaman, I. B. & DemÃ©trio, C. G. B (", version$year, ").",
                "bpca: Biplot of multivariate data based on Principal
                 Components Analysis.",
                "ESALQ, USP, Brasil.",

@@ -24,10 +24,9 @@
 }
 
 \author{
-  José Cláudio Faria (\email{joseclaudio.faria@gmail.com})\cr
-  Clarice Garcia Borges Demétrio (\email{clarice@esalq.usp.br})\cr
-  and\cr
-  Ivan Bezerra Allaman (\email{ivanalaman@gmail.com})
+  Faria, J. C. \cr
+  Allaman, I. B. \cr
+  DemÃ©trio C. G. B.
 }
 
 \seealso{

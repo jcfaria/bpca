@@ -1,5 +1,5 @@
-%\VignetteIndexEntry{latex table for bpca object}
-\documentclass[10pt,a4paper]{article}
+%\VignetteIndexEntry{latex table for bpca objects}
+\documentclass[10pt, a4paper]{article}
 %\usepackage[brazil]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage[sc]{mathpazo}
@@ -79,8 +79,6 @@ bp <- bpca(iris[-5])
 xtable(bp)
 
 print(xtable(bp))
-
-bpca::print.xtable.bpca(xtable(bp))
 @
 
 \newpage

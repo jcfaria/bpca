@@ -27,7 +27,8 @@
                                              2, apply(x, 2, mean)) + mean(x)}. \cr
     The default is 2.}
   \item{scale}{Logical.
-    A value indicating whether the variables should be scaled to have unit variance before the analysis takes place: \cr
+    A value indicating whether the variables should be scaled to have unit
+    variance before the analysis takes place: \cr
     \code{FALSE} - no scale; \cr
     \code{TRUE} - scale.}
 }
@@ -48,10 +49,9 @@
 }
 
 \author{
-  José Cláudio Faria (\email{joseclaudio.faria@gmail.com})\cr
-  Clarice Garcia Borges Demétrio (\email{clarice@esalq.usp.br})\cr
-  and\cr
-  Ivan Bezerra Allaman (\email{ivanalaman@gmail.com})
+  Faria, J. C. \cr
+  Allaman, I. B. \cr
+  DemÃ©trio C. G. B.
 }
 
 \references{

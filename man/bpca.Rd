@@ -46,7 +46,7 @@
     \code{FALSE} - no scale; \cr
     \code{TRUE} - scale.}
   \item{method}{A vector of character strings that indicates the method of factorization: \cr
-    \samp{hj} - \samp{HJ} (\samp{simetric}, Galindo Villardón (1986)); \cr
+    \samp{hj} - \samp{HJ} (\samp{simetric}, Galindo VillardÃ³n (1986)); \cr
     \samp{sqrt} - \samp{SQRT} (\samp{squared root - simetric}, Gabriel (1971)); \cr
     \samp{jk} - \samp{JK} (\samp{row metric preserving}, Gabriel (1971)); \cr
     \samp{gh} - \samp{GH} (\samp{column metric preserving}, Gabriel (1971)).}
@@ -105,7 +105,7 @@
   in various ways. The methods of factorization computed by the \code{bpca}
   function are:
   \itemize{
-    \item \emph{HJ - simetric}, Galindo Villardón (1986):
+    \item \emph{HJ - simetric}, Galindo VillardÃ³n (1986):
     \deqn{g = u*s^2}
     \deqn{h = s^2*v'}
     \item \emph{SQRT - squared root simetric}, Gabriel (1971):
@@ -148,18 +148,22 @@
   \item{call}{The call used.}
   \item{eigenvalues}{A vector of the eigenvalues.}
   \item{eigenvectors}{A vector of the eigenvectors.}
-  \item{numer}{A vector of the number of eigenvalues considered in the reduction.}
-  \item{importance}{A matrix with the \emph{general} and \emph{partial} variation explained by the reduction.}
-  \item{coord}{A list with the coordinates of the two components: objects and variables.}
-  \item{var.rb}{A matrix of all correlation coefficients for all variables under the biplot projection.}
-  \item{var.rd}{A matrix of the diagnostic of the poor projection of variable correlations by the biplot reduction.}
+  \item{numer}{A vector of the number of eigenvalues considered in the
+        reduction.}
+  \item{importance}{A matrix with the \emph{general} and \emph{partial}
+        variation explained by the reduction.}
+  \item{coord}{A list with the coordinates of the two components: objects
+        and variables.}
+  \item{var.rb}{A matrix of all correlation coefficients for all variables
+        under the biplot projection.}
+  \item{var.rd}{A matrix of the diagnostic of the poor projection of variable
+        correlations by the biplot reduction.}
 }
 
 \author{
-  José Cláudio Faria (\email{joseclaudio.faria@gmail.com})\cr
-  Clarice Garcia Borges Demétrio (\email{clarice@esalq.usp.br})\cr
-  and\cr
-  Ivan Bezerra Allaman (\email{ivanalaman@gmail.com})
+  Faria, J. C. \cr
+  Allaman, I. B. \cr
+  DemÃ©trio C. G. B.
 }
 
 \references{
@@ -168,9 +172,9 @@
   component analysis.
   \emph{Biometrika} \bold{58}, 453-467.
 
-  Galindo Vilardón, M. P. (1986)
-  Una alternativa de representación simultánea: HJ-Biplot.
-  \emph{Qüestiió}, 10(1):13-23, 1986.
+  Galindo VilardÃ³n, M. P. (1986)
+  Una alternativa de representaciÃ³n simultÃ¡nea: HJ-Biplot.
+  \emph{QÃ¼estiiÃ³}, 10(1):13-23, 1986.
 
   Johnson, R. A. and Wichern, D. W. (1988)
   \emph{Applied multivariate statistical analysis}.

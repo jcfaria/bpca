@@ -48,10 +48,9 @@
 }
 
 \author{
-  José Cláudio Faria (\email{joseclaudio.faria@gmail.com})\cr
-  Clarice Garcia Borges Demétrio (\email{clarice@esalq.usp.br})\cr
-  and\cr
-  Ivan Bezerra Allaman (\email{ivanalaman@gmail.com})
+  Faria, J. C. \cr
+  Allaman, I. B. \cr
+  DemÃ©trio C. G. B.
 }
 
 \seealso{\code{\link{xtable.bpca}}; \code{\link{xtable}}}
@@ -64,7 +63,7 @@ library(xtable)
 bp2 <- bpca(gabriel1971)  
 tbl <- xtable(bp2)
 rownames(tbl) <- gsub('Eigenvectors','Autovetores',rownames(tbl))
-rownames(tbl) <- c(rownames(tbl)[1:9],'Autovalores','Variância retida','Variância acumulada')
+rownames(tbl) <- c(rownames(tbl)[1:9],'Autovalores','VariÃ¢ncia retida','VariÃ¢ncia acumulada')
 dimnames(tbl)[[2]] <- c('CP 1','CP 2')
 
 print(tbl)

@@ -1,4 +1,4 @@
-### bpca
+### bpca - Biplot of Multivariate Data Based on Principal Components Analysis
 
 This is the development code of the R package **bpca**.
 You should use it if you want to contribute to its development:
@@ -20,3 +20,10 @@ After to clone it, to check, build and install do the following:
 
 The stable version of this package is available at:
 http://cran.r-project.org/web/packages/bpca/index.html
+
+```
+Faria, J. C; Allaman, I. B. and Demétrio, C. G. B.
+Universidade Estadual de Santa Cruz - UESC
+Departamento de Ciências Exatas - DCEX
+Ilhéus - Bahia - Brasil
+```

@@ -11,10 +11,9 @@
 }
 
 \author{
-  José Cláudio Faria (\email{joseclaudio.faria@gmail.com})\cr
-  Clarice Garcia Borges Demétrio (\email{clarice@esalq.usp.br})\cr
-  and\cr
-  Ivan Bezerra Allaman (\email{ivanalaman@gmail.com})
+  Faria, J. C. \cr
+  Allaman, I. B. \cr
+  DemÃ©trio C. G. B.
 }
 
 \references{
@@ -23,9 +22,9 @@
   component analysis.
   \emph{Biometrika} \bold{58}, 453-467.
 
-  Galindo Vilardón, M. P. (1986)
-  Una alternativa de representación simultánea: HJ-Biplot.
-  \emph{Qüestiió}, 10(1):13-23, 1986.
+  Galindo VilardÃ³n, M. P. (1986)
+  Una alternativa de representaciÃ³n simultÃ¡nea: HJ-Biplot.
+  \emph{QÃ¼estiiÃ³}, 10(1):13-23, 1986.
 
   Johnson, R. A. and Wichern, D. W. (1988)
   \emph{Applied multivariate statistical analysis}.

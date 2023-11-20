@@ -142,8 +142,8 @@
     Used only if \code{rgl.use=TRUE}.}
   \item{simple.axes}{A logical value to draw simple axes.
     Used only if \code{rgl.use=TRUE}.}
-  \item{aspect}{A vector of the apparent ratios of the \samp{x}, \samp{y}, and \samp{z} axes of the bounding box.
-    Used only if \code{rgl.use=TRUE}.}
+  \item{aspect}{A vector of the apparent ratios of the \samp{x}, \samp{y},
+    and \samp{z} axes of the bounding box. Used only if \code{rgl.use=TRUE}.}
   \item{var.factor}{Factor of expansion/reduction of length lines of the variables.}
   \item{var.color}{A vector of colors for the variables representation.}
   \item{var.lty}{Line type for the variables.
@@ -164,8 +164,8 @@
     Used only if \code{rgl.use=FALSE}.}
   \item{obj.pos}{Position of labels for objects.}
   \item{obj.cex}{Character expansion for objects.}
-  \item{obj.offset}{The distance (in character widths) which separates the label from identified points of objects.
-    Negative values are allowed.
+  \item{obj.offset}{The distance (in character widths) which separates the label
+    from identified points of objects. Negative values are allowed.
     Used only if \code{rgl.use=FALSE}.}
   \item{obj.names}{A logical value to represent objects as spheres or points.}
   \item{obj.identify}{A logical value.
@@ -196,12 +196,14 @@
 
   The methods \code{plot.bpca.3d} draw a 3d biplot (PC1, PC2 and PC3 on axis
   \samp{x}, \samp{y} and \samp{z}, respectively) in two ways:
-  \itemize{
-    \item{\samp{static} -} {It uses the package \code{scatterplot3d} based on
-      traditional graphic system. Use the parameter \samp{rgl.use=FALSE} for it.}
-    \item{\samp{dinamic} -} {It uses the package \code{rgl} a 3D real-time rendering
-      device driver system for R. Use the parameter \samp{rgl.use=TRUE} for it.}
-  }  
+
+  \enumerate{
+    \item static: It uses the package \code{scatterplot3d} based on
+      traditional graphic system. Use the parameter \samp{rgl.use=FALSE} for it.
+      It is the default.
+    \item dinamic: It uses the package \code{rgl} a 3D real-time rendering
+      device driver system for R. Use the parameter \samp{rgl.use=TRUE} for it.
+  }
 
   The method \code{qb.pca} draws a scatterplot of the correlations observed
   (in the data) and projected (under the biplot) related to the variables.
@@ -211,10 +213,9 @@
 }
 
 \author{
-  José Cláudio Faria (\email{joseclaudio.faria@gmail.com})\cr
-  Clarice Garcia Borges Demétrio (\email{clarice@esalq.usp.br})\cr
-  and\cr
-  Ivan Bezerra Allaman (\email{ivanalaman@gmail.com})
+  Faria, J. C. \cr
+  Allaman, I. B. \cr
+  DemÃ©trio C. G. B.
 }
 
 \references{
@@ -223,9 +224,9 @@
   component analysis.
   \emph{Biometrika} \bold{58}, 453-467.
 
-  Galindo Vilardón, M. P. (1986)
-  Una alternativa de representación simultánea: HJ-Biplot.
-  \emph{Qüestiió}, 10(1):13-23, 1986.
+  Galindo VilardÃ³n, M. P. (1986)
+  Una alternativa de representaciÃ³n simultÃ¡nea: HJ-Biplot.
+  \emph{QÃ¼estiiÃ³}, 10(1):13-23, 1986.
 
   Johnson, R. A. and Wichern, D. W. (1988)
   \emph{Applied multivariate statistical analysis}.
