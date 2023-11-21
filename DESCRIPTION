@@ -15,6 +15,7 @@ Imports: xtable
 Description: Implements biplot (2d and 3d) of multivariate data based
              on principal components analysis and diagnostic tools of the quality of the reduction.
 License: GPL (>= 2)
+URL: https://github.com/jcfaria/bpca
 Encoding: UTF-8
 LazyLoad: yes
 LazyData: yes
