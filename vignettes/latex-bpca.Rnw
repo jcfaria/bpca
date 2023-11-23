@@ -1,4 +1,4 @@
-%\VignetteIndexEntry{Latex table for bpca objects}
+%\VignetteIndexEntry{Latex tables for bpca objects}
 \documentclass[10pt, a4paper]{article}
 %\usepackage[brazil]{babel}
 \usepackage[utf8]{inputenc}
