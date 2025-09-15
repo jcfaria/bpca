@@ -53,7 +53,10 @@
   Demétrio C. G. B.
 }
 
-\seealso{\code{\link{xtable.bpca}}; \code{\link{xtable}}}
+%\seealso{
+%  \code{\link{bpca}},
+%  \code{\link[xtable]{xtable}}
+%}
 
 \examples{
 

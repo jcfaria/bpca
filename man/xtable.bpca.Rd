@@ -94,10 +94,10 @@
   Prentice-Hall, Inc., Upper Saddle River, NJ, USA, 6 ed.
 }
 
-\seealso{
-  \code{\link{bpca}},
-  \code{\link[xtable]{xtable}}
-}  
+%\seealso{
+%  \code{\link{bpca}},
+%  \code{\link[xtable]{xtable}}
+%}
 
 \examples{
 ## Example 1: The simplest possible 
