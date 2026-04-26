@@ -1,29 +1,58 @@
-### bpca - Biplot of Multivariate Data Based on Principal Components Analysis
+# bpca2 <img src="man/figures/logo.png" align="right" height="139" />
 
-This is the development code of the R package **bpca**.
-You should use it if you want to contribute to its development:
-testing unreleased versions, fixing bugs, writing code, etc.
+<!-- Badges -->
+[![R-CMD-check](https://github.com)](https://github.com)
+[![Lifecycle: experimental](https://shields.io)](https://r-lib.org)
+[![License: GPL-3](https://shields.io)](https://gnu.org)
 
-To download, check and build it do the following in a terminal emulator:
-> git clone  git://github.com/jcfaria/bpca.git
+**bpca2** is an experimental R package designed as a playground for AI-driven testing, refactoring, and Biplot analysis enhancements. It builds upon the foundations of the original `bpca` package.
 
-> or
+## Ì†ΩÌ∫Ä Overview
 
-> git clone https://jcfaria@github.com/jcfaria/bpca.git
+The package provides robust tools for Biplot analysis based on Principal Component Analysis (PCA), enabling the visualization of multivariate data matrices in reduced-dimensional spaces (2D and 3D).
 
-After to clone it, to check, build and install do the following:
-> R CMD check bpca
+### Why bpca2?
+- **AI-Ready:** Structured to facilitate automated testing and integration with AI-assisted coding models.
+- **Modern Infrastructure:** Updated to leverage current R development workflows.
+- **Enhanced Diagnostics:** Improved tools for biplot accuracy and visual diagnostics.
 
-> R CMD build bpca
+## Ì†ΩÌª† Installation
 
-> R CMD INSTALL bpca_X.X-X.tar.gz
+Since this is a development and testing version, you can install it directly from GitHub:
 
-The stable version of this package is available at:
-http://cran.r-project.org/web/packages/bpca/index.html
+```r
+# Install the remotes package if you haven't already
+# install.packages("remotes")
 
+# Install bpca2 from GitHub
+remotes::install_github("jcfaria/bpca2")
 ```
-Faria, J. C; Allaman, I. B. and Dem√©trio, C. G. B.
-Universidade Estadual de Santa Cruz - UESC
-Departamento de Ci√™ncias Exatas - DCEX
-Ilh√©us - Bahia - Brasil
+
+## Ì†ΩÌ≥ä Quick Start
+
+Generating a basic Biplot with `bpca2` is straightforward:
+
+```r
+library(bpca2)
+
+# Using the classic iris dataset
+bp <- bpca(iris[-5], d=1:2)
+plot(bp,
+     var.col='blue',
+     var.factor=2,
+     main='Biplot - Iris Dataset')
 ```
+
+## Ì†ΩÌ≥Ç Project Structure
+
+* `/R`: Core functions for computation and plotting.
+* `/tests`: Unit tests (crucial for AI validation and CI/CD).
+* `/man`: Technical documentation for package functions.
+* `/vignettes`: (Planned) Detailed tutorials and use cases.
+
+## Ì†æÌ¥ù Contributing
+
+This repository is a testing environment. Feel free to open **Issues** or submit **Pull Requests** with suggestions for modernization, performance tweaks, or new AI-driven PCA algorithms.
+
+---
+Developed by **Jos√© Cl√°udio Faria**
