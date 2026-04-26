@@ -7,7 +7,7 @@
 
 **bpca2** is an experimental R package designed as a playground for AI-driven testing, refactoring, and Biplot analysis enhancements. It builds upon the foundations of the original `bpca` package.
 
-## í ½íº€ Overview
+## ðŸš€ Overview
 
 The package provides robust tools for Biplot analysis based on Principal Component Analysis (PCA), enabling the visualization of multivariate data matrices in reduced-dimensional spaces (2D and 3D).
 
@@ -16,7 +16,7 @@ The package provides robust tools for Biplot analysis based on Principal Compone
 - **Modern Infrastructure:** Updated to leverage current R development workflows.
 - **Enhanced Diagnostics:** Improved tools for biplot accuracy and visual diagnostics.
 
-## í ½í»  Installation
+## ðŸ›  Installation
 
 Since this is a development and testing version, you can install it directly from GitHub:
 
@@ -28,7 +28,7 @@ Since this is a development and testing version, you can install it directly fro
 remotes::install_github("jcfaria/bpca2")
 ```
 
-## í ½í³Š Quick Start
+## ðŸ“Š Quick Start
 
 Generating a basic Biplot with `bpca2` is straightforward:
 
@@ -39,17 +39,18 @@ library(bpca2)
 bp <- bpca(iris[-5], d=1:2)
 plot(bp,
      var.col='blue',
+     var.factor=2,
      main='Biplot - Iris Dataset')
 ```
 
-## í ½í³‚ Project Structure
+## ðŸ“‚ Project Structure
 
 * `/R`: Core functions for computation and plotting.
 * `/tests`: Unit tests (crucial for AI validation and CI/CD).
 * `/man`: Technical documentation for package functions.
 * `/vignettes`: (Planned) Detailed tutorials and use cases.
 
-## í ¾í´ Contributing
+## ðŸ¤ Contributing
 
 This repository is a testing environment. Feel free to open **Issues** or submit **Pull Requests** with suggestions for modernization, performance tweaks, or new AI-driven PCA algorithms.
 
