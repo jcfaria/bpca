@@ -1,83 +1,67 @@
 # bpca2 (development version)
 
 ## Modernization & AI Integration
-*   Transformed the legacy `NEWS` file into a modern `NEWS.md` format for better rendering on GitHub and `pkgdown` sites.
-*   Restructured the repository to serve as a playground for AI-driven testing and refactoring.
-*   Updated project infrastructure to support modern R development workflows (CI/CD ready).
-
-# bpca2 0.1.0
+*   Transformed the legacy `NEWS` file into a modern `NEWS.md` format for better rendering on GitHub and `pkgdown` sites
+*   Restructured the repository to serve as a playground for AI-driven testing and refactoring
+*   Updated project infrastructure to support modern R development workflows (CI/CD ready)
 
 ## Initial Release (Modernized Version)
-*   Forked and updated from the original `bpca` package.
-*   Cleaned core functions to improve readability for AI analysis models.
-*   Added comprehensive documentation stubs for new features.
+*   Forked and updated from the original `bpca` package
+*   Cleaned core functions to improve readability for AI analysis models
+*   Added comprehensive documentation stubs for new features
 
+## 1.4-0 (2026-04-26) - Faria, J. C.
 ## General Improvements
-*   Standardized function documentation using Roxygen2.
-*   Enhanced 2D and 3D Biplot diagnostics for better visual clarity.
+*   Standardized function documentation using Roxygen2
+*   Enhanced 2D and 3D Biplot diagnostics for better visual clarity
 
 ## 1.3-10 (2026-04-25) - Faria, J. C.
-* Added the ability to pass a vector to 'var.pos' in 2d and 3d plots,
-  allowing for precise manual label positioning to resolve overlaps.
-* Fixed a bug in 'plot.bpca.2d' where variable-to-object projections (type='eo')
-  were misaligned; the projection logic was rewritten to correctly account for
-  scaling factors.
+* Added the ability to pass a vector to 'var.pos' in 2d and 3d plots, allowing for precise manual label positioning to resolve overlaps
+* Fixed a bug in 'plot.bpca.2d' where variable-to-object projections (type='eo') were misaligned; the projection logic was rewritten to correctly account for scaling factors
 
 ## 1.3-9 (2026-04-21) - Faria, J. C.
-* The plot.bpca.3d function has been optimized for speed when plotting
-  using the rgl package.
-* A bug associated with the plot.bpca.3d function that prevented plotting
-  variable vectors with different colors has been fixed.
-* The plot.bpca2d and plot.bpca.3d functions have been improved to better frame
-  variables and objects in the graph. In other words, the need to use the variables
-  - still available: var.factor, xlim, ylim and zlim - has been minimized.
-* Improvements were made to the documentation of the package and functions.
+* The plot.bpca.3d function has been optimized for speed when plotting using the rgl package
+* A bug associated with the plot.bpca.3d function that prevented plotting variable vectors with different colors has been fixed
+* The plot.bpca2d and plot.bpca.3d functions have been improved to better frame variables and objects in the graph. In other words, the need to use the variables, still available: var.factor, xlim, ylim and zlim - has been minimized
+* Improvements were made to the documentation of the package and functions
 
 ## 1.3-8 (2025-10-15) - Faria, J. C.
-* Improvements were made to the documentation of the package and functions.
+* Improvements were made to the documentation of the package and functions
 
 ## 1.3-7 (2023-11-23) - Faria, J. C.
-* Improvements were made to the documentation of the package and functions.
+* Improvements were made to the documentation of the package and functions
 
 ## 1.3-6 (2023-11-20) - Faria, J. C.
-* Removal of documentation notes as required by the CRAN.
+* Removal of documentation notes as required by the CRAN
 
 ## 1.3-5 (2023-11-18) - Faria, J. C.
-* Adjustment of files encoding as required by the CRAN.
-* Substantial adjustments and improvements were made to the documentation of
-  the package and functions.
+* Adjustment of files encoding as required by the CRAN
+* Substantial adjustments and improvements were made to the documentation of the package and functions
 
 ## 1.3-4 (2021-03-23) - Faria, J. C.
-* The vignette has been completely redone. We believe it is more simple, direct
-  and instructive.
+* The vignette has been completely redone. We believe it is more simple, direct and instructive
 
 ## 1.3-3 (2021-03-19) - Allaman, I. B.
-* Bug corrected (related to the class) in xtable.bpca function.
-* Fixed bug in print.xtable.bpca function. Add news commands in the lines
-  17 to 22 and new modifications in the aux_com1 object.
-  The sanitize.rownames.function works propriely now!
+* Bug corrected (related to the class) in xtable.bpca function
+* Fixed bug in print.xtable.bpca function. Add news commands in the lines 17 to 22 and new modifications in the aux_com1 object. The sanitize.rownames.function works propriely now
 
 ## 1.3-2 (2020-04-01) - Allaman, I. B.
-* Created the methods xtable.bpca and the function print.xtable.bpca.
-* The functions latex.bpca, print.latex.bpca and summary.latex.bpca were
-  deprecated and removed this package. Consequently the .Rd file were removed.
-* The due modifications were make the NAMESPACE and DESCRIPTION files.
+* Created the methods xtable.bpca and the function print.xtable.bpca
+* The functions latex.bpca, print.latex.bpca and summary.latex.bpca were deprecated and removed this package. Consequently the .Rd file were removed
+* The due modifications were make the NAMESPACE and DESCRIPTION files
 
 ## 1.3-1 (2018-06-16) - Allaman, I. B.
-* A little bit changes in the latex.bpca function. Change footenotes argument
-  from "" to NULL.
+* A little bit changes in the latex.bpca function. Change footenotes argument from "" to NULL
 
 ## 1.3-0 (2018-06-07) - Allaman, I. B.
-* Add stats, graphics and grDevices in NAMESPACE file within import function
-  in accordance with new premisses of the CRAN
+* Add stats, graphics and grDevices in NAMESPACE file within import function in accordance with new premisses of the CRAN
 
 ## 1.2-2 (2013-11-23) - Faria, J. C.
 * Export LaTeX table about the reduction (latex.bpca)
 * Parts of sources were a bit enhanced
 * New data marina.rda
 * The documentation has been improved
-* require calls to packages already attached (rgl and scatterplot3d) by depends
-  was removed
+* require calls to packages already attached (rgl and scatterplot3d) by depends was removed
 * Released to CRAN
 
 ## 1.2-1 (2012-12-12) - Faria, J. C.
@@ -90,9 +74,7 @@
 
 ## 1.2-0 (2012-10-06) - Faria, J. C.
 * Parts of sources were a bit enhanced
-* The option var.position was removed from the package. When necessary,
-  it is easy to do: bpca(t(dad)) to change the position of objects and
-  variables
+* The option var.position was removed from the package. When necessary, it is easy to do: bpca(t(dad)) to change the position of objects and variables
 * Restrict to testers  
 
 ## 1.0-10 (2012-02-20) - Faria, J. C.
@@ -109,29 +91,24 @@
 * The demo comparison was removed
 
 ## 1.0-6 (2011-04-19) - Faria, J. C.
-* The alias of the methods summary and plot in the documentation was a bit
-  enhaced
+* The alias of the methods summary and plot in the documentation was a bit enhaced
 
 ## 1.0-5 (2011-04-09) - Faria, J. C.
-* It was fixed the NOTE STATUS for some platforms
-  (plot.bpca.3d: warning in matrix(0, nc = 3): partial argument match of
-  'nc' to 'ncol')
+* It was fixed the NOTE STATUS for some platforms (plot.bpca.3d: warning in matrix(0, nc = 3): partial argument match of 'nc' to 'ncol')
 
-1.0-4 (2011-03-22) - Faria, J. C.
-	* The methods plot.bpca.2d and plot.bpca.3d now, by default, plots the
-	  variation retained by each principal component in the axis
+## 1.0-4 (2011-03-22) - Faria, J. C.
+	* The methods plot.bpca.2d and plot.bpca.3d now, by default, plots the variation retained by each principal component in the axis
 	* The method summary was a bit enhanced		
 
-1.0-3 (2009-06-10) - Faria, J. C.
-	* The methods plot.bpca.2d and plot.bpca.3d now allows to send the parameters:
-	  xlim, ylim, zlim, xlab, ylab and zlab
+## 1.0-3 (2009-06-10) - Faria, J. C.
+	* The methods plot.bpca.2d and plot.bpca.3d now allows to send the parameters: xlim, ylim, zlim, xlab, ylab and zlab
 	* The demos were a bit reworked
 	* The documentation in PDF was included in the package
 
-1.0-2 (2008-07-15) - Faria, J. C.
+## 1.0-2 (2008-07-15) - Faria, J. C.
 	* Released to CRAN
 	* English corrections by Clarice
 	* Scripts with obj.identify=TRUE were removed from 'demo' folder
 	  
-1.0-1 (2008-07-01) - Faria, J. C.
+## 1.0-1 (2008-07-01) - Faria, J. C.
 	* Fisrt version restricted released (to testers only)
