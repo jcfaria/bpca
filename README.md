@@ -39,7 +39,6 @@ library(bpca2)
 bp <- bpca(iris[-5], d=1:2)
 plot(bp,
      var.col='blue',
-     var.factor=2,
      main='Biplot - Iris Dataset')
 ```
 
