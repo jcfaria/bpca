@@ -38,8 +38,8 @@ plot.bpca.2d <- function(x,
 {
   draw.obj <-
     function()
-    {   
-      # objects
+    {
+      # Draw object points and labels.
       if(obj.names) {
         points(x=coobj[,d1],
                y=coobj[,d2],
@@ -63,28 +63,27 @@ plot.bpca.2d <- function(x,
       }
     }  
 
-draw.var <-
-  function()
+  draw.var <-
+    function()
   {
-    # Coordenadas escalonadas
+    # Scaled variable coordinates.
     vx <- covar[,d1] * var.factor
     vy <- covar[,d2] * var.factor
 
-    # Desenha os pontos (pontas dos vetores)
+    # Draw variable endpoints.
     points(x=vx,
            y=vy,
            pch=var.pch,
            col=var.color,
            cex=var.cex, ...)
 
-    # Prepara o var.pos (reciclagem)
-    # Se for NULL, usaremos a sua lógica radial original como fallback
+    # Recycle manual positions when provided.
     v_pos <- if(!is.null(var.pos)) rep(var.pos, length.out=nrow(covar)) else NULL
 
-    # Desenha os textos
-    for (i in 1:nrow(covar)) {
+    # Draw variable labels.
+    for (i in seq_len(nrow(covar))) {
       if (is.null(v_pos)) {
-        # 1. SUA LÓGICA ATUAL (Radial automática)
+        # Automatic radial placement.
         adj.x <- ifelse(vx[i] >= 0, 0, 1)
         off.x <- sign(vx[i]) * (var.offset * 0.2)
         off.y <- sign(vy[i]) * (var.offset * 0.2)
@@ -96,8 +95,7 @@ draw.var <-
              col=var.color,
              cex=var.cex, ...)
       } else {
-        # 2. NOVA LÓGICA (Usuário decidiu a posição 1, 2, 3 ou 4)
-        # O parâmetro 'pos' do R ignora o 'adj' e calcula o offset automaticamente
+        # Manual placement (R `pos` handles offset).
         text(x=vx[i],
              y=vy[i],
              labels=rownames(covar)[i],
@@ -112,7 +110,7 @@ draw.var <-
   draw.var.seg <-
     function()
     {   
-      # var segments
+      # Draw variable vectors.
       segments(x0=0,
                y0=0,
                x1=covar[,d1] * var.factor,
@@ -124,8 +122,8 @@ draw.var <-
   draw.circles <-
     function()
     {  
-      # concentric circles (0,0)
-      for (i in 1:c.number)
+      # Draw concentric circles centered at origin.
+      for (i in seq_len(c.number))
         symbols(x=0,
                 y=0,
                 circles=c.radio * i * var.factor,
@@ -135,16 +133,69 @@ draw.var <-
                 lwd=c.lwd, ...)
     }
 
+  draw.axis.cross <-
+    function(vx, vy, color, lty)
+    {
+      abline(a=0,
+             b=vy / vx,
+             col=color,
+             lty=lty, ...)
+
+      abline(a=0,
+             b=-vx / vy,
+             col=color,
+             lty=lty, ...)
+    }
+
+  proj.on.direction <-
+    function(points, direction)
+    {
+      dot_pd <- as.numeric(points %*% as.numeric(direction))
+      dot_dd <- as.numeric(direction %*% as.numeric(direction))
+      scale <- dot_pd / dot_dd
+      cbind(scale * direction[1], scale * direction[2])
+    }
+
+  solve.orthogonal.intersection <-
+    function(px, py, ax, ay)
+    {
+      solve(matrix(c(-ay, ax, ax, ay), nrow=2),
+            matrix(c(0, ay * py + ax * px), ncol=1))
+    }
+
+  draw.circles.at <-
+    function(cx, cy, scale=1)
+    {
+      for (i in seq_len(c.number))
+        symbols(x=cx,
+                y=cy,
+                circles=c.radio * i * scale,
+                add=TRUE,
+                inches=FALSE,
+                fg=c.color,
+                lwd=c.lwd, ...)
+    }
+
   if (!inherits(x, 'bpca.2d'))
     stop("Use this function only with 'bpca.2d' class!")
+
+  if (length(x$number) < 2)
+    stop("'x$number' must contain at least two dimensions.")
 
   coobj <- x$coord$objects
   covar <- x$coord$variables
   d1 <- x$number[1]
   d2 <- x$number[2]
 
-  if (is.null(var.factor))
-    var.factor <- max(abs(coobj)) / max(abs(covar))
+  if (nrow(coobj) == 0 || nrow(covar) == 0)
+    stop("Both objects and variables coordinates must have at least one row.")
+
+  if (is.null(var.factor)) {
+    max_covar <- max(abs(covar), na.rm=TRUE)
+    if (!is.finite(max_covar) || max_covar == 0)
+      stop("Cannot compute 'var.factor' automatically: variable coordinates are all zero or non-finite.")
+    var.factor <- max(abs(coobj), na.rm=TRUE) / max_covar
+  }
 
   scores <- rbind(coobj,
                   covar * var.factor)
@@ -152,14 +203,13 @@ draw.var <-
   if (missing(obj.labels))
     obj.labels <- rownames(coobj)
 
-  # Calculo automatico de xlim e ylim se nao fornecidos
+  # Automatic limits when xlim/ylim are missing.
   if (missing(xlim) || missing(ylim)) {
-    # Extrai ranges atuais
+    # Current ranges.
     rx <- range(scores[, d1], na.rm=TRUE)
     ry <- range(scores[, d2], na.rm=TRUE)
 
-    # Buffer proporcional ao cex e ao tamanho do grafico (ajustavel)
-    # 15% de folga costuma acomodar bem os textos laterais
+    # Proportional buffer for better label fit.
     buffer_x <- diff(rx) * (max(var.cex, obj.cex) * 0.20)
     buffer_y <- diff(ry) * (max(var.cex, obj.cex) * 0.20)
 
@@ -200,18 +250,18 @@ draw.var <-
            lty=ref.lty, ...)
 
   switch(match.arg(type), 
-         bp={ # basic biplot 2d
+         bp={ # basic 2d biplot
            draw.obj()
            draw.var()
            draw.var.seg()
 
-           # identification of objects with mouse
+           # Identify objects with mouse click.
            if(obj.identify)
              identify(x=coobj,
                       labels=obj.labels,
                       cex=obj.cex)
          }, 
-         eo={ # evaluate an object
+         eo={ # evaluate one object
            if (any(class(obj.id) == c('numeric', 'integer')))
              obj.lab <- obj.labels[obj.id[1]]
            else {
@@ -227,18 +277,13 @@ draw.var <-
 
            draw.var()
 
-           # Eixos de projeção (objeto e sua perpendicular)
-           abline(a=0,
-                  b=coobj[obj.id,d2] / coobj[obj.id,d1],
-                  col=base.color,
-                  lty=base.lty, ...)
+           # Projection axis and orthogonal axis.
+           draw.axis.cross(vx=coobj[obj.id, d1],
+                           vy=coobj[obj.id, d2],
+                           color=base.color,
+                           lty=base.lty)
 
-           abline(a=0,
-                  b=-coobj[obj.id,d1] / coobj[obj.id,d2],
-                  col=base.color,
-                  lty=base.lty, ...)
-
-           # Desenha o vetor do objeto selecionado
+           # Draw selected object vector.
            arrows(x0=0,
                   y0=0,
                   x1=coobj[obj.id[1],d1] * obj.factor,
@@ -262,42 +307,32 @@ draw.var <-
                 col=obj.color,
                 cex=obj.cex, ...)
 
-           # --- CORREÇÃO DA PROJEÇÃO ---
-           # 1. Coordenadas das variáveis escalonadas (pontas das setas)
+           # Orthogonal projection of scaled variables.
+           # 1) Scaled variable endpoints.
            v_esc <- covar[, c(d1, d2)] * var.factor
 
-           # 2. Coordenadas do objeto (direção do eixo)
+           # 2) Object coordinates (axis direction).
            o_dir <- coobj[obj.id[1], c(d1, d2)]
 
-           # 3. Cálculo da projeção ortogonal: P = (V . O / O . O) * O
-           # (Usamos a fórmula escalar para projetar cada variável no eixo do objeto)
-           dot_vo <- as.numeric(v_esc %*% as.numeric(o_dir))
-           dot_oo <- as.numeric(o_dir %*% as.numeric(o_dir))
-           proj_scalar <- dot_vo / dot_oo
+           # 3) Orthogonal projection: P = (V . O / O . O) * O.
+           proj <- proj.on.direction(points=v_esc,
+                                     direction=o_dir)
 
-           x1_proj <- proj_scalar * o_dir[1]
-           y1_proj <- proj_scalar * o_dir[2]
-
-           # 4. Desenha as linhas de projeção
+           # 4) Draw projection segments.
            segments(x0=v_esc[,1],
                     y0=v_esc[,2],
-                    x1=x1_proj,
-                    y1=y1_proj,
+                    x1=proj[,1],
+                    y1=proj[,2],
                     lty=proj.lty,
                     col=proj.color)
          }, 
-         ev={ # evaluate a variable
+         ev={ # evaluate one variable
            draw.obj()
 
-           abline(a=0,
-                  b=covar[var.id,d2] / covar[var.id,d1],
-                  col=base.color,
-                  lty=base.lty, ...)
-
-           abline(a=0,
-                  b=-covar[var.id,d1] / covar[var.id,d2],
-                  col=base.color,
-                  lty=base.lty, ...)
+           draw.axis.cross(vx=covar[var.id, d1],
+                           vy=covar[var.id, d2],
+                           color=base.color,
+                           lty=base.lty)
 
            arrows(x0=0,
                   y0=0,
@@ -385,7 +420,7 @@ draw.var <-
            draw.var.seg()
            draw.circles()
          }, 
-         ww={ ## which won where/what (from 1.0-1)
+         ww={ # which won where/what
            draw.obj()
            draw.var()
 
@@ -456,7 +491,7 @@ draw.var <-
                     col=base.color,
                     lty=base.lty, ...)
          }, 
-         dv={ # discrimitiveness vs. representativeness
+         dv={ # discriminativeness vs. representativeness
            draw.obj()
            draw.var()
            draw.circles()
@@ -482,19 +517,14 @@ draw.var <-
                   col=var.color,
                   lty=base.lty, ...)                                                 
          }, 
-         ms={ # means vs. stability
+         ms={ # means vs stability
            m1 <- mean(covar[,d1] * var.factor)
            m2 <- mean(covar[,d2] * var.factor)        
 
-           abline(a=0,
-                  b=m2 / m1,
-                  col=base.color,
-                  lty=base.lty, ...)
-
-           abline(a=0,
-                  b=-m1/m2,
-                  col=base.color,
-                  lty=base.lty, ...)
+           draw.axis.cross(vx=m1,
+                           vy=m2,
+                           color=base.color,
+                           lty=base.lty)
 
            arrows(x0=0,
                   y0=0,
@@ -508,26 +538,15 @@ draw.var <-
            draw.obj()
            draw.var()
 
-           for (i in 1:c.number)
-             symbols(x=m1,
-                     y=m2,
-                     circles=c.radio * i * var.factor,
-                     add=TRUE,
-                     inches=FALSE,
-                     fg=c.color,
-                     lwd=c.lwd, ...)
+           draw.circles.at(cx=m1,
+                           cy=m2,
+                           scale=var.factor)
 
-           for (i in 1:nrow(coobj))
-           {
-             x <- solve(matrix(c(-m2, 
-                                 m1, 
-                                 m1, 
-                                 m2),
-                               nrow=2),
-                        matrix(c(0, 
-                                 m2 * coobj[i,d2] +
-                                   m1 * coobj[i,d1]),
-                               ncol=1))
+           for (i in seq_len(nrow(coobj))) {
+             x <- solve.orthogonal.intersection(px=coobj[i, d1],
+                                                py=coobj[i, d2],
+                                                ax=m1,
+                                                ay=m2)
 
              segments(x0=coobj[i,d1],
                       y0=coobj[i,d2],
@@ -535,21 +554,16 @@ draw.var <-
                       y1=x[2],
                       col=proj.color,
                       lty=proj.lty, ...)
-           }                        
+           }
          }, 
-         ro={ # rank objects with ref. to the ideal variable
+         ro={ # rank objects with reference to ideal variable
            m1 <- mean(covar[,d1])
            m2 <- mean(covar[,d2])
 
-           abline(a=0,
-                  b=m2 / m1,
-                  col=base.color,
-                  lty=base.lty, ...)
-
-           abline(a=0,
-                  b=-m1 / m2,
-                  col=base.color,
-                  lty=base.lty, ...)
+           draw.axis.cross(vx=m1,
+                           vy=m2,
+                           color=base.color,
+                           lty=base.lty)
 
            draw.obj()
            draw.var()
@@ -557,19 +571,13 @@ draw.var <-
            cox <- 0
            coy <- 0
 
-           for (i in 1:nrow(coobj))
-           {
-             x <- solve(matrix(c(-m2, 
-                                 m1, 
-                                 m1, 
-                                 m2),
-                               nrow=2),
-                        matrix(c(0, 
-                                 m2 * coobj[i,d2] + m1 * coobj[i,d1]),
-                               ncol=1))
+           for (i in seq_len(nrow(coobj))) {
+             x <- solve.orthogonal.intersection(px=coobj[i, d1],
+                                                py=coobj[i, d2],
+                                                ax=m1,
+                                                ay=m2)
              if (sign(x[1]) == sign(m1))
-               if(abs(x[1]) > abs(cox))
-               {
+               if(abs(x[1]) > abs(cox)) {
                  cox <- x[1]
                  coy <- x[2]
                }
@@ -584,31 +592,20 @@ draw.var <-
                   lwd=a.lwd,
                   length=a.length, ...)
 
-           for (i in 1:c.number)
-             symbols(x=cox,
-                     y=coy,
-                     circles=c.radio * i,
-                     add=TRUE,
-                     inches=FALSE,
-                     fg=c.color, 
-                     lwd=c.lwd, ...)
+           draw.circles.at(cx=cox,
+                           cy=coy)
          }, 
-         rv={ # rank variables with ref. to the ideal object
+         rv={ # rank variables with reference to ideal object
            draw.obj()
            draw.var()
 
            m1 <- mean(covar[,d1])
            m2 <- mean(covar[,d2])
 
-           abline(a=0,
-                  b=m2 / m1,
-                  col=var.color,
-                  lty="solid", ...)
-
-           abline(a=0,
-                  b=-m1 / m2,
-                  col=var.color,
-                  lty="solid", ...)
+           draw.axis.cross(vx=m1,
+                           vy=m2,
+                           color=var.color,
+                           lty='solid')
 
            symbols(x=m1,
                    y=m2,
@@ -631,13 +628,7 @@ draw.var <-
                   lwd=a.lwd,
                   length=a.length, ...)
 
-           for (i in 1:c.number)
-             symbols(x=cox,
-                     y=coy,
-                     circles=c.radio*i,
-                     add=TRUE,
-                     inches=FALSE,
-                     fg=c.color, 
-                     lwd=c.lwd, ...)
+           draw.circles.at(cx=cox,
+                           cy=coy)
          })
 }  
