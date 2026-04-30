@@ -107,12 +107,12 @@ library(xtable)
 bp <- bpca(iris[-5],
            d=1:3)
 
-xtable(bp)
+xtable::xtable(bp)
 
 ## Example 2: With caption and label
 bp2 <- bpca(gabriel1971) 
 
-xtable(bp2,
+xtable::xtable(bp2,
        caption='Biplot gabriel1971',
        label='example_2')
 }

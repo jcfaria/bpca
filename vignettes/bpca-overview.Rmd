@@ -1,0 +1,61 @@
+---
+title: "bpca Overview"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{bpca Overview}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## Introduction
+
+`bpca` provides tools for 2D and 3D biplot analysis based on principal
+component analysis (PCA), including diagnostics for representation quality.
+
+## Basic Workflow
+
+```{r}
+library(bpca)
+
+bp <- bpca(gabriel1971)
+bp
+```
+
+## Summaries
+
+```{r}
+summary(bp)
+```
+
+## Quality Diagnostics
+
+```{r}
+bp_q <- bpca(gabriel1971, var.rb = TRUE)
+q <- qbpca(gabriel1971, bp_q)
+head(q)
+```
+
+## 3D Reduction
+
+```{r}
+bp3 <- bpca(gabriel1971, d = 1:3)
+summary(bp3)
+```
+
+## Plotting
+
+The package supports multiple plot types for 2D and 3D objects.
+Interactive plotting with `rgl` can be used in regular sessions:
+
+```{r, eval = FALSE}
+plot(bp)
+plot(bp3)
+plot(bp3, rgl.use = TRUE)
+```

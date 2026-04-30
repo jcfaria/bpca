@@ -6,10 +6,14 @@ Authors@R: c(person("José C.", "Faria", role = c("aut", "cre"),
                email = "joseclaudio.faria@gmail.com"),
              person("Ivan B.", "Allaman", role = "aut"),
              person("Clarice G. B.", "Demétrio", role = "aut"))
+Author: José C. Faria [aut, cre],
+        Ivan B. Allaman [aut],
+        Clarice G. B. Demétrio [aut]
 Maintainer: José C. Faria <joseclaudio.faria@gmail.com>
 Depends: R (>= 4.1.0)
 Imports: scatterplot3d, rgl, xtable
 Suggests: knitr, rmarkdown
+VignetteBuilder: knitr
 Description: Provides tools for creating 2D and 3D biplots of multivariate data
     based on principal components analysis, together with diagnostics for
     reduction quality and enhanced visualization of variables and objects.
