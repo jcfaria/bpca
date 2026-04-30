@@ -2,11 +2,11 @@
 \alias{xtable.bpca}
 
 \title{
-  LaTeX table of the Biplot.
+  LaTeX Table for Biplot Results
 }
 
 \description{
-  This function returns a LaTeX table of the bpca objects.
+  Returns a LaTeX table from \code{bpca} objects.
 }
 
 \usage{
@@ -20,7 +20,7 @@
 }
 
 \arguments{
-  \item{x}{A object of the class \code{\link{bpca}} objects.}
+  \item{x}{An object of class \code{\link{bpca}}.}
   \item{caption}{Character vector of length 1 or 2 containing the table's
     caption or title. If length is 2, the second item is the "short
     caption" used when LaTeX generates a "List of Tables".
@@ -72,10 +72,11 @@
 }
 
 \details{
-  This function extracts tabular information from x and returns an object of class "xtable.bpca", "xtable" or "data.frame". 
+  This function extracts tabular information from \code{x} and returns an object
+  of class \code{xtable.bpca}, \code{xtable}, or \code{data.frame}. 
 
-  It is necessary to declare the latex packages: \samp{multirow} in the preamble of the Rnoweb file to make available all the 
-  resources of the function \code{xtable.bpca}.
+  To enable all formatting resources, include the LaTeX package
+  \samp{multirow} in the Sweave/Rnoweb preamble.
 }
 
 \value{
@@ -100,7 +101,7 @@
 %}
 
 \examples{
-## Example 1: The simplest possible 
+## Example 1: Simplest use
 library(xtable)
 
 bp <- bpca(iris[-5],
@@ -108,7 +109,7 @@ bp <- bpca(iris[-5],
 
 xtable(bp)
 
-## Example 2: With caption and label 
+## Example 2: With caption and label
 bp2 <- bpca(gabriel1971) 
 
 xtable(bp2,

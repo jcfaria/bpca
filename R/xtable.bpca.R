@@ -7,6 +7,8 @@ xtable.bpca <- function(x,
                         display=NULL,
                         auto=FALSE, ...)
 {
+  if (!inherits(x, 'bpca'))
+    stop("Use this function only with 'bpca' class!")
   eigvec <- x$eigenvectors[, c(x$number)]
   eigval <- x$eigenvalues[c(x$number)]
   vret <- x$eigenvalues[x$number[1]:x$number[length(x$number)]]^2/sum(x$eigenvalues^2)

@@ -4,12 +4,12 @@
 \alias{bpca.prcomp}
 
 \title{
-  Biplot of Multivariate Data Based on Principal Components Analysis
+  Biplot of Multivariate Data Based on Principal Component Analysis
 }
 
 \description{
-  Computes biplot reduction on \code{data.frame}, \code{matrix} or
-  \code{prcomp} objects and returns a \code{bpca} object.
+  Computes biplot reductions for \code{data.frame}, \code{matrix}, and
+  \code{prcomp} objects, returning an object of class \code{bpca}.
 }
 
 \usage{
@@ -29,9 +29,9 @@
 
 \arguments{
   \item{x}{A \code{data.frame}, \code{matrix} or \code{prcomp} object.}
-  \item{d}{A vector giving the first and last eigenvalue to be considered by the biplot reduction.
-    It can be \code{d=1:3} or \code{d=c(1,3)} for 3d biplot.
-    The default is \code{d=1:2}.}
+  \item{d}{A vector indicating the first and last dimensions to be used in
+    the biplot reduction. For example, \code{d=1:3} or \code{d=c(1,3)} for
+    a 3D biplot. The default is \code{d=1:2}.}
   \item{center}{Numeric.
     The type of centering to be performed: \cr
     \samp{0} - no centering \cr
@@ -40,27 +40,28 @@
     \samp{3} - double-centered = \code{sweep(sweep(x, 1, apply(x, 1, mean)),
                                              2, apply(x, 2, mean)) + mean(x)} \cr
     The default is 2.}
-  \item{scale}{Logical.
-    A value indicating whether the variables should be
-    scaled to have unit variance before the analysis takes place: \cr
-    \code{FALSE} - no scale; \cr
-    \code{TRUE} - scale.}
-  \item{method}{A vector of character strings that indicates the method of factorization: \cr
-    \samp{hj} - \samp{HJ} (\samp{simetric}, Galindo Villardón (1986)); \cr
-    \samp{sqrt} - \samp{SQRT} (\samp{squared root - simetric}, Gabriel (1971)); \cr
+  \item{scale}{Logical. Indicates whether variables are scaled to unit
+    variance before analysis: \cr
+    \code{FALSE} - no scaling; \cr
+    \code{TRUE} - scaling enabled.}
+  \item{method}{A character value indicating the factorization method: \cr
+    \samp{hj} - \samp{HJ} (\samp{symmetric}, Galindo Villardón (1986)); \cr
+    \samp{sqrt} - \samp{SQRT} (\samp{square root - symmetric}, Gabriel (1971)); \cr
     \samp{jk} - \samp{JK} (\samp{row metric preserving}, Gabriel (1971)); \cr
     \samp{gh} - \samp{GH} (\samp{column metric preserving}, Gabriel (1971)).}
   \item{iec}{Logical.
-    If \code{TRUE} the matrix of eigenvalues, coordinates od objects and variables will be inverted.
+    If \code{TRUE}, the matrix of eigenvalues and the coordinates of objects
+    and variables are inverted.
     The default is \code{FALSE}.}
   \item{var.rb}{A logical value.
     If \code{TRUE}, all correlation coefficients for all variables (\emph{under the biplot projection}) will be computed.}
   \item{var.rd}{A logical value.
     If \code{TRUE}, the diagnostic of the representation of variables projected by the biplot will be computed.
     If \code{var.rd} is \code{TRUE} the \code{var.rb} parameter must be also \code{TRUE}.}
-  \item{limit}{A vector giving the percentual limit to define poor representation of variables.}
+  \item{limit}{Numeric threshold (percentage) used to define poor variable
+    representation.}
   \item{\dots}{Additional parameters.
-    It is necessary to be S3 method.}
+    Required for S3 method dispatch.}
 }
 
 \details{
@@ -99,16 +100,16 @@
   \deqn{s^2 = diag(d)}
   \deqn{n = n\_objects(Y)}
 
-  it is possible an approximation of Y:
+  it is possible to obtain an approximation of Y:
   \deqn{_{n}Y_{p} \approx Y_{m} = g.h'}
 
   in various ways. The methods of factorization computed by the \code{bpca}
   function are:
   \itemize{
-    \item \emph{HJ - simetric}, Galindo Villardón (1986):
+    \item \emph{HJ - symmetric}, Galindo Villardón (1986):
     \deqn{g = u*s^2}
     \deqn{h = s^2*v'}
-    \item \emph{SQRT - squared root simetric}, Gabriel (1971):
+    \item \emph{SQRT - square root symmetric}, Gabriel (1971):
     \deqn{g = u*\sqrt{s^2}}
     \deqn{h = \sqrt{s^2}*v'}
     \item \emph{JK - row metric preserving}, Gabriel (1971):
@@ -122,19 +123,18 @@
   Considering
   \deqn{_{n}Y_{p} \approx Y_{m}}
   it is possible to deduce that if the
-  rank (r) of the matrix
+  rank (\emph{r}) of the matrix
   \deqn{_{n}Y_{p}}
-  is bigger than `m', the biplot
+  is bigger than \emph{m}, the biplot
   representation of Y will be an approximation, and accurate only in the case
   of \deqn{r = m}.
 
   Due to the need of different methods of factorization, if \samp{x} is a
-  \code{prcomp} object, the method \code{bpca.prcomp} will go back from the
-  \code{prcomp} function. In other words, it will regenerates, or computes, the
+  \code{prcomp} object, method \code{bpca.prcomp} recovers values from the
+  \code{prcomp} object. In other words, it regenerates (or computes) the
   inverse of the \code{svd} decomposition of the given data
   \deqn{_{n}Y_{p}}
-  After this, it will make a call to the method \code{bpca.default} with the
-  adequate parameters.
+  After that, it calls \code{bpca.default} with the appropriate parameters.
 
   The biplot is used with many multivariate methods to display
   relationships between objects, variables and the interrelationship
@@ -167,20 +167,20 @@
 }
 
 \references{
-  Gabriel, K. R.  (1971)
+  Gabriel, K. R. (1971)
   The biplot graphical display of matrices with application to principal
   component analysis.
-  \emph{Biometrika} \bold{58}, 453-467.
+  \emph{Biometrika} \bold{58}, 453--467.
 
   Galindo Vilardón, M. P. (1986)
   Una alternativa de representación simultánea: HJ-Biplot.
-  \emph{Qüestiió}, 10(1):13-23, 1986.
+  \emph{Qüestiió}, 10(1):13--23.
 
   Johnson, R. A. and Wichern, D. W. (1988)
   \emph{Applied multivariate statistical analysis}.
   Prentice-Hall, Inc., Upper Saddle River, NJ, USA, 6 ed.
 
-  Gower, J.C. and Hand, D. J.  (1996)
+  Gower, J. C. and Hand, D. J. (1996)
   \emph{Biplots}. Chapman & Hall.
 
   Yan, B. W. and Kang, M. S. (2003)
@@ -193,7 +193,7 @@
 \examples{
 ##
 ## Example 1
-## Computing and ploting a bpca object with 'graphics' package - 2d
+## Compute and plot a bpca object with base graphics (2D)
 ##
 
 bp <- bpca(gabriel1971)
@@ -202,7 +202,7 @@ dev.new(w=6, h=6)
 oask <- devAskNewPage(dev.interactive(orNone=TRUE))
 plot(bp)
 
-# Exploring the object 'bp' created by the function 'bpca'
+# Explore the object created by bpca()
 class(bp)
 names(bp)
 str(bp)
@@ -222,7 +222,7 @@ bp$var.rd
 \dontrun{
 ##
 ## Example 2
-## Computing and plotting a bpca object with 'scatterplot3d' package - 3d
+## Compute and plot a bpca object with scatterplot3d (3D)
 ##
 
 bp <- bpca(gabriel1971,
@@ -230,7 +230,7 @@ bp <- bpca(gabriel1971,
 
 plot(bp)
 
-# Exploring the object 'bp' created by the function 'bpca'
+# Explore the object created by bpca()
 class(bp)
 names(bp)
 str(bp)
@@ -249,24 +249,23 @@ bp$var.rd
 
 ##
 ## Example 3
-## Computing and plotting a bpca object with 'rgl' package - 3d
+## Compute and plot a bpca object with rgl (3D)
 ##
 
 plot(bpca(gabriel1971,
           d=1:3),
      rgl.use=TRUE)
 
-# Suggestion: Interact with the graphic with the mouse
-# left button: press, maintain and movement it to interactive rotation;
-# right button: press, maintain and movement it to interactive zoom.
-# Enjoy it!
+# Tip: interact with the graphic using the mouse
+# left button: click and drag to rotate;
+# right button: click and drag to zoom.
 
 ##
 ## Example 4
-## Grouping objects with different symbols and colors - 2d and 3d
+## Group objects using different symbols and colors (2D and 3D)
 ##
 
-# 2d
+# 2D
 plot(bpca(iris[-5]),
      var.cex=.7,
      obj.names=FALSE,
@@ -274,7 +273,7 @@ plot(bpca(iris[-5]),
      obj.col=c('red', 'green3', 'blue')[as.numeric(iris$Species)],
      obj.pch=c('+', '*', '-')[as.numeric(iris$Species)])
 
-# 3d static
+# 3D static
 plot(bpca(iris[-5],
           d=1:3),
      var.color=c('blue', 'red'),
@@ -284,7 +283,7 @@ plot(bpca(iris[-5],
      obj.col=c('red', 'green3', 'blue')[as.numeric(iris$Species)],
      obj.pch=c('+', '*', '-')[as.numeric(iris$Species)])
 
-# 3d dynamic
+# 3D dynamic
 plot(bpca(iris[-5],
           method='hj',
           d=1:3),

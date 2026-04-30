@@ -6,7 +6,7 @@
 }
 
 \description{
-  A didatic matrix of genotypes (rows) and environments (columns) proposed by
+  A didactic matrix of genotypes (rows) and environments (columns) proposed by
   Weikai Yan and Manjit S. Kang in GGE biplot analysis: a graphical tool for
   breeders, geneticists, and agronomists.
 }
@@ -33,7 +33,7 @@
 
 \examples{
 ##
-## Example from YAN, W & KANG, M.S. GGE biplot analysis : a graphical tool
+## Example from Yan and Kang (2003), GGE biplot analysis
 ## for breeders, geneticists, and agronomists
 ##
 

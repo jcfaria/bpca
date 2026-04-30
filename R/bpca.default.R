@@ -10,6 +10,8 @@ bpca.default <- function(x,
                          limit=10, ...)
 {
   stopifnot(is.matrix(x) || is.data.frame(x))
+  if (!is.numeric(center) || length(center) != 1 || !(center %in% 0:3))
+    stop("'center' must be one of 0, 1, 2, or 3.")
 
   li <- d[1]
   le <- d[length(d)]
@@ -20,6 +22,12 @@ bpca.default <- function(x,
          'The (d[1] - d[length(d)] + 1) must equal to 2 (for bpca.2d) or 3 (for bpca.3d).\n\n')
 
   x <- as.matrix(x)
+  if (!is.numeric(x))
+    stop("'x' must contain only numeric values.")
+  if (!is.finite(limit) || length(limit) != 1 || limit < 0)
+    stop("'limit' must be a non-negative numeric value.")
+  if (li < 1 || le > min(dim(x)))
+    stop("Requested dimensions in 'd' are out of bounds for input matrix.")
 
   x.cent <- x                                             # 0: no centering
   switch(center,                                          # of course, if center=1:3
@@ -28,17 +36,20 @@ bpca.default <- function(x,
          x.cent <- sweep(sweep(x, 1, apply(x, 1, mean)),  # 3: double-centered
                          2, apply(x, 2, mean)) + mean(x))
 
-  if(scale)
-    x.scal <- sweep(x.cent, 2, apply(x.cent, 2, sd), '/')
-  else
+  if(scale) {
+    sds <- apply(x.cent, 2, sd)
+    sds[sds == 0] <- 1
+    x.scal <- sweep(x.cent, 2, sds, '/')
+  } else {
     x.scal <- x.cent
+  }
 
   svdx.scal <- svd(x.scal)
 
   rownames(svdx.scal$u) <- rownames(x) # obj
   rownames(svdx.scal$v) <- colnames(x) # var
   colnames(svdx.scal$v) <- paste('PC',
-                                 1:length(svdx.scal$d),
+                                 seq_along(svdx.scal$d),
                                  sep='')
 
   s2.scal <- diag(svdx.scal$d)
@@ -85,29 +96,29 @@ bpca.default <- function(x,
          })
 
   pc.names <- paste('PC',
-                    1:ncol(hl.scal),
+                    seq_len(ncol(hl.scal)),
                     sep='')
 
   if(is.null(rownames(x.scal)))
-    rownames(g.scal) <- 1:nrow(x.scal)
+    rownames(g.scal) <- seq_len(nrow(x.scal))
   else
     rownames(g.scal) <- rownames(x.scal)
   colnames(g.scal) <- pc.names
   if(is.null(colnames(x.scal)))
     rownames(hl.scal) <- paste('V',
-                               1:ncol(x),
+                               seq_len(ncol(x)),
                                sep='')
   else
     rownames(hl.scal) <-colnames(x.scal)
   colnames(hl.scal) <- pc.names
 
   # variables
-  if(var.rb)
+  if (isTRUE(var.rb))
     var.rb.res <- var.rbf(hl.scal[,d[1]:d[length(d)]])
   else
     var.rb.res <- NA
 
-  if(var.rb & var.rd)
+  if (isTRUE(var.rb) && isTRUE(var.rd))
     var.rd.res <- var.rdf(x.scal, 
                           var.rb.res, 
                           limit)

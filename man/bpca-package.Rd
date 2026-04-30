@@ -3,11 +3,12 @@
 \docType{package}
 
 \title{
-  Biplot of Multivariate Data Based on Principal Components Analysis
+  Biplot of Multivariate Data Based on Principal Component Analysis
 }
 
 \description{
-  Implements biplot (2d and 3d) and diagnostic tools of the quality of the reduction.
+  Provides 2D and 3D biplot methods and diagnostic tools to evaluate the
+  quality of dimensionality reduction.
 }
 
 \author{
@@ -17,20 +18,20 @@
 }
 
 \references{
-  Gabriel, K. R.  (1971)
+  Gabriel, K. R. (1971)
   The biplot graphical display of matrices with application to principal
   component analysis.
-  \emph{Biometrika} \bold{58}, 453-467.
+  \emph{Biometrika} \bold{58}, 453--467.
 
   Galindo Vilardón, M. P. (1986)
   Una alternativa de representación simultánea: HJ-Biplot.
-  \emph{Qüestiió}, 10(1):13-23, 1986.
+  \emph{Qüestiió}, 10(1):13--23.
 
   Johnson, R. A. and Wichern, D. W. (1988)
   \emph{Applied multivariate statistical analysis}.
   Prentice-Hall, Inc., Upper Saddle River, NJ, USA, 6 ed.
 
-  Gower, J.C. and Hand, D. J.  (1996)
+  Gower, J. C. and Hand, D. J. (1996)
   \emph{Biplots}. Chapman & Hall.
 
   Yan, B. W. and Kang, M. S. (2003)
@@ -43,14 +44,14 @@
 
 \examples{
 ##
-## Grouping objects with different symbols and colors - 2d and 3d
+## Grouping objects with different symbols and colors (2D and 3D)
 ##
 
 dev.new(w=6, h=6)
 oask <- devAskNewPage(dev.interactive(orNone=TRUE))
 
 \dontrun{
-# 2d
+# 2D
 plot(bpca(iris[-5]),
      var.pos=c(4, 2, 3, 1),
      var.offset=.3,
@@ -60,7 +61,7 @@ plot(bpca(iris[-5]),
      obj.col=c('red', 'green3', 'blue')[as.numeric(iris$Species)],
      obj.pch=c('+', '*', '-')[as.numeric(iris$Species)])
 
-# 3d static
+# 3D static
 plot(bpca(iris[-5],
           d=1:3),
      var.color=c('blue', 'red'),
@@ -70,7 +71,7 @@ plot(bpca(iris[-5],
      obj.col=c('red', 'green3', 'blue')[as.numeric(iris$Species)],
      obj.pch=c('+', '*', '-')[as.numeric(iris$Species)])
 
-# 3d dynamic
+# 3D dynamic
 plot(bpca(iris[-5],
           method='hj',
           d=1:3),
@@ -85,7 +86,7 @@ plot(bpca(iris[-5],
 }
 
 ##
-## New options plotting
+## New plotting options
 ##
 plot(bpca(ontario))
 
@@ -94,7 +95,7 @@ plot(bpca(ontario))
                   1:18,
                   sep=''))
 
-# Giving obj.labels
+# Set obj.labels
 plot(bpca(ontario),
     obj.labels=obj.lab) 
 
@@ -108,7 +109,7 @@ plot(bpca(ontario),
      obj.id=7,
      obj.cex=1)
 
-# Giving obj.labels
+# Set obj.labels
 plot(bpca(ontario),
      type='eo',
      obj.labels=obj.lab,
@@ -176,7 +177,7 @@ plot(bpca(ontario),
 plot(bpca(ontario),
      type='ww')
 
-# Discrimitiveness vs. representativeness
+# Discriminativeness vs. representativeness
 plot(bpca(ontario),
      type='dv')
 
@@ -184,11 +185,11 @@ plot(bpca(ontario),
 plot(bpca(ontario),
      type='ms')
 
-# Rank objects with ref. to the ideal variable 
+# Rank objects with reference to the ideal variable
 plot(bpca(ontario),
      type='ro')
 
-# Rank variables with ref. to the ideal object
+# Rank variables with reference to the ideal object
 plot(bpca(ontario),
      type='rv')
 

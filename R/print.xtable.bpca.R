@@ -13,12 +13,12 @@ print.xtable.bpca <- function(x,
   if(is.null(sanitize.rownames.function)){
     morerow <- function(x) paste("&",
                                  x,
-                                 collpase='')
+                                 collapse='')
     sanitizerownamesfunction <- morerow
   }else{
     morerow <- function(x) paste("&",
                                  sanitize.rownames.function(x),
-                                 collpase='')
+                                 collapse='')
     sanitizerownamesfunction <- morerow
   }
 

@@ -2,7 +2,8 @@
 bpca.prcomp <- function(x,
                         d=1:2, ...)
 {
-  stopifnot(class(x) == 'prcomp')
+  if (!inherits(x, 'prcomp'))
+    stop("Use this function only with 'prcomp' objects.")
 
   if (!length(x$x))
     stop(gettextf("object '%s' has no objects coordinates!",
@@ -30,5 +31,5 @@ bpca.prcomp <- function(x,
   bpca.default(xreg,
                d,
                center=ifelse(x$center[1] == FALSE, 0, 2),
-               scale=ifelse(x$scale[1] == FALSE, 0, 1), ...)
+               scale=isTRUE(x$scale[1]), ...)
 }

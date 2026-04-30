@@ -17,9 +17,9 @@
 }
 
 \arguments{
-  \item{x}{A given object of the classe \code{data.frame} or \code{matrix}.}
-  \item{var.rb}{A given object of the class \code{matrix} with the projected correlations by biplot.}
-  \item{limit}{A vector giving the percentual limit to define poor representation of variables.}
+  \item{x}{An object of class \code{data.frame} or \code{matrix}.}
+  \item{var.rb}{A \code{matrix} with projected variable correlations from the biplot.}
+  \item{limit}{Numeric threshold (percentage) used to define poor variable representation.}
 }
 
 \value{
@@ -37,12 +37,12 @@
   Demétrio C. G. B.
 }
 
-\seealso{\code{\link{bpca}}.}
+\seealso{\code{\link{bpca}}}
 
 \examples{
 ##
 ## Example 1
-## Diagnostic of gabriel1971 dataset representation
+## Diagnostic of representation quality for the gabriel1971 dataset
 ##
 
 oask <- devAskNewPage(dev.interactive(orNone=TRUE))
@@ -58,7 +58,7 @@ class(res)
 
 ##
 ## Example 2
-## Diagnostic of gabriel1971 dataset representation with var.rd parameter
+## Diagnostic of representation quality using `var.rd`
 ##
 
 bp2 <- bpca(gabriel1971,
@@ -74,23 +74,23 @@ bp2$var.rd
 
 bp2$eigenvectors
 
-# Graphical visualization of the importance of the variables not contemplated
-# in the reduction
+# Graphical visualization of variable importance not represented
+# in the selected reduction
 plot(bpca(gabriel1971,
           meth='hj',
           d=3:4),
      main='hj')
 
 # Interpretation:
-# RUR followed by CRISTIAN contains information dimensions that
-# wasn't contemplated by the biplot reduction (PC3).
-# Between all, RUR followed by CRISTIAN, variables are the most poor represented
-# by a 2d biplot.
+# RUR followed by CRISTIAN contains information in dimensions not captured
+# by the 2D biplot reduction (mainly PC3).
+# Among all variables, RUR and CRISTIAN are the most poorly represented
+# in a 2D biplot.
 
 \dontrun{
 ##
 ## Example 3
-## Diagnostic of iris dataset representation with var.rd parameter
+## Diagnostic of iris representation quality using `var.rd`
 ##
 
 bp3 <- bpca(iris[-5],
@@ -112,11 +112,10 @@ plot(bpca(iris[-5],
      obj.names=FALSE)
 
 # Interpretation:
-# Sepal.length followed by Petal.Width contains information in dimensions
-# (PC3 - the PC3 is, essentially, a contrast among both) that wasn't fully
-# contemplated by the biplot reduction (PC1 and PC2) .
-# Therefore, between all variables, they have the most poor representation by a
-# 2d biplot.
+# Sepal.Length followed by Petal.Width contains information in dimensions
+# (mainly PC3) that is not fully captured by the PC1-PC2 reduction.
+# Therefore, among all variables, these are the most poorly represented
+# by a 2D biplot.
 
 bp4 <- bpca(iris[-5],
             d=1:3,
@@ -137,7 +136,7 @@ round(bp3$var.rb, 2)
 
 round(cor(iris[-5]), 2)
 
-# Good representation of all variables with a 3d biplot!
+# Good representation of all variables with a 3D biplot.
 }
 
 devAskNewPage(oask)

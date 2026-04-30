@@ -2,7 +2,7 @@
 \alias{var.rbf}
 
 \title{
-  Projected Correlations by bpca
+  Projected Correlations by BPCA
 }
 
 \description{
@@ -15,7 +15,7 @@
 }
 
 \arguments{
-  \item{x}{A given object of the classes \samp{bpca.2d} and \samp{bpca.3d}.}
+  \item{x}{An object of class \samp{bpca.2d} or \samp{bpca.3d}.}
 }
 
 \value{
@@ -37,17 +37,17 @@
 
 \examples{
 ##
-## Particular use
+## Direct use
 ##
 
 bp1 <- bpca(gabriel1971)
 bp1$var.rb # NA
 
-# Computes the correlations of all variables under the biplot projection
+# Compute correlations of all variables under the biplot projection
 (res <- var.rbf(bp1$coord$var)) 
 
 ##
-## Common use
+## Typical use
 ##
 
 bp2 <- bpca(gabriel1971,

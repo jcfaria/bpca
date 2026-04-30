@@ -2,6 +2,13 @@
 
 ## Development Version
 
+### Codebase Refactoring (2026-04-30)
+- Refactored core computational functions for safer input handling and improved edge-case behavior (`bpca.default`, `bpca.prcomp`, `dt.tools`, `qbpca`, `var.rbf`, `var.rdf`).
+- Refactored plotting internals (`plot.bpca.2d`, `plot.bpca.3d`, `plot.qbpca`) to reduce duplication and improve readability while preserving public API.
+- Improved summary and table method internals (`summary.bpca`, `xtable.bpca`, `print.xtable.bpca`) and fixed minor string-handling issues.
+- Standardized and modernized package documentation across `man/*.Rd`.
+- Updated package metadata files (`DESCRIPTION`, `NAMESPACE`, `INDEX`) for consistency with the current repository and dependency layout.
+
 ### Modernization and AI Integration
 - Migrated the legacy `NEWS` file to `NEWS.md` for improved rendering on GitHub and `pkgdown`.
 - Restructured the repository as a playground for AI-driven testing and refactoring.

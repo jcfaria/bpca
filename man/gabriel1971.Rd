@@ -10,7 +10,7 @@
   Percentages of households having various facilities and appliances in East
   Jerusalem Arab areas, by quarters of the town. The average percentages in
   each quarter indicate the standard of living of that area and the average
-  percentage of each facility or appliance its over-all prevalence.
+  percentage of each facility or appliance indicates its overall prevalence.
 }
 
 \usage{
@@ -28,9 +28,9 @@
 }
 
 \references{
-  Gabriel, K. R.  (1971)
+  Gabriel, K. R. (1971)
   The biplot graphical display of matrices with application to principal component analysis.
-  \emph{Biometrika} \bold{58}, 453-467.
+  \emph{Biometrika} \bold{58}, 453--467.
 }
 
 \examples{
@@ -43,7 +43,7 @@ bp <- bpca(gabriel1971)
 dev.new(w=6, h=6)
 plot(bp)
 
-# Exploring the object 'bp' created by the function 'bpca'
+# Explore the object created by bpca()
 class(bp)
 names(bp)
 str(bp)

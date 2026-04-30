@@ -2,12 +2,12 @@
 \alias{dt.tools}
 
 \title{
-  Data Tools for Multivariate
+  Data Tools for Multivariate Analysis
 }
 
 \description{
   Calculates vector variable lengths, angles between vector variables and
-  variable correlations from `data.frame' or `matrix' objects
+  variable correlations from \code{data.frame} or \code{matrix} objects.
 }
 
 \usage{
@@ -29,8 +29,8 @@
   \item{scale}{Logical.
     A value indicating whether the variables should be scaled to have unit
     variance before the analysis takes place: \cr
-    \code{FALSE} - no scale; \cr
-    \code{TRUE} - scale.}
+    \code{FALSE} - no scaling; \cr
+    \code{TRUE} - scaling enabled.}
 }
 
 \details{
@@ -64,16 +64,16 @@
 
 \examples{
 ##
-## Computes: vector variable lengths, angles between vector variables and
-## variable correlations from data.frame or matrix objects (n x p)
+## Computes vector lengths, angles between variable vectors,
+## and variable correlations from data.frame or matrix objects (n x p)
 ## n = rows (objects)
 ## p = columns (variables)
 ##
 
 dt <- dt.tools(iris,
-               2)  # No numeric columns are removed in dt.tools 
+               2)  # Non-numeric columns are ignored internally.
 
-# Exploring the object 'bp' created by the function 'var.tools'
+# Explore the object created by dt.tools()
 class(dt)
 names(dt)
 str(dt)

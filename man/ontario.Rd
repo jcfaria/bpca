@@ -6,8 +6,9 @@
 }
 
 \description{
-  The sample data are yields from the 1993 Ontario winter wheat (Triticum aestivum L.) performance
-  trials, in which 18 cultivars were tested at nine locations (Yan and Kang 2003)
+  Sample yields from the 1993 Ontario winter wheat (\emph{Triticum aestivum} L.)
+  performance trials, in which 18 cultivars were tested at nine locations
+  (Yan and Kang, 2003).
 }
 
 \usage{
@@ -26,11 +27,11 @@
 \examples{
 data(ontario)
 
-# 2d
+# 2D
 plot(bpca(ontario,
           d=1:2))
 
-# 3d
+# 3D
 plot(bpca(ontario,
           d=1:3),
      rgl.use=TRUE)

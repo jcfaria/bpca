@@ -4,6 +4,8 @@ dt.tools <- function(x,
                      scale=TRUE)
 {
   stopifnot(is.matrix(x) || is.data.frame(x))
+  if (!is.numeric(center) || length(center) != 1 || !(center %in% 0:3))
+    stop("'center' must be one of 0, 1, 2, or 3.")
 
   bCol <- sapply(x,
                  is.numeric)
@@ -20,9 +22,11 @@ dt.tools <- function(x,
          x <- sweep(sweep(x, 1, apply(x, 1, mean)),  # 3: double-centering
                     2, apply(x, 2, mean)) + mean(x))
 
-  if(scale)
-    x <- sweep(x, 2, apply(x, 2, sd), '/')
-  else
+  if(scale) {
+    sds <- apply(x, 2, sd)
+    sds[sds == 0] <- 1
+    x <- sweep(x, 2, sds, '/')
+  } else
     x <- x
 
   lv <- function(x) sqrt(t(x) %*% x)  # length of vector
@@ -31,7 +35,7 @@ dt.tools <- function(x,
               lv)
   r  <- diag(n)
 
-  for (i in 1:(n - 1)) {
+  for (i in seq_len(n - 1)) {
     for (j in (i + 1):n) {
       cost <- (t(x[,i]) %*%
                x[,j]) /

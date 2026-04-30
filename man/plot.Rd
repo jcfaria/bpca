@@ -4,7 +4,7 @@
 \alias{plot.qbpca}
 
 \title{
-  Biplot of Multivariate Data Based on Principal Components Analysis
+  Biplot of Multivariate Data Based on Principal Component Analysis
 }
 
 \description{
@@ -97,7 +97,7 @@
 }
 
 \arguments{
-  \item{x}{A \code{bpca.2d}, \code{bpca.3d} or \code{qbpca} object.}
+  \item{x}{An object of class \code{bpca.2d}, \code{bpca.3d}, or \code{qbpca}.}
   \item{type}{Type of biplot: \cr
               \samp{bp} - conventional biplot; \cr
               \samp{eo} - evaluate an object; \cr
@@ -105,16 +105,16 @@
               \samp{co} - compare two objects; \cr
               \samp{cv} - compare (relationship among) variables; \cr
               \samp{ww} - which won where/what; \cr
-              \samp{dv} - discrimitiveness vs. representativeness; \cr
+              \samp{dv} - discriminativeness vs. representativeness; \cr
               \samp{ms} - mean vs. stability; \cr
-              \samp{ro} - rank objects with ref. to an \dQuote{ideal} variable; \cr
-              \samp{rv} - rank variables with ref. to an \dQuote{ideal} object.}
+              \samp{ro} - rank objects with reference to an \dQuote{ideal} variable; \cr
+              \samp{rv} - rank variables with reference to an \dQuote{ideal} object.}
   \item{c.color}{The color of circles.}
   \item{c.lwd}{The \code{lwd} of circles.}
   \item{c.number}{The number of circles.}
-  \item{c.radio}{The radio of circles.}
+  \item{c.radio}{The radius of circles.}
   \item{obj.id}{An object(s) number(s) or name(s).
-    It is used with reprojctions to identify the object(s) when the \code{type} option is \samp{'eo'} or \samp{'co'}.
+    It is used with reprojections to identify the object(s) when the \code{type} option is \samp{'eo'} or \samp{'co'}.
     The default is \samp{1} for \samp{'eo'} and \code{1:2} for \samp{'co'}.}
   \item{var.id}{A variable number or name.
     It is used with reprojections to identify the variable when the \samp{type} option is \code{'ev'}.}
@@ -135,14 +135,14 @@
   \item{a.length}{The \samp{length} for the arrow.
     It is used only with reprojections.}
   \item{rgl.use}{A logical value.
-    If \code{TRUE} the 3d scatter will be done with the \code{rgl} environment,
-    in another way the \code{scatterplot3d} will be used.}
+    If \code{TRUE}, the 3D scatter is drawn with \code{rgl};
+    otherwise, \code{scatterplot3d} is used.}
   \item{ref.lines}{A logical value.
     If \code{TRUE}, the reference lines will be added to the biplot.}
   \item{ref.color}{Line color for reference lines.}
   \item{ref.lty}{Line type of the reference lines.}
   \item{clear3d}{A logical value.
-    It clears (or not) a 3d biplot before making a new one.
+    Clears (or not) a 3D biplot before drawing a new one.
     Used only if \code{rgl.use=TRUE}.}
   \item{simple.axes}{A logical value to draw simple axes.
     Used only if \code{rgl.use=TRUE}.}
@@ -174,7 +174,7 @@
     Used only if \code{rgl.use=FALSE}.}
   \item{obj.names}{A logical value to represent objects as spheres or points.}
   \item{obj.identify}{A logical value.
-    If \code{TRUE}, it is possible, in interative way, to identify the objects with the mouse.}
+    If \code{TRUE}, objects can be identified interactively with the mouse.}
   \item{obj.labels}{A vector of labels for objects.}
   \item{box}{A logical value to whether to draw a box.
     Used only if \samp{rgl.use=TRUE}.}
@@ -196,24 +196,24 @@
   A biplot aims to represent both the observations and variables
   of a matrix of multivariate data on the same plot.
 
-  The methods \code{plot.bpca.2d} draw a 2d biplot (PC1 and PC2 on axis \samp{x}
+  The method \code{plot.bpca.2d} draws a 2D biplot (PC1 and PC2 on axis \samp{x}
   and \samp{y}, respectively). It uses the traditional graphics system.
 
-  The methods \code{plot.bpca.3d} draw a 3d biplot (PC1, PC2 and PC3 on axis
+  The method \code{plot.bpca.3d} draws a 3D biplot (PC1, PC2 and PC3 on axis
   \samp{x}, \samp{y} and \samp{z}, respectively) in two ways:
 
   \enumerate{
     \item static: It uses the package \code{scatterplot3d} based on
       traditional graphic system. Use the parameter \samp{rgl.use=FALSE} for it.
       It is the default.
-    \item dinamic: It uses the package \code{rgl} a 3D real-time rendering
+    \item dynamic: It uses the package \code{rgl}, a 3D real-time rendering
       device driver system for R. Use the parameter \samp{rgl.use=TRUE} for it.
   }
 
-  The method \code{qb.pca} draws a scatterplot of the correlations observed
+  The method \code{plot.qbpca} draws a scatterplot of observed
   (in the data) and projected (under the biplot) related to the variables.
   It uses the traditional graphics system.
-  \code{qb.pca} is a simple (and graphical) measure of the quality of the biplot
+  \code{qbpca} is a simple (and graphical) measure of the quality of the biplot
   reduction associated to the variables.
 }
 
@@ -265,7 +265,7 @@ if(interactive()) {
 
 ##
 ## Example 1
-## Computing and ploting a bpca object with 'graphics' package - 2d
+## Computing and plotting a bpca object with base graphics (2D)
 ##
 
 bp <- bpca(gabriel1971)
@@ -297,7 +297,7 @@ plot(bpca(gabriel1971,
 
 ##
 ## Example 2
-## Computing and plotting a bpca object with 'scatterplot3d' package - 3d
+## Computing and plotting a bpca object with scatterplot3d (3D)
 ##
 
 bp <- bpca(gabriel1971,
@@ -324,25 +324,24 @@ plot(bpca(gabriel1971,
 
 ##
 ## Example 3
-## Computing and plotting a bpca object with 'rgl' package - 3d
+## Computing and plotting a bpca object with rgl (3D)
 ##
 
 plot(bpca(gabriel1971,
           d=1:3),
      rgl.use=TRUE)
 
-# Suggestion: Interact with the graphic with the mouse
-# left button: press, maintain and movement it to interactive rotation;
-# right button: press, maintain and movement it to interactive zoom.
-# Enjoy it!
+# Tip: interact with the graphic using the mouse
+# left button: click and drag to rotate;
+# right button: click and drag to zoom.
 
 \dontrun{
 ##
 ## Example 4
-## Grouping objects with different symbols and colors - 2d and 3d
+## Grouping objects with different symbols and colors (2D and 3D)
 ##
 
-# 2d
+# 2D
 plot(bpca(iris[-5]),
      var.cex=.7,
      obj.names=FALSE,
@@ -359,7 +358,7 @@ plot(bpca(iris[-5]),
      obj.col=c('red', 'green3', 'blue')[as.numeric(iris$Species)],
      obj.pch=c('+', '*', '-')[as.numeric(iris$Species)])
 
-# 3d static
+# 3D static
 plot(bpca(iris[-5],
           d=1:3),
      var.color=c('blue', 'red'),
@@ -369,7 +368,7 @@ plot(bpca(iris[-5],
      obj.col=c('red', 'green3', 'blue')[as.numeric(iris$Species)],
      obj.pch=c('+', '*', '-')[as.numeric(iris$Species)])
 
-# 3d dynamic
+# 3D dynamic
 plot(bpca(iris[-5],
           method='hj',
           d=1:3),
@@ -384,7 +383,7 @@ plot(bpca(iris[-5],
 
 ##
 ## Example 5
-## Computing and plotting a bpca object with 'obj.identify=TRUE' parameter - 2d
+## Computing and plotting a bpca object with `obj.identify=TRUE` (2D)
 ##
 
 bp <- bpca(gabriel1971)
@@ -404,7 +403,7 @@ plot(bp,
 
 ##
 ## Example 6
-## Computing and plotting a bpca object with 'obj.identify=TRUE' parameter - 3d
+## Computing and plotting a bpca object with `obj.identify=TRUE` (3D)
 ##
 
 bp <- bpca(gabriel1971,
@@ -424,7 +423,7 @@ plot(bp,
      obj.identify=TRUE)
 
 ##
-## New options plotting
+## New plotting options
 ##
 plot(bpca(ontario))
 
@@ -433,7 +432,7 @@ plot(bpca(ontario))
                   1:18,
                   sep=''))
 
-# Giving obj.labels
+# Set obj.labels
 plot(bpca(ontario),
     obj.labels=obj.lab) 
 
@@ -451,7 +450,7 @@ plot(bpca(ontario),
      obj.id=7,
      obj.cex=1)
 
-# Giving obj.labels
+# Set obj.labels
 plot(bpca(ontario),
      type='eo',
      obj.labels=obj.lab,
@@ -527,7 +526,7 @@ plot(bpca(ontario),
 plot(bpca(ontario),
      type='ww')
 
-# Discrimitiveness vs. representativeness
+# Discriminativeness vs. representativeness
 plot(bpca(ontario),
      type='dv')
 
@@ -544,7 +543,7 @@ plot(bpca(ontario),
      type='ms',
      c.number=3)
 
-# Rank objects with ref. to the ideal variable 
+# Rank objects with reference to the ideal variable
 plot(bpca(ontario),
      type='ro')
 
@@ -553,7 +552,7 @@ plot(bpca(ontario),
      c.number=6,
      c.radio=.5)
 
-# Rank variables with ref. to the ideal object
+# Rank variables with reference to the ideal object
 plot(bpca(ontario),
      type='rv')
 

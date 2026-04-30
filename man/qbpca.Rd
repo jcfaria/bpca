@@ -6,7 +6,7 @@
 }
 
 \description{
-  This function returns an object of the class \code{qbpca}. It is a simple
+  This function returns an object of class \code{qbpca}. It is a simple
   measure of the quality of biplot representation of the variables. The
   observed (in the data) and projected (under biplot reduction) correlations
   are computed.
@@ -19,19 +19,19 @@
 
 \arguments{
   \item{x}{A \code{data.frame} or \code{matrix} object.}
-  \item{bpca}{A object of the class \code{\link{bpca}}.}
+  \item{bpca}{An object of class \code{\link{bpca}}.}
 }
 
 \details{
-  This function binds the vectors of observed (from the matrix or data.frame)
+  This function combines the vectors of observed (from the matrix or data.frame)
   and projected (under biplot reduction) correlations for all variables.
 }
 
 \value{
   An object of class \code{qbpca} and \code{data.frame} with two columns:
   \item{obs}{A vector of the observed correlations for all variables.}
-  \item{var.rb}{A vector of the projected correlations for all variables
-    determined under biplot reduction).}
+  \item{var.rb}{A vector of projected correlations for all variables
+    determined under biplot reduction.}
 }
 
 \author{
@@ -51,7 +51,7 @@
 \examples{
 ##
 ## Example 1
-## Example of 'var.rb=TRUE' parameter as a measure of the quality of the biplot - 2d
+## Example of the `var.rb=TRUE` parameter as a quality measure (2D)
 ##
 
 oask <- devAskNewPage(dev.interactive(orNone=TRUE))
@@ -66,7 +66,7 @@ qbp1 <- qbpca(gabriel1971,
               bp1)
 
 plot(qbp1,
-     main='sqrt - 2d \n (poor)')
+     main='sqrt - 2D \n (poor)')
 
 
 # JK
@@ -78,7 +78,7 @@ qbp2 <- qbpca(gabriel1971,
               bp2)
 
 plot(qbp2,
-     main='jk - 2d \n (very poor)')
+     main='jk - 2D \n (very poor)')
 
 
 # GH
@@ -90,7 +90,7 @@ qbp3 <- qbpca(gabriel1971,
               bp3)
 
 plot(qbp3,
-     main='gh - 2d \n (good)')
+     main='gh - 2D \n (good)')
 
 
 # HJ
@@ -102,11 +102,11 @@ qbp4 <- qbpca(gabriel1971,
              bp4)
 
 plot(qbp4,
-     main='hj - 2d \n (good)')
+     main='hj - 2D \n (good)')
 
 ##
 ## Example 2
-## Example of 'var.rb=TRUE' parameter as a measure of the quality of the biplot - 3d
+## Example of the `var.rb=TRUE` parameter as a quality measure (3D)
 ##
 
 ## Differences between methods of factorization
@@ -120,7 +120,7 @@ qbp1 <- qbpca(gabriel1971,
               bp1)
 
 plot(qbp1,
-     main='sqrt - 3d \n (poor)')
+     main='sqrt - 3D \n (poor)')
 
 
 # JK
@@ -133,7 +133,7 @@ qbp2 <- qbpca(gabriel1971,
              bp2)
 
 plot(qbp2,
-     main='jk - 3d \n (very poor)')
+     main='jk - 3D \n (very poor)')
 
 
 # GH
@@ -146,7 +146,7 @@ qbp3 <- qbpca(gabriel1971,
               bp3)
 
 plot(qbp3,
-     main='gh - 3d \n (whow!)')
+     main='gh - 3D \n (wow!)')
 
 
 # HJ
@@ -159,7 +159,7 @@ qbp4 <- qbpca(gabriel1971,
               bp4)
 
 plot(qbp4,
-     main='hj - 3d \n (whow!)')
+     main='hj - 3D \n (wow!)')
 
 devAskNewPage(oask)  
 }

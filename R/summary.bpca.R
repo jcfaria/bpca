@@ -5,16 +5,17 @@ summary.bpca <- function(object,
   if (!inherits(object, 'bpca'))
     stop("Use this function only with 'bpca' class!")
 
+  d <- length(object$number)
+  sel <- object$number[1]:object$number[d]
+  eig <- object$eigenvalues
+  var_each <- eig[sel]^2 / sum(eig^2)
+  var_cum <- cumsum(eig[sel]^2) / sum(eig^2)
+
   if(!presentation){
-
-    d <- length(object$number)
-
-    x <- list('Eigenvalue(s)' = object$eigenvalues,
-              'Considered on reduction' = object$eigenvalues[object$number[1]:object$number[d]],
-              'Variance retained by each' = object$eigenvalues[object$number[1]:object$number[d]]^2 / 
-              sum(object$eigenvalues^2),
-              'Cumulative variance retained' = cumsum(object$eigenvalues[object$number[1]:object$number[d]]^2) /
-              sum(object$eigenvalues^2),
+    x <- list('Eigenvalue(s)' = eig,
+              'Considered on reduction' = eig[sel],
+              'Variance retained by each' = var_each,
+              'Cumulative variance retained' = var_cum,
               'Prop. of total variance retained' = object$importance[1]) 
 
     if(object$importance[1] != object$importance[2]) 
@@ -26,21 +27,17 @@ summary.bpca <- function(object,
 
   } else {
 
-    d <- length(object$number)
-
     cat(' Eigenvalue(s):\t\t\t\t',
-        object$eigenvalues)
+        eig)
 
     cat('\n  - Considered on reduction:\t\t',
-        object$eigenvalues[object$number[1]:object$number[d]])
+        eig[sel])
 
     cat('\n  - Variance retained by each:\t\t',
-        object$eigenvalues[object$number[1]:object$number[d]]^2 /
-        sum(object$eigenvalues^2))
+        var_each)
 
     cat('\n  - Cumulative variance retained:\t',
-        cumsum(object$eigenvalues[object$number[1]:object$number[d]]^2) /
-        sum(object$eigenvalues^2))
+        var_cum)
 
     cat('\n  - Prop. of total variance retained:\t',
         object$importance[1])

@@ -20,7 +20,7 @@ plot.qbpca <- function(x,
          pch=pch[2])
 
   legend('bottomleft',
-         c('r', 'r.rb'),
+         c('r.obs', 'r.rb'),
          pch=pch,
          col=col,
          title='legend')

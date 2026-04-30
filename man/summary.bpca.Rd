@@ -6,7 +6,7 @@
 }
 
 \description{
-  Returns (and prints) a summary list for \code{bpca} (\code{bpca.2d} and 
+  Returns (and optionally prints) a summary for \code{bpca} (\code{bpca.2d} and
   \code{bpca.3d}) objects.
 }
 
@@ -16,11 +16,11 @@
 }
 
 \arguments{
-  \item{object}{A given object of the class \code{bpca}, (\code{bpca.2d} or \code{bpca.3d}).}
-  \item{presentation}{Logic.
-    If \code{TRUE} the summary of the class \code{bpca}, (\code{bpca.2d}, \code{bpca.3d} is showed well formated in the screen, else, return a list.
+  \item{object}{An object of class \code{bpca} (\code{bpca.2d} or \code{bpca.3d}).}
+  \item{presentation}{Logical.
+    If \code{TRUE}, the summary is printed in a formatted layout; otherwise, a list is returned.
     The default is \code{FALSE}.}
-  \item{\dots}{Potential further arguments (require by generic).}
+  \item{\dots}{Potential further arguments (required by the generic).}
 }
 
 \author{
@@ -37,7 +37,7 @@
 \examples{
 ##
 ## Example 1
-## bpca - 2d
+## bpca - 2D
 ##
 # bpca
 bp <- bpca(gabriel1971)
@@ -47,7 +47,7 @@ summary(bp,
 
 ##
 ## Example 2
-## bpca - 3d
+## bpca - 3D
 ##
 bp <- bpca(gabriel1971,
            d=1:3)

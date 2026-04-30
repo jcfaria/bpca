@@ -6,7 +6,7 @@
 }
 
 \description{
-  A data.frame containing the films shown at five festivals in Brazil from 2007 to 2011.
+  A data frame containing films shown at five festivals in Brazil from 2007 to 2011.
 }
 
 \usage{
@@ -31,7 +31,7 @@
     F   : Total number of films
     D   : Number of documentaries
     MD  : Documentary directed by men
-    WD  : Documentary directed by woman
+    WD  : Documentaries directed by women
   }
 }
 

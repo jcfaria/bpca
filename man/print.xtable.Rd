@@ -8,7 +8,7 @@
 }
 
 \description{
-  Returns (and prints) a summary list for \code{xtable.bpca} objects.
+  Prints formatted \code{xtable.bpca} objects.
 }
 
 \usage{
@@ -24,13 +24,13 @@
 }
 
 \arguments{
-  \item{x}{A given object of the class \code{xtable} or \code{xtable.bpca}.}
+  \item{x}{An object of class \code{xtable} or \code{xtable.bpca}.}
   \item{hline.after}{When type="latex", a vector of numbers between -1 and nrow(x), 
     inclusive, indicating the rows after which a horizontal line should appear.
-    Default value is NULL which means draw a line before and after the columns names, 
+    Default value is NULL, which means drawing a line before and after the column names,
     draw a line before variables and at the end of the table.}
-  \item{include.colnames}{If TRUE the columns names are printed.
-    Default value is FALSE which means a column more elaborate was done.} 
+  \item{include.colnames}{If \code{TRUE}, column names are printed.
+    Default value is \code{FALSE}.} 
   \item{add.to.row}{A list of two components. The first component (which should be called 'pos') 
     is a list that contains the position of rows on which extra commands should be added at the end.
     The second component (which should be called 'command') is a character vector of the same length
@@ -60,7 +60,7 @@
 
 \examples{
 
-## Example 1: Principal labels in portuguese
+## Example 1: Principal labels in Portuguese
 library(xtable)
 
 bp2 <- bpca(gabriel1971)  
@@ -82,13 +82,13 @@ bold <- function(x){
 print(tbl1,
       sanitize.colnames.function = bold)
 
-# Example 3: With italic in the rows
+# Example 3: With italic row labels
 tbl2 <- xtable(bp2)
 italic <- function(x){
   paste('& \\textit{',
         x, 
         '}')
-} # It is necessary the character "&" to adapt the number of column of the table!
+} # The "&" keeps the correct number of table columns.
 
 print(tbl2,
       sanitize.rownames.function = italic)
