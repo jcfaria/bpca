@@ -13,7 +13,7 @@ plot(bp)
 bp$var.rd
 
 # It is possible to observe that the variable 'perm'
-# has not a good representation (bpca.2d)!
+# does not have good representation in 2D (bpca.2d).
 
 # Observed correlations:
 cor(rock)
@@ -39,8 +39,8 @@ plot(bp1)
 
 # The recommendation, knowing that this variable has a poor
 # representation is:
-# 1- Avoid to discute it;
-# 2- Consider to incorporate the information with a bpca.3d
+# 1- Avoid discussing it;
+# 2- Consider incorporating that information with a 3D biplot (bpca.3d).
 
 bp3 <- bpca(rock,
             d=1:3,

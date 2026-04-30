@@ -5,9 +5,9 @@
 ## p = columns (variables)
 ##
 
-dt <- dt.tools(iris, 2) # No numeric columns are removed in dt.tools
+dt <- dt.tools(iris, 2) # Non-numeric columns are ignored internally.
 
-# Exploring the object 'bp' created by the function 'var.tools'
+# Explore the object created by dt.tools()
 class(dt)
 names(dt)
 str(dt)

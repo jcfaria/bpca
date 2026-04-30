@@ -1,5 +1,5 @@
 ##
-## Example of 'var.rb=TRUE' parameter as a measure of the quality of the biplot - 2d
+## Example of `var.rb=TRUE` as a biplot quality measure (2D)
 ##
 
 oask <- devAskNewPage(dev.interactive(orNone=TRUE))
@@ -7,47 +7,47 @@ oask <- devAskNewPage(dev.interactive(orNone=TRUE))
 ## Differences between methods of factorization
 # SQRT
 bp_sqrt <- bpca(gabriel1971,
-                meth='sqrt',
+                method='sqrt',
                 var.rb=TRUE)
 
 qbp_sqrt <- qbpca(gabriel1971,
                   bp_sqrt)
 
 plot(qbp_sqrt,
-     main='sqrt - 2d \n (poor)')
+     main='sqrt - 2D \n (poor)')
 
 # JK
 bp_jk <- bpca(gabriel1971,
-              meth='jk',
+              method='jk',
               var.rb=TRUE)
 
 qbp_jk <- qbpca(gabriel1971,
                 bp_jk)
 
 plot(qbp_jk,
-     main='jk - 2d \n (very poor)')
+     main='jk - 2D \n (very poor)')
 
 # HJ
 bp_hj <- bpca(gabriel1971,
-              meth='hj',
+              method='hj',
               var.rb=TRUE)
 
 qbp_hj <- qbpca(gabriel1971,
                 bp_hj)
 
 plot(qbp_hj,
-     main='hj - 2d \n (good)')
+     main='hj - 2D \n (good)')
 
 # GH
 bp_gh <- bpca(gabriel1971,
-              meth='gh',
+              method='gh',
               var.rb=TRUE)
 
 qbp_gh <- qbpca(gabriel1971,
                 bp_gh)
 
 plot(qbp_gh,
-     main='gh - 2d \n (good)')
+     main='gh - 2D \n (good)')
 
 devAskNewPage(oask)
 

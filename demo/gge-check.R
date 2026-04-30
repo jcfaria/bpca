@@ -1,5 +1,5 @@
 ##
-## Comparative example from YAN, W & KANG, M.S. GGE biplot analysis:
+## Comparative example from Yan and Kang, GGE biplot analysis:
 ## a graphical tool for breeders, geneticists, and agronomists.
 ##
 
@@ -16,13 +16,13 @@ par(mfrow=c(1,2))
 
 plot(bpca(gge2003),
      main='Columns as variables',
-     var.col=1,
+     var.color=1,
      obj.col=2:4,
      obj.cex=.8)
 
 plot(bpca(t(gge2003)),
      main='Rows as variables',
-     var.col=1,
+     var.color=1,
      obj.col=c(2:4, 2),
      obj.cex=.8)
 

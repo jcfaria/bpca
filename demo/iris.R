@@ -1,10 +1,10 @@
 ##
-## Grouping objects with different symbols and colors - 2d and 3d
+## Grouping objects with different symbols and colors (2D and 3D)
 ##
 
 oask <- devAskNewPage(dev.interactive(orNone=TRUE))
 
-# 2d
+# 2D
 plot(bpca(iris[-5]),
      var.factor=.3, 
      var.cex=.7,
@@ -13,7 +13,7 @@ plot(bpca(iris[-5]),
      obj.col=c('red', 'green3', 'blue')[as.numeric(iris$Species)],
      obj.pch=c('+', '*', '-')[as.numeric(iris$Species)])
 
-# 3d static
+# 3D static
 plot(bpca(iris[-5],
           d=1:3),
      var.factor=.2,
@@ -26,12 +26,12 @@ plot(bpca(iris[-5],
 
 devAskNewPage(oask)
 
-# 3d dinamic
+# 3D dynamic
 plot(bpca(iris[-5],
           d=1:3,
           method='hj'),
      rgl.use=TRUE,
-     var.col='brown',
+     var.color='brown',
      var.factor=.3,
      var.cex=1.2,
      obj.names=FALSE,

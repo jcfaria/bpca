@@ -1,5 +1,5 @@
 ##
-## Computing and plotting a bpca object with 'graphics' package - 2d
+## Computing and plotting a bpca object with base graphics (2D)
 ##
 
 oask <- devAskNewPage(dev.interactive(orNone=TRUE))
@@ -8,30 +8,30 @@ bp2 <- bpca(gabriel1971)
 
 plot(bp2)
 
-# Exploring the object 'bp2' created by the function 'bpca'
+# Explore the object created by bpca()
 class(bp2)
 names(bp2)
 str(bp2)
 
 summary(bp2)
 bp2$call
-bp2$eigenval
-bp2$eigenvec
-bp2$numb
-bp2$import
+bp2$eigenvalues
+bp2$eigenvectors
+bp2$number
+bp2$importance
 bp2$coord
-bp2$coord$obj
-bp2$coord$var
+bp2$coord$objects
+bp2$coord$variables
 bp2$var.rb
 bp2$var.rd
 
-# Additional graphical parameters (nonsense)
+# Additional graphical parameters
 plot(bpca(gabriel1971,
-          meth='sqrt'),
+          method='sqrt'),
      main='gabriel1971 - sqrt',
      sub='The graphical parameters are working fine!',
      var.cex=.6,
-     var.col=rainbow(9),
+     var.color=rainbow(9),
      var.pch='v',
      obj.pch='o',
      obj.cex=.5,
@@ -40,7 +40,7 @@ plot(bpca(gabriel1971,
      obj.offset=.5)
 
 ##
-## Computing and plotting a bpca object with 'scatterplot3d' package - 3d
+## Computing and plotting a bpca object with scatterplot3d (3D)
 ##
 
 bp3 <- bpca(gabriel1971,
@@ -48,32 +48,32 @@ bp3 <- bpca(gabriel1971,
 
 plot(bp3)
 
-# Exploring the object 'bp3' created by the function 'bpca'
+# Explore the object created by bpca()
 class(bp3)
 names(bp3)
 str(bp3)
 
 summary(bp3)
 bp3$call
-bp3$eigenval
-bp3$eigenvec
-bp3$numb
-bp3$import
+bp3$eigenvalues
+bp3$eigenvectors
+bp3$number
+bp3$importance
 bp3$coord
-bp3$coord$obj
-bp3$coord$var
+bp3$coord$objects
+bp3$coord$variables
 bp3$var.rb
 bp3$var.rd
 
-# Additional graphical parameters (nonsense)
+# Additional graphical parameters
 plot(bpca(gabriel1971,
           d=1:3,
-          meth='jk'),
+          method='jk'),
      main='gabriel1971 - jk',
      sub='The graphical parameters are working fine!',
      var.pch='+',
      var.cex=.6,
-     var.col=rainbow(ncol(gabriel1971)),
+     var.color=rainbow(ncol(gabriel1971)),
      obj.pch='*',
      obj.cex=.8,
      obj.col=rainbow(nrow(gabriel1971)),
@@ -82,7 +82,7 @@ plot(bpca(gabriel1971,
      angle=70)
 
 ##
-## Computing and plotting a bpca object with 'obj.identify=TRUE' parameter - 2d
+## Computing and plotting with `obj.identify=TRUE` (2D)
 ##
 
 bp2 <- bpca(gabriel1971)
@@ -103,7 +103,7 @@ if(dev.interactive()) {
 }       
 
 ##
-## Computing and plotting a bpca object with 'obj.identify=TRUE' parameter - 3d
+## Computing and plotting with `obj.identify=TRUE` (3D)
 ##
 
 bp3 <- bpca(gabriel1971,
@@ -121,7 +121,7 @@ if(dev.interactive()) {
   plot(bp3,
        obj.names=FALSE,
        obj.labels=c('toi', 'kit', 'bat', 'ele', 'wat', 'rad', 'tv', 'ref'),
-       obj.identify=T)
+       obj.identify=TRUE)
 }
 
 ##
@@ -132,9 +132,9 @@ if(dev.interactive()) {
 ##
 
 dt <- dt.tools(iris,
-               center=2) # No numeric columns are removed in 'dt.tools'
+               center=2) # Non-numeric columns are ignored internally.
 
-# Exploring the object 'bp' created by the function 'var.tools'
+# Explore the object created by dt.tools()
 class(dt)
 names(dt)
 str(dt)
@@ -154,10 +154,10 @@ dt
 all(iris.tools == iris.obsv)
 
 ##
-## Grouping objects with different symbols and colors - 2d and 3d
+## Grouping objects with different symbols and colors (2D and 3D)
 ##
 
-# 2d
+# 2D
 plot(bpca(iris[-5]),
      var.cex=.7,
      obj.names=FALSE,
@@ -165,7 +165,7 @@ plot(bpca(iris[-5]),
      obj.col=c('red', 'green3', 'blue')[as.numeric(iris$Species)],
      obj.pch=c('+', '*', '-')[as.numeric(iris$Species)])
 
-# 3d static
+# 3D static
 plot(bpca(iris[-5],
           d=1:3),
      var.color=c('blue', 'red'),
@@ -176,62 +176,62 @@ plot(bpca(iris[-5],
      obj.pch=c('+', '*', '-')[as.numeric(iris$Species)])
 
 ##
-## Example of 'var.rb=TRUE' parameter as a measure of the quality of the biplot - 2d
+## Example of `var.rb=TRUE` as a biplot quality measure (2D)
 ##
 
 ## Differences between methods of factorization
 # SQRT
 bp2_sqrt <- bpca(gabriel1971,
-                 meth='sqrt',
+                 method='sqrt',
                  var.rb=TRUE)
 
 qbp2_sqrt <- qbpca(gabriel1971,
                    bp2_sqrt)
 
 plot(qbp2_sqrt,
-     main='sqrt - 2d \n (poor)')
+     main='sqrt - 2D \n (poor)')
 
 # JK
 bp2_jk <- bpca(gabriel1971,
-               meth='jk',
+               method='jk',
                var.rb=TRUE)
 
 qbp2_jk <- qbpca(gabriel1971,
                  bp2_jk)
 
 plot(qbp2_jk,
-     main='jk - 2d \n (very poor)')
+     main='jk - 2D \n (very poor)')
 
 # GH
 bp2_gh <- bpca(gabriel1971,
-               meth='gh',
+               method='gh',
                var.rb=TRUE)
 
 qbp2_gh <- qbpca(gabriel1971,
                  bp2_gh)
 
 plot(qbp2_gh,
-     main='gh - 2d \n (good)')
+     main='gh - 2D \n (good)')
 
 # HJ
 bp2_hj <- bpca(gabriel1971,
-               meth='hj',
+               method='hj',
                var.rb=TRUE)
 
 qbp2_hj <- qbpca(gabriel1971,
                  bp2_hj)
 
 plot(qbp2_hj,
-     main='hj - 2d \n (good)')
+     main='hj - 2D \n (good)')
 
 ##
-## Example of 'var.rb=TRUE' parameter as a measure of the quality of the biplot - 3d
+## Example of `var.rb=TRUE` as a biplot quality measure (3D)
 ##
 
 ## Differences between methods of factorization
 # SQRT
 bp3_sqrt <- bpca(gabriel1971,
-                 meth='sqrt',
+                 method='sqrt',
                  d=1:3,
                  var.rb=TRUE)
 
@@ -239,11 +239,11 @@ qbp_sqrt <- qbpca(gabriel1971,
                   bp3_sqrt)
 
 plot(qbp_sqrt,
-     main='sqrt - 3d \n (poor)')
+     main='sqrt - 3D \n (poor)')
 
 # JK
 bp3_jk <- bpca(gabriel1971,
-               meth='jk',
+               method='jk',
                d=1:3,
                var.rb=TRUE)
 
@@ -251,11 +251,11 @@ qbp3_jk <- qbpca(gabriel1971,
                  bp3_jk)
 
 plot(qbp3_jk,
-     main='jk - 3d \n (very poor)')
+     main='jk - 3D \n (very poor)')
 
 # GH
 bp3_gh <- bpca(gabriel1971,
-               meth='gh',
+               method='gh',
                d=1:3,
                var.rb=TRUE)
 
@@ -263,11 +263,11 @@ qbp3_gh <- qbpca(gabriel1971,
                  bp3_gh)
 
 plot(qbp3_gh,
-     main='gh - 3d \n (whow!)')
+     main='gh - 3D \n (wow!)')
 
 # HJ
 bp3_hj <- bpca(gabriel1971,
-               meth='hj',
+               method='hj',
                d=1:3,
                var.rb=TRUE)
 
@@ -275,15 +275,15 @@ qbp3_hj <- qbpca(gabriel1971,
                  bp3_hj)
 
 plot(qbp3_hj,
-     main='hj - 3d \n (whow!)')
+     main='hj - 3D \n (wow!)')
 
 ##
-## Example of 'var.rd=TRUE' parameter as a measure of the quality of the biplot - 2d
+## Example of `var.rd=TRUE` as a biplot quality measure (2D)
 ## Mainly recommended for large datasets.
 ##
 
 bp <- bpca(gabriel1971,
-           meth='hj',
+           method='hj',
            var.rb=TRUE, 
            var.rd=TRUE, 
            limit=3)
@@ -292,13 +292,13 @@ bp$var.rd
 
 # RUR followed by CRISTIAN contains information in dimensions that
 # wasn't contemplated by the biplot reduction (PC3).
-# Between all, RUR followed by CRISTIAN, variables are bad represented by a 2d
+# Among all variables, RUR followed by CRISTIAN is poorly represented in 2D.
 # biplot.
 
 # Graphical visualization of the importance of the variables not contemplated
 # in the reduction
 plot(bpca(gabriel1971,
-          meth='hj',
+          method='hj',
           d=3:4),
      main='hj')
 
@@ -314,7 +314,7 @@ plot(bpca(ontario))
                   1:18,
                   sep=''))
 
-# Giving obj.labels
+# Set obj.labels
 plot(bpca(ontario),
     obj.labels=obj.lab) 
 
@@ -328,7 +328,7 @@ plot(bpca(ontario),
      obj.id=7,
      obj.cex=1)
 
-# Giving obj.labels
+# Set obj.labels
 plot(bpca(ontario),
      type='eo',
      obj.labels=obj.lab,
@@ -396,7 +396,7 @@ plot(bpca(ontario),
 plot(bpca(ontario),
      type='ww')
 
-# Discrimitiveness vs. representativeness
+# Discriminativeness vs. representativeness
 plot(bpca(ontario),
      type='dv')
 
@@ -404,11 +404,11 @@ plot(bpca(ontario),
 plot(bpca(ontario),
      type='ms')
 
-# Rank objects with ref. to the ideal variable 
+# Rank objects with reference to the ideal variable
 plot(bpca(ontario),
      type='ro')
 
-# Rank variables with ref. to the ideal object
+# Rank variables with reference to the ideal object
 plot(bpca(ontario),
      type='rv')
 
@@ -424,7 +424,7 @@ plot(bpca(iris[-5]),
 plot(bpca(iris[-5]),
      type='ev',
      var.id='Sepal.Width',
-     var.fac=.3)
+     var.factor=.3)
 
 devAskNewPage(oask)
 

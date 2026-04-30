@@ -1,5 +1,5 @@
 ##
-## Diagnostic of iris representation with 'var.rd' parameter - 2d and 3d
+## Diagnostic of iris representation with `var.rd` parameter (2D and 3D)
 ##
 
 oask <- devAskNewPage(dev.interactive(orNone=TRUE))
@@ -16,7 +16,7 @@ plot(bp2,
      obj.cex=1)
 
 bp2$var.rd
-bp2$eigenvec
+bp2$eigenvectors
 
 # Graphical diagnostic
 plot(bpca(iris[-5],
@@ -28,9 +28,9 @@ plot(bpca(iris[-5],
 
 # Interpretation:
 # Sepal.length followed by Petal.Width contains information in dimensions
-# (PC3) - the PC3 is, essentially, a contrast among both) that wasn't fully
-# contemplated by the biplot reduction (PC1 and PC2) .
-# Therefore, between all variables, they have a "poor" representation by a 2d
+# (PC3 is essentially a contrast between both) that was not fully
+# captured by the biplot reduction (PC1 and PC2).
+# Therefore, among all variables, they have a poor representation in 2D
 # biplot.
 
 bp3 <- bpca(iris[-5],
@@ -46,7 +46,7 @@ plot(bp3,
      obj.cex=1)
 
 bp3$var.rd
-bp3$eigenvec
+bp3$eigenvectors
 
 round(bp3$var.rb,
       2)
@@ -54,7 +54,7 @@ round(bp3$var.rb,
 round(cor(iris[-5]),
       2)
 
-# Good representation of all variables with a 3d biplot!
+# Good representation of all variables with a 3D biplot.
 
 devAskNewPage(oask)
 
