@@ -1,13 +1,13 @@
-# bpca2 <img src="man/figures/logo.png" align="right" height="139" />
+# bpca <img src="man/figures/logo.png" align="right" height="139" />
 
 <!-- Badges -->
 [![R-CMD-check](https://github.com)](https://github.com)
 [![Lifecycle: experimental](https://shields.io)](https://r-lib.org)
-[![License: GPL-3](https://shields.io)](https://gnu.org)
+[![License: GPL-2](https://shields.io)](https://gnu.org)
 
-`bpca2` is an experimental R package for Biplot analysis based on Principal
-Component Analysis (PCA), built as a modern playground for testing, refactoring,
-and AI-assisted development workflows.
+The R package is **`bpca`**. This GitHub repository is named **`bpca2`** (workspace / checkout folder); after installation you always load **`library(bpca)`**.
+
+**bpca** provides biplot analysis based on principal components, with this repo used as a modern playground for testing, refactoring, and AI-assisted development workflows.
 
 ## Highlights
 
@@ -18,7 +18,7 @@ and AI-assisted development workflows.
 
 ## Installation
 
-Install directly from GitHub:
+Install from this GitHub repository (the installed package name is still **`bpca`**):
 
 ```r
 # install.packages("remotes")
@@ -28,7 +28,7 @@ remotes::install_github("jcfaria/bpca2")
 ## Quick Start
 
 ```r
-library(bpca2)
+library(bpca)
 
 # Example with the classic iris dataset
 bp <- bpca(iris[-5], d = 1:2)
