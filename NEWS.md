@@ -2,6 +2,18 @@
 
 ## Development Version
 
+### 1.4-1 (2026-05-01) - Faria, J. C.
+
+#### Changes
+- Refined the `qbpca` plotting workflow to improve internal organization and keep graphical outputs consistent.
+
+#### Documentation
+- Updated `man/plot.Rd` and `man/qbpca.Rd` to reflect the latest plotting behavior and usage.
+- Expanded `vignettes/bpca-overview.Rmd` and added `vignettes/latex-bpca.Rnw` to support the updated guidance and examples.
+
+#### Examples
+- Updated demo scripts across `demo/` (2D/3D, static/dynamic, and utilities) to align examples with the refactored plotting code.
+
 ### Codebase Refactoring (2026-04-30)
 - Refactored core computational functions for safer input handling and improved edge-case behavior (`bpca.default`, `bpca.prcomp`, `dt.tools`, `qbpca`, `var.rbf`, `var.rdf`).
 - Refactored plotting internals (`plot.bpca.2d`, `plot.bpca.3d`, `plot.qbpca`) to reduce duplication and improve readability while preserving public API.
