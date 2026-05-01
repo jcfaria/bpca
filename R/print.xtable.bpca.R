@@ -10,15 +10,12 @@ print.xtable.bpca <- function(x,
   aux_attr <- attr(x,'align')
   attr(x,'align') <- c('l', aux_attr)
 
+  ## xtable passes all row names at once; we must return one string per row.
   if(is.null(sanitize.rownames.function)){
-    morerow <- function(x) paste("&",
-                                 x,
-                                 collapse='')
+    morerow <- function(x) paste0("&", x)
     sanitizerownamesfunction <- morerow
   }else{
-    morerow <- function(x) paste("&",
-                                 sanitize.rownames.function(x),
-                                 collapse='')
+    morerow <- function(x) paste0("&", sanitize.rownames.function(x))
     sanitizerownamesfunction <- morerow
   }
 
@@ -86,12 +83,12 @@ print.xtable.bpca <- function(x,
     #                             sep=''),
     #                       newvariables[1],
     #                       sep='&')
-    label_eigenvec <- ifelse(is.null(sanitize.rownames.function),
-                             label_eigenvec,
-                             label_eigenvec <- sanitize.rownames.function(label_eigenvec))
-    firstvariablerow <-ifelse(is.null(sanitize.rownames.function),
-                              newvariables[1],
-                              firstvariablerow <- sanitize.rownames.function(newvariables[1]))  
+    if (!is.null(sanitize.rownames.function)) {
+      label_eigenvec <- sanitize.rownames.function(label_eigenvec)
+      firstvariablerow <- sanitize.rownames.function(newvariables[1])
+    } else {
+      firstvariablerow <- newvariables[1]
+    }
     aux_com1 <- paste(paste("\\hline \n \\multirow{",
                             nvariables,
                             "}{*}{",
