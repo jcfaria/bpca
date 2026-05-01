@@ -1,5 +1,5 @@
 ##
-## Grouping objects with different symbols and colors (2D and 3D)
+## iris demo: grouping objects with different symbols and colors (2D and 3D)
 ##
 
 oask <- devAskNewPage(dev.interactive(orNone=TRUE))

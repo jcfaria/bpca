@@ -90,7 +90,19 @@
      zlab, \dots)
 
   \method{plot}{qbpca}(x,
-     xlab='Index',
+     limit=10,
+     highlight.col='gray75',
+     highlight.lty='dashed',
+     highlight.pad=0.05,
+     highlight.width=0.25,
+     highlight.guides=TRUE,
+     pair.labels=TRUE,
+     label.max.nchar=NULL,
+     label.side='bottom',
+     label.angle=45,
+     label.cex=0.6,
+     label.offset=0.02,
+     xlab='',
      ylab='r',
      pch=c(1,8),
      col=c(4,2), \dots)
@@ -183,6 +195,40 @@
     Used only if \code{rgl.use=FALSE}.}
   \item{pch}{A vector of plotting symbols or characters.}
   \item{col}{A vector of colors.}
+  \item{limit}{Numeric threshold (percentage) used to mark pairs with poor
+    representation in \code{plot.qbpca}. Pairs where
+    \code{100 * abs(r.obs - r.rb) > limit} are highlighted with dashed
+    rectangles around the pair of points. Default is \code{10}.}
+  \item{highlight.col}{Color used for the dashed rectangle border in
+    \code{plot.qbpca}. Default is \code{'gray75'}.}
+  \item{highlight.lty}{Line type used for the dashed rectangle border in
+    \code{plot.qbpca}. Default is \code{'dashed'}.}
+  \item{highlight.pad}{Vertical margin added above and below the two points in
+    each highlighted pair. Default is \code{0.05}.}
+  \item{highlight.width}{Half-width of the dashed highlight rectangle around
+    each flagged pair along the x-axis. Must be in \code{(0, 0.5]}.
+    Default is \code{0.25}.}
+  \item{highlight.guides}{Logical. If \code{TRUE}, draws dashed guide segments
+    from the lower edge of each highlighted rectangle down to the x-axis to
+    facilitate pair identification. Default is \code{TRUE}.}
+  \item{pair.labels}{Logical. If \code{TRUE}, variable-pair labels from
+    \code{qbpca} row names are drawn on the x-axis. When labels are enabled,
+    \code{plot.qbpca} automatically adjusts the corresponding plot margin to fit
+    long rotated labels and restores the original device margin afterwards.
+    Default is \code{TRUE}.}
+  \item{label.max.nchar}{Optional maximum number of characters for each
+    variable-pair label. Labels longer than this value are truncated and
+    suffixed with \code{...}. Set \code{NULL} to keep full labels.
+    Default is \code{NULL}.}
+  \item{label.side}{Side where pair labels are drawn when
+    \code{pair.labels=TRUE}. Allowed values are \code{'bottom'} and
+    \code{'top'}. Default is \code{'bottom'}.}
+  \item{label.angle}{Numeric angle (degrees) used to rotate x-axis pair labels
+    when \code{pair.labels=TRUE}. Default is \code{45}.}
+  \item{label.cex}{Character expansion for rotated x-axis pair labels.
+    Default is \code{0.6}.}
+  \item{label.offset}{Proportional vertical offset used to place rotated
+    x-axis labels below or above the plotting region. Default is \code{0.02}.}
   \item{xlab}{A label for the \samp{x} axis.}
   \item{ylab}{A label for the \samp{y} axis.}
   \item{zlab}{A label for the \samp{z} axis (bpca.3d only).}

@@ -32,6 +32,8 @@
   \item{obs}{A vector of the observed correlations for all variables.}
   \item{var.rb}{A vector of projected correlations for all variables
     determined under biplot reduction.}
+  Row names are generated automatically as variable-pair labels
+  (e.g., \code{V1 vs. V2}).
 }
 
 \author{

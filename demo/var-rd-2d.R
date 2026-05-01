@@ -18,38 +18,44 @@ bp_hj$var.rd
 # Among all variables, RUR followed by CRISTIAN is poorly represented in 2D.
 # biplot.
 
+# Basic quality plot (default highlight threshold = 10)
 plot(qbpca(gabriel1971,
-           bp_hj))
+           bp_hj),
+     highlight.width=0.25,
+     main='Observed vs projected correlations')
 
 # Details
 qbp_2d <- qbpca(gabriel1971,
                 bp_hj)
 
+# New plot.qbpca features:
+# - limit: threshold for poor representation (in % difference)
+# - highlight.col / highlight.lty / highlight.pad / highlight.width:
+#   style and width of dashed highlight boxes
+# - pair.labels + automatic rotated labels for variable pairs
 plot(qbp_2d,
-     xaxt="n",
-     xlab='')
+     limit=4,
+     highlight.col='gray70',
+     highlight.lty='dashed',
+     highlight.pad=0.04,
+     highlight.width=0.25,
+     pair.labels=TRUE,
+     label.side='bottom',
+     label.angle=45,
+     label.cex=0.5,
+     label.offset=1/30,
+     main='Automatic pair labels and poor-projection highlights')
 
-# Prepare the data and names.
-comb <- combn(colnames(gabriel1971),
-              2)
-
-axis_x_labels <- apply(comb,
-                       2, function(x) paste(x,
-                                            collapse=' vs. ' ))
-
-# Add only the bullet points (the dashes) without the text.
-axis(side=1,
-     at=seq_len(ncol(comb)),
-     labels=FALSE)
-
-# Add the text rotated 45 degrees.
-text(x=seq_len(ncol(comb)),
-     y=par("usr")[3] - 0.05,       # Position just below the X-axis.
-     labels=axis_x_labels,
-     srt=45,                       # 45-degree angle
-     adj=1,                        # Right alignment (by the edge of the text)
-     xpd=TRUE,                     # Allows you to write outside the chart area.
-     cex=0.4)                      # Font size
+# Alternative view: labels on top
+plot(qbp_2d,
+     limit=4,
+     highlight.col='gray55',
+     highlight.width=0.35,
+     pair.labels=TRUE,
+     label.side='top',
+     label.angle=35,
+     label.cex=0.45,
+     label.offset=0.04)
 
 # Graphical visualization of the importance of the variables not contemplated
 # in the prior (2D) reduction: RUR and CRISTIAN are the most important variables in PC3.

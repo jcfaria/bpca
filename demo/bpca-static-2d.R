@@ -1,5 +1,5 @@
 ##
-## Computing and plotting a bpca object with base graphics (2D)
+## Static 2D bpca workflow with base graphics
 ##
 
 oask <- devAskNewPage(dev.interactive(orNone=TRUE))
@@ -25,7 +25,7 @@ bp$coord$variables
 bp$var.rb
 bp$var.rd
 
-# Additional graphical parameters
+# Example with customized graphical parameters
 plot(bpca(gabriel1971,
           method='sqrt'),
      main='gabriel1971 - sqrt',

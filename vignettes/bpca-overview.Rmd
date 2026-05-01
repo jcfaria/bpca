@@ -16,46 +16,163 @@ knitr::opts_chunk$set(
 
 ## Introduction
 
-`bpca` provides tools for 2D and 3D biplot analysis based on principal
-component analysis (PCA), including diagnostics for representation quality.
+`bpca` is an S3-based package for principal component biplot analysis.
+It supports:
 
-## Basic Workflow
+- 2D and 3D biplots;
+- multiple factorization methods (`hj`, `sqrt`, `jk`, `gh`);
+- graphical diagnostics for representation quality;
+- tabular summaries for reporting.
+
+This vignette presents a practical end-to-end workflow.
+
+## Load Package and Data
 
 ```{r}
 library(bpca)
-
-bp <- bpca(gabriel1971)
-bp
+data(gabriel1971)
+data(ontario)
 ```
 
-## Summaries
+`gabriel1971` is a classic biplot matrix and works well for reproducible
+examples.
+
+## 2D Biplot: Core Workflow
 
 ```{r}
-summary(bp)
+bp2 <- bpca(gabriel1971, d = 1:2)
+class(bp2)
+bp2$number
+round(bp2$importance, 3)
 ```
 
-## Quality Diagnostics
+Key returned components include:
+
+- `eigenvalues`, `eigenvectors`;
+- `number` (selected principal components);
+- `importance` (retained variance);
+- `coord$objects` and `coord$variables`.
 
 ```{r}
-bp_q <- bpca(gabriel1971, var.rb = TRUE)
-q <- qbpca(gabriel1971, bp_q)
-head(q)
+names(bp2)
+str(bp2$coord)
 ```
 
-## 3D Reduction
+## Summary Output
 
 ```{r}
-bp3 <- bpca(gabriel1971, d = 1:3)
-summary(bp3)
+summary(bp2)
+summary(bp2, presentation = TRUE)
 ```
 
-## Plotting
+## Factorization Methods
 
-The package supports multiple plot types for 2D and 3D objects.
-Interactive plotting with `rgl` can be used in regular sessions:
+```{r}
+methods <- c("hj", "sqrt", "jk", "gh")
+retained <- sapply(
+  methods,
+  function(m) {
+    bp <- bpca(gabriel1971, method = m, d = 1:2)
+    as.numeric(bp$importance["general", "explained"])
+  }
+)
+retained
+```
+
+The retained variance can be similar across methods, but geometric
+interpretation differs.
+
+## Representation Quality Diagnostics
+
+`var.rb` stores projected correlations among variables under the selected
+biplot reduction.
+
+```{r}
+bp2_q <- bpca(gabriel1971, d = 1:2, var.rb = TRUE)
+round(bp2_q$var.rb, 2)
+```
+
+`qbpca()` compares observed vs projected correlations in vectorized form.
+
+```{r}
+q2 <- qbpca(gabriel1971, bp2_q)
+head(q2)
+```
+
+`var.rd` highlights poorly represented variable correlations for a chosen
+threshold (`limit`).
+
+```{r}
+bp2_rd <- bpca(gabriel1971, d = 1:2, var.rb = TRUE, var.rd = TRUE, limit = 3)
+bp2_rd$var.rd
+```
+
+## 3D Workflow
+
+```{r}
+bp3 <- bpca(gabriel1971, d = 1:3, var.rb = TRUE)
+bp3$number
+round(bp3$importance, 3)
+```
+
+## Plot Types and Examples
+
+The `plot.bpca.2d` method supports several analysis-oriented views via `type`:
+
+- `"bp"`: basic biplot;
+- `"eo"`: evaluate one object;
+- `"ev"`: evaluate one variable;
+- `"co"` / `"cv"`: compare objects / variables;
+- `"ww"`, `"dv"`, `"ms"`, `"ro"`, `"rv"` for GGE-style diagnostics.
+
+Examples (kept as non-evaluated chunks to keep vignette deterministic):
 
 ```{r, eval = FALSE}
-plot(bp)
+# Basic 2D
+plot(bp2)
+
+# Evaluate one object
+plot(bpca(ontario), type = "eo", obj.id = 7)
+
+# Evaluate one variable
+plot(bpca(ontario), type = "ev", var.id = "E7")
+
+# Compare two objects
+plot(bpca(ontario), type = "co", obj.id = c("g7", "g13"))
+```
+
+3D rendering can be static (`scatterplot3d`) or interactive (`rgl`):
+
+```{r, eval = FALSE}
+# Static 3D
 plot(bp3)
+
+# Interactive 3D
 plot(bp3, rgl.use = TRUE)
 ```
+
+## Tabular Reporting with xtable
+
+The package provides an `xtable` method for `bpca` objects.
+
+```{r}
+if (requireNamespace("xtable", quietly = TRUE)) {
+  tbl <- xtable::xtable(bp2)
+  tbl[1:6, , drop = FALSE]
+}
+```
+
+To generate LaTeX output with explicit formatting:
+
+```{r, eval = FALSE}
+tbl <- xtable::xtable(bp2, caption = "Biplot summary", label = "tab:bp2")
+xtable::print.xtable(tbl)
+```
+
+## Notes
+
+- Use `d = 1:2` for 2D and `d = 1:3` for 3D.
+- Prefer `var.rb = TRUE` and `var.rd = TRUE` when diagnosis quality is part
+  of your analysis workflow.
+- For scripts and reproducibility, prefer explicit package namespaces in
+  custom reporting code (`xtable::`, `rgl::`).

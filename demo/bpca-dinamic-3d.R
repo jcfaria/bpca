@@ -1,8 +1,8 @@
 ##
-## Computing and plotting a bpca object with rgl (3D)
+## Interactive 3D bpca workflow with rgl
 ##
 
-rgl::open3d()
+# rgl::open3d()
 plot(pca <- bpca(iris[-5],
                  d=1:3),
      rgl.use=TRUE,
@@ -27,7 +27,7 @@ rgl::plot3d(ell,
 rgl::play3d(rgl::spin3d(axis=c(1,2,3)),
             duration=12)
 
-# This graphic was suggested by Michael Friendly (York University). 
+# This graphic style was suggested by Michael Friendly (York University).
 # Tip: interact with the graphic using the mouse.
 # left button: click and drag to rotate;
 # right button: click and drag to zoom.

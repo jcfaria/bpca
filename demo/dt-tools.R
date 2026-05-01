@@ -1,8 +1,7 @@
 ##
-## Computes: vector variable lengths, angles between vector variables and
-## variable correlations from data.frame or matrix objects (n x p)
-## n = rows (objects)
-## p = columns (variables)
+## dt.tools demo:
+## vector lengths, pairwise angles, and projected correlations
+## for numeric variables in a data.frame or matrix (n x p)
 ##
 
 dt <- dt.tools(iris, 2) # Non-numeric columns are ignored internally.
@@ -17,7 +16,7 @@ dt$angle
 dt$r
 dt
 
-# Checking the determinations
+# Check consistency with base cor()
 (iris.tools <- round(dt.tools(iris,
                               center=2)$r,
                      5))

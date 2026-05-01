@@ -1,5 +1,5 @@
 ##
-## Computing and plotting a bpca object with scatterplot3d (3D)
+## Static 3D bpca workflow with scatterplot3d
 ##
 
 oask <- devAskNewPage(dev.interactive(orNone=TRUE))
@@ -26,7 +26,7 @@ bp$coord$variables
 bp$var.rb
 bp$var.rd
 
-# Additional graphical parameters
+# Example with customized graphical parameters
 plot(bpca(gabriel1971,
           d=1:3,
           method='jk'),
@@ -43,7 +43,7 @@ plot(bpca(gabriel1971,
      angle=70)
 
 ##
-## Computing and plotting a bpca object with an arbitrary starting dimension (3D)
+## Alternative 3D reduction using a different starting dimension
 ##
 
 bp <- bpca(gabriel1971,

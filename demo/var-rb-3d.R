@@ -1,5 +1,5 @@
 ##
-## Example of `var.rb=TRUE` as a biplot quality measure (3D)
+## 3D quality comparison using var.rb + qbpca
 ##
 
 oask <- devAskNewPage(dev.interactive(orNone=TRUE))

@@ -1,6 +1,5 @@
 ##
-## Comparative example from Yan and Kang, GGE biplot analysis:
-## a graphical tool for breeders, geneticists, and agronomists.
+## Comparative example based on Yan and Kang (GGE biplot analysis)
 ##
 
 oask <- devAskNewPage(dev.interactive(orNone=TRUE))

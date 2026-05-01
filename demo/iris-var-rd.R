@@ -27,7 +27,7 @@ plot(bpca(iris[-5],
      obj.cex=1)
 
 # Interpretation:
-# Sepal.length followed by Petal.Width contains information in dimensions
+# Sepal.Length followed by Petal.Width contains information in dimensions
 # (PC3 is essentially a contrast between both) that was not fully
 # captured by the biplot reduction (PC1 and PC2).
 # Therefore, among all variables, they have a poor representation in 2D
