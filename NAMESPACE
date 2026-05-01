@@ -7,11 +7,12 @@ export(var.rdf)
 export(xtable.bpca)
 
 # Imports
-importFrom(graphics, abline, arrows, axis, box, identify, legend, lines, par, plot, points, polygon, segments, symbols, text, title)
-importFrom(grDevices, devAskNewPage, dev.interactive, dev.new, gray, rainbow)
+importFrom(graphics, abline, arrows, axis, box, identify, legend, lines, par, plot, points, polygon, rect, segments, strheight, strwidth, symbols, text, title)
+importFrom(grDevices, chull, devAskNewPage, dev.interactive, dev.new, gray, rainbow)
 importFrom(rgl, abclines3d, axes3d, clear3d, decorate3d, plot3d, segments3d, spheres3d, text3d, title3d)
 importFrom(scatterplot3d, scatterplot3d)
-importFrom(stats, cor, prcomp)
+importFrom(stats, cor, prcomp, sd)
+importFrom(utils, combn)
 importFrom(xtable, print.xtable, xtable)
 
 # S3 methods

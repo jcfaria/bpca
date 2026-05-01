@@ -154,13 +154,13 @@ plot.qbpca <- function(x,
   leg.labels <- c('r.obs', 'r.rb')
   leg.pch <- pch
   leg.col <- col
-  leg.lty <- c(NA, NA)
+  leg.lty <- c('blank', 'blank')
 
   if (any(bad)) {
     leg.tag <- if (isTRUE(highlight.guides)) {
-      paste0('|Δr| > ', limit, ' (guides)')
+      paste0('|dr| > ', limit, ' (guides)')
     } else {
-      paste0('|Δr| > ', limit)
+      paste0('|dr| > ', limit)
     }
     leg.labels <- c(leg.labels, leg.tag)
     leg.pch <- c(leg.pch, NA)

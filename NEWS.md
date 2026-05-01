@@ -14,26 +14,21 @@
 #### Examples
 - Updated demo scripts across `demo/` (2D/3D, static/dynamic, and utilities) to align examples with the refactored plotting code.
 
-### Codebase Refactoring (2026-04-30)
+### 1.4-1 (2026-04-30) - Faria, J. C.
 - Refactored core computational functions for safer input handling and improved edge-case behavior (`bpca.default`, `bpca.prcomp`, `dt.tools`, `qbpca`, `var.rbf`, `var.rdf`).
 - Refactored plotting internals (`plot.bpca.2d`, `plot.bpca.3d`, `plot.qbpca`) to reduce duplication and improve readability while preserving public API.
 - Improved summary and table method internals (`summary.bpca`, `xtable.bpca`, `print.xtable.bpca`) and fixed minor string-handling issues.
 - Standardized and modernized package documentation across `man/*.Rd`.
 - Updated package metadata files (`DESCRIPTION`, `NAMESPACE`, `INDEX`) for consistency with the current repository and dependency layout.
-
-### Modernization and AI Integration
 - Migrated the legacy `NEWS` file to `NEWS.md` for improved rendering on GitHub and `pkgdown`.
 - Restructured the repository as a playground for AI-driven testing and refactoring.
 - Updated project infrastructure to align with modern R development workflows (CI/CD ready).
-
-### Initial Modernized Release
 - Forked and updated from the original `bpca` package.
 - Cleaned core functions to improve readability for AI-assisted analysis.
 - Added documentation stubs for planned and evolving features.
 
 ## 1.4-0 (2026-04-26) - Faria, J. C.
 
-### General Improvements
 - Standardized function documentation with Roxygen2.
 - Enhanced 2D and 3D biplot diagnostics for improved visual clarity.
 
