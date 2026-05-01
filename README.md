@@ -1,4 +1,4 @@
-# bpca <img src="man/figures/logo.png" align="right" height="139" />
+# bpca
 
 <!-- Badges -->
 [![R-CMD-check](https://github.com)](https://github.com)
@@ -43,9 +43,11 @@ plot(
 ## Project Layout
 
 - `/R`: Core computational and plotting functions.
-- `/tests`: Unit tests for reliability and CI validation.
-- `/man`: Function documentation generated from source.
-- `/vignettes`: Planned tutorials and usage guides.
+- `/data`: Example datasets shipped with the package.
+- `/demo`: Runnable demos illustrating usage.
+- `/man`: Documentation (`.Rd` files).
+- `/inst`: Extra package materials (e.g. citations).
+- `/vignettes`: Vignettes and tutorials.
 
 ## Contributing
 
