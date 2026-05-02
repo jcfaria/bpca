@@ -169,7 +169,7 @@ plot(bpca(iris[-5],
 ## ------------------------------------------------------------------
 ## 6) Quality diagnostics with var.rb and qbpca
 ## ------------------------------------------------------------------
-# Ativa a pausa entre gráficos
+# Enable pause between plots
 par(ask=TRUE)
 
 for (m in c('sqrt', 'jk', 'gh', 'hj')) {
@@ -196,7 +196,7 @@ for (m in c('sqrt', 'jk', 'gh', 'hj')) {
        main=paste0(m, ' - 3D'))
 }
 
-# Desativa a pausa
+# Disable pause
 par(ask=FALSE)
 
 ## var.rd highlights poor projected correlations

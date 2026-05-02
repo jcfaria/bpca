@@ -1,3 +1,5 @@
+<!-- José Cláudio Faria -->
+
 # bpca2 News
 
 ## Development Version

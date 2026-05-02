@@ -1,3 +1,4 @@
+<!-- José Cláudio Faria -->
 # bpca
 
 <!-- Badges -->
