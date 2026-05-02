@@ -4,7 +4,9 @@ var.rbf <- function(x)
   if (!is.matrix(x))
     x <- as.matrix(x)
   lv <- function(x) sqrt(t(x) %*% x)  # length of vector
-  l  <- apply(x, 1, lv)
+  l  <- apply(x,
+              1,
+              lv)
   n  <- nrow(x)
   var.rb <- diag(n)
 

@@ -37,5 +37,5 @@ plot(bpca(iris[-5],
      obj.names=FALSE,
      obj.cex=.5,
      obj.col=c('red', 'green3', 'orange')[as.numeric(iris$Species)],
-     simple.axes=FALSE, box=TRUE)
+     simple.axes=TRUE)
 

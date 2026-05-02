@@ -19,33 +19,45 @@ plot.qbpca <- function(x,
 {
   if (!inherits(x, 'qbpca'))
     stop("Use this function only with 'qbpca' class!")
+
   if (!is.numeric(limit) || length(limit) != 1 || !is.finite(limit) || limit < 0)
     stop("'limit' must be a non-negative numeric value.")
+
   if (!is.character(highlight.col) || length(highlight.col) != 1)
     stop("'highlight.col' must be a single color value.")
+
   if (!is.character(highlight.lty) || length(highlight.lty) != 1)
     stop("'highlight.lty' must be a single line type value.")
+
   if (!is.numeric(highlight.pad) || length(highlight.pad) != 1 || !is.finite(highlight.pad) || highlight.pad < 0)
     stop("'highlight.pad' must be a non-negative numeric value.")
+
   if (!is.numeric(highlight.width) || length(highlight.width) != 1 ||
       !is.finite(highlight.width) || highlight.width <= 0 || highlight.width > 0.5)
     stop("'highlight.width' must be a numeric value in (0, 0.5].")
+
   if (!is.logical(highlight.guides) || length(highlight.guides) != 1)
     stop("'highlight.guides' must be TRUE or FALSE.")
+
   if (!is.logical(pair.labels) || length(pair.labels) != 1)
     stop("'pair.labels' must be TRUE or FALSE.")
+
   if (!is.null(label.max.nchar)) {
     if (!is.numeric(label.max.nchar) || length(label.max.nchar) != 1 ||
         !is.finite(label.max.nchar) || label.max.nchar < 4)
       stop("'label.max.nchar' must be NULL or a numeric value >= 4.")
   }
+
   if (!is.character(label.side) || length(label.side) != 1 ||
       !(label.side %in% c('bottom', 'top')))
     stop("'label.side' must be either 'bottom' or 'top'.")
+
   if (!is.numeric(label.angle) || length(label.angle) != 1 || !is.finite(label.angle))
     stop("'label.angle' must be a finite numeric value.")
+
   if (!is.numeric(label.cex) || length(label.cex) != 1 || !is.finite(label.cex) || label.cex <= 0)
     stop("'label.cex' must be a positive numeric value.")
+
   if (!is.numeric(label.offset) || length(label.offset) != 1 || !is.finite(label.offset) || label.offset < 0)
     stop("'label.offset' must be a non-negative numeric value.")
 

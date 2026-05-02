@@ -7,10 +7,10 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-```{r, include = FALSE}
+```{r, include=FALSE}
 knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>"
+  collapse=TRUE,
+  comment="#>"
 )
 ```
 
@@ -40,7 +40,8 @@ examples.
 ## 2D Biplot: Core Workflow
 
 ```{r}
-bp2 <- bpca(gabriel1971, d = 1:2)
+bp2 <- bpca(gabriel1971,
+            d=1:2)
 class(bp2)
 bp2$number
 round(bp2$importance, 3)
@@ -62,7 +63,8 @@ str(bp2$coord)
 
 ```{r}
 summary(bp2)
-summary(bp2, presentation = TRUE)
+summary(bp2,
+        presentation=TRUE)
 ```
 
 ## Factorization Methods
@@ -72,7 +74,9 @@ methods <- c("hj", "sqrt", "jk", "gh")
 retained <- sapply(
   methods,
   function(m) {
-    bp <- bpca(gabriel1971, method = m, d = 1:2)
+    bp <- bpca(gabriel1971,
+               method=m,
+               d=1:2)
     as.numeric(bp$importance["general", "explained"])
   }
 )
@@ -88,14 +92,17 @@ interpretation differs.
 biplot reduction.
 
 ```{r}
-bp2_q <- bpca(gabriel1971, d = 1:2, var.rb = TRUE)
+bp2_q <- bpca(gabriel1971,
+              d=1:2,
+              var.rb=TRUE)
 round(bp2_q$var.rb, 2)
 ```
 
 `qbpca()` compares observed vs projected correlations in vectorized form.
 
 ```{r}
-q2 <- qbpca(gabriel1971, bp2_q)
+q2 <- qbpca(gabriel1971,
+            bp2_q)
 head(q2)
 ```
 
@@ -103,14 +110,20 @@ head(q2)
 threshold (`limit`).
 
 ```{r}
-bp2_rd <- bpca(gabriel1971, d = 1:2, var.rb = TRUE, var.rd = TRUE, limit = 3)
+bp2_rd <- bpca(gabriel1971,
+               d=1:2,
+               var.rb=TRUE,
+               var.rd=TRUE,
+               limit=3)
 bp2_rd$var.rd
 ```
 
 ## 3D Workflow
 
 ```{r}
-bp3 <- bpca(gabriel1971, d = 1:3, var.rb = TRUE)
+bp3 <- bpca(gabriel1971,
+            d=1:3,
+            var.rb=TRUE)
 bp3$number
 round(bp3$importance, 3)
 ```
@@ -127,28 +140,35 @@ The `plot.bpca.2d` method supports several analysis-oriented views via `type`:
 
 Examples (kept as non-evaluated chunks to keep vignette deterministic):
 
-```{r, eval = FALSE}
+```{r, eval=FALSE}
 # Basic 2D
 plot(bp2)
 
 # Evaluate one object
-plot(bpca(ontario), type = "eo", obj.id = 7)
+plot(bpca(ontario),
+     type="eo",
+     obj.id=7)
 
 # Evaluate one variable
-plot(bpca(ontario), type = "ev", var.id = "E7")
+plot(bpca(ontario),
+     type="ev",
+     var.id="E7")
 
 # Compare two objects
-plot(bpca(ontario), type = "co", obj.id = c("g7", "g13"))
+plot(bpca(ontario),
+     type="co",
+     obj.id=c("g7", "g13"))
 ```
 
 3D rendering can be static (`scatterplot3d`) or interactive (`rgl`):
 
-```{r, eval = FALSE}
+```{r, eval=FALSE}
 # Static 3D
 plot(bp3)
 
 # Interactive 3D
-plot(bp3, rgl.use = TRUE)
+plot(bp3,
+     rgl.use=TRUE)
 ```
 
 ## Tabular Reporting with xtable
@@ -156,9 +176,9 @@ plot(bp3, rgl.use = TRUE)
 The package provides an `xtable` method for `bpca` objects.
 
 ```{r}
-if (requireNamespace("xtable", quietly = TRUE)) {
+if (requireNamespace("xtable", quietly=TRUE)) {
   tbl <- xtable::xtable(bp2)
-  tbl[1:6, , drop = FALSE]
+  tbl[1:6, , drop=FALSE]
 }
 ```
 
@@ -167,13 +187,15 @@ does not dispatch to it.
 
 ### HTML (this vignette)
 
-For HTML output (including this `html_vignette`), pass `type = "html"`. The chunk
-must use `results = 'asis'` so the table is inserted as raw HTML.
+For HTML output (including this `html_vignette`), pass `type="html"`. The chunk
+must use `results='asis'` so the table is inserted as raw HTML.
 
-```{r, results = "asis"}
-if (requireNamespace("xtable", quietly = TRUE)) {
+```{r, results="asis"}
+if (requireNamespace("xtable",
+                     quietly=TRUE)) {
   tbl <- xtable::xtable(bp2)
-  print(tbl, type = "html")
+  print(tbl,
+        type="html")
 }
 ```
 
@@ -182,15 +204,17 @@ if (requireNamespace("xtable", quietly = TRUE)) {
 To generate the biplot-style LaTeX table (e.g. `pdf_document` or Sweave), use
 the default `type` and call `print()`:
 
-```{r, eval = FALSE}
-tbl <- xtable::xtable(bp2, caption = "Biplot summary", label = "tab:bp2")
+```{r, eval=FALSE}
+tbl <- xtable::xtable(bp2,
+                      caption="Biplot summary",
+                      label="tab:bp2")
 print(tbl)
 ```
 
 ## Notes
 
-- Use `d = 1:2` for 2D and `d = 1:3` for 3D.
-- Prefer `var.rb = TRUE` and `var.rd = TRUE` when diagnosis quality is part
+- Use `d=1:2` for 2D and `d=1:3` for 3D.
+- Prefer `var.rb=TRUE` and `var.rd=TRUE` when diagnosis quality is part
   of your analysis workflow.
 - For scripts and reproducibility, prefer explicit package namespaces in
   custom reporting code (`xtable::`, `rgl::`).

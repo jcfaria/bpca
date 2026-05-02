@@ -40,10 +40,12 @@ plot.bpca.3d <- function(x,
     stop("Both objects and variables coordinates must have at least one row.")
 
   if (is.null(var.factor)) {
-    max_covar <- max(abs(covar), na.rm=TRUE)
+    max_covar <- max(abs(covar),
+                     na.rm=TRUE)
     if (!is.finite(max_covar) || max_covar == 0)
       stop("Cannot compute 'var.factor' automatically: variable coordinates are all zero or non-finite.")
-    var.factor <- max(abs(coobj), na.rm=TRUE) / max_covar
+    var.factor <- max(abs(coobj),
+                      na.rm=TRUE) / max_covar
   }
 
   scores <- rbind(coobj,

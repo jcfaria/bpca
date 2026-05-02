@@ -2,6 +2,9 @@
 
 ## Development Version
 
+### 1.4-2 (2025-05-02) - Faria, J. C.
+- Manual improvements were made to some parts of the code that were refactored by AI.
+
 ### 1.4-1 (2026-05-01) - Faria, J. C.
 
 #### Changes

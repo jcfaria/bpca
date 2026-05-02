@@ -423,9 +423,7 @@ plot(bpca(iris[-5],
      var.cex=1.2,
      obj.names=FALSE,
      obj.cex=.8,
-     obj.col=c('red', 'green3', 'orange')[as.numeric(iris$Species)],
-     simple.axes=FALSE,
-     box=TRUE)
+     obj.col=c('red', 'green3', 'orange')[as.numeric(iris$Species)])
 
 ##
 ## Example 5
@@ -528,7 +526,9 @@ plot(bpca(iris[-5]),
      var.id=1,
      var.fac=.3,
      obj.names=FALSE,
+     obj.cex=.9,
      obj.col=cl[as.numeric(iris$Species)])
+
 legend('topleft',
        legend=levels(iris$Species),
        text.col=cl,
