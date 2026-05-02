@@ -3,6 +3,7 @@
 
 <!-- Badges -->
 [![CRAN status](https://www.r-pkg.org/badges/version/bpca)](https://cran.r-project.org/package=bpca)
+[![CRAN downloads](https://cranlogs.r-pkg.org/badges/bpca)](https://cran.r-project.org/package=bpca)
 [![CRAN checks](https://badges.cranchecks.info/worst/bpca.svg)](https://cran.r-project.org/web/checks/check_results_bpca.html)
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html)
 [![License: GPL-2](https://img.shields.io/badge/License-GPL--2-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)
