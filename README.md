@@ -77,4 +77,8 @@ Contributions are welcome. Open an **Issue** or submit a **Pull Request** with:
 - Improve CI signals and package quality checks.
 
 ---
-Developed by **Jose Claudio Faria**
+Developed by:
+Faria, J. C.; Allaman, I. B.; and Demétrio, C. G. B.  
+Universidade Estadual de Santa Cruz - UESC  
+Departamento de Ciências Exatas - DCEX  
+Ilhéus - Bahia - Brasil
