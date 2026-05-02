@@ -12,6 +12,7 @@ The R package is **`bpca`**. This GitHub repository is named **`bpca2`** (worksp
 ## Highlights
 
 - **PCA-based Biplot analysis** in reduced-dimensional spaces (2D and 3D).
+- **Reporting:** `xtable(bpca(...))` with **`print()`** — LaTeX-style tables by default, or **`print(..., type = "html")`** for R Markdown / HTML output (see `?print.xtable` in the package help).
 - **AI-ready structure** for test automation and assisted code workflows.
 - **Modern R package practices** focused on maintainability and iteration speed.
 - **Continuous improvement mindset** for diagnostics and visualization quality.

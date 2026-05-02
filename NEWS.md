@@ -6,10 +6,12 @@
 
 #### Changes
 - Refined the `qbpca` plotting workflow to improve internal organization and keep graphical outputs consistent.
+- `print.xtable.bpca` now supports `type = "html"` (via `print(x, type = "html", ...)`) for HTML table output, including column labels with eigenvalues; LaTeX layout is unchanged for the default `type = "latex"`.
 
 #### Documentation
 - Updated `man/plot.Rd` and `man/qbpca.Rd` to reflect the latest plotting behavior and usage.
 - Expanded `vignettes/bpca-overview.Rmd` and added `vignettes/latex-bpca.Rnw` to support the updated guidance and examples.
+- Documented `print(x, type = "html")` in `man/print.xtable.Rd`, the HTML overview vignette section, and `README.md` (use `print()` for S3 dispatch; `results = 'asis'` in R Markdown for HTML tables).
 
 #### Examples
 - Updated demo scripts across `demo/` (2D/3D, static/dynamic, and utilities) to align examples with the refactored plotting code.

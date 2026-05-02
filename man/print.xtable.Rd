@@ -8,7 +8,11 @@
 }
 
 \description{
-  Prints formatted \code{xtable.bpca} objects.
+  Formatted printing for \code{xtable.bpca} objects produced by
+  \code{xtable::xtable(bpca(...))}. By default (\code{type = "latex"}) the output
+  matches the biplot-style LaTeX table (multirow headers and eigenvalues in
+  column titles). With \code{type = "html"}, a simpler HTML table is produced
+  for R Markdown and web publishing; column headings include numeric eigenvalues.
 }
 
 \usage{
@@ -29,8 +33,12 @@
     inclusive, indicating the rows after which a horizontal line should appear.
     Default value is NULL, which means drawing a line before and after the column names,
     draw a line before variables and at the end of the table.}
-  \item{include.colnames}{If \code{TRUE}, column names are printed.
-    Default value is \code{FALSE}.} 
+  \item{include.colnames}{If \code{TRUE}, column names are printed. The formal
+    argument defaults to \code{getOption("xtable.include.colnames", FALSE)}.
+    When \code{type = "html"} is requested and \code{include.colnames} is
+    \emph{not} supplied in the call, the method defaults to \code{TRUE} so PC
+    columns (with eigenvalues in the header) are shown; set
+    \code{include.colnames = FALSE} explicitly to omit them.} 
   \item{add.to.row}{A list of two components. The first component (which should be called 'pos') 
     is a list that contains the position of rows on which extra commands should be added at the end.
     The second component (which should be called 'command') is a character vector of the same length
@@ -44,7 +52,12 @@
     The default uses the sanitize.text.function.}
   \item{sanitize.colnames.function}{Like the sanitize.text.function, but applicable to column names. 
     The default uses the sanitize.text.function.}
-  \item{\dots}{Other arguments of the print.xtable function (see xtable package).}
+  \item{\dots}{Other arguments passed to \code{xtable::print.xtable}, in particular
+    \code{type}: use \code{type = "html"} for HTML tables (e.g. R Markdown HTML
+    output) and the default \code{"latex"} (or \code{getOption("xtable.type")})
+    for the biplot-style LaTeX table. For HTML, row continuations do not use
+    the LaTeX \code{&} prefix; custom \code{sanitize.rownames.function} should
+    return plain text suitable for HTML if you use this type.}
 }
 
 \author{
@@ -93,6 +106,9 @@ italic <- function(x){
 print(tbl2,
       sanitize.rownames.function = italic)
 
+## HTML table (e.g. R Markdown HTML): pass type via print()
+print(tbl,
+      type = "html")
 }
 
 \keyword{multivariate}
