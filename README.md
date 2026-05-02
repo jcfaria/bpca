@@ -2,25 +2,30 @@
 # bpca
 
 <!-- Badges -->
-[![R-CMD-check](https://github.com)](https://github.com)
-[![Lifecycle: experimental](https://shields.io)](https://r-lib.org)
-[![License: GPL-2](https://shields.io)](https://gnu.org)
+[![CRAN status](https://www.r-pkg.org/badges/version/bpca)](https://cran.r-project.org/package=bpca)
+[![CRAN checks](https://badges.cranchecks.info/worst/bpca.svg)](https://cran.r-project.org/web/checks/check_results_bpca.html)
+[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html)
+[![License: GPL-2](https://img.shields.io/badge/License-GPL--2-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)
 
-The R package is **`bpca`**. This GitHub repository is named **`bpca2`** (workspace / checkout folder); after installation you always load **`library(bpca)`**.
+`bpca` is an R package for biplot analysis based on principal components.
+This repository is named `bpca2`, but the installed package is always loaded with `library(bpca)`.
 
-**bpca** provides biplot analysis based on principal components, with this repo used as a modern playground for testing, refactoring, and AI-assisted development workflows.
-
-## Highlights
+## Key Features
 
 - **PCA-based Biplot analysis** in reduced-dimensional spaces (2D and 3D).
-- **Reporting:** `xtable(bpca(...))` with **`print()`** — LaTeX-style tables by default, or **`print(..., type = "html")`** for R Markdown / HTML output (see `?print.xtable` in the package help).
-- **AI-ready structure** for test automation and assisted code workflows.
-- **Modern R package practices** focused on maintainability and iteration speed.
-- **Continuous improvement mindset** for diagnostics and visualization quality.
+- **Multiple factorization methods** (`hj`, `sqrt`, `jk`, `gh`) for different interpretations.
+- **Quality diagnostics** for dimensionality reduction and representation fidelity.
+- **Reporting support** with `xtable(bpca(...))` and `print(..., type = "html")`.
 
 ## Installation
 
-Install from this GitHub repository (the installed package name is still **`bpca`**):
+Install from CRAN:
+
+```r
+install.packages("bpca")
+```
+
+Install the development version from GitHub:
 
 ```r
 # install.packages("remotes")
@@ -42,6 +47,11 @@ plot(
 )
 ```
 
+For more complete examples, see:
+
+- `demo("bpca", package = "bpca")`
+- `vignette("bpca-overview", package = "bpca")`
+
 ## Project Layout
 
 - `/R`: Core computational and plotting functions.
@@ -56,8 +66,8 @@ plot(
 Contributions are welcome. Open an **Issue** or submit a **Pull Request** with:
 
 - Bug fixes and performance improvements.
-- Documentation and developer-experience enhancements.
-- New ideas for Biplot diagnostics and AI-driven PCA workflows.
+- Documentation and usability improvements.
+- New ideas for diagnostics and visualization workflows.
 
 ## Roadmap (Experimental)
 
