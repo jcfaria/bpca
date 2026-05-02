@@ -77,8 +77,8 @@ Contributions are welcome. Open an **Issue** or submit a **Pull Request** with:
 - Improve CI signals and package quality checks.
 
 ---
-Developed by:
-Faria, J. C.; Allaman, I. B.; and Demétrio, C. G. B.  
-Universidade Estadual de Santa Cruz - UESC  
-Departamento de Ciências Exatas - DCEX  
+Developed by:<br>
+Faria, J. C.; Allaman, I. B.; and Demétrio, C. G. B.<br>
+Universidade Estadual de Santa Cruz - UESC<br>
+Departamento de Ciências Exatas - DCEX<br>
 Ilhéus - Bahia - Brasil
