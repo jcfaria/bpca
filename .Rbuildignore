@@ -1,0 +1,14 @@
+# Version control (avoid Windows lock / permission errors during check & build)
+^\.git$
+^\.gitattributes$
+
+# Local check / build artefacts
+^\.Rcheck$
+^\.\.Rcheck$
+^bpca\.Rcheck$
+^bpca_.*\.tar\.gz$
+
+# Editor / OS
+\.swp$
+\.DS_Store$
+Thumbs\.db$
