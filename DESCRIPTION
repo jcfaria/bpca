@@ -1,6 +1,6 @@
 Package: bpca
-Version: 1.4-2
-Date: 2026-05-02
+Version: 1.4-3
+Date: 2026-05-04
 Title: Biplot Analysis for Multivariate Data Using Principal Components
 Authors@R: c(person("José C.", "Faria", role = c("aut", "cre"),
                email = "joseclaudio.faria@gmail.com"),
