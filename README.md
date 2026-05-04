@@ -9,7 +9,6 @@
 [![License: GPL-2](https://img.shields.io/badge/License-GPL--2-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)
 
 `bpca` is an R package for biplot analysis based on principal components.
-This repository is named `bpca2`, but the installed package is always loaded with `library(bpca)`.
 
 ## Key Features
 
@@ -30,7 +29,7 @@ Install the development version from GitHub:
 
 ```r
 # install.packages("remotes")
-remotes::install_github("jcfaria/bpca2")
+remotes::install_github("jcfaria/bpca")
 ```
 
 ## Quick Start
@@ -64,7 +63,7 @@ For more complete examples, see:
 
 ## Contributing
 
-Contributions are welcome. Open an **Issue** or submit a **Pull Request** with:
+Contributions are welcome. Open an **[Issue](https://github.com/jcfaria/bpca/issues)** or submit a **Pull Request** on [github.com/jcfaria/bpca](https://github.com/jcfaria/bpca) with:
 
 - Bug fixes and performance improvements.
 - Documentation and usability improvements.
@@ -77,8 +76,13 @@ Contributions are welcome. Open an **Issue** or submit a **Pull Request** with:
 - Improve CI signals and package quality checks.
 
 ---
-Developed by:<br>
-Faria, J. C.; Allaman, I. B.; and Demétrio, C. G. B.<br>
-Universidade Estadual de Santa Cruz - UESC<br>
-Departamento de Ciências Exatas - DCEX<br>
-Ilhéus - Bahia - Brasil
+Developed by:  
+Faria, J. C.; Allaman, I. B.  
+Universidade Estadual de Santa Cruz - UESC  
+Departamento de Ciências Exatas - DCEX  
+Ilhéus - Bahia - Brasil  
+
+Demétrio, C. G. B.  
+Universidade de São Paulo - USP  
+Escola Superior de Agricultura Luiz de Queiroz - ESALQ  
+Piracicaba - São Paulo - Brasil
