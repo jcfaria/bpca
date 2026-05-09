@@ -5,7 +5,7 @@
 [![CRAN status](https://www.r-pkg.org/badges/version/bpca)](https://cran.r-project.org/package=bpca)
 [![CRAN downloads](https://cranlogs.r-pkg.org/badges/bpca)](https://cran.r-project.org/package=bpca)
 [![CRAN checks](https://badges.cranchecks.info/worst/bpca.svg)](https://cran.r-project.org/web/checks/check_results_bpca.html)
-[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html)
+[![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html)
 [![License: GPL-2](https://img.shields.io/badge/License-GPL--2-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)
 
 `bpca` is an R package for biplot analysis based on principal components.
@@ -69,7 +69,7 @@ Contributions are welcome. Open an **[Issue](https://github.com/jcfaria/bpca/iss
 - Documentation and usability improvements.
 - New ideas for diagnostics and visualization workflows.
 
-## Roadmap (Experimental)
+## Roadmap
 
 - Expand test coverage for edge cases and plotting behavior.
 - Add practical vignettes with real-world datasets.
