@@ -12,7 +12,8 @@ Author: José C. Faria [aut, cre],
 Maintainer: José C. Faria <joseclaudio.faria@gmail.com>
 Depends: R (>= 4.1.0)
 Imports: scatterplot3d, rgl, xtable
-Suggests: knitr, rmarkdown
+Suggests: knitr, rmarkdown, testthat (>= 3.0.0)
+Config/testthat/edition: 3
 VignetteBuilder: knitr
 Description: Provides tools for creating 2D and 3D biplots of multivariate data
     based on principal components analysis, together with diagnostics for

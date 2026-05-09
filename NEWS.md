@@ -15,6 +15,10 @@
 - Regenerated `vignettes/bpca-overview.html` with the updated HTML table rendering.
 - Removed prebuilt vignette artifacts from `inst/doc/` to keep the repository clean.
 
+#### Testing
+- Added a new `testthat` suite under `tests/testthat/` covering core `bpca` workflows, summary/plot smoke checks, and `xtable` output behavior for HTML and LaTeX.
+- Updated package metadata to enable automated tests (`Suggests: testthat (>= 3.0.0)` and `Config/testthat/edition: 3` in `DESCRIPTION`).
+
 ### 1.4-3 (2026-05-04) - Faria, J. C.
 
 #### Changes
