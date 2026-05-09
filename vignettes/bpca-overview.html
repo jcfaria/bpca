@@ -395,8 +395,8 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <h2>Summary Output</h2>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(bp2)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Eigenvalue(s) :</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 7.627198e+00 1.771676e+00 1.096260e+00 5.064330e-01 3.456395e-01 3.150429e-01</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [7] 1.001889e-01 5.766751e-16</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 7.627198e+00 1.771676e+00 1.096260e+00 5.064330e-01 3.456395e-01</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [6] 3.150429e-01 1.001889e-01 5.766751e-16</span></span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Considered on reduction :</span></span>
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 7.627198 1.771676</span></span>
@@ -536,7 +536,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  tbl[<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, , drop<span class="ot">=</span><span class="cn">FALSE</span>]</span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; % latex table generated in R 4.7.0 by xtable 1.8-8 package</span></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; % Sat May  2 11:05:00 2026</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; % Sat May  9 10:17:39 2026</span></span>
 <span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; \begin{table}[ht]</span></span>
 <span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; \centering</span></span>
 <span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; \begin{tabular}{lrrr}</span></span>
@@ -563,9 +563,10 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(tbl,</span>
 <span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">type=</span><span class="st">&quot;html&quot;</span>)</span>
 <span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<style>.bpca-xtable tr:nth-child(11) td{border-top:2px solid #666;} .bpca-xtable tr:nth-child(12) td{border-bottom:2px solid #666;}</style>
 <!-- html table generated in R 4.7.0 by xtable 1.8-8 package -->
-<!-- Sat May  2 11:05:00 2026 -->
-<table border="1">
+<!-- Sat May  9 10:17:39 2026 -->
+<table class="bpca-xtable">
 <tr>
 <th>
 </th>
@@ -705,7 +706,15 @@ Variance accumulated
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>tbl <span class="ot">&lt;-</span> xtable<span class="sc">::</span><span class="fu">xtable</span>(bp2,</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">caption=</span><span class="st">&quot;Biplot summary&quot;</span>,</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">label=</span><span class="st">&quot;tab:bp2&quot;</span>)</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(tbl)</span></code></pre></div>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>rn <span class="ot">&lt;-</span> <span class="fu">rownames</span>(tbl)</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>idx_retained <span class="ot">&lt;-</span> <span class="fu">which</span>(rn <span class="sc">==</span> <span class="st">&quot;Variance retained&quot;</span>)</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>hlines <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">0</span>, <span class="fu">nrow</span>(tbl) <span class="sc">-</span> 1L)</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">length</span>(idx_retained) <span class="sc">==</span> 1L <span class="sc">&amp;&amp;</span> idx_retained <span class="sc">&gt;</span> 1L) {</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>  hlines <span class="ot">&lt;-</span> <span class="fu">c</span>(hlines, idx_retained <span class="sc">-</span> 1L)</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>hlines <span class="ot">&lt;-</span> <span class="fu">sort</span>(<span class="fu">unique</span>(hlines))</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(tbl,</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>      <span class="at">hline.after=</span>hlines)</span></code></pre></div>
 </div>
 </div>
 <div id="notes" class="section level2">

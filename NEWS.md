@@ -2,6 +2,19 @@
 
 # News - bpca R package
 
+### Development version (2026-05-09) - Faria, J. C.
+
+#### Changes
+- Refined `print.xtable.bpca` HTML output to consistently highlight the variance summary block with stronger horizontal separators.
+- Improved HTML table defaults in `print.xtable.bpca` for `type = "html"` while keeping LaTeX behavior unchanged.
+
+#### Documentation
+- Refactored `vignettes/latex-bpca.Rnw` for clearer didactic flow, improved visual layout, and updated examples.
+- Updated `vignettes/latex-bpca.pdf` with the new vignette formatting.
+- Simplified the HTML example in `vignettes/bpca-overview.Rmd` to use `print(tbl, type = "html")` directly.
+- Regenerated `vignettes/bpca-overview.html` with the updated HTML table rendering.
+- Removed prebuilt vignette artifacts from `inst/doc/` to keep the repository clean.
+
 ### 1.4-3 (2026-05-04) - Faria, J. C.
 
 #### Changes

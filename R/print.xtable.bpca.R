@@ -74,7 +74,9 @@ print.xtable.bpca <- function(x,
       xsub <- x[-(nvariables + 1L), , drop = FALSE]
 
       if (is.null(hline.after)) {
-        hline.after <- c(-1L, 0L, nrow(xsub))
+        ## For HTML, emphasize the header, the split before variance rows,
+        ## and a final line after the last row.
+        hline.after <- c(-1L, 0L, nvariables, nrow(xsub) - 1L)
       }
 
       ## Prefer visible column headers for HTML unless the caller set include.colnames.
@@ -86,6 +88,35 @@ print.xtable.bpca <- function(x,
       }
 
       dots_pass <- dots[setdiff(names(dots), c("type", "include.colnames"))]
+
+      ## Ensure a stable class hook in html_vignette output.
+      attrs <- dots_pass$html.table.attributes
+      if (is.null(attrs)) {
+        attrs <- 'class="bpca-xtable"'
+      } else if (!grepl("class\\s*=", attrs)) {
+        attrs <- paste(attrs, 'class="bpca-xtable"')
+      } else if (!grepl("bpca-xtable", attrs)) {
+        attrs <- sub("class\\s*=\\s*\"([^\"]*)\"",
+                     'class="\\1 bpca-xtable"',
+                     attrs)
+      }
+      dots_pass$html.table.attributes <- attrs
+
+      ## html_vignette CSS flattens default hline rendering from xtable; add
+      ## explicit rules for the variance split and final table boundary.
+      if (is.null(dots$hline.after)) {
+        row_retained <- nvariables + 2L
+        row_accumulated <- nvariables + 3L
+        cat(sprintf(
+          paste0(
+            "<style>.bpca-xtable tr:nth-child(%d) td{border-top:2px solid #666;}",
+            " .bpca-xtable tr:nth-child(%d) td{border-bottom:2px solid #666;}</style>\n"
+          ),
+          row_retained,
+          row_accumulated
+        ))
+      }
+
       do.call(
         xtable::print.xtable,
         c(

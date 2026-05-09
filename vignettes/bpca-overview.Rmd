@@ -208,7 +208,15 @@ the default `type` and call `print()`:
 tbl <- xtable::xtable(bp2,
                       caption="Biplot summary",
                       label="tab:bp2")
-print(tbl)
+rn <- rownames(tbl)
+idx_retained <- which(rn == "Variance retained")
+hlines <- c(-1, 0, nrow(tbl) - 1L)
+if (length(idx_retained) == 1L && idx_retained > 1L) {
+  hlines <- c(hlines, idx_retained - 1L)
+}
+hlines <- sort(unique(hlines))
+print(tbl,
+      hline.after=hlines)
 ```
 
 ## Notes
