@@ -1,0 +1,22 @@
+bpca                    Biplot of Multivariate Data Based on Principal
+                        Component Analysis
+bpca-package            Biplot of Multivariate Data Based on Principal
+                        Component Analysis
+dt.tools                Data Tools for Multivariate Analysis
+gabriel1971             Percentages of households having various
+                        facilities and appliances in East Jerusalem
+                        Arab areas, by quarters of the town
+gge2003                 A didactic matrix of genotypes (rows) and
+                        environments (columns)
+marina                  Films shown at five festivals in Brazil from
+                        2007 to 2011
+ontario                 Ontario winter wheat (1993)
+plot.bpca.2d            Biplot of Multivariate Data Based on Principal
+                        Component Analysis
+print.xtable            Print Method for xtable.bpca Objects
+qbpca                   Quality of the Representation of Variables by
+                        Biplot
+summary.bpca            Summary Method for bpca Objects
+var.rbf                 Projected Correlations by BPCA
+var.rdf                 Diagnostic of Projected Correlations
+xtable.bpca             LaTeX Table for Biplot Results

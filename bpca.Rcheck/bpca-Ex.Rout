@@ -1,0 +1,1991 @@
+
+R Under development (unstable) (2026-04-23 r89955 ucrt) -- "Unsuffered Consequences"
+Copyright (C) 2026 The R Foundation for Statistical Computing
+Platform: x86_64-w64-mingw32/x64
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> pkgname <- "bpca"
+> source(file.path(R.home("share"), "R", "examples-header.R"))
+> options(warn = 1)
+> options(pager = "console")
+> base::assign(".ExTimings", "bpca-Ex.timings", pos = 'CheckExEnv')
+> base::cat("name\tuser\tsystem\telapsed\n", file=base::get(".ExTimings", pos = 'CheckExEnv'))
+> base::assign(".format_ptime",
++ function(x) {
++   if(!is.na(x[4L])) x[1L] <- x[1L] + x[4L]
++   if(!is.na(x[5L])) x[2L] <- x[2L] + x[5L]
++   options(OutDec = '.')
++   format(x[1L:3L], digits = 7L)
++ },
++ pos = 'CheckExEnv')
+> 
+> ### * </HEADER>
+> library('bpca')
+> 
+> base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
+> base::assign(".old_wd", base::getwd(), pos = 'CheckExEnv')
+> cleanEx()
+> nameEx("bpca-package")
+> ### * bpca-package
+> 
+> flush(stderr()); flush(stdout())
+> 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: bpca-package
+> ### Title: Biplot of Multivariate Data Based on Principal Component
+> ###   Analysis
+> ### Aliases: bpca-package
+> ### Keywords: package multivariate
+> 
+> ### ** Examples
+> 
+> ##
+> ## Grouping objects with different symbols and colors (2D and 3D)
+> ##
+> 
+> dev.new(w=6, h=6)
+> oask <- devAskNewPage(dev.interactive(orNone=TRUE))
+> 
+> ## Not run: 
+> ##D # 2D
+> ##D plot(bpca(iris[-5]),
+> ##D      var.pos=c(4, 2, 3, 1),
+> ##D      var.offset=.3,
+> ##D      var.cex=.7,
+> ##D      obj.names=FALSE,
+> ##D      obj.cex=1.5,
+> ##D      obj.col=c('red', 'green3', 'blue')[as.numeric(iris$Species)],
+> ##D      obj.pch=c('+', '*', '-')[as.numeric(iris$Species)])
+> ##D 
+> ##D # 3D static
+> ##D plot(bpca(iris[-5],
+> ##D           d=1:3),
+> ##D      var.color=c('blue', 'red'),
+> ##D      var.cex=1,
+> ##D      obj.names=FALSE,
+> ##D      obj.cex=1,
+> ##D      obj.col=c('red', 'green3', 'blue')[as.numeric(iris$Species)],
+> ##D      obj.pch=c('+', '*', '-')[as.numeric(iris$Species)])
+> ##D 
+> ##D # 3D dynamic
+> ##D plot(bpca(iris[-5],
+> ##D           method='hj',
+> ##D           d=1:3),
+> ##D      rgl.use=TRUE,
+> ##D      var.col=c('blue', 'red'),
+> ##D      var.cex=1.2,
+> ##D      obj.names=FALSE,
+> ##D      obj.cex=.8,
+> ##D      obj.col=c('red', 'green3', 'orange')[as.numeric(iris$Species)],
+> ##D      simple.axes=FALSE,
+> ##D      box=TRUE)
+> ## End(Not run)
+> 
+> ##
+> ## New plotting options
+> ##
+> plot(bpca(ontario))
+> 
+> # Labels for all objects
+> (obj.lab <- paste('g',
++                   1:18,
++                   sep=''))
+ [1] "g1"  "g2"  "g3"  "g4"  "g5"  "g6"  "g7"  "g8"  "g9"  "g10" "g11" "g12"
+[13] "g13" "g14" "g15" "g16" "g17" "g18"
+> 
+> # Set obj.labels
+> plot(bpca(ontario),
++     obj.labels=obj.lab) 
+> 
+> # Evaluate an object (1 is the default)
+> plot(bpca(ontario),
++      type='eo',
++      obj.cex=1)
+> 
+> plot(bpca(ontario),
++      type='eo',
++      obj.id=7,
++      obj.cex=1)
+> 
+> # Set obj.labels
+> plot(bpca(ontario),
++      type='eo',
++      obj.labels=obj.lab,
++      obj.id=7,
++      obj.cex=1)
+> 
+> # The same as above
+> plot(bpca(ontario),
++      type='eo',
++      obj.labels=obj.lab,
++      obj.id='g7',
++      obj.cex=1)
+> 
+> # Evaluate a variable (1 is the default)
+> plot(bpca(ontario),
++      type='ev',
++      var.cex=1)
+> 
+> plot(bpca(ontario),
++      type='ev',
++      var.id='E7',
++      obj.labels=obj.lab,
++      var.cex=1)
+> 
+> # A complete plot
+> cl <- 1:3
+> plot(bpca(iris[-5]),
++      type='ev',
++      var.id=1,
++      obj.names=FALSE,
++      obj.col=cl[as.numeric(iris$Species)],
++      obj.cex=1)
+> 
+> legend('topleft',
++        legend=levels(iris$Species),
++        text.col=cl,
++        pch=19,
++        col=cl,
++        cex=.9,
++        box.lty=0)   
+> 
+> # Compare two objects (1 and 2 are the default)
+> plot(bpca(ontario),
++      type='co')
+> 
+> plot(bpca(ontario),
++      type='co',
++      obj.labels=obj.lab)
+> 
+> plot(bpca(ontario),
++      type='co',
++      obj.labels=obj.lab,
++      obj.id=13:14)
+> 
+> plot(bpca(ontario),
++      type='co',
++      obj.labels=obj.lab,
++      obj.id=c('g7', 'g13'))
+> 
+> # Compare two variables
+> plot(bpca(ontario),
++      type='cv')
+> 
+> # Which won where/what
+> plot(bpca(ontario),
++      type='ww')
+> 
+> # Discriminativeness vs. representativeness
+> plot(bpca(ontario),
++      type='dv')
+> 
+> # Means vs. stability
+> plot(bpca(ontario),
++      type='ms')
+> 
+> # Rank objects with reference to the ideal variable
+> plot(bpca(ontario),
++      type='ro')
+> 
+> # Rank variables with reference to the ideal object
+> plot(bpca(ontario),
++      type='rv')
+> 
+> ## Not run: 
+> ##D plot(bpca(iris[-5]),
+> ##D      type='eo',
+> ##D      obj.id=42,
+> ##D      obj.cex=1)
+> ##D 
+> ##D plot(bpca(iris[-5]),
+> ##D      type='ev',
+> ##D      var.id='Sepal.Width')
+> ##D 
+> ##D plot(bpca(iris[-5]),
+> ##D      type='ev',
+> ##D      var.id='Sepal.Length')
+> ## End(Not run)
+> 
+> devAskNewPage(oask)
+> 
+> 
+> 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("bpca-package", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> cleanEx()
+> nameEx("bpca")
+> ### * bpca
+> 
+> flush(stderr()); flush(stdout())
+> 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: bpca
+> ### Title: Biplot of Multivariate Data Based on Principal Component
+> ###   Analysis
+> ### Aliases: bpca bpca.default bpca.prcomp
+> ### Keywords: multivariate
+> 
+> ### ** Examples
+> 
+> ##
+> ## Example 1
+> ## Compute and plot a bpca object with base graphics (2D)
+> ##
+> 
+> bp <- bpca(gabriel1971)
+> 
+> dev.new(w=6, h=6)
+dev.new(): using pdf(file="Rplots1.pdf")
+> oask <- devAskNewPage(dev.interactive(orNone=TRUE))
+> plot(bp)
+> 
+> # Explore the object created by bpca()
+> class(bp)
+[1] "bpca.2d" "bpca"    "list"   
+> names(bp)
+[1] "call"         "eigenvalues"  "eigenvectors" "number"       "importance"  
+[6] "coord"        "var.rb"       "var.rd"      
+> str(bp)
+List of 8
+ $ call        : language bpca.default(x = gabriel1971)
+ $ eigenvalues : num [1:8] 7.627 1.772 1.096 0.506 0.346 ...
+ $ eigenvectors: num [1:9, 1:8] 0.338 0.34 0.338 0.341 0.318 ...
+  ..- attr(*, "dimnames")=List of 2
+  .. ..$ : chr [1:9] "CRISTIAN" "ARMENIAN" "JEWISH" "MOSLEM" ...
+  .. ..$ : chr [1:8] "PC1" "PC2" "PC3" "PC4" ...
+ $ number      : num [1:2] 1 2
+ $ importance  : num [1:2, 1] 0.973 0.973
+  ..- attr(*, "dimnames")=List of 2
+  .. ..$ : chr [1:2] "general" "partial"
+  .. ..$ : chr "explained"
+ $ coord       :List of 2
+  ..$ objects  : num [1:8, 1:8] 3.976 2.593 -2.193 1.746 -0.929 ...
+  .. ..- attr(*, "dimnames")=List of 2
+  .. .. ..$ : chr [1:8] "toilet" "kitchen" "bath" "eletricity" ...
+  .. .. ..$ : chr [1:8] "PC1" "PC2" "PC3" "PC4" ...
+  ..$ variables: num [1:9, 1:8] 2.58 2.6 2.58 2.6 2.43 ...
+  .. ..- attr(*, "dimnames")=List of 2
+  .. .. ..$ : chr [1:9] "CRISTIAN" "ARMENIAN" "JEWISH" "MOSLEM" ...
+  .. .. ..$ : chr [1:8] "PC1" "PC2" "PC3" "PC4" ...
+ $ var.rb      : logi NA
+ $ var.rd      : logi NA
+ - attr(*, "class")= chr [1:3] "bpca.2d" "bpca" "list"
+> 
+> summary(bp)
+Eigenvalue(s) :
+[1] 7.627198e+00 1.771676e+00 1.096260e+00 5.064330e-01 3.456395e-01
+[6] 3.150429e-01 1.001889e-01 5.766751e-16
+
+Considered on reduction :
+[1] 7.627198 1.771676
+
+Variance retained by each :
+[1] 0.92339915 0.04982279
+
+Cumulative variance retained :
+[1] 0.9233991 0.9732219
+
+Prop. of total variance retained :
+[1] 0.973
+
+> bp$call
+bpca.default(x = gabriel1971)
+> bp$eigenval
+[1] 7.627198e+00 1.771676e+00 1.096260e+00 5.064330e-01 3.456395e-01
+[6] 3.150429e-01 1.001889e-01 5.766751e-16
+> bp$eigenvec
+               PC1         PC2         PC3        PC4         PC5          PC6
+CRISTIAN 0.3377538  0.14981020  0.45230008  0.4231457  0.05311783  0.088587185
+ARMENIAN 0.3404004  0.16726958  0.33771819  0.2833808 -0.16767162  0.271055242
+JEWISH   0.3377588  0.28007714 -0.04739131 -0.4883343  0.66215556  0.003365012
+MOSLEM   0.3406022  0.21215568  0.25698153 -0.3060955 -0.04080079  0.117747222
+MODERN.1 0.3180490 -0.57546846  0.11916350  0.2300814  0.35085215 -0.554794758
+MODERN.2 0.3142866 -0.60122176 -0.24495252 -0.1242393 -0.02171777  0.658770989
+OTHER.1  0.3451543 -0.10599794 -0.09398560 -0.1170630 -0.36770339 -0.202618566
+OTHER.2  0.3443458  0.07174535 -0.10875359 -0.3290520 -0.51237687 -0.349036572
+RUR      0.3198785  0.34221343 -0.71987728  0.4670400  0.08743743 -0.012181278
+                 PC7         PC8
+CRISTIAN  0.17009802  0.64204379
+ARMENIAN -0.55431905 -0.49065851
+JEWISH   -0.31105068  0.15965052
+MOSLEM    0.70406696 -0.40978278
+MODERN.1  0.04233731 -0.25073417
+MODERN.2  0.01014123  0.10116746
+OTHER.1   0.01377868  0.24501092
+OTHER.2  -0.21426930  0.09617249
+RUR       0.15276704 -0.10602735
+> bp$numb
+[1] 1 2
+> bp$import
+        explained
+general     0.973
+partial     0.973
+> bp$coord
+$objects
+                    PC1          PC2          PC3         PC4         PC5
+toilet        3.9762603  0.460342904 -0.164808373 -0.16307352  0.21212055
+kitchen       2.5932882  0.002043826 -0.203933331 -0.03307726 -0.19416406
+bath         -2.1927687 -0.705500212 -0.442746620 -0.05340394 -0.04406489
+eletricity    1.7464290 -0.088014815  0.844136075 -0.03935864 -0.09648914
+water        -0.9290422 -0.986434355 -0.007381285 -0.14946485  0.05968010
+radio         1.5997357  0.272042618 -0.330268290  0.34369666 -0.02917076
+tv set       -4.1967259  1.166119584 -0.032973167 -0.15195401 -0.04579059
+refrigerator -2.5971764 -0.120599550  0.337974991  0.24663557  0.13787879
+                      PC6          PC7           PC8
+toilet        0.053429673 -0.006353144 -2.038854e-16
+kitchen      -0.081174612 -0.058296441 -2.038854e-16
+bath          0.209700495  0.001535842 -2.038854e-16
+eletricity    0.087225950  0.025846630 -2.038854e-16
+water        -0.188275698  0.027628939 -2.038854e-16
+radio        -0.034025700  0.048805410 -2.038854e-16
+tv set       -0.039579765  0.012167090 -2.038854e-16
+refrigerator -0.007300344 -0.051334326 -2.038854e-16
+
+$variables
+              PC1        PC2         PC3         PC4          PC5          PC6
+CRISTIAN 2.576115  0.2654151  0.49583867  0.21429498  0.018359621  0.027908767
+ARMENIAN 2.596301  0.2963475  0.37022708  0.14351342 -0.057953935  0.085394039
+JEWISH   2.576153  0.4962060 -0.05195321 -0.24730860  0.228867118  0.001060123
+MOSLEM   2.597840  0.3758711  0.28171867 -0.15501688 -0.014102365  0.037095431
+MODERN.1 2.425822 -1.0195437  0.13063423  0.11652082  0.121268364 -0.174784169
+MODERN.2 2.397126 -1.0651702 -0.26853174 -0.06291888 -0.007506518  0.207541146
+OTHER.1  2.632560 -0.1877940 -0.10303269 -0.05928458 -0.127092816 -0.063833548
+OTHER.2  2.626394  0.1271095 -0.11922226 -0.16664282 -0.177097687 -0.109961506
+RUR      2.439777  0.6062913 -0.78917295  0.23652448  0.030221831 -0.003837625
+                  PC7           PC8
+CRISTIAN  0.017041938  3.702506e-16
+ARMENIAN -0.055536633 -2.829505e-16
+JEWISH   -0.031163835  9.206647e-17
+MOSLEM    0.070539716 -2.363115e-16
+MODERN.1  0.004241729 -1.445921e-16
+MODERN.2  0.001016039  5.834075e-17
+OTHER.1   0.001380471  1.412917e-16
+OTHER.2  -0.021467413  5.546027e-17
+RUR       0.015305566 -6.114333e-17
+
+> bp$coord$obj
+                    PC1          PC2          PC3         PC4         PC5
+toilet        3.9762603  0.460342904 -0.164808373 -0.16307352  0.21212055
+kitchen       2.5932882  0.002043826 -0.203933331 -0.03307726 -0.19416406
+bath         -2.1927687 -0.705500212 -0.442746620 -0.05340394 -0.04406489
+eletricity    1.7464290 -0.088014815  0.844136075 -0.03935864 -0.09648914
+water        -0.9290422 -0.986434355 -0.007381285 -0.14946485  0.05968010
+radio         1.5997357  0.272042618 -0.330268290  0.34369666 -0.02917076
+tv set       -4.1967259  1.166119584 -0.032973167 -0.15195401 -0.04579059
+refrigerator -2.5971764 -0.120599550  0.337974991  0.24663557  0.13787879
+                      PC6          PC7           PC8
+toilet        0.053429673 -0.006353144 -2.038854e-16
+kitchen      -0.081174612 -0.058296441 -2.038854e-16
+bath          0.209700495  0.001535842 -2.038854e-16
+eletricity    0.087225950  0.025846630 -2.038854e-16
+water        -0.188275698  0.027628939 -2.038854e-16
+radio        -0.034025700  0.048805410 -2.038854e-16
+tv set       -0.039579765  0.012167090 -2.038854e-16
+refrigerator -0.007300344 -0.051334326 -2.038854e-16
+> bp$coord$var
+              PC1        PC2         PC3         PC4          PC5          PC6
+CRISTIAN 2.576115  0.2654151  0.49583867  0.21429498  0.018359621  0.027908767
+ARMENIAN 2.596301  0.2963475  0.37022708  0.14351342 -0.057953935  0.085394039
+JEWISH   2.576153  0.4962060 -0.05195321 -0.24730860  0.228867118  0.001060123
+MOSLEM   2.597840  0.3758711  0.28171867 -0.15501688 -0.014102365  0.037095431
+MODERN.1 2.425822 -1.0195437  0.13063423  0.11652082  0.121268364 -0.174784169
+MODERN.2 2.397126 -1.0651702 -0.26853174 -0.06291888 -0.007506518  0.207541146
+OTHER.1  2.632560 -0.1877940 -0.10303269 -0.05928458 -0.127092816 -0.063833548
+OTHER.2  2.626394  0.1271095 -0.11922226 -0.16664282 -0.177097687 -0.109961506
+RUR      2.439777  0.6062913 -0.78917295  0.23652448  0.030221831 -0.003837625
+                  PC7           PC8
+CRISTIAN  0.017041938  3.702506e-16
+ARMENIAN -0.055536633 -2.829505e-16
+JEWISH   -0.031163835  9.206647e-17
+MOSLEM    0.070539716 -2.363115e-16
+MODERN.1  0.004241729 -1.445921e-16
+MODERN.2  0.001016039  5.834075e-17
+OTHER.1   0.001380471  1.412917e-16
+OTHER.2  -0.021467413  5.546027e-17
+RUR       0.015305566 -6.114333e-17
+> bp$var.rb
+[1] NA
+> bp$var.rd
+[1] NA
+> 
+> ## Not run: 
+> ##D ##
+> ##D ## Example 2
+> ##D ## Compute and plot a bpca object with scatterplot3d (3D)
+> ##D ##
+> ##D 
+> ##D bp <- bpca(gabriel1971,
+> ##D            d=2:4)
+> ##D 
+> ##D plot(bp)
+> ##D 
+> ##D # Explore the object created by bpca()
+> ##D class(bp)
+> ##D names(bp)
+> ##D str(bp)
+> ##D 
+> ##D summary(bp)
+> ##D bp$call
+> ##D bp$eigenval
+> ##D bp$eigenvec
+> ##D bp$numb
+> ##D bp$import
+> ##D bp$coord
+> ##D bp$coord$obj
+> ##D bp$coord$var
+> ##D bp$var.rb
+> ##D bp$var.rd
+> ##D 
+> ##D ##
+> ##D ## Example 3
+> ##D ## Compute and plot a bpca object with rgl (3D)
+> ##D ##
+> ##D 
+> ##D plot(bpca(gabriel1971,
+> ##D           d=1:3),
+> ##D      rgl.use=TRUE)
+> ##D 
+> ##D # Tip: interact with the graphic using the mouse
+> ##D # left button: click and drag to rotate;
+> ##D # right button: click and drag to zoom.
+> ##D 
+> ##D ##
+> ##D ## Example 4
+> ##D ## Group objects using different symbols and colors (2D and 3D)
+> ##D ##
+> ##D 
+> ##D # 2D
+> ##D plot(bpca(iris[-5]),
+> ##D      var.cex=.7,
+> ##D      obj.names=FALSE,
+> ##D      obj.cex=1.5,
+> ##D      obj.col=c('red', 'green3', 'blue')[as.numeric(iris$Species)],
+> ##D      obj.pch=c('+', '*', '-')[as.numeric(iris$Species)])
+> ##D 
+> ##D # 3D static
+> ##D plot(bpca(iris[-5],
+> ##D           d=1:3),
+> ##D      var.color=c('blue', 'red'),
+> ##D      var.cex=1,
+> ##D      obj.names=FALSE,
+> ##D      obj.cex=1,
+> ##D      obj.col=c('red', 'green3', 'blue')[as.numeric(iris$Species)],
+> ##D      obj.pch=c('+', '*', '-')[as.numeric(iris$Species)])
+> ##D 
+> ##D # 3D dynamic
+> ##D plot(bpca(iris[-5],
+> ##D           method='hj',
+> ##D           d=1:3),
+> ##D      rgl.use=TRUE,
+> ##D      var.col=c('blue', 'red'),
+> ##D      var.cex=1.2,
+> ##D      obj.names=FALSE,
+> ##D      obj.cex=.8,
+> ##D      obj.col=c('red', 'green3', 'orange')[as.numeric(iris$Species)],
+> ##D      simple.axes=FALSE,
+> ##D      box=TRUE)
+> ## End(Not run)
+> 
+> devAskNewPage(oask)       
+> 
+> 
+> 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("bpca", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> cleanEx()
+> nameEx("dt.tools")
+> ### * dt.tools
+> 
+> flush(stderr()); flush(stdout())
+> 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: dt.tools
+> ### Title: Data Tools for Multivariate Analysis
+> ### Aliases: dt.tools
+> ### Keywords: multivariate
+> 
+> ### ** Examples
+> 
+> ##
+> ## Computes vector lengths, angles between variable vectors,
+> ## and variable correlations from data.frame or matrix objects (n x p)
+> ## n = rows (objects)
+> ## p = columns (variables)
+> ##
+> 
+> dt <- dt.tools(iris,
++                2)  # Non-numeric columns are ignored internally.
+> 
+> # Explore the object created by dt.tools()
+> class(dt)
+[1] "list"
+> names(dt)
+[1] "length" "angle"  "r"     
+> str(dt)
+List of 3
+ $ length: Named num [1:4] 12.2 12.2 12.2 12.2
+  ..- attr(*, "names")= chr [1:4] "Sepal.Length" "Sepal.Width" "Petal.Length" "Petal.Width"
+ $ angle : num [1:4, 1:4] 0 96.8 29.3 35.1 96.8 ...
+  ..- attr(*, "dimnames")=List of 2
+  .. ..$ : chr [1:4] "Sepal.Length" "Sepal.Width" "Petal.Length" "Petal.Width"
+  .. ..$ : chr [1:4] "Sepal.Length" "Sepal.Width" "Petal.Length" "Petal.Width"
+ $ r     : num [1:4, 1:4] 1 -0.118 0.872 0.818 -0.118 ...
+  ..- attr(*, "dimnames")=List of 2
+  .. ..$ : chr [1:4] "Sepal.Length" "Sepal.Width" "Petal.Length" "Petal.Width"
+  .. ..$ : chr [1:4] "Sepal.Length" "Sepal.Width" "Petal.Length" "Petal.Width"
+> 
+> dt$length
+Sepal.Length  Sepal.Width Petal.Length  Petal.Width 
+    12.20656     12.20656     12.20656     12.20656 
+> dt$angle
+             Sepal.Length Sepal.Width Petal.Length Petal.Width
+Sepal.Length      0.00000    96.75187     29.33692    35.12078
+Sepal.Width      96.75187     0.00000    115.36861   111.47689
+Petal.Length     29.33692   115.36861      0.00000    15.66318
+Petal.Width      35.12078   111.47689     15.66318     0.00000
+> dt$r
+             Sepal.Length Sepal.Width Petal.Length Petal.Width
+Sepal.Length    1.0000000  -0.1175698    0.8717538   0.8179411
+Sepal.Width    -0.1175698   1.0000000   -0.4284401  -0.3661259
+Petal.Length    0.8717538  -0.4284401    1.0000000   0.9628654
+Petal.Width     0.8179411  -0.3661259    0.9628654   1.0000000
+> dt
+$length
+Sepal.Length  Sepal.Width Petal.Length  Petal.Width 
+    12.20656     12.20656     12.20656     12.20656 
+
+$angle
+             Sepal.Length Sepal.Width Petal.Length Petal.Width
+Sepal.Length      0.00000    96.75187     29.33692    35.12078
+Sepal.Width      96.75187     0.00000    115.36861   111.47689
+Petal.Length     29.33692   115.36861      0.00000    15.66318
+Petal.Width      35.12078   111.47689     15.66318     0.00000
+
+$r
+             Sepal.Length Sepal.Width Petal.Length Petal.Width
+Sepal.Length    1.0000000  -0.1175698    0.8717538   0.8179411
+Sepal.Width    -0.1175698   1.0000000   -0.4284401  -0.3661259
+Petal.Length    0.8717538  -0.4284401    1.0000000   0.9628654
+Petal.Width     0.8179411  -0.3661259    0.9628654   1.0000000
+
+> 
+> # Checking the determinations
+> (iris.tools <- round(dt.tools(iris,
++                               center=2)$r,
++                      5))
+             Sepal.Length Sepal.Width Petal.Length Petal.Width
+Sepal.Length      1.00000    -0.11757      0.87175     0.81794
+Sepal.Width      -0.11757     1.00000     -0.42844    -0.36613
+Petal.Length      0.87175    -0.42844      1.00000     0.96287
+Petal.Width       0.81794    -0.36613      0.96287     1.00000
+> 
+> (iris.obsv  <- round(cor(iris[-5]),
++                      5))
+             Sepal.Length Sepal.Width Petal.Length Petal.Width
+Sepal.Length      1.00000    -0.11757      0.87175     0.81794
+Sepal.Width      -0.11757     1.00000     -0.42844    -0.36613
+Petal.Length      0.87175    -0.42844      1.00000     0.96287
+Petal.Width       0.81794    -0.36613      0.96287     1.00000
+> 
+> all(iris.tools == iris.obsv)
+[1] TRUE
+> 
+> 
+> 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("dt.tools", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> cleanEx()
+> nameEx("gabriel1971")
+> ### * gabriel1971
+> 
+> flush(stderr()); flush(stdout())
+> 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: gabriel1971
+> ### Title: Percentages of households having various facilities and
+> ###   appliances in East Jerusalem Arab areas, by quarters of the town
+> ### Aliases: gabriel1971
+> ### Keywords: datasets
+> 
+> ### ** Examples
+> 
+> ##
+> ## A simple example
+> ##
+> data(gabriel1971)
+> bp <- bpca(gabriel1971)
+> 
+> dev.new(w=6, h=6)
+dev.new(): using pdf(file="Rplots2.pdf")
+> plot(bp)
+> 
+> # Explore the object created by bpca()
+> class(bp)
+[1] "bpca.2d" "bpca"    "list"   
+> names(bp)
+[1] "call"         "eigenvalues"  "eigenvectors" "number"       "importance"  
+[6] "coord"        "var.rb"       "var.rd"      
+> str(bp)
+List of 8
+ $ call        : language bpca.default(x = gabriel1971)
+ $ eigenvalues : num [1:8] 7.627 1.772 1.096 0.506 0.346 ...
+ $ eigenvectors: num [1:9, 1:8] 0.338 0.34 0.338 0.341 0.318 ...
+  ..- attr(*, "dimnames")=List of 2
+  .. ..$ : chr [1:9] "CRISTIAN" "ARMENIAN" "JEWISH" "MOSLEM" ...
+  .. ..$ : chr [1:8] "PC1" "PC2" "PC3" "PC4" ...
+ $ number      : num [1:2] 1 2
+ $ importance  : num [1:2, 1] 0.973 0.973
+  ..- attr(*, "dimnames")=List of 2
+  .. ..$ : chr [1:2] "general" "partial"
+  .. ..$ : chr "explained"
+ $ coord       :List of 2
+  ..$ objects  : num [1:8, 1:8] 3.976 2.593 -2.193 1.746 -0.929 ...
+  .. ..- attr(*, "dimnames")=List of 2
+  .. .. ..$ : chr [1:8] "toilet" "kitchen" "bath" "eletricity" ...
+  .. .. ..$ : chr [1:8] "PC1" "PC2" "PC3" "PC4" ...
+  ..$ variables: num [1:9, 1:8] 2.58 2.6 2.58 2.6 2.43 ...
+  .. ..- attr(*, "dimnames")=List of 2
+  .. .. ..$ : chr [1:9] "CRISTIAN" "ARMENIAN" "JEWISH" "MOSLEM" ...
+  .. .. ..$ : chr [1:8] "PC1" "PC2" "PC3" "PC4" ...
+ $ var.rb      : logi NA
+ $ var.rd      : logi NA
+ - attr(*, "class")= chr [1:3] "bpca.2d" "bpca" "list"
+> 
+> summary(bp)
+Eigenvalue(s) :
+[1] 7.627198e+00 1.771676e+00 1.096260e+00 5.064330e-01 3.456395e-01
+[6] 3.150429e-01 1.001889e-01 5.766751e-16
+
+Considered on reduction :
+[1] 7.627198 1.771676
+
+Variance retained by each :
+[1] 0.92339915 0.04982279
+
+Cumulative variance retained :
+[1] 0.9233991 0.9732219
+
+Prop. of total variance retained :
+[1] 0.973
+
+> bp$call
+bpca.default(x = gabriel1971)
+> bp$eigenval
+[1] 7.627198e+00 1.771676e+00 1.096260e+00 5.064330e-01 3.456395e-01
+[6] 3.150429e-01 1.001889e-01 5.766751e-16
+> bp$eigenvec
+               PC1         PC2         PC3        PC4         PC5          PC6
+CRISTIAN 0.3377538  0.14981020  0.45230008  0.4231457  0.05311783  0.088587185
+ARMENIAN 0.3404004  0.16726958  0.33771819  0.2833808 -0.16767162  0.271055242
+JEWISH   0.3377588  0.28007714 -0.04739131 -0.4883343  0.66215556  0.003365012
+MOSLEM   0.3406022  0.21215568  0.25698153 -0.3060955 -0.04080079  0.117747222
+MODERN.1 0.3180490 -0.57546846  0.11916350  0.2300814  0.35085215 -0.554794758
+MODERN.2 0.3142866 -0.60122176 -0.24495252 -0.1242393 -0.02171777  0.658770989
+OTHER.1  0.3451543 -0.10599794 -0.09398560 -0.1170630 -0.36770339 -0.202618566
+OTHER.2  0.3443458  0.07174535 -0.10875359 -0.3290520 -0.51237687 -0.349036572
+RUR      0.3198785  0.34221343 -0.71987728  0.4670400  0.08743743 -0.012181278
+                 PC7         PC8
+CRISTIAN  0.17009802  0.64204379
+ARMENIAN -0.55431905 -0.49065851
+JEWISH   -0.31105068  0.15965052
+MOSLEM    0.70406696 -0.40978278
+MODERN.1  0.04233731 -0.25073417
+MODERN.2  0.01014123  0.10116746
+OTHER.1   0.01377868  0.24501092
+OTHER.2  -0.21426930  0.09617249
+RUR       0.15276704 -0.10602735
+> bp$numb
+[1] 1 2
+> bp$import
+        explained
+general     0.973
+partial     0.973
+> bp$coord
+$objects
+                    PC1          PC2          PC3         PC4         PC5
+toilet        3.9762603  0.460342904 -0.164808373 -0.16307352  0.21212055
+kitchen       2.5932882  0.002043826 -0.203933331 -0.03307726 -0.19416406
+bath         -2.1927687 -0.705500212 -0.442746620 -0.05340394 -0.04406489
+eletricity    1.7464290 -0.088014815  0.844136075 -0.03935864 -0.09648914
+water        -0.9290422 -0.986434355 -0.007381285 -0.14946485  0.05968010
+radio         1.5997357  0.272042618 -0.330268290  0.34369666 -0.02917076
+tv set       -4.1967259  1.166119584 -0.032973167 -0.15195401 -0.04579059
+refrigerator -2.5971764 -0.120599550  0.337974991  0.24663557  0.13787879
+                      PC6          PC7           PC8
+toilet        0.053429673 -0.006353144 -2.038854e-16
+kitchen      -0.081174612 -0.058296441 -2.038854e-16
+bath          0.209700495  0.001535842 -2.038854e-16
+eletricity    0.087225950  0.025846630 -2.038854e-16
+water        -0.188275698  0.027628939 -2.038854e-16
+radio        -0.034025700  0.048805410 -2.038854e-16
+tv set       -0.039579765  0.012167090 -2.038854e-16
+refrigerator -0.007300344 -0.051334326 -2.038854e-16
+
+$variables
+              PC1        PC2         PC3         PC4          PC5          PC6
+CRISTIAN 2.576115  0.2654151  0.49583867  0.21429498  0.018359621  0.027908767
+ARMENIAN 2.596301  0.2963475  0.37022708  0.14351342 -0.057953935  0.085394039
+JEWISH   2.576153  0.4962060 -0.05195321 -0.24730860  0.228867118  0.001060123
+MOSLEM   2.597840  0.3758711  0.28171867 -0.15501688 -0.014102365  0.037095431
+MODERN.1 2.425822 -1.0195437  0.13063423  0.11652082  0.121268364 -0.174784169
+MODERN.2 2.397126 -1.0651702 -0.26853174 -0.06291888 -0.007506518  0.207541146
+OTHER.1  2.632560 -0.1877940 -0.10303269 -0.05928458 -0.127092816 -0.063833548
+OTHER.2  2.626394  0.1271095 -0.11922226 -0.16664282 -0.177097687 -0.109961506
+RUR      2.439777  0.6062913 -0.78917295  0.23652448  0.030221831 -0.003837625
+                  PC7           PC8
+CRISTIAN  0.017041938  3.702506e-16
+ARMENIAN -0.055536633 -2.829505e-16
+JEWISH   -0.031163835  9.206647e-17
+MOSLEM    0.070539716 -2.363115e-16
+MODERN.1  0.004241729 -1.445921e-16
+MODERN.2  0.001016039  5.834075e-17
+OTHER.1   0.001380471  1.412917e-16
+OTHER.2  -0.021467413  5.546027e-17
+RUR       0.015305566 -6.114333e-17
+
+> bp$coord$obj
+                    PC1          PC2          PC3         PC4         PC5
+toilet        3.9762603  0.460342904 -0.164808373 -0.16307352  0.21212055
+kitchen       2.5932882  0.002043826 -0.203933331 -0.03307726 -0.19416406
+bath         -2.1927687 -0.705500212 -0.442746620 -0.05340394 -0.04406489
+eletricity    1.7464290 -0.088014815  0.844136075 -0.03935864 -0.09648914
+water        -0.9290422 -0.986434355 -0.007381285 -0.14946485  0.05968010
+radio         1.5997357  0.272042618 -0.330268290  0.34369666 -0.02917076
+tv set       -4.1967259  1.166119584 -0.032973167 -0.15195401 -0.04579059
+refrigerator -2.5971764 -0.120599550  0.337974991  0.24663557  0.13787879
+                      PC6          PC7           PC8
+toilet        0.053429673 -0.006353144 -2.038854e-16
+kitchen      -0.081174612 -0.058296441 -2.038854e-16
+bath          0.209700495  0.001535842 -2.038854e-16
+eletricity    0.087225950  0.025846630 -2.038854e-16
+water        -0.188275698  0.027628939 -2.038854e-16
+radio        -0.034025700  0.048805410 -2.038854e-16
+tv set       -0.039579765  0.012167090 -2.038854e-16
+refrigerator -0.007300344 -0.051334326 -2.038854e-16
+> bp$coord$var
+              PC1        PC2         PC3         PC4          PC5          PC6
+CRISTIAN 2.576115  0.2654151  0.49583867  0.21429498  0.018359621  0.027908767
+ARMENIAN 2.596301  0.2963475  0.37022708  0.14351342 -0.057953935  0.085394039
+JEWISH   2.576153  0.4962060 -0.05195321 -0.24730860  0.228867118  0.001060123
+MOSLEM   2.597840  0.3758711  0.28171867 -0.15501688 -0.014102365  0.037095431
+MODERN.1 2.425822 -1.0195437  0.13063423  0.11652082  0.121268364 -0.174784169
+MODERN.2 2.397126 -1.0651702 -0.26853174 -0.06291888 -0.007506518  0.207541146
+OTHER.1  2.632560 -0.1877940 -0.10303269 -0.05928458 -0.127092816 -0.063833548
+OTHER.2  2.626394  0.1271095 -0.11922226 -0.16664282 -0.177097687 -0.109961506
+RUR      2.439777  0.6062913 -0.78917295  0.23652448  0.030221831 -0.003837625
+                  PC7           PC8
+CRISTIAN  0.017041938  3.702506e-16
+ARMENIAN -0.055536633 -2.829505e-16
+JEWISH   -0.031163835  9.206647e-17
+MOSLEM    0.070539716 -2.363115e-16
+MODERN.1  0.004241729 -1.445921e-16
+MODERN.2  0.001016039  5.834075e-17
+OTHER.1   0.001380471  1.412917e-16
+OTHER.2  -0.021467413  5.546027e-17
+RUR       0.015305566 -6.114333e-17
+> bp$var.rb
+[1] NA
+> bp$var.rd
+[1] NA
+> 
+> 
+> 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("gabriel1971", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> cleanEx()
+> nameEx("gge2003")
+> ### * gge2003
+> 
+> flush(stderr()); flush(stdout())
+> 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: gge2003
+> ### Title: A didactic matrix of genotypes (rows) and environments (columns)
+> ### Aliases: gge2003
+> ### Keywords: datasets
+> 
+> ### ** Examples
+> 
+> ##
+> ## Example from Yan and Kang (2003), GGE biplot analysis
+> ## for breeders, geneticists, and agronomists
+> ##
+> 
+> data(gge2003)
+> bp <- bpca(t(gge2003), var.rb=TRUE)
+> 
+> as.dist(bp$var.rb)
+           G1         G2         G3
+G2 -0.2310157                      
+G3 -0.1801241 -0.9154249           
+G4  0.7900721 -0.7789509  0.4606763
+> 
+> dev.new(w=8, h=4)
+dev.new(): using pdf(file="Rplots3.pdf")
+> op = par(no.readonly=TRUE)
+> par(mfrow=c(1,2))
+> 
+> plot(bpca(gge2003),
++      main='Columns as variables',
++      var.col=1,
++      obj.col=2:4,
++      obj.cex=.8)
+> 
+> plot(bpca(t(gge2003)),
++      main='Rows as variables',
++      var.col=1,
++      obj.col=c(2:4, 2),
++      obj.cex=.8)
+> 
+> par(op)
+> 
+> 
+> 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("gge2003", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> graphics::par(get("par.postscript", pos = 'CheckExEnv'))
+> cleanEx()
+> nameEx("marina")
+> ### * marina
+> 
+> flush(stderr()); flush(stdout())
+> 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: marina
+> ### Title: Films shown at five festivals in Brazil from 2007 to 2011
+> ### Aliases: marina
+> ### Keywords: datasets movie
+> 
+> ### ** Examples
+> 
+> data(marina)
+> 
+> marina
+   year regE   F  D MD WD
+1  2011   CO  84 26 22  4
+2  2011   SE  55 13  9  4
+3  2011    S  63 19 13  6
+4  2011   NE  44 16 14  2
+5  2011    N  25  7  5  2
+6  2010   CO  40  9  6  3
+7  2010   SE  54 14 11  3
+8  2010    S  37 11 10  1
+9  2010   NE  49 19 13  6
+10 2010    N  27  6  3  3
+11 2009   CO  36  8  7  1
+12 2009   SE  54 11  8  3
+13 2009    S  72 21 17  4
+14 2009   NE  50 18 10  8
+15 2009    N  26  8  6  2
+16 2008   CO  65 18 14  4
+17 2008   SE  55 12  5  7
+18 2008    S 109 32 24  8
+19 2008   NE  40 12 10  2
+20 2008    N  34 14  9  5
+21 2007   CO  36  7  3  4
+22 2007   SE  57  8  6  2
+23 2007    S  77 20 13  7
+24 2007   NE  35 14  9  5
+25 2007    N  16  5  3  2
+> 
+> 
+> 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("marina", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> cleanEx()
+> nameEx("ontario")
+> ### * ontario
+> 
+> flush(stderr()); flush(stdout())
+> 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: ontario
+> ### Title: Ontario winter wheat (1993)
+> ### Aliases: ontario
+> ### Keywords: datasets
+> 
+> ### ** Examples
+> 
+> data(ontario)
+> 
+> # 2D
+> plot(bpca(ontario,
++           d=1:2))
+> 
+> # 3D
+> plot(bpca(ontario,
++           d=1:3),
++      rgl.use=TRUE)
+> 
+> 
+> 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("ontario", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> cleanEx()
+> nameEx("plot")
+> ### * plot
+> 
+> flush(stderr()); flush(stdout())
+> 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: plot
+> ### Title: Biplot of Multivariate Data Based on Principal Component
+> ###   Analysis
+> ### Aliases: plot.bpca.2d plot.bpca.3d plot.qbpca
+> ### Keywords: multivariate
+> 
+> ### ** Examples
+> 
+> 
+> # To avoid overlap in a 2D biplot by manually positioning labels:
+> # Suppose we have 4 variables and want to position them differently
+> plot(bpca(ontario),
++      var.pos = c(1, 3, 4, 2),
++      var.offset = 0.5)
+> 
+> # For 3D dynamic plots with custom offsets:
+> if(interactive()) {
++   plot(bpca(ontario, d=1:3),
++        rgl.use = TRUE,
++        var.pos = 3,
++        var.offset = 0.8)
++ }
+> 
+> ##
+> ## Example 1
+> ## Computing and plotting a bpca object with base graphics (2D)
+> ##
+> 
+> bp <- bpca(gabriel1971)
+> 
+> dev.new(w=6, h=6)
+dev.new(): using pdf(file="Rplots4.pdf")
+> oask <- devAskNewPage(dev.interactive(orNone=TRUE))
+> plot(bp)
+> 
+> # To avoid overlap in a 2D biplot by manually positioning labels
+> plot(bp,
++      var.pos=c(1,
++                3,
++                rep(4, 7)),
++      var.offset=.3)
+> 
+> # Additional graphical parameters (nonsense)
+> plot(bpca(gabriel1971,
++           meth='sqrt'),
++      main='gabriel1971 - sqrt',
++      sub='The graphical parameters are working fine!',
++      var.cex=.6,
++      var.col=rainbow(9),
++      var.pch='v',
++      obj.pch='o',
++      obj.cex=.5,
++      obj.col=rainbow(8),
++      obj.pos=1,
++      obj.offset=.5)
+> 
+> ##
+> ## Example 2
+> ## Computing and plotting a bpca object with scatterplot3d (3D)
+> ##
+> 
+> bp <- bpca(gabriel1971,
++            d=1:3)
+> 
+> plot(bp,
++      var.col=rainbow(9))
+> 
+> # Additional graphical parameters (nonsense)
+> plot(bpca(gabriel1971,
++           d=1:3,
++           meth='jk'),
++      main='gabriel1971 - jk',
++      sub='The graphical parameters are working fine!',
++      var.pch='+',
++      var.cex=.6,
++      var.col=rainbow(ncol(gabriel1971)),
++      obj.pch='*',
++      obj.cex=.8,
++      obj.col=rainbow(nrow(gabriel1971)),
++      ref.lty='dotted',
++      ref.col=gray(.6),
++      angle=70)
+> 
+> ##
+> ## Example 3
+> ## Computing and plotting a bpca object with rgl (3D)
+> ##
+> 
+> plot(bpca(gabriel1971,
++           d=1:3),
++      rgl.use=TRUE)
+> 
+> # Tip: interact with the graphic using the mouse
+> # left button: click and drag to rotate;
+> # right button: click and drag to zoom.
+> 
+> ## Not run: 
+> ##D ##
+> ##D ## Example 4
+> ##D ## Grouping objects with different symbols and colors (2D and 3D)
+> ##D ##
+> ##D 
+> ##D # 2D
+> ##D plot(bpca(iris[-5]),
+> ##D      var.cex=.7,
+> ##D      obj.names=FALSE,
+> ##D      obj.cex=1.5,
+> ##D      obj.col=c('red', 'green3', 'blue')[as.numeric(iris$Species)],
+> ##D      obj.pch=c('+', '*', '-')[as.numeric(iris$Species)])
+> ##D 
+> ##D plot(bpca(iris[-5]),
+> ##D      var.cex=.7,
+> ##D      var.pos=c(4, 2, 3, 1),
+> ##D      var.offset=.3,
+> ##D      obj.names=FALSE,
+> ##D      obj.cex=1.5,
+> ##D      obj.col=c('red', 'green3', 'blue')[as.numeric(iris$Species)],
+> ##D      obj.pch=c('+', '*', '-')[as.numeric(iris$Species)])
+> ##D 
+> ##D # 3D static
+> ##D plot(bpca(iris[-5],
+> ##D           d=1:3),
+> ##D      var.color=c('blue', 'red'),
+> ##D      var.cex=1,
+> ##D      obj.names=FALSE,
+> ##D      obj.cex=1,
+> ##D      obj.col=c('red', 'green3', 'blue')[as.numeric(iris$Species)],
+> ##D      obj.pch=c('+', '*', '-')[as.numeric(iris$Species)])
+> ##D 
+> ##D # 3D dynamic
+> ##D plot(bpca(iris[-5],
+> ##D           method='hj',
+> ##D           d=1:3),
+> ##D      rgl.use=TRUE,
+> ##D      var.col=c('blue', 'red'),
+> ##D      var.cex=1.2,
+> ##D      obj.names=FALSE,
+> ##D      obj.cex=.8,
+> ##D      obj.col=c('red', 'green3', 'orange')[as.numeric(iris$Species)])
+> ##D 
+> ##D ##
+> ##D ## Example 5
+> ##D ## Computing and plotting a bpca object with `obj.identify=TRUE` (2D)
+> ##D ##
+> ##D 
+> ##D bp <- bpca(gabriel1971)
+> ##D 
+> ##D # Normal labels
+> ##D if(interactive())
+> ##D plot(bp,
+> ##D      obj.names=FALSE,
+> ##D      obj.identify=TRUE)
+> ##D 
+> ##D # Alternative labels
+> ##D if(interactive())
+> ##D plot(bp,
+> ##D      obj.names=FALSE,
+> ##D      obj.labels=c('toi', 'kit', 'bat', 'ele', 'wat', 'rad', 'tv', 'ref'),
+> ##D      obj.identify=TRUE)
+> ##D 
+> ##D ##
+> ##D ## Example 6
+> ##D ## Computing and plotting a bpca object with `obj.identify=TRUE` (3D)
+> ##D ##
+> ##D 
+> ##D bp <- bpca(gabriel1971,
+> ##D            d=1:3)
+> ##D 
+> ##D # Normal labels
+> ##D if(interactive())
+> ##D plot(bp,
+> ##D      obj.names=FALSE,
+> ##D      obj.identify=TRUE)
+> ##D 
+> ##D # Alternative labels
+> ##D if(interactive())
+> ##D plot(bp,
+> ##D      obj.names=FALSE,
+> ##D      obj.labels=c('toi', 'kit', 'bat', 'ele', 'wat', 'rad', 'tv', 'ref'),
+> ##D      obj.identify=TRUE)
+> ##D 
+> ##D ##
+> ##D ## New plotting options
+> ##D ##
+> ##D plot(bpca(ontario))
+> ##D 
+> ##D # Labels for all objects
+> ##D (obj.lab <- paste('g',
+> ##D                   1:18,
+> ##D                   sep=''))
+> ##D 
+> ##D # Set obj.labels
+> ##D plot(bpca(ontario),
+> ##D     obj.labels=obj.lab) 
+> ##D 
+> ##D # Evaluate an object (1 is the default)
+> ##D plot(bpca(ontario),
+> ##D      type='eo',
+> ##D      obj.cex=1)
+> ##D 
+> ##D plot(bpca(ontario),
+> ##D      type='eo',
+> ##D      obj.cex=1)
+> ##D 
+> ##D plot(bpca(ontario),
+> ##D      type='eo',
+> ##D      obj.id=7,
+> ##D      obj.cex=1)
+> ##D 
+> ##D # Set obj.labels
+> ##D plot(bpca(ontario),
+> ##D      type='eo',
+> ##D      obj.labels=obj.lab,
+> ##D      obj.id=7,
+> ##D      obj.cex=1)
+> ##D 
+> ##D # The same as above
+> ##D plot(bpca(ontario),
+> ##D      type='eo',
+> ##D      obj.labels=obj.lab,
+> ##D      obj.id='g7',
+> ##D      obj.cex=1)
+> ##D 
+> ##D # Evaluate a variable (1 is the default)
+> ##D plot(bpca(ontario),
+> ##D      type='ev',
+> ##D      var.cex=1)
+> ##D 
+> ##D plot(bpca(ontario),
+> ##D      type='ev',
+> ##D      var.id='E7',
+> ##D      obj.labels=obj.lab,
+> ##D      var.cex=1)
+> ##D 
+> ##D # A complete plot
+> ##D cl <- 1:3
+> ##D plot(bpca(iris[-5]),
+> ##D      type='ev',
+> ##D      var.id=1,
+> ##D      var.fac=.3,
+> ##D      obj.names=FALSE,
+> ##D      obj.cex=.9,
+> ##D      obj.col=cl[as.numeric(iris$Species)])
+> ##D 
+> ##D legend('topleft',
+> ##D        legend=levels(iris$Species),
+> ##D        text.col=cl,
+> ##D        pch=19,
+> ##D        col=cl,
+> ##D        cex=.9,
+> ##D        box.lty=0)   
+> ##D 
+> ##D # Compare two objects (1 and 2 are the default)
+> ##D plot(bpca(ontario), 
+> ##D      type='co',
+> ##D      c.radio=.4,
+> ##D      c.color='blue',
+> ##D      c.lwd=2)
+> ##D 
+> ##D plot(bpca(ontario),
+> ##D      type='co',
+> ##D      obj.labels=obj.lab,
+> ##D      c.radio=.5,
+> ##D      c.color='blue',
+> ##D      c.lwd=2)
+> ##D 
+> ##D plot(bpca(ontario),
+> ##D      type='co',
+> ##D      obj.labels=obj.lab,
+> ##D      obj.id=13:14)
+> ##D 
+> ##D plot(bpca(ontario),
+> ##D      type='co',
+> ##D      obj.labels=obj.lab,
+> ##D      obj.id=c('g7', 
+> ##D               'g13'))
+> ##D 
+> ##D # Compare two variables
+> ##D plot(bpca(ontario),
+> ##D      type='cv',
+> ##D      c.number=3,
+> ##D      c.radio=1.5)
+> ##D 
+> ##D # Which won where/what
+> ##D plot(bpca(ontario),
+> ##D      type='ww')
+> ##D 
+> ##D # Discriminativeness vs. representativeness
+> ##D plot(bpca(ontario),
+> ##D      type='dv')
+> ##D 
+> ##D plot(bpca(ontario),
+> ##D      type='dv',
+> ##D      c.number=4,
+> ##D      c.radio=1)
+> ##D 
+> ##D # Means vs. stability
+> ##D plot(bpca(ontario),
+> ##D      type='ms')
+> ##D 
+> ##D plot(bpca(ontario),
+> ##D      type='ms',
+> ##D      c.number=3)
+> ##D 
+> ##D # Rank objects with reference to the ideal variable
+> ##D plot(bpca(ontario),
+> ##D      type='ro')
+> ##D 
+> ##D plot(bpca(ontario),
+> ##D      type='ro',
+> ##D      c.number=6,
+> ##D      c.radio=.5)
+> ##D 
+> ##D # Rank variables with reference to the ideal object
+> ##D plot(bpca(ontario),
+> ##D      type='rv')
+> ##D 
+> ##D plot(bpca(ontario),
+> ##D      type='rv',
+> ##D      c.number=6,
+> ##D      c.radio=.5)
+> ##D 
+> ##D plot(bpca(iris[-5]),
+> ##D      type='eo',
+> ##D      obj.id=42,
+> ##D      obj.cex=1)
+> ##D 
+> ##D plot(bpca(iris[-5]),
+> ##D      type='ev',
+> ##D      var.id='Sepal.Width')
+> ##D 
+> ##D plot(bpca(iris[-5]),
+> ##D      type='ev',
+> ##D      var.id='Sepal.Width',
+> ##D      var.factor=.3)
+> ## End(Not run)
+> 
+> devAskNewPage(oask)
+> 
+> 
+> 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("plot", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> cleanEx()
+> nameEx("print.xtable")
+> ### * print.xtable
+> 
+> flush(stderr()); flush(stdout())
+> 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: print.xtable
+> ### Title: Print Method for xtable.bpca Objects
+> ### Aliases: print.xtable print.xtable.bpca print.xtable.default
+> ### Keywords: multivariate
+> 
+> ### ** Examples
+> 
+> 
+> ## Example 1: Principal labels in Portuguese
+> library(xtable)
+> 
+> bp2 <- bpca(gabriel1971)  
+> tbl <- xtable(bp2)
+> rownames(tbl) <- gsub('Eigenvectors','Autovetores',rownames(tbl))
+> rownames(tbl) <- c(rownames(tbl)[1:9],'Autovalores','Variância retida','Variância acumulada')
+> dimnames(tbl)[[2]] <- c('CP 1','CP 2')
+> 
+> print(tbl)
+% latex table generated in R 4.7.0 by xtable 1.8-8 package
+% Mon May 11 12:18:35 2026
+\begin{table}[ht]
+\centering
+\begin{tabular}{lrrr}
+  \hline
+  &&\multicolumn{2}{c}{Autovalores} \\ \cline{3-4}
+ &&  CP 1 $(\lambda_1=7.63)$& CP 2 $(\lambda_2=1.77)$ \\ 
+  \hline 
+ \multirow{9}{*}{Autovetores}&CRISTIAN&0.34&0.15 \\ 
+&ARMENIAN & 0.34 & 0.17 \\ 
+  &JEWISH & 0.34 & 0.28 \\ 
+  &MOSLEM & 0.34 & 0.21 \\ 
+  &MODERN.1 & 0.32 & -0.58 \\ 
+  &MODERN.2 & 0.31 & -0.60 \\ 
+  &OTHER.1 & 0.35 & -0.11 \\ 
+  &OTHER.2 & 0.34 & 0.07 \\ 
+  &RUR & 0.32 & 0.34 \\ 
+   \hline
+&Variância retida & 0.92 & 0.05 \\ 
+  &Variância acumulada & 0.92 & 0.97 \\ 
+   \hline
+\end{tabular}
+\end{table}
+> 
+> ## Example 2: With bold in the column  
+> tbl1 <- xtable(bp2)
+> bold <- function(x){
++   paste('\textbf{',
++         x, 
++         '}')
++ }
+> 
+> print(tbl1,
++       sanitize.colnames.function = bold)
+% latex table generated in R 4.7.0 by xtable 1.8-8 package
+% Mon May 11 12:18:35 2026
+\begin{table}[ht]
+\centering
+\begin{tabular}{lrrr}
+  \hline
+  &&\multicolumn{2}{c}{	extbf{ Eigenvalues }} \\ \cline{3-4}
+ &&  	extbf{ PC1 $(\lambda_1=7.63)$ }& 	extbf{ PC2 $(\lambda_2=1.77)$ } \\ 
+  \hline 
+ \multirow{9}{*}{Eigenvectors}&CRISTIAN&0.34&0.15 \\ 
+&ARMENIAN & 0.34 & 0.17 \\ 
+  &JEWISH & 0.34 & 0.28 \\ 
+  &MOSLEM & 0.34 & 0.21 \\ 
+  &MODERN.1 & 0.32 & -0.58 \\ 
+  &MODERN.2 & 0.31 & -0.60 \\ 
+  &OTHER.1 & 0.35 & -0.11 \\ 
+  &OTHER.2 & 0.34 & 0.07 \\ 
+  &RUR & 0.32 & 0.34 \\ 
+   \hline
+&Variance retained & 0.92 & 0.05 \\ 
+  &Variance accumulated & 0.92 & 0.97 \\ 
+   \hline
+\end{tabular}
+\end{table}
+> 
+> # Example 3: With italic row labels
+> tbl2 <- xtable(bp2)
+> italic <- function(x){
++   paste('& \textit{',
++         x, 
++         '}')
++ } # The "&" keeps the correct number of table columns.
+> 
+> print(tbl2,
++       sanitize.rownames.function = italic)
+% latex table generated in R 4.7.0 by xtable 1.8-8 package
+% Mon May 11 12:18:35 2026
+\begin{table}[ht]
+\centering
+\begin{tabular}{lrrr}
+  \hline
+  &&\multicolumn{2}{c}{Eigenvalues} \\ \cline{3-4}
+ &&  PC1 $(\lambda_1=7.63)$& PC2 $(\lambda_2=1.77)$ \\ 
+  \hline 
+ \multirow{9}{*}{	extit{ Eigenvectors }}&	extit{ CRISTIAN }&0.34&0.15 \\ 
+&& 	extit{ ARMENIAN } & 0.34 & 0.17 \\ 
+  && 	extit{ JEWISH } & 0.34 & 0.28 \\ 
+  && 	extit{ MOSLEM } & 0.34 & 0.21 \\ 
+  && 	extit{ MODERN.1 } & 0.32 & -0.58 \\ 
+  && 	extit{ MODERN.2 } & 0.31 & -0.60 \\ 
+  && 	extit{ OTHER.1 } & 0.35 & -0.11 \\ 
+  && 	extit{ OTHER.2 } & 0.34 & 0.07 \\ 
+  && 	extit{ RUR } & 0.32 & 0.34 \\ 
+   \hline
+&& 	extit{ Variance retained } & 0.92 & 0.05 \\ 
+  && 	extit{ Variance accumulated } & 0.92 & 0.97 \\ 
+   \hline
+\end{tabular}
+\end{table}
+> 
+> ## HTML table (e.g. R Markdown HTML): pass type via print()
+> print(tbl,
++       type = "html")
+<style>.bpca-xtable tr:nth-child(11) td{border-top:2px solid #666;} .bpca-xtable tr:nth-child(12) td{border-bottom:2px solid #666;}</style>
+<!-- html table generated in R 4.7.0 by xtable 1.8-8 package -->
+<!-- Mon May 11 12:18:35 2026 -->
+<table class="bpca-xtable">
+<tr> <th>  </th> <th> CP 1 (λ1=7.63) </th> <th> CP 2 (λ2=1.77) </th>  </tr>
+  <tr> <td> CRISTIAN </td> <td align="right"> 0.34 </td> <td align="right"> 0.15 </td> </tr>
+  <tr> <td> ARMENIAN </td> <td align="right"> 0.34 </td> <td align="right"> 0.17 </td> </tr>
+  <tr> <td> JEWISH </td> <td align="right"> 0.34 </td> <td align="right"> 0.28 </td> </tr>
+  <tr> <td> MOSLEM </td> <td align="right"> 0.34 </td> <td align="right"> 0.21 </td> </tr>
+  <tr> <td> MODERN.1 </td> <td align="right"> 0.32 </td> <td align="right"> -0.58 </td> </tr>
+  <tr> <td> MODERN.2 </td> <td align="right"> 0.31 </td> <td align="right"> -0.60 </td> </tr>
+  <tr> <td> OTHER.1 </td> <td align="right"> 0.35 </td> <td align="right"> -0.11 </td> </tr>
+  <tr> <td> OTHER.2 </td> <td align="right"> 0.34 </td> <td align="right"> 0.07 </td> </tr>
+  <tr> <td> RUR </td> <td align="right"> 0.32 </td> <td align="right"> 0.34 </td> </tr>
+   <tr> <td> Variância retida </td> <td align="right"> 0.92 </td> <td align="right"> 0.05 </td> </tr>
+   <tr> <td> Variância acumulada </td> <td align="right"> 0.92 </td> <td align="right"> 0.97 </td> </tr>
+  </table>
+> 
+> 
+> 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("print.xtable", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> cleanEx()
+
+detaching 'package:xtable'
+
+> nameEx("qbpca")
+> ### * qbpca
+> 
+> flush(stderr()); flush(stdout())
+> 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: qbpca
+> ### Title: Quality of the Representation of Variables by Biplot
+> ### Aliases: qbpca
+> ### Keywords: multivariate
+> 
+> ### ** Examples
+> 
+> ##
+> ## Example 1
+> ## Example of the `var.rb=TRUE` parameter as a quality measure (2D)
+> ##
+> 
+> oask <- devAskNewPage(dev.interactive(orNone=TRUE))
+> 
+> ## Differences between methods of factorization
+> # SQRT
+> bp1 <- bpca(gabriel1971,
++             meth='sqrt',
++             var.rb=TRUE)
+> 
+> qbp1 <- qbpca(gabriel1971,
++               bp1)
+> 
+> plot(qbp1,
++      main='sqrt - 2D \n (poor)')
+> 
+> 
+> # JK
+> bp2 <- bpca(gabriel1971,
++             meth='jk',
++             var.rb=TRUE)
+> 
+> qbp2 <- qbpca(gabriel1971,
++               bp2)
+> 
+> plot(qbp2,
++      main='jk - 2D \n (very poor)')
+> 
+> 
+> # GH
+> bp3 <- bpca(gabriel1971,
++             meth='gh',
++             var.rb=TRUE)
+> 
+> qbp3 <- qbpca(gabriel1971,
++               bp3)
+> 
+> plot(qbp3,
++      main='gh - 2D \n (good)')
+> 
+> 
+> # HJ
+> bp4 <- bpca(gabriel1971,
++             meth='hj',
++             var.rb=TRUE)
+> 
+> qbp4 <- qbpca(gabriel1971,
++              bp4)
+> 
+> plot(qbp4,
++      main='hj - 2D \n (good)')
+> 
+> ##
+> ## Example 2
+> ## Example of the `var.rb=TRUE` parameter as a quality measure (3D)
+> ##
+> 
+> ## Differences between methods of factorization
+> # SQRT
+> bp1 <- bpca(gabriel1971,
++             meth='sqrt',
++             d=1:3,
++             var.rb=TRUE)
+> 
+> qbp1 <- qbpca(gabriel1971,
++               bp1)
+> 
+> plot(qbp1,
++      main='sqrt - 3D \n (poor)')
+> 
+> 
+> # JK
+> bp2 <- bpca(gabriel1971,
++             meth='jk',
++             d=1:3,
++             var.rb=TRUE)
+> 
+> qbp2 <- qbpca(gabriel1971,
++              bp2)
+> 
+> plot(qbp2,
++      main='jk - 3D \n (very poor)')
+> 
+> 
+> # GH
+> bp3 <- bpca(gabriel1971,
++             meth='gh',
++             d=1:3,
++             var.rb=TRUE)
+> 
+> qbp3 <- qbpca(gabriel1971,
++               bp3)
+> 
+> plot(qbp3,
++      main='gh - 3D \n (wow!)')
+> 
+> 
+> # HJ
+> bp4 <- bpca(gabriel1971,
++             meth='hj',
++             d=1:3,
++             var.rb=TRUE)
+> 
+> qbp4 <- qbpca(gabriel1971,
++               bp4)
+> 
+> plot(qbp4,
++      main='hj - 3D \n (wow!)')
+> 
+> devAskNewPage(oask)  
+> 
+> 
+> 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("qbpca", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> cleanEx()
+> nameEx("summary.bpca")
+> ### * summary.bpca
+> 
+> flush(stderr()); flush(stdout())
+> 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: summary.bpca
+> ### Title: Summary Method for bpca Objects
+> ### Aliases: summary.bpca
+> ### Keywords: bpca summary multivariate
+> 
+> ### ** Examples
+> 
+> ##
+> ## Example 1
+> ## bpca - 2D
+> ##
+> # bpca
+> bp <- bpca(gabriel1971)
+> summary(bp)
+Eigenvalue(s) :
+[1] 7.627198e+00 1.771676e+00 1.096260e+00 5.064330e-01 3.456395e-01
+[6] 3.150429e-01 1.001889e-01 5.766751e-16
+
+Considered on reduction :
+[1] 7.627198 1.771676
+
+Variance retained by each :
+[1] 0.92339915 0.04982279
+
+Cumulative variance retained :
+[1] 0.9233991 0.9732219
+
+Prop. of total variance retained :
+[1] 0.973
+
+> summary(bp,
++         presentation=TRUE)
+ Eigenvalue(s):				 7.627198 1.771676 1.09626 0.506433 0.3456395 0.3150429 0.1001889 5.766751e-16
+  - Considered on reduction:		 7.627198 1.771676
+  - Variance retained by each:		 0.9233991 0.04982279
+  - Cumulative variance retained:	 0.9233991 0.9732219
+  - Prop. of total variance retained:	 0.973
+> 
+> ##
+> ## Example 2
+> ## bpca - 3D
+> ##
+> bp <- bpca(gabriel1971,
++            d=1:3)
+> 
+> # bpca
+> sm <- summary(bp)
+> str(sm)
+List of 5
+ $ Eigenvalue(s)                   : num [1:8] 7.627 1.772 1.096 0.506 0.346 ...
+ $ Considered on reduction         : num [1:3] 7.63 1.77 1.1
+ $ Variance retained by each       : num [1:3] 0.9234 0.0498 0.0191
+ $ Cumulative variance retained    : num [1:3] 0.923 0.973 0.992
+ $ Prop. of total variance retained: num 0.992
+ - attr(*, "class")= chr [1:2] "summary.bpca" "listof"
+> sm
+Eigenvalue(s) :
+[1] 7.627198e+00 1.771676e+00 1.096260e+00 5.064330e-01 3.456395e-01
+[6] 3.150429e-01 1.001889e-01 5.766751e-16
+
+Considered on reduction :
+[1] 7.627198 1.771676 1.096260
+
+Variance retained by each :
+[1] 0.92339915 0.04982279 0.01907598
+
+Cumulative variance retained :
+[1] 0.9233991 0.9732219 0.9922979
+
+Prop. of total variance retained :
+[1] 0.992
+
+> summary(bp,
++         presentation=TRUE)
+ Eigenvalue(s):				 7.627198 1.771676 1.09626 0.506433 0.3456395 0.3150429 0.1001889 5.766751e-16
+  - Considered on reduction:		 7.627198 1.771676 1.09626
+  - Variance retained by each:		 0.9233991 0.04982279 0.01907598
+  - Cumulative variance retained:	 0.9233991 0.9732219 0.9922979
+  - Prop. of total variance retained:	 0.992
+> 
+> 
+> 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("summary.bpca", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> cleanEx()
+> nameEx("var.rbf")
+> ### * var.rbf
+> 
+> flush(stderr()); flush(stdout())
+> 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: var.rbf
+> ### Title: Projected Correlations by BPCA
+> ### Aliases: var.rbf
+> ### Keywords: multivariate
+> 
+> ### ** Examples
+> 
+> ##
+> ## Direct use
+> ##
+> 
+> bp1 <- bpca(gabriel1971)
+> bp1$var.rb # NA
+[1] NA
+> 
+> # Compute correlations of all variables under the biplot projection
+> (res <- var.rbf(bp1$coord$var)) 
+          CRISTIAN  ARMENIAN    JEWISH    MOSLEM  MODERN.1  MODERN.2   OTHER.1
+CRISTIAN 1.0000000 0.9973894 0.9561588 0.9857920 0.8665372 0.8216573 0.9520075
+ARMENIAN 0.9973894 1.0000000 0.9670500 0.9911835 0.8627034 0.8310935 0.9620644
+JEWISH   0.9561588 0.9670500 1.0000000 0.9853227 0.8193172 0.8106861 0.9542159
+MOSLEM   0.9857920 0.9911835 0.9853227 1.0000000 0.8470753 0.8241377 0.9640101
+MODERN.1 0.8665372 0.8627034 0.8193172 0.8470753 1.0000000 0.9744855 0.9361388
+MODERN.2 0.8216573 0.8310935 0.8106861 0.8241377 0.9744855 1.0000000 0.9328167
+OTHER.1  0.9520075 0.9620644 0.9542159 0.9640101 0.9361388 0.9328167 1.0000000
+OTHER.2  0.9568740 0.9700840 0.9766417 0.9799825 0.8863188 0.8830556 0.9917043
+RUR      0.8723082 0.8932728 0.9392894 0.9010799 0.7470275 0.7712396 0.9103879
+           OTHER.2       RUR
+CRISTIAN 0.9568740 0.8723082
+ARMENIAN 0.9700840 0.8932728
+JEWISH   0.9766417 0.9392894
+MOSLEM   0.9799825 0.9010799
+MODERN.1 0.8863188 0.7470275
+MODERN.2 0.8830556 0.7712396
+OTHER.1  0.9917043 0.9103879
+OTHER.2  1.0000000 0.9334704
+RUR      0.9334704 1.0000000
+> 
+> ##
+> ## Typical use
+> ##
+> 
+> bp2 <- bpca(gabriel1971,
++             var.rb=TRUE)
+> 
+> bp2$var.rb
+          CRISTIAN  ARMENIAN    JEWISH    MOSLEM  MODERN.1  MODERN.2   OTHER.1
+CRISTIAN 1.0000000 0.9999397 0.9961640 0.9991587 0.8773237 0.8674140 0.9849207
+ARMENIAN 0.9999397 1.0000000 0.9970650 0.9995489 0.8720000 0.8618966 0.9829611
+JEWISH   0.9961640 0.9970650 1.0000000 0.9989146 0.8319645 0.8205449 0.9660035
+MOSLEM   0.9991587 0.9995489 0.9989146 1.0000000 0.8569048 0.8462780 0.9769970
+MODERN.1 0.8773237 0.8720000 0.8319645 0.8569048 1.0000000 0.9997945 0.9471200
+MODERN.2 0.8674140 0.8618966 0.8205449 0.8462780 0.9997945 1.0000000 0.9404198
+OTHER.1  0.9849207 0.9829611 0.9660035 0.9769970 0.9471200 0.9404198 1.0000000
+OTHER.2  0.9985257 0.9978693 0.9899455 0.9954596 0.9020797 0.8931447 0.9928596
+RUR      0.9900897 0.9915724 0.9985807 0.9950161 0.8012340 0.7889383 0.9508634
+           OTHER.2       RUR
+CRISTIAN 0.9985257 0.9900897
+ARMENIAN 0.9978693 0.9915724
+JEWISH   0.9899455 0.9985807
+MOSLEM   0.9954596 0.9950161
+MODERN.1 0.9020797 0.8012340
+MODERN.2 0.8931447 0.7889383
+OTHER.1  0.9928596 0.9508634
+OTHER.2  1.0000000 0.9810070
+RUR      0.9810070 1.0000000
+> 
+> 
+> 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("var.rbf", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> cleanEx()
+> nameEx("var.rdf")
+> ### * var.rdf
+> 
+> flush(stderr()); flush(stdout())
+> 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: var.rdf
+> ### Title: Diagnostic of Projected Correlations
+> ### Aliases: var.rdf
+> ### Keywords: multivariate
+> 
+> ### ** Examples
+> 
+> ##
+> ## Example 1
+> ## Diagnostic of representation quality for the gabriel1971 dataset
+> ##
+> 
+> oask <- devAskNewPage(dev.interactive(orNone=TRUE))
+> 
+> bp1 <- bpca(gabriel1971,
++             meth='hj',
++             var.rb=TRUE)
+> 
+> (res <- var.rdf(gabriel1971,
++                 bp1$var.rb,
++                 lim=3))
+         CRISTIAN ARMENIAN JEWISH MOSLEM MODERN.1 MODERN.2 OTHER.1 OTHER.2 RUR
+CRISTIAN        -               *                        *       *       *   *
+ARMENIAN                 -      *                        *                   *
+JEWISH          *        *      -                                            *
+MOSLEM                                 -                                     *
+MODERN.1                                        -                            *
+MODERN.2        *        *                               -                    
+OTHER.1         *                                                -           *
+OTHER.2         *                                                        -   *
+RUR             *        *      *      *        *                *       *   -
+> class(res)
+[1] "data.frame"
+> 
+> ##
+> ## Example 2
+> ## Diagnostic of representation quality using `var.rd`
+> ##
+> 
+> bp2 <- bpca(gabriel1971,
++             meth='hj',
++             var.rb=TRUE,
++             var.rd=TRUE,
++             limit=3)
+> 
+> plot(bp2,
++      var.factor=2)
+> 
+> bp2$var.rd
+         CRISTIAN ARMENIAN JEWISH MOSLEM MODERN.1 MODERN.2 OTHER.1 OTHER.2 RUR
+CRISTIAN        -               *                        *       *       *   *
+ARMENIAN                 -      *                        *                   *
+JEWISH          *        *      -                                            *
+MOSLEM                                 -                                     *
+MODERN.1                                        -                            *
+MODERN.2        *        *                               -                    
+OTHER.1         *                                                -           *
+OTHER.2         *                                                        -   *
+RUR             *        *      *      *        *                *       *   -
+> 
+> bp2$eigenvectors
+               PC1         PC2         PC3        PC4         PC5          PC6
+CRISTIAN 0.3377538  0.14981020  0.45230008  0.4231457  0.05311783  0.088587185
+ARMENIAN 0.3404004  0.16726958  0.33771819  0.2833808 -0.16767162  0.271055242
+JEWISH   0.3377588  0.28007714 -0.04739131 -0.4883343  0.66215556  0.003365012
+MOSLEM   0.3406022  0.21215568  0.25698153 -0.3060955 -0.04080079  0.117747222
+MODERN.1 0.3180490 -0.57546846  0.11916350  0.2300814  0.35085215 -0.554794758
+MODERN.2 0.3142866 -0.60122176 -0.24495252 -0.1242393 -0.02171777  0.658770989
+OTHER.1  0.3451543 -0.10599794 -0.09398560 -0.1170630 -0.36770339 -0.202618566
+OTHER.2  0.3443458  0.07174535 -0.10875359 -0.3290520 -0.51237687 -0.349036572
+RUR      0.3198785  0.34221343 -0.71987728  0.4670400  0.08743743 -0.012181278
+                 PC7         PC8
+CRISTIAN  0.17009802  0.64204379
+ARMENIAN -0.55431905 -0.49065851
+JEWISH   -0.31105068  0.15965052
+MOSLEM    0.70406696 -0.40978278
+MODERN.1  0.04233731 -0.25073417
+MODERN.2  0.01014123  0.10116746
+OTHER.1   0.01377868  0.24501092
+OTHER.2  -0.21426930  0.09617249
+RUR       0.15276704 -0.10602735
+> 
+> # Graphical visualization of variable importance not represented
+> # in the selected reduction
+> plot(bpca(gabriel1971,
++           meth='hj',
++           d=3:4),
++      main='hj')
+> 
+> # Interpretation:
+> # RUR followed by CRISTIAN contains information in dimensions not captured
+> # by the 2D biplot reduction (mainly PC3).
+> # Among all variables, RUR and CRISTIAN are the most poorly represented
+> # in a 2D biplot.
+> 
+> ## Not run: 
+> ##D ##
+> ##D ## Example 3
+> ##D ## Diagnostic of iris representation quality using `var.rd`
+> ##D ##
+> ##D 
+> ##D bp3 <- bpca(iris[-5],
+> ##D             var.rb=TRUE,
+> ##D             var.rd=TRUE,
+> ##D             limit=3)
+> ##D 
+> ##D plot(bp3,
+> ##D      obj.col=c('red', 'green3', 'blue')[as.numeric(iris$Species)],
+> ##D      var.factor=.3)
+> ##D 
+> ##D bp3$var.rd
+> ##D bp3$eigenvectors
+> ##D 
+> ##D # Graphical diagnostic
+> ##D plot(bpca(iris[-5],
+> ##D           d=3:4),
+> ##D      obj.col=c('red', 'green3', 'blue')[as.numeric(iris$Species)],
+> ##D      obj.names=FALSE)
+> ##D 
+> ##D # Interpretation:
+> ##D # Sepal.Length followed by Petal.Width contains information in dimensions
+> ##D # (mainly PC3) that is not fully captured by the PC1-PC2 reduction.
+> ##D # Therefore, among all variables, these are the most poorly represented
+> ##D # by a 2D biplot.
+> ##D 
+> ##D bp4 <- bpca(iris[-5],
+> ##D             d=1:3,
+> ##D             var.rb=TRUE,
+> ##D             var.rd=TRUE,
+> ##D             limit=2)
+> ##D 
+> ##D plot(bp4,
+> ##D      obj.names=FALSE,
+> ##D      obj.pch=c('+', '-', '*')[as.numeric(iris$Species)],
+> ##D      obj.col=c('red', 'green3', 'blue')[as.numeric(iris$Species)],
+> ##D      obj.cex=1)
+> ##D 
+> ##D bp4$var.rd
+> ##D bp4$eigenvectors
+> ##D 
+> ##D round(bp3$var.rb, 2)
+> ##D 
+> ##D round(cor(iris[-5]), 2)
+> ##D 
+> ##D # Good representation of all variables with a 3D biplot.
+> ## End(Not run)
+> 
+> devAskNewPage(oask)
+> 
+> 
+> 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("var.rdf", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> cleanEx()
+> nameEx("xtable.bpca")
+> ### * xtable.bpca
+> 
+> flush(stderr()); flush(stdout())
+> 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: xtable.bpca
+> ### Title: LaTeX Table for Biplot Results
+> ### Aliases: xtable.bpca
+> ### Keywords: multivariate table latex bpca
+> 
+> ### ** Examples
+> 
+> ## Example 1: Simplest use
+> library(xtable)
+> 
+> bp <- bpca(iris[-5],
++            d=1:3)
+> 
+> xtable::xtable(bp)
+% latex table generated in R 4.7.0 by xtable 1.8-8 package
+% Mon May 11 12:18:36 2026
+\begin{table}[ht]
+\centering
+\begin{tabular}{lrrrr}
+  \hline
+  &&\multicolumn{3}{c}{Eigenvalues} \\ \cline{3-5}
+ &&  PC1 $(\lambda_1=20.85)$& PC2 $(\lambda_2=11.67)$& PC3 $(\lambda_3=4.68)$ \\ 
+  \hline 
+ \multirow{4}{*}{Eigenvectors}&Sepal.Length&0.52&-0.38&0.72 \\ 
+&Sepal.Width & -0.27 & -0.92 & -0.24 \\ 
+  &Petal.Length & 0.58 & -0.02 & -0.14 \\ 
+  &Petal.Width & 0.56 & -0.07 & -0.63 \\ 
+   \hline
+&Variance retained & 0.73 & 0.23 & 0.04 \\ 
+  &Variance accumulated & 0.73 & 0.96 & 0.99 \\ 
+   \hline
+\end{tabular}
+\end{table}
+> 
+> ## Example 2: With caption and label
+> bp2 <- bpca(gabriel1971) 
+> 
+> xtable::xtable(bp2,
++        caption='Biplot gabriel1971',
++        label='example_2')
+% latex table generated in R 4.7.0 by xtable 1.8-8 package
+% Mon May 11 12:18:36 2026
+\begin{table}[ht]
+\centering
+\begin{tabular}{lrrr}
+  \hline
+  &&\multicolumn{2}{c}{Eigenvalues} \\ \cline{3-4}
+ &&  PC1 $(\lambda_1=7.63)$& PC2 $(\lambda_2=1.77)$ \\ 
+  \hline 
+ \multirow{9}{*}{Eigenvectors}&CRISTIAN&0.34&0.15 \\ 
+&ARMENIAN & 0.34 & 0.17 \\ 
+  &JEWISH & 0.34 & 0.28 \\ 
+  &MOSLEM & 0.34 & 0.21 \\ 
+  &MODERN.1 & 0.32 & -0.58 \\ 
+  &MODERN.2 & 0.31 & -0.60 \\ 
+  &OTHER.1 & 0.35 & -0.11 \\ 
+  &OTHER.2 & 0.34 & 0.07 \\ 
+  &RUR & 0.32 & 0.34 \\ 
+   \hline
+&Variance retained & 0.92 & 0.05 \\ 
+  &Variance accumulated & 0.92 & 0.97 \\ 
+   \hline
+\end{tabular}
+\caption{Biplot gabriel1971} 
+\label{example_2}
+\end{table}
+> 
+> 
+> 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("xtable.bpca", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> ### * <FOOTER>
+> ###
+> cleanEx()
+
+detaching 'package:xtable'
+
+> options(digits = 7L)
+> base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
+Time elapsed:  2.19 0.48 2.92 NA NA 
+> grDevices::dev.off()
+pdf 
+  2 
+> ###
+> ### Local variables: ***
+> ### mode: outline-minor ***
+> ### outline-regexp: "\\(> \\)?### [*]+" ***
+> ### End: ***
+> quit('no')

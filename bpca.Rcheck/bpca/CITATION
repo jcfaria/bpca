@@ -1,0 +1,25 @@
+citHeader("To cite bpca in publications use:")
+
+bibentry(bibtype  = "Manual",
+         title  = "bpca: Biplot of Multivariate Data Based on Principal
+                   Components Analysis.",
+         author = c(person("Faria, J. C."),
+                    person("Allaman, I. B."),
+                    person("Demétrio, C. G. B.")),
+         organization = "UESC and ESALQ",
+         address      = "Ilheus, Bahia, Brasil and
+                         Piracicaba, Sao Paulo, Brasil",
+         year         = version$year,
+
+         textVersion = 
+         paste("Faria, J.C; Allaman, I. B. & Demétrio, C. G. B (", version$year, ").",
+               "bpca: Biplot of multivariate data based on Principal
+                Components Analysis.",
+               "ESALQ, USP, Brasil.",
+               sep="")
+         )
+
+citFooter("Lots of time and effort were invested in creating bpca.",
+          "Please, cite it when using it together with R.",
+          "See also", sQuote("citation()"),
+          "for citing R.")

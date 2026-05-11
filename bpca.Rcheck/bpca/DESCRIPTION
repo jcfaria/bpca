@@ -20,3 +20,8 @@ BugReports: https://github.com/jcfaria/bpca/issues
 Encoding: UTF-8
 LazyData: true
 NeedsCompilation: no
+Packaged: 2026-05-11 15:17:30 UTC; jcfaria
+Author: José C. Faria [aut, cre],
+  Ivan B. Allaman [aut],
+  Clarice G. B. Demétrio [aut]
+Built: R 4.7.0; ; 2026-05-11 15:17:44 UTC; windows

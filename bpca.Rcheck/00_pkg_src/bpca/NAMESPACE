@@ -1,0 +1,26 @@
+# Exports
+export(bpca)
+export(dt.tools)
+export(qbpca)
+export(var.rbf)
+export(var.rdf)
+export(xtable.bpca)
+
+# Imports
+importFrom(graphics, abline, arrows, axis, box, identify, legend, lines, par, plot, points, polygon, rect, segments, strheight, strwidth, symbols, text, title)
+importFrom(grDevices, chull, devAskNewPage, dev.interactive, dev.new, gray, rainbow)
+importFrom(rgl, abclines3d, axes3d, clear3d, decorate3d, plot3d, segments3d, spheres3d, text3d, title3d)
+importFrom(scatterplot3d, scatterplot3d)
+importFrom(stats, cor, prcomp, sd)
+importFrom(utils, combn)
+importFrom(xtable, print.xtable, xtable)
+
+# S3 methods
+S3method(bpca,default)
+S3method(bpca,prcomp)
+S3method(plot,bpca.2d)
+S3method(plot,bpca.3d)
+S3method(plot,qbpca)
+S3method(print,xtable.bpca)
+S3method(summary,bpca)
+S3method(xtable,bpca)
