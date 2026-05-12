@@ -1,2 +1,4 @@
 # Example code in package build process
 *-Ex.R
+# Manual aggregate of man examples (tracked on purpose)
+!tests/bpca-Ex.R
