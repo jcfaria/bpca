@@ -1,7 +1,8 @@
 # bpca-Ex.R — exemplos agregados dos arquivos man/*.Rd
 # Gerado com tools:::Rd2ex() a partir de cada .Rd com secao \examples.
 # Antes em \dontrun (prefixo ##D) — descomentado para execucao manual.
-# Carregue o pacote antes: devtools::load_all() ou library(bpca).
+
+library(bpca)
 
 
 # ---- bpca-package.Rd ----
@@ -66,7 +67,7 @@ plot(bpca(ontario))
 
 # Set obj.labels
 plot(bpca(ontario),
-    obj.labels=obj.lab) 
+    obj.labels=obj.lab)
 
 # Evaluate an object (1 is the default)
 plot(bpca(ontario),
@@ -118,7 +119,7 @@ legend('topleft',
        pch=19,
        col=cl,
        cex=.9,
-       box.lty=0)   
+       box.lty=0)
 
 # Compare two objects (1 and 2 are the default)
 plot(bpca(ontario),
@@ -294,7 +295,7 @@ plot(bpca(iris[-5],
      simple.axes=FALSE,
      box=TRUE)
 
-devAskNewPage(oask)       
+devAskNewPage(oask)
 
 
 
@@ -395,7 +396,8 @@ bp$var.rd
 ##
 
 data(gge2003)
-bp <- bpca(t(gge2003), var.rb=TRUE)
+bp <- bpca(t(gge2003),
+           var.rb=TRUE)
 
 as.dist(bp$var.rb)
 
@@ -634,7 +636,7 @@ plot(bpca(ontario))
 
 # Set obj.labels
 plot(bpca(ontario),
-    obj.labels=obj.lab) 
+    obj.labels=obj.lab)
 
 # Evaluate an object (1 is the default)
 plot(bpca(ontario),
@@ -691,10 +693,10 @@ legend('topleft',
        pch=19,
        col=cl,
        cex=.9,
-       box.lty=0)   
+       box.lty=0)
 
 # Compare two objects (1 and 2 are the default)
-plot(bpca(ontario), 
+plot(bpca(ontario),
      type='co',
      c.radio=.4,
      c.color='blue',
@@ -715,7 +717,7 @@ plot(bpca(ontario),
 plot(bpca(ontario),
      type='co',
      obj.labels=obj.lab,
-     obj.id=c('g7', 
+     obj.id=c('g7',
               'g13'))
 
 # Compare two variables
@@ -795,7 +797,7 @@ devAskNewPage(oask)
 ## Example 1: Principal labels in Portuguese
 library(xtable)
 
-bp2 <- bpca(gabriel1971)  
+bp2 <- bpca(gabriel1971)
 tbl <- xtable(bp2)
 rownames(tbl) <- gsub('Eigenvectors','Autovetores',rownames(tbl))
 rownames(tbl) <- c(rownames(tbl)[1:9],'Autovalores','Variância retida','Variância acumulada')
@@ -803,11 +805,11 @@ dimnames(tbl)[[2]] <- c('CP 1','CP 2')
 
 print(tbl)
 
-## Example 2: With bold in the column  
+## Example 2: With bold in the column
 tbl1 <- xtable(bp2)
 bold <- function(x){
   paste('\textbf{',
-        x, 
+        x,
         '}')
 }
 
@@ -818,7 +820,7 @@ print(tbl1,
 tbl2 <- xtable(bp2)
 italic <- function(x){
   paste('& \textit{',
-        x, 
+        x,
         '}')
 } # The "&" keeps the correct number of table columns.
 
@@ -953,7 +955,7 @@ qbp4 <- qbpca(gabriel1971,
 plot(qbp4,
      main='hj - 3D \n (wow!)')
 
-devAskNewPage(oask)  
+devAskNewPage(oask)
 
 
 
@@ -1011,7 +1013,7 @@ bp1 <- bpca(gabriel1971)
 bp1$var.rb # NA
 
 # Compute correlations of all variables under the biplot projection
-(res <- var.rbf(bp1$coord$var)) 
+(res <- var.rbf(bp1$coord$var))
 
 ##
 ## Typical use
@@ -1154,11 +1156,8 @@ bp <- bpca(iris[-5],
 xtable::xtable(bp)
 
 ## Example 2: With caption and label
-bp2 <- bpca(gabriel1971) 
+bp2 <- bpca(gabriel1971)
 
 xtable::xtable(bp2,
        caption='Biplot gabriel1971',
        label='example_2')
-
-
-

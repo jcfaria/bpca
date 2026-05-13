@@ -29,28 +29,24 @@ bpca.default <- function(x,
   if (li < 1 || le > min(dim(x)))
     stop("Requested dimensions in 'd' are out of bounds for input matrix.")
 
-  x.cent <- x                                             # 0: no centering
-  switch(center,                                          # of course, if center=1:3
-         x.cent <- sweep(x, 1, mean(x)),                  # 1: global-centered
-         x.cent <- sweep(x, 2, apply(x, 2, mean)),        # 2: column-centered
-         x.cent <- sweep(sweep(x, 1, apply(x, 1, mean)),  # 3: double-centered
-                         2, apply(x, 2, mean)) + mean(x))
-
-  if(scale) {
-    sds <- apply(x.cent, 2, sd)
-    sds[sds == 0] <- 1
-    x.scal <- sweep(x.cent, 2, sds, '/')
-  } else {
-    x.scal <- x.cent
-  }
+  # Centring and scaling delegated to the shared helper (.center_scale),
+  # eliminating duplication with dt.tools().
+  x.scal <- .center_scale(x,
+                          center,
+                          scale)
 
   svdx.scal <- svd(x.scal)
 
   rownames(svdx.scal$u) <- rownames(x) # obj
   rownames(svdx.scal$v) <- colnames(x) # var
-  colnames(svdx.scal$v) <- paste('PC',
-                                 seq_along(svdx.scal$d),
-                                 sep='')
+
+  # pc.names generated once and reused for svdx.scal$v, g.scal and hl.scal,
+  # eliminating the duplicate generation that existed previously.
+  pc.names <- paste('PC',
+                    seq_along(svdx.scal$d),
+                    sep='')
+
+  colnames(svdx.scal$v) <- pc.names
 
   s2.scal <- diag(svdx.scal$d)
 
@@ -68,68 +64,49 @@ bpca.default <- function(x,
          jk={
            g.scal  <- svdx.scal$u %*% s2.scal
            hl.scal <- svdx.scal$v
-
-           ## The below is the GGEBiplot aproach
-           #d1 <- (max(hl.scal[,li]) - min(hl.scal[,li])) /
-           #(max(g.scal[,li]) - min(g.scal[,li]))
-           #d2 <- (max(hl.scal[,le]) - min(hl.scal[,le])) /
-           #(max(g.scal[,le]) - min(g.scal[,le]))
-           #d <- max(d1,d2)
-
-           #hl.scal / d
          },
          gh={
            g.scal  <- sqrt(nrow(x)-1) * svdx.scal$u
            h.scal  <- 1/sqrt(nrow(x)-1) * s2.scal %*% t(svdx.scal$v)
            hl.scal <- t(h.scal)
-
-           ## The below is the GGEBiplot aproach
-           #g.scal  <- svdx.scal$u
-           #hl.scal  <- svdx.scal$v %*% s2.scal
-
-           #d1 <- (max(g.scal[,li]) - min(g.scal[,li])) / 
-           #(max(hl.scal[,li]) - min(hl.scal[,li]))
-           #d2 <- (max(g.scal[,le]) - min(g.scal[,le])) / 
-           #(max(hl.scal[,le]) - min(hl.scal[,le]))
-           #d <- max(d1,d2)
-           #g.scal <- g.scal / d
          })
 
-  pc.names <- paste('PC',
-                    seq_len(ncol(hl.scal)),
-                    sep='')
-
+  # Row and column labels for the coordinate matrices, using the already-computed pc.names.
   if(is.null(rownames(x.scal)))
     rownames(g.scal) <- seq_len(nrow(x.scal))
   else
     rownames(g.scal) <- rownames(x.scal)
+
   colnames(g.scal) <- pc.names
+
   if(is.null(colnames(x.scal)))
     rownames(hl.scal) <- paste('V',
                                seq_len(ncol(x)),
                                sep='')
   else
-    rownames(hl.scal) <-colnames(x.scal)
+    rownames(hl.scal) <- colnames(x.scal)
+
   colnames(hl.scal) <- pc.names
 
-  # variables
-  if (isTRUE(var.rb))
-    var.rb.res <- var.rbf(hl.scal[,d[1]:d[length(d)]])
+  # Computation of representation quality matrices (optional).
+  if(isTRUE(var.rb))
+    var.rb.res <- var.rbf(hl.scal[, d[1]:d[length(d)]])
   else
     var.rb.res <- NA
 
-  if (isTRUE(var.rb) && isTRUE(var.rd))
-    var.rd.res <- var.rdf(x.scal, 
-                          var.rb.res, 
+  if(isTRUE(var.rb) && isTRUE(var.rd))
+    var.rd.res <- var.rdf(x.scal,
+                          var.rb.res,
                           limit)
   else
     var.rd.res <- NA
 
+  # Optional sign inversion (iec = invert eigenvector convention).
   if(iec){
     svdx.scal$v <- (-1) * svdx.scal$v
-    g.scal      <- (-1) * g.scal     
-    hl.scal     <- (-1) * hl.scal    
-  }   
+    g.scal      <- (-1) * g.scal
+    hl.scal     <- (-1) * hl.scal
+  }
 
   res <- list(call=match.call(),
               eigenvalues=svdx.scal$d,
@@ -147,12 +124,12 @@ bpca.default <- function(x,
   colnames(res$importance) <- 'explained'
 
   if(n.lambda == 2)
-    class(res) <- c('bpca.2d', 
-                    'bpca', 
+    class(res) <- c('bpca.2d',
+                    'bpca',
                     'list')
   else if(n.lambda == 3)
-    class(res) <- c('bpca.3d', 
-                    'bpca', 
+    class(res) <- c('bpca.3d',
+                    'bpca',
                     'list')
 
   invisible(res)

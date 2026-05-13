@@ -2,6 +2,32 @@
 
 # News - bpca R package
 
+### 1.5-0 (2026-05-13) - Faria, J. C.
+
+#### Breaking changes
+- `var.rdf()` now returns a structured list of class `'var.rdf'` instead of a plain character `data.frame`. The three fields are: `$display` (character `data.frame` with `'*'`, `''`, and `'-'` entries, for tabular display), `$numeric` (numeric matrix of absolute percentage differences), and `$flagged` (logical matrix, `TRUE` where the discrepancy exceeds `limit`). Code that accessed `bp$var.rd` as a `data.frame` directly must be updated to use `bp$var.rd$display`.
+- `summary.bpca()` no longer accepts the `presentation` argument. The printing behaviour previously triggered by `presentation = TRUE` is now handled by the new `print.summary.bpca()` S3 method; calling `print(summary(bp))` produces the same output.
+
+#### New S3 methods
+- `print.var.rdf()`: printing a `var.rdf` object (e.g. `print(bp$var.rd)`) automatically displays the character table (`$display`).
+- `print.summary.bpca()`: separates computation from presentation following R's S3 convention. `summary.bpca()` now only computes and returns the summary object; `print.summary.bpca()` handles console output.
+
+#### Internal refactoring (no public API change)
+- New file `R/utils.R` introduces four shared internal helpers that eliminate duplicated code across the package:
+  - `.center_scale(x, center, scale)`: centering and scaling logic previously duplicated between `bpca.default()` and `dt.tools()`.
+  - `.cosine_matrix(m)`: pairwise cosine similarity between rows of a matrix, previously duplicated between `var.rbf()` and `dt.tools()`.
+  - `.compute_var_factor(coobj, covar)`: automatic variable-scaling factor for biplots, previously duplicated between `plot.bpca.2d()` and `plot.bpca.3d()`.
+  - `.pc_axis_labels(eigenvalues, dims)`: axis labels in `"PC1 (38.5%)"` format, previously duplicated between `plot.bpca.2d()` and `plot.bpca.3d()`.
+- `plot.bpca.2d()` decomposed from a single 634-line function into three files:
+  - `R/plot.bpca.2d.helpers.R`: eight internal drawing functions (`.draw_obj()`, `.draw_var()`, `.draw_var_seg()`, `.draw_circles()`, `.draw_axis_cross()`, `.proj_on_direction()`, `.solve_orthogonal_intersection()`, `.draw_circles_at()`), extracted from closures that were recreated on every call.
+  - `R/plot.bpca.2d.types.R`: ten internal type functions (`.plot_type_bp()` through `.plot_type_rv()`), one per `switch` branch, each independently readable and testable.
+  - `R/plot.bpca.2d.R`: reduced to ~160 lines — validation, state preparation, context list (`ctx`) construction, and dispatch via `switch()`.
+- `pc.names` in `bpca.default()` is now generated once and reused for `svdx.scal$v`, `g.scal`, and `hl.scal` column names (previously generated twice).
+- The fragile `while` loop in `plot.bpca.2d(type = 'ww')` — which relied on an `NA` sentinel at the end of `chull()` output — was replaced by a `for` loop with circular indexing over all convex-hull edges, including the closing edge.
+
+#### Testing
+- Test suite expanded from 3 to 45 tests. New coverage includes: all four factorization methods (`hj`, `sqrt`, `jk`, `gh`); all four centering modes (`center = 0:3`); all four internal helpers (`.center_scale`, `.cosine_matrix`, `.compute_var_factor`, `.pc_axis_labels`); `var.rbf` and `var.rdf` (including the new list structure); `dt.tools`; `qbpca`; `summary.bpca` and `print.summary.bpca`; all ten 2D plot types; 3D static plot; `plot.qbpca`; and `bpca.prcomp`.
+
 ### 1.4-3 (2026-05-11) - Faria, J. C.
 
 #### Changes

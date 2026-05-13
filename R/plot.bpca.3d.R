@@ -39,14 +39,11 @@ plot.bpca.3d <- function(x,
   if (nrow(coobj) == 0 || nrow(covar) == 0)
     stop("Both objects and variables coordinates must have at least one row.")
 
-  if (is.null(var.factor)) {
-    max_covar <- max(abs(covar),
-                     na.rm=TRUE)
-    if (!is.finite(max_covar) || max_covar == 0)
-      stop("Cannot compute 'var.factor' automatically: variable coordinates are all zero or non-finite.")
-    var.factor <- max(abs(coobj),
-                      na.rm=TRUE) / max_covar
-  }
+  # Automatic scaling factor delegated to the shared helper (.compute_var_factor),
+  # eliminating duplication with plot.bpca.2d().
+  if(is.null(var.factor))
+    var.factor <- .compute_var_factor(coobj,
+                                      covar)
 
   scores <- rbind(coobj,
                   covar * var.factor)
@@ -177,15 +174,11 @@ plot.bpca.3d <- function(x,
       }
     }
 
-  if (missing(xlab) || missing(ylab) || missing(zlab)) {
-    eigv <- x$eigenvalues
-    prop <- 100 * eigv^2 / sum(eigv^2)
-    labs <- paste0('PC',
-                   dims,
-                   ' (',
-                   round(prop[dims], 2),
-                   '%)')
-  }
+  # Axis labels with % variance, delegated to the shared helper
+  # (.pc_axis_labels), eliminating duplication with plot.bpca.2d().
+  if(missing(xlab) || missing(ylab) || missing(zlab))
+    labs <- .pc_axis_labels(x$eigenvalues,
+                            dims)
 
   # Independent axis limits.
   if (missing(xlim) || missing(ylim) || missing(zlim)) {

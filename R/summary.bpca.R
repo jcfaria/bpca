@@ -1,51 +1,61 @@
 # José Cláudio Faria
-summary.bpca <- function(object,
-                         presentation=FALSE, ...)
+
+# summary.bpca: computes and returns an object summarising the dimensionality
+# reduction. Printing is handled by print.summary.bpca (S3 convention),
+# separating computation from display and removing the 'presentation' parameter.
+summary.bpca <- function(object, ...)
 {
-  if (!inherits(object, 'bpca'))
+  if(!inherits(object, 'bpca'))
     stop("Use this function only with 'bpca' class!")
 
-  d <- length(object$number)
+  d   <- length(object$number)
   sel <- object$number[1]:object$number[d]
   eig <- object$eigenvalues
+
   var_each <- eig[sel]^2 / sum(eig^2)
-  var_cum <- cumsum(eig[sel]^2) / sum(eig^2)
+  var_cum  <- cumsum(eig[sel]^2) / sum(eig^2)
 
-  if(!presentation){
-    x <- list('Eigenvalue(s)' = eig,
-              'Considered on reduction' = eig[sel],
-              'Variance retained by each' = var_each,
-              'Cumulative variance retained' = var_cum,
-              'Prop. of total variance retained' = object$importance[1]) 
+  res <- list('Eigenvalue(s)'                   = eig,
+              'Considered on reduction'          = eig[sel],
+              'Variance retained by each'        = var_each,
+              'Cumulative variance retained'     = var_cum,
+              'Prop. of total variance retained' = object$importance[1])
 
-    if(object$importance[1] != object$importance[2]) 
-      x$'Prop. of partial variance retained' = object$importance[2]
+  # Partial variance included only when it differs from the total (d > 1 PCs).
+  if(object$importance[1] != object$importance[2])
+    res$'Prop. of partial variance retained' <- object$importance[2]
 
-    class(x) <- c('summary.bpca', 'listof')
+  class(res) <- c('summary.bpca', 'listof')
 
-    x
+  res
+}
 
-  } else {
+# print.summary.bpca: displays the summary on the console.
+# Separated from summary.bpca to follow R's S3 convention, where summary()
+# returns an object and print() handles the presentation.
+# Equivalent to the previous summary.bpca(presentation=TRUE) behaviour.
+print.summary.bpca <- function(x, ...)
+{
+  cat(' Eigenvalue(s):\t\t\t\t',
+      x[['Eigenvalue(s)']])
 
-    cat(' Eigenvalue(s):\t\t\t\t',
-        eig)
+  cat('\n  - Considered on reduction:\t\t',
+      x[['Considered on reduction']])
 
-    cat('\n  - Considered on reduction:\t\t',
-        eig[sel])
+  cat('\n  - Variance retained by each:\t\t',
+      x[['Variance retained by each']])
 
-    cat('\n  - Variance retained by each:\t\t',
-        var_each)
+  cat('\n  - Cumulative variance retained:\t',
+      x[['Cumulative variance retained']])
 
-    cat('\n  - Cumulative variance retained:\t',
-        var_cum)
+  cat('\n  - Prop. of total variance retained:\t',
+      x[['Prop. of total variance retained']])
 
-    cat('\n  - Prop. of total variance retained:\t',
-        object$importance[1])
+  if(!is.null(x[['Prop. of partial variance retained']]))
+    cat('\n  - Prop. of partial variance retained:\t',
+        x[['Prop. of partial variance retained']])
 
-    if(object$importance[1] != object$importance[2])
-      cat('\n  - Prop. of partial variance retained:\t',
-          object$importance[2])
+  cat('\n')
 
-    cat('\n')
-  }
+  invisible(x)
 }
