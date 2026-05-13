@@ -247,12 +247,12 @@ rownames(tb_rock_pt) <- gsub(
 )
 rownames(tb_rock_pt) <- gsub(
   "Variance retained",
-  "Variancia retida",
+  "Variância retida",
   rownames(tb_rock_pt)
 )
 rownames(tb_rock_pt) <- gsub(
   "Variance accumulated",
-  "Variancia acumulada",
+  "Variância acumulada",
   rownames(tb_rock_pt)
 )
 
