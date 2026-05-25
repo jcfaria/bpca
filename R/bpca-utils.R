@@ -1,4 +1,4 @@
-# utils.R — internal shared helpers for the bpca package.
+# bpca-utils.R — internal shared helpers for the bpca package.
 # None of these functions is exported.
 # Created during refactoring to eliminate duplication across bpca.default(),
 # dt.tools(), var.rbf(), plot.bpca.2d() and plot.bpca.3d().

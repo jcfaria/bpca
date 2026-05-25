@@ -2,7 +2,7 @@
 
 # News - bpca R package
 
-### 1.5-0 (2026-05-13) - Faria, J. C.
+### 1.5-0 (2026-05-25) - Faria, J. C.
 
 #### Breaking changes
 - `var.rdf()` now returns a structured list of class `'var.rdf'` instead of a plain character `data.frame`. The three fields are: `$display` (character `data.frame` with `'*'`, `''`, and `'-'` entries, for tabular display), `$numeric` (numeric matrix of absolute percentage differences), and `$flagged` (logical matrix, `TRUE` where the discrepancy exceeds `limit`). Code that accessed `bp$var.rd` as a `data.frame` directly must be updated to use `bp$var.rd$display`.
@@ -13,7 +13,7 @@
 - `print.summary.bpca()`: separates computation from presentation following R's S3 convention. `summary.bpca()` now only computes and returns the summary object; `print.summary.bpca()` handles console output.
 
 #### Internal refactoring (no public API change)
-- New file `R/utils.R` introduces four shared internal helpers that eliminate duplicated code across the package:
+- New file `R/bpca-utils.R` introduces four shared internal helpers that eliminate duplicated code across the package:
   - `.center_scale(x, center, scale)`: centering and scaling logic previously duplicated between `bpca.default()` and `dt.tools()`.
   - `.cosine_matrix(m)`: pairwise cosine similarity between rows of a matrix, previously duplicated between `var.rbf()` and `dt.tools()`.
   - `.compute_var_factor(coobj, covar)`: automatic variable-scaling factor for biplots, previously duplicated between `plot.bpca.2d()` and `plot.bpca.3d()`.
