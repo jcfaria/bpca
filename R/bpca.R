@@ -1,3 +1,4 @@
 # José Cláudio Faria
-bpca <- function(x, ...) 
-  UseMethod('bpca', x)
+bpca <- function(x, ...) {
+  UseMethod("bpca", x)
+}

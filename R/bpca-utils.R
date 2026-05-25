@@ -21,20 +21,22 @@
 # ---------------------------------------------------------------------------
 .center_scale <- function(x,
                           center,
-                          scale)
-{
-  x.out <- x                                                  # 0: no centring
+                          scale) {
+  x.out <- x # 0: no centring
 
   switch(center,
-         x.out <- sweep(x, 1, mean(x)),                      # 1: globally centred
-         x.out <- sweep(x, 2, apply(x, 2, mean)),            # 2: column centred
-         x.out <- sweep(sweep(x, 1, apply(x, 1, mean)),      # 3: double centred
-                        2, apply(x, 2, mean)) + mean(x))
+    x.out <- sweep(x, 1, mean(x)), # 1: globally centred
+    x.out <- sweep(x, 2, apply(x, 2, mean)), # 2: column centred
+    x.out <- sweep(
+      sweep(x, 1, apply(x, 1, mean)), # 3: double centred
+      2, apply(x, 2, mean)
+    ) + mean(x)
+  )
 
-  if(scale) {
+  if (scale) {
     sds <- apply(x.out, 2, sd)
-    sds[sds == 0] <- 1                                        # avoids division by zero
-    x.out <- sweep(x.out, 2, sds, '/')
+    sds[sds == 0] <- 1 # avoids division by zero
+    x.out <- sweep(x.out, 2, sds, "/")
   }
 
   x.out
@@ -52,22 +54,22 @@
 #
 # Returns a square symmetric matrix with 1 on the diagonal.
 # ---------------------------------------------------------------------------
-.cosine_matrix <- function(m)
-{
-  n  <- nrow(m)
-  lv <- function(v) sqrt(crossprod(v))    # L2 norm of a column vector
-  l  <- apply(m, 1, lv)                   # norm of each row
-  cm <- diag(n)                           # diagonal = 1 (cosine of a vector with itself)
+.cosine_matrix <- function(m) {
+  n <- nrow(m)
+  lv <- function(v) sqrt(crossprod(v)) # L2 norm of a column vector
+  l <- apply(m, 1, lv) # norm of each row
+  cm <- diag(n) # diagonal = 1 (cosine of a vector with itself)
 
-  if(n < 2)
+  if (n < 2) {
     return(cm)
+  }
 
-  for(i in seq_len(n - 1)) {
-    for(j in (i + 1):n) {
+  for (i in seq_len(n - 1)) {
+    for (j in (i + 1):n) {
       # cosine = dot product / product of norms
-      cost     <- as.numeric(crossprod(m[i,], m[j,])) / (l[i] * l[j])
-      cm[j, i] <- cost     # lower triangle
-      cm[i, j] <- cost     # upper triangle (symmetric matrix)
+      cost <- as.numeric(crossprod(m[i, ], m[j, ])) / (l[i] * l[j])
+      cm[j, i] <- cost # lower triangle
+      cm[i, j] <- cost # upper triangle (symmetric matrix)
     }
   }
 
@@ -87,14 +89,14 @@
 # Returns a single positive numeric value.
 # ---------------------------------------------------------------------------
 .compute_var_factor <- function(coobj,
-                                covar)
-{
-  max_covar <- max(abs(covar), na.rm=TRUE)
+                                covar) {
+  max_covar <- max(abs(covar), na.rm = TRUE)
 
-  if(!is.finite(max_covar) || max_covar == 0)
+  if (!is.finite(max_covar) || max_covar == 0) {
     stop("Cannot compute 'var.factor' automatically: variable coordinates are all zero or non-finite.")
+  }
 
-  max(abs(coobj), na.rm=TRUE) / max_covar
+  max(abs(coobj), na.rm = TRUE) / max_covar
 }
 
 # ---------------------------------------------------------------------------
@@ -109,13 +111,14 @@
 # Returns a character vector, one label per element of dims.
 # ---------------------------------------------------------------------------
 .pc_axis_labels <- function(eigenvalues,
-                            dims)
-{
+                            dims) {
   prop <- 100 * eigenvalues^2 / sum(eigenvalues^2)
 
-  paste0('PC',
-         dims,
-         ' (',
-         round(prop[dims], 2),
-         '%)')
+  paste0(
+    "PC",
+    dims,
+    " (",
+    round(prop[dims], 2),
+    "%)"
+  )
 }

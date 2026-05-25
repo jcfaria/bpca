@@ -18,7 +18,16 @@
 
 \usage{
   \method{plot}{bpca.2d}(x,
-     type=c('bp', 'eo', 'ev', 'co', 'cv', 'ww', 'dv', 'ms', 'ro', 'rv'),
+     type=c('bp',
+            'eo',
+            'ev',
+            'co',
+            'cv',
+            'ww',
+            'dv',
+            'ms',
+            'ro',
+            'rv'),
      c.color='darkgray',
      c.lwd=1,
      c.number=5,
@@ -298,7 +307,10 @@
 # To avoid overlap in a 2D biplot by manually positioning labels:
 # Suppose we have 4 variables and want to position them differently
 plot(bpca(ontario),
-     var.pos = c(1, 3, 4, 2),
+     var.pos = c(1,
+                 3,
+                 4,
+                 2),
      var.offset = 0.5)
 
 # For 3D dynamic plots with custom offsets:
@@ -392,17 +404,28 @@ plot(bpca(iris[-5]),
      var.cex=.7,
      obj.names=FALSE,
      obj.cex=1.5,
-     obj.col=c('red', 'green3', 'blue')[as.numeric(iris$Species)],
-     obj.pch=c('+', '*', '-')[as.numeric(iris$Species)])
+     obj.col=c('red',
+               'green3',
+               'blue')[as.numeric(iris$Species)],
+     obj.pch=c('+',
+               '*',
+               '-')[as.numeric(iris$Species)])
 
 plot(bpca(iris[-5]),
      var.cex=.7,
-     var.pos=c(4, 2, 3, 1),
+     var.pos=c(4,
+               2,
+               3,
+               1),
      var.offset=.3,
      obj.names=FALSE,
      obj.cex=1.5,
-     obj.col=c('red', 'green3', 'blue')[as.numeric(iris$Species)],
-     obj.pch=c('+', '*', '-')[as.numeric(iris$Species)])
+     obj.col=c('red',
+               'green3',
+               'blue')[as.numeric(iris$Species)],
+     obj.pch=c('+',
+               '*',
+               '-')[as.numeric(iris$Species)])
 
 # 3D static
 plot(bpca(iris[-5],
@@ -411,8 +434,12 @@ plot(bpca(iris[-5],
      var.cex=1,
      obj.names=FALSE,
      obj.cex=1,
-     obj.col=c('red', 'green3', 'blue')[as.numeric(iris$Species)],
-     obj.pch=c('+', '*', '-')[as.numeric(iris$Species)])
+     obj.col=c('red',
+               'green3',
+               'blue')[as.numeric(iris$Species)],
+     obj.pch=c('+',
+               '*',
+               '-')[as.numeric(iris$Species)])
 
 # 3D dynamic
 plot(bpca(iris[-5],
@@ -423,7 +450,9 @@ plot(bpca(iris[-5],
      var.cex=1.2,
      obj.names=FALSE,
      obj.cex=.8,
-     obj.col=c('red', 'green3', 'orange')[as.numeric(iris$Species)])
+     obj.col=c('red',
+               'green3',
+               'orange')[as.numeric(iris$Species)])
 
 ##
 ## Example 5
@@ -442,7 +471,14 @@ plot(bp,
 if(interactive())
 plot(bp,
      obj.names=FALSE,
-     obj.labels=c('toi', 'kit', 'bat', 'ele', 'wat', 'rad', 'tv', 'ref'),
+     obj.labels=c('toi',
+                  'kit',
+                  'bat',
+                  'ele',
+                  'wat',
+                  'rad',
+                  'tv',
+                  'ref'),
      obj.identify=TRUE)
 
 ##
@@ -463,7 +499,14 @@ plot(bp,
 if(interactive())
 plot(bp,
      obj.names=FALSE,
-     obj.labels=c('toi', 'kit', 'bat', 'ele', 'wat', 'rad', 'tv', 'ref'),
+     obj.labels=c('toi',
+                  'kit',
+                  'bat',
+                  'ele',
+                  'wat',
+                  'rad',
+                  'tv',
+                  'ref'),
      obj.identify=TRUE)
 
 ##

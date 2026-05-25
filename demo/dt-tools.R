@@ -17,11 +17,16 @@ dt$r
 dt
 
 # Check consistency with base cor()
-(iris.tools <- round(dt.tools(iris,
-                              center=2)$r,
-                     5))
+(iris.tools <- round(
+  dt.tools(iris,
+    center = 2
+  )$r,
+  5
+))
 
-(iris.obsv  <- round(cor(iris[-5]),
-                     5))
+(iris.obsv <- round(
+  cor(iris[-5]),
+  5
+))
 
 all(iris.tools == iris.obsv)

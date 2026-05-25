@@ -53,13 +53,20 @@ oask <- devAskNewPage(dev.interactive(orNone=TRUE))
 \dontrun{
 # 2D
 plot(bpca(iris[-5]),
-     var.pos=c(4, 2, 3, 1),
+     var.pos=c(4,
+               2,
+               3,
+               1),
      var.offset=.3,
      var.cex=.7,
      obj.names=FALSE,
      obj.cex=1.5,
-     obj.col=c('red', 'green3', 'blue')[as.numeric(iris$Species)],
-     obj.pch=c('+', '*', '-')[as.numeric(iris$Species)])
+     obj.col=c('red',
+               'green3',
+               'blue')[as.numeric(iris$Species)],
+     obj.pch=c('+',
+               '*',
+               '-')[as.numeric(iris$Species)])
 
 # 3D static
 plot(bpca(iris[-5],
@@ -68,8 +75,12 @@ plot(bpca(iris[-5],
      var.cex=1,
      obj.names=FALSE,
      obj.cex=1,
-     obj.col=c('red', 'green3', 'blue')[as.numeric(iris$Species)],
-     obj.pch=c('+', '*', '-')[as.numeric(iris$Species)])
+     obj.col=c('red',
+               'green3',
+               'blue')[as.numeric(iris$Species)],
+     obj.pch=c('+',
+               '*',
+               '-')[as.numeric(iris$Species)])
 
 # 3D dynamic
 plot(bpca(iris[-5],
@@ -80,7 +91,9 @@ plot(bpca(iris[-5],
      var.cex=1.2,
      obj.names=FALSE,
      obj.cex=.8,
-     obj.col=c('red', 'green3', 'orange')[as.numeric(iris$Species)],
+     obj.col=c('red',
+               'green3',
+               'orange')[as.numeric(iris$Species)],
      simple.axes=FALSE,
      box=TRUE)
 }

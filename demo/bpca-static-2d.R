@@ -2,7 +2,7 @@
 ## Static 2D bpca workflow with base graphics
 ##
 
-oask <- devAskNewPage(dev.interactive(orNone=TRUE))
+oask <- devAskNewPage(dev.interactive(orNone = TRUE))
 
 bp <- bpca(gabriel1971)
 
@@ -26,17 +26,20 @@ bp$var.rb
 bp$var.rd
 
 # Example with customized graphical parameters
-plot(bpca(gabriel1971,
-          method='sqrt'),
-     main='gabriel1971 - sqrt',
-     sub='The graphical parameters are working fine!',
-     var.cex=.6,
-     var.color=rainbow(9),
-     var.pch='v',
-     obj.pch='o',
-     obj.cex=.5,
-     obj.col=rainbow(8),
-     obj.pos=1,
-     obj.offset=.5)
+plot(
+  bpca(gabriel1971,
+    method = "sqrt"
+  ),
+  main = "gabriel1971 - sqrt",
+  sub = "The graphical parameters are working fine!",
+  var.cex = .6,
+  var.color = rainbow(9),
+  var.pch = "v",
+  obj.pch = "o",
+  obj.cex = .5,
+  obj.col = rainbow(8),
+  obj.pos = 1,
+  obj.offset = .5
+)
 
 devAskNewPage(oask)

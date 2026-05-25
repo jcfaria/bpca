@@ -18,7 +18,10 @@
      d=1:2,
      center=2,
      scale=TRUE,
-     method=c('hj', 'sqrt', 'jk', 'gh'),
+     method=c('hj',
+              'sqrt',
+              'jk',
+              'gh'),
      iec=FALSE,
      var.rb=FALSE,
      var.rd=FALSE,
@@ -270,8 +273,12 @@ plot(bpca(iris[-5]),
      var.cex=.7,
      obj.names=FALSE,
      obj.cex=1.5,
-     obj.col=c('red', 'green3', 'blue')[as.numeric(iris$Species)],
-     obj.pch=c('+', '*', '-')[as.numeric(iris$Species)])
+     obj.col=c('red',
+               'green3',
+               'blue')[as.numeric(iris$Species)],
+     obj.pch=c('+',
+               '*',
+               '-')[as.numeric(iris$Species)])
 
 # 3D static
 plot(bpca(iris[-5],
@@ -280,8 +287,12 @@ plot(bpca(iris[-5],
      var.cex=1,
      obj.names=FALSE,
      obj.cex=1,
-     obj.col=c('red', 'green3', 'blue')[as.numeric(iris$Species)],
-     obj.pch=c('+', '*', '-')[as.numeric(iris$Species)])
+     obj.col=c('red',
+               'green3',
+               'blue')[as.numeric(iris$Species)],
+     obj.pch=c('+',
+               '*',
+               '-')[as.numeric(iris$Species)])
 
 # 3D dynamic
 plot(bpca(iris[-5],
@@ -292,7 +303,9 @@ plot(bpca(iris[-5],
      var.cex=1.2,
      obj.names=FALSE,
      obj.cex=.8,
-     obj.col=c('red', 'green3', 'orange')[as.numeric(iris$Species)],
+     obj.col=c('red',
+               'green3',
+               'orange')[as.numeric(iris$Species)],
      simple.axes=FALSE,
      box=TRUE)
 }

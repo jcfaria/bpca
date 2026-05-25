@@ -1,38 +1,48 @@
 # José Cláudio Faria
 xtable.bpca <- function(x,
-                        caption=NULL,
-                        label=NULL,
-                        align=NULL,
-                        digits=NULL,
-                        display=NULL,
-                        auto=FALSE, ...)
-{
-  if (!inherits(x, 'bpca'))
+                        caption = NULL,
+                        label = NULL,
+                        align = NULL,
+                        digits = NULL,
+                        display = NULL,
+                        auto = FALSE, ...) {
+  if (!inherits(x, "bpca")) {
     stop("Use this function only with 'bpca' class!")
+  }
   eigvec <- x$eigenvectors[, c(x$number)]
   eigval <- x$eigenvalues[c(x$number)]
-  vret <- x$eigenvalues[x$number[1]:x$number[length(x$number)]]^2/sum(x$eigenvalues^2)
-  vacum <- cumsum(vret)     
+  vret <- x$eigenvalues[x$number[1]:x$number[length(x$number)]]^2 / sum(x$eigenvalues^2)
+  vacum <- cumsum(vret)
 
-  x <- rbind(eigvec,
-             eigval,
-             vret,
-             vacum)
+  x <- rbind(
+    eigvec,
+    eigval,
+    vret,
+    vacum
+  )
 
-  row.names(x) <- c(paste("Eigenvectors",
-                          row.names(eigvec),
-                          sep='\\_'), 
-                    "Eigenvalues",
-                    "Variance retained", 
-                    "Variance accumulated")
+  row.names(x) <- c(
+    paste("Eigenvectors",
+      row.names(eigvec),
+      sep = "\\_"
+    ),
+    "Eigenvalues",
+    "Variance retained",
+    "Variance accumulated"
+  )
 
-  res <- xtable(x, 
-                caption=caption, 
-                label=label, 
-                align=align, 
-                digits=digits, 
-                display=display, 
-                auto=auto, ...)
-  class(res) <- c("xtable.bpca","xtable","data.frame")
+  res <- xtable(x,
+    caption = caption,
+    label = label,
+    align = align,
+    digits = digits,
+    display = display,
+    auto = auto, ...
+  )
+  class(res) <- c(
+    "xtable.bpca",
+    "xtable",
+    "data.frame"
+  )
   return(res)
 }

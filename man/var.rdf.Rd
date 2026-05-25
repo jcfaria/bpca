@@ -99,7 +99,9 @@ bp3 <- bpca(iris[-5],
             limit=3)
 
 plot(bp3,
-     obj.col=c('red', 'green3', 'blue')[as.numeric(iris$Species)],
+     obj.col=c('red',
+               'green3',
+               'blue')[as.numeric(iris$Species)],
      var.factor=.3)
 
 bp3$var.rd
@@ -108,7 +110,9 @@ bp3$eigenvectors
 # Graphical diagnostic
 plot(bpca(iris[-5],
           d=3:4),
-     obj.col=c('red', 'green3', 'blue')[as.numeric(iris$Species)],
+     obj.col=c('red',
+               'green3',
+               'blue')[as.numeric(iris$Species)],
      obj.names=FALSE)
 
 # Interpretation:
@@ -125,8 +129,12 @@ bp4 <- bpca(iris[-5],
 
 plot(bp4,
      obj.names=FALSE,
-     obj.pch=c('+', '-', '*')[as.numeric(iris$Species)],
-     obj.col=c('red', 'green3', 'blue')[as.numeric(iris$Species)],
+     obj.pch=c('+',
+               '-',
+               '*')[as.numeric(iris$Species)],
+     obj.col=c('red',
+               'green3',
+               'blue')[as.numeric(iris$Species)],
      obj.cex=1)
 
 bp4$var.rd
