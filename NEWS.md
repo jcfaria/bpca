@@ -2,6 +2,11 @@
 
 # News - bpca R package
 
+### 1.5-1 (2026-05-26) - Faria, J. C.
+
+#### Changes
+- Simplified author names in `Authors@R` field and removed redundant `Maintainer` field from `DESCRIPTION`.
+
 ### 1.5-0 (2026-05-25) - Faria, J. C.
 
 #### Breaking changes
