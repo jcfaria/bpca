@@ -61,6 +61,10 @@ For more complete examples, see:
 
 GPL-2. Author: José Cláudio Faria.
 
+## Author
+
+**Author:** José Cláudio Faria · Universidade Estadual de Santa Cruz (UESC)
+
 ## Project Layout
 
 - `/R`: Core computational and plotting functions.
