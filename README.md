@@ -1,6 +1,8 @@
 <!-- José Cláudio Faria -->
 # bpca
 
+`bpca` is an R package for biplot analysis based on principal components.
+
 <!-- Badges -->
 [![CRAN status](https://www.r-pkg.org/badges/version/bpca)](https://cran.r-project.org/package=bpca)
 [![CRAN downloads](https://cranlogs.r-pkg.org/badges/bpca)](https://cran.r-project.org/package=bpca)
@@ -8,9 +10,7 @@
 [![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html)
 [![License: GPL-2](https://img.shields.io/badge/License-GPL--2-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)
 
-`bpca` is an R package for biplot analysis based on principal components.
-
-## Key Features
+## Features
 
 - **PCA-based Biplot analysis** in reduced-dimensional spaces (2D and 3D).
 - **Multiple factorization methods** (`hj`, `sqrt`, `jk`, `gh`) for different interpretations.
@@ -32,7 +32,7 @@ Install the development version from GitHub:
 remotes::install_github("jcfaria/bpca")
 ```
 
-## Quick Start
+## Quick example
 
 ```r
 library(bpca)
@@ -51,6 +51,15 @@ For more complete examples, see:
 
 - `demo("bpca", package = "bpca")`
 - `vignette("bpca-overview", package = "bpca")`
+
+## Links
+
+- [CRAN](https://cran.r-project.org/package=bpca)
+- [GitHub](https://github.com/jcfaria/bpca)
+
+## License
+
+GPL-2. Author: José Cláudio Faria.
 
 ## Project Layout
 
